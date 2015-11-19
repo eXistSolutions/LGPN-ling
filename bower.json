@@ -1,0 +1,20 @@
+{
+  "name": "LGPN",
+  "version": "0.0.1",
+  "authors": [
+    "Tobi Krebs <tobias.krebs@betterform.de>"
+  ],
+  "description": "LGPN",
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "jquery-tagit": "*"
+  }
+}

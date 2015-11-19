@@ -1,0 +1,927 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:TEI="http://www.tei-c.org/ns/1.0" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <title>LGPN</title><!--
+        ~ Copyright (c) 2015. existsolutions - http://www.exsitsolutions.com
+        -->
+        <link rel="stylesheet" type="text/css" href="$shared/resources/css/bootstrap-3.0.3.min.css"/>
+        <link rel="stylesheet" type="text/css" href="bower_components/jquery-tagit/css/jquery.tagit.css"/>
+        <link rel="stylesheet" type="text/css" href="bower_components/jquery-tagit/css/tagit.ui-zendesk.css"/>
+        <style type="text/css">
+            body {
+                background: #FFF;
+            }
+            fieldset {
+                border: 1px solid #EEE;
+                padding: 0px 1.4em 1.4em;
+                box-shadow: 0px 0px 0px 0px #000;
+            }
+            .xfRepeatIndex {
+                background-color: #FFF;
+            }
+            .xfRepeatIndex .xfRepeatIndex {
+                background-color: #FFF;
+            }
+
+            .xfRepeatItem {
+                padding-bottom: 10px;
+                border: 1px dotted;
+                margin-bottom: 4px;
+            }
+            
+            
+            .row {
+                padding-bottom: 25px;
+            }
+            /* FIX bootstrap for betterform */
+            .xfFullGroup .xfLabel {
+                width: auto;
+            }
+            
+            .xfRepeatItem .xfControl {
+                display: table;
+            
+            }
+            .xfRepeatItem .widgetContainer {
+                width: 100%;
+            }
+            
+            .input-group-addon {
+                border-radius: 0px;
+            }
+            
+            .input-group .widgetContainer .form-control  {
+                border-radius: 0px;
+            }
+            
+            .input-group-lg &gt; .widgetContainer &gt; .form-control {
+                height: 46px;
+                padding: 10px 16px;
+                font-size: 18px;
+                line-height: 1.33;
+            }
+        </style>
+    </head>
+    <body>
+        <div style="display:none">
+            <xf:model id="model-1">
+                <xf:instance id="i-default">
+                    <TEI xmlns="http://www.tei-c.org/ns/1.0">
+                        <teiHeader>
+                            <fileDesc>
+                                <titleStmt>
+                                    <title>Title</title>
+                                </titleStmt>
+                                <publicationStmt>
+                                    <p>Publication Information</p>
+                                </publicationStmt>
+                                <sourceDesc>
+                                    <p>Information about the source</p>
+                                </sourceDesc>
+                            </fileDesc>
+                            <encodingDesc>
+                                <listPrefixDef><!-- private URI identifiers definition; used for linking to external ontologies -->
+                                    <prefixDef ident="wn" matchPattern="([a-zA-Z]+)" replacementPattern="http://wordnet-rdf.princeton.edu/wn31/$1">
+                                        <p>Private URIs using the <code>wn</code>
+                                            prefix are pointers to <ref target="http://wordnet-rdf.princeton.edu">English wordnet at Princeton</ref>
+                                            entries.
+                                            For example, <code>wn:108094128-n</code>
+                                            dereferences to <ref target="http://wordnet-rdf.princeton.edu/wn31/108094128-n">http://wordnet-rdf.princeton.edu/wn31/108094128-n</ref>.
+                                        </p>
+                                    </prefixDef>
+                                    <prefixDef ident="wonef" matchPattern="([a-zA-Z0-9]+)" replacementPattern="http://wonef.fr/try/$1">
+                                        <p>Private URIs using the <code>wonef</code>
+                                            prefix are pointers to <ref target="http://wonef.fr/">French wordnet</ref>
+                                            entries.
+                                            For example, <code>wonef:eng-30-00631712-n</code>
+                                            dereferences to <ref target="http://wonef.fr/eng-30-00631712-n">http://wonef.fr/eng-30-00631712-n</ref>.
+                                        </p>
+                                    </prefixDef>
+                                </listPrefixDef>
+                                <classDecl><!-- flat taxonomy with <catDesc> entries for every language; links to appropriate ontologies realised through corresp attribute  -->
+                                    <taxonomy xml:id="semanticFields">
+                                        <category xml:id="good">
+                                            <catDesc xml:lang="en">good</catDesc>
+                                            <catDesc xml:lang="fr">bon</catDesc>
+                                        </category>
+                                        <category xml:id="council">
+                                            <catDesc xml:lang="en" corresp="wn:108327879-n">council</catDesc>
+                                            <catDesc xml:lang="fr" corresp="wonef:eng-30-00631712-n">Conseil</catDesc>
+                                        </category>
+                                        <category xml:id="advice">
+                                            <catDesc xml:lang="en" corresp="wn:106684229-n">advice</catDesc>
+                                            <catDesc xml:lang="fr" corresp="wonef:eng-30-06650701-n">conseil</catDesc>
+                                        </category>
+                                        <category xml:id="will">
+                                            <catDesc xml:lang="en" corresp="wn:105992539-n">will</catDesc>
+                                            <catDesc xml:lang="fr" corresp="wonef:eng-30-02229055-v">vouloir</catDesc>
+                                        </category>
+                                        <category xml:id="shameful">
+                                            <catDesc xml:lang="en" corresp="wn:108327879-n">shameful</catDesc>
+                                            <catDesc xml:lang="fr" corresp="wonef:eng-30-00153898-a">honteux</catDesc>
+                                        </category>
+                                        <category xml:id="ugly">
+                                            <catDesc xml:lang="en" corresp="wn:300170426-a">ugly</catDesc>
+                                            <catDesc xml:lang="fr" corresp="wonefeng-30-00222543-a">laid</catDesc>
+                                        </category>
+                                        <category xml:id="hump">
+                                            <catDesc xml:lang="en" corresp="wn:113917127-n">hump</catDesc>
+                                            <catDesc xml:lang="fr" corresp="wonef:eng-30-13894434-n">bosse</catDesc>
+                                        </category>
+                                    </taxonomy>
+                                </classDecl>
+                            </encodingDesc>
+                        </teiHeader>
+                        <text>
+                            <body>
+                                <entry xml:id="uuid-0000">
+                                    <form type="lemma">
+                                        <orth type="greek"/>
+                                        <orth type="latin"/>
+                                        <gen/>
+                                        <date notBefore="" notAfter=""/>
+                                        <usg/>
+                                    </form>
+                                    <gramGrp cert="high">
+                                        <m baseForm="" type="" n="1" function="" cert="" ana=""/>
+                                        <m baseForm="" type="" n="2" function="" cert="" ana=""/>
+                                        <m baseForm="" type="suffix" subtype="flexional" n="1"/>
+                                        <m baseForm="" type="suffix" subtype="flexional" n="2"/>
+                                        <m baseForm="" type="suffix" subtype="flexional" n="3"/>
+                                        <m baseForm="" type="suffix" subtype="flexional" n="4"/>
+                                    </gramGrp>
+                                    <gramGrp cert="low">
+                                        <m baseForm="" type="radical" n="1" function="" cert="high" ana=""/>
+                                        <m baseForm="" type="radical" n="2" function="" cert="high" ana=""/>
+                                        <m baseForm="" type="suffix" subtype="flexional" n="1"/>
+                                        <m baseForm="" type="suffix" subtype="flexional" n="2"/>
+                                        <m baseForm="" type="suffix" subtype="flexional" n="3"/>
+                                        <m baseForm="" type="suffix" subtype="flexional" n="4"/>
+                                    </gramGrp>
+                                    <cit>
+                                        <quote>αἴσχιστος δὲ ἀνὴρ (...) τὼ δέ οἱ ὤμω κυρτώ, ἐπὶ στῆθος συνοχωκότε</quote>
+                                        <ref>Thersite, Iliade 2, 218</ref>
+                                    </cit>
+                                    <cit>
+                                        <quote>αἶσχος, ὑβός</quote>
+                                        <ref>DELG s.vv. </ref>
+                                    </cit>
+                                    <bibl type="linguistic">
+                                        <ref>Minon, SAGA</ref>, p.
+                                    </bibl>
+                                </entry>
+                            </body>
+                        </text>
+                    </TEI>
+                </xf:instance>
+                <xf:instance id="i-template">
+                    <data xmlns="http://www.tei-c.org/ns/1.0">
+                        <cit>
+                            <quote/>
+                            <ref/>
+                        </cit>
+                        <bibl type="">
+                            <ref/>
+                        </bibl>
+                    </data>
+                </xf:instance>
+                <xf:instance id="i-suffix">
+                    <data xmlns="">
+                        <option/>
+                        <option>α</option>
+                        <option>αδ</option>
+                        <option>α(ϝ)</option>
+                        <option>αινα</option>
+                        <option>ακ</option>
+                        <option>αλ</option>
+                        <option>αλλ</option>
+                        <option>αν</option>
+                        <option>ανν</option>
+                        <option>αξ</option>
+                        <option>αρ</option>
+                        <option>ασ</option>
+                        <option>ας</option>
+                        <option>ε</option>
+                        <option>ε(ϝ)</option>
+                        <option>ει</option>
+                        <option>εις</option>
+                        <option>ευς</option>
+                        <option>η</option>
+                        <option>ην</option>
+                        <option>ηρ</option>
+                        <option>(η)ς</option>
+                        <option>ι</option>
+                        <option>ιαν</option>
+                        <option>ιας</option>
+                        <option>ιδ</option>
+                        <option>ικ</option>
+                        <option>ιλ</option>
+                        <option>ιλλ</option>
+                        <option>ιν</option>
+                        <option>ινν</option>
+                        <option>ιον</option>
+                        <option>ιος</option>
+                        <option>ις</option>
+                        <option>ισκ</option>
+                        <option>ισσα</option>
+                        <option>ιτ</option>
+                        <option>ιχ</option>
+                        <option>ιων</option>
+                        <option>μα</option>
+                        <option>(ν)ς</option>
+                        <option>ον</option>
+                        <option>ον</option>
+                        <option>ονν</option>
+                        <option>ος</option>
+                        <option>οῦς</option>
+                        <option>σι</option>
+                        <option>τας</option>
+                        <option>τερ</option>
+                        <option>τηρ</option>
+                        <option>τος</option>
+                        <option>τρ</option>
+                        <option>τωρ</option>
+                        <option>υ</option>
+                        <option>υβ</option>
+                        <option>υκ</option>
+                        <option>υπ</option>
+                        <option>υλ</option>
+                        <option>υλλ</option>
+                        <option>υς</option>
+                        <option>ω</option>
+                        <option>ωϝ</option>
+                        <option>ωι</option>
+                        <option>ων</option>
+                        <option>ως</option>
+                    </data>
+                </xf:instance>
+                <xf:submission id="s-load-data" method="get" replace="instance" ref="instance('i-default')" resource="modules/load.xql?id={bf:appContext('id')}">
+                    <xf:message ev:event="xforms-submit-done" level="ephemeral">Data have been loaded.</xf:message>
+                    <xf:message ev:event="xforms-submit-error">Failed to load data.</xf:message>
+                </xf:submission>
+                <xf:submission id="s-save-data" method="post" replace="none" validate="false" resource="modules/save.xql">
+                    <xf:action ev:event="xforms-submit">
+                        <xf:setvalue ref="instance('i-default')//TEI:entry/@xml:id" value="instance('i-default')//TEI:orth[@type='latin']"/>
+                    </xf:action>
+                    <xf:message ev:event="xforms-submit-done" level="ephemeral">Data have been saved.</xf:message>
+                    <xf:message ev:event="xforms-submit-error">Failed to save data</xf:message>
+                </xf:submission>
+                <xf:action ev:event="xforms-ready">
+                    <xf:send submission="s-load-data" if="bf:appContext('id') != ''"/>
+                </xf:action>
+            </xf:model>
+            <xf:group ref="//TEI:entry">
+                <xf:input ref="TEI:usg">
+                    <xf:label class="input-group-addon">dialect</xf:label>
+                </xf:input>
+                <xf:group ref="TEI:gramGrp[1]">
+                    <xf:input id="sem-ont-1" ref="TEI:m[@type != 'suffix' and @n = 1]/@ana">
+                        <xf:label>semantic ontology</xf:label>
+                        <xf:action ev:event="xforms-value-changed">
+                            <script>
+                                $("#h-sem-on-1").val('bla1');
+                            </script>
+                        </xf:action>
+                    </xf:input>
+                    <xf:input id="sem-ont-2" ref="TEI:m[@type != 'suffix' and @n = 2]/@ana">
+                        <xf:label>semantic ontology</xf:label>
+                        <xf:action ev:event="xforms-value-changed">
+                            <script>
+                                $("#h-sem-on-2").val('bla2');
+                            </script>
+                        </xf:action>
+                    </xf:input>
+                </xf:group>
+                <xf:group ref="TEI:gramGrp[2]">
+                    <xf:input id="sem-ont-3" ref="TEI:m[@type != 'suffix' and @n = 1]/@ana">
+                        <xf:label>semantic ontology</xf:label>
+                        <xf:action ev:event="xforms-value-changed">
+                            <script>
+                                $("#h-sem-on-3").val('bla3');
+                            </script>
+                        </xf:action>
+                    </xf:input>
+                    <xf:input id="sem-ont-4" ref="TEI:m[@type != 'suffix' and @n = 2]/@ana">
+                        <xf:label>semantic ontology</xf:label>
+                        <xf:action ev:event="xforms-value-changed">
+                            <script>
+                                $("#h-sem-on-3").val('bla4');
+                            </script>
+                        </xf:action>
+                    </xf:input>
+                </xf:group>
+            </xf:group>
+        </div>
+        <div class="container">
+            <h2>LGPN-Ling</h2>
+            <xf:group ref="//TEI:entry">
+                <xf:output ref="@xml:id"/>
+                <xf:group appearance="full" ref="TEI:form[@type='lemma']">
+                    <xf:label/>
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <xf:input class="input-group input-group-lg -form-control" ref="TEI:orth[@type='greek']">
+                                <xf:label class="input-group-addon">α</xf:label>
+                            </xf:input>
+                        </div>
+                        <div class="col-xs-6">
+                            <xf:input class="input-group input-group-lg -form-control" ref="TEI:orth[@type='latin']">
+                                <xf:label class="input-group-addon glyphicon glyphicon-font"/>
+                            </xf:input>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-4">
+                            <xf:input class="input-group -form-control" ref="TEI:date/@notBefore">
+                                <xf:label class="input-group-addon"> not before</xf:label>
+                            </xf:input>
+                        </div>
+                        <div class="col-xs-4">
+                            <xf:input class="input-group -form-control" ref="TEI:date/@notAfter">
+                                <xf:label class="input-group-addon"> not after</xf:label>
+                            </xf:input>
+                        </div>
+                        <div class="col-xs-4">
+                            <xf:select1 class="input-group -form-control" ref="TEI:gen">
+                                <xf:label class="input-group-addon glyphicon glyphicon-user"/>
+                                <xf:item>
+                                    <xf:label>female</xf:label>
+                                    <xf:value>f</xf:value>
+                                </xf:item>
+                                <xf:item>
+                                    <xf:label>male</xf:label>
+                                    <xf:value>m</xf:value>
+                                </xf:item>
+                                <xf:item>
+                                    <xf:label>unkown</xf:label>
+                                    <xf:value>a</xf:value>
+                                </xf:item>
+                            </xf:select1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <div class="input-group">
+                                <span class="input-group-addon">dialect</span>
+                                <input type="text" class="dialect_tags tag-control" id="dialect" value="Beotian" placeholder="Enter dialect names separated by space"/>
+                            </div>
+                        </div>
+                    </div>
+                </xf:group>
+                <xf:group class="fieldset">
+                    <legend>Segmentation &amp; Root interpretation</legend>
+                    <xf:repeat ref="TEI:gramGrp">
+                        <xf:group ref=".">
+                            <xf:label/>
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <xf:input class="input-group -form-control" ref="@cert">
+                                        <xf:label class="input-group-addon">certian</xf:label>
+                                    </xf:input>
+                                </div>
+                                <div class="col-xs-3">
+                                    <xf:input class="input-group -form-control" ref="@prefix">
+                                        <xf:label class="input-group-addon">prefix</xf:label>
+                                    </xf:input>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-2">
+                                    <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 1]">
+                                        <xf:label class="input-group-addon">root</xf:label>
+                                    </xf:input>
+                                </div>
+                                <div class="col-xs-2">
+                                    <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 1]/@baseForm">
+                                        <xf:label class="input-group-addon">base</xf:label>
+                                    </xf:input>
+                                </div>
+                                <div class="col-xs-2">
+                                    <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 1]/@type">
+                                        <xf:label class="input-group-addon">type</xf:label>
+                                    </xf:input>
+                                </div>
+                                <div class="col-xs-2">
+                                    <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 2]">
+                                        <xf:label class="input-group-addon">root</xf:label>
+                                    </xf:input>
+                                </div>
+                                <div class="col-xs-2">
+                                    <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 2]/@baseForm">
+                                        <xf:label class="input-group-addon">base</xf:label>
+                                    </xf:input>
+                                </div>
+                                <div class="col-xs-2">
+                                    <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 2]/@type">
+                                        <xf:label class="input-group-addon">type</xf:label>
+                                    </xf:input>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <xf:select ref="TEI:m[@type != 'suffix' and @n = 1]/@function" appearance="full" incremental="true">
+                                        <xf:label/>
+                                        <xf:item>
+                                            <xf:label>Verb</xf:label>
+                                            <xf:value>V</xf:value>
+                                        </xf:item>
+                                        <xf:item>
+                                            <xf:label>Noun</xf:label>
+                                            <xf:value>N</xf:value>
+                                        </xf:item>
+                                        <xf:item>
+                                            <xf:label>Adjective</xf:label>
+                                            <xf:value>Adj</xf:value>
+                                        </xf:item>
+                                        <xf:item>
+                                            <xf:label>Pronoun</xf:label>
+                                            <xf:value>Pro</xf:value>
+                                        </xf:item>
+                                        <xf:item>
+                                            <xf:label>Adverb</xf:label>
+                                            <xf:value>Adv</xf:value>
+                                        </xf:item>
+                                    </xf:select>
+                                </div>
+                                <div class="col-xs-6">
+                                    <xf:select ref="TEI:m[@type != 'suffix' and @n = 2]/@function" appearance="full" incremental="true">
+                                        <xf:label/>
+                                        <xf:item>
+                                            <xf:label>Verb</xf:label>
+                                            <xf:value>V</xf:value>
+                                        </xf:item>
+                                        <xf:item>
+                                            <xf:label>Noun</xf:label>
+                                            <xf:value>N</xf:value>
+                                        </xf:item>
+                                        <xf:item>
+                                            <xf:label>Adjective</xf:label>
+                                            <xf:value>Adj</xf:value>
+                                        </xf:item>
+                                        <xf:item>
+                                            <xf:label>Pronoun</xf:label>
+                                            <xf:value>Pro</xf:value>
+                                        </xf:item>
+                                        <xf:item>
+                                            <xf:label>Adverb</xf:label>
+                                            <xf:value>Adv</xf:value>
+                                        </xf:item>
+                                    </xf:select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-tasks"/> semantic ontology
+                                        </span>
+                                        <input class="semantic_tags" id="h-sem-on-1" value=""/>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <span class="glyphicon glyphicon-tasks"/> semantic ontology
+                                        </span>
+                                        <input class="semantic_tags" id="h-sem-on-2" value=""/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <xf:select1 class="input-group -form-control" ref="TEI:m[@type = 'suffix' and @n = '4']">
+                                        <xf:label class="input-group-addon">suffix 4</xf:label>
+                                        <xf:itemset nodeset="instance('i-suffix')/option">
+                                            <xf:label ref="."/>
+                                            <xf:value ref="."/>
+                                        </xf:itemset>
+                                    </xf:select1>
+                                </div>
+                                <div class="col-xs-3">
+                                    <xf:select1 class="input-group -form-control" ref="TEI:m[@type = 'suffix' and @n = '3']">
+                                        <xf:label class="input-group-addon">suffix 3</xf:label>
+                                        <xf:itemset nodeset="instance('i-suffix')/option">
+                                            <xf:label ref="."/>
+                                            <xf:value ref="."/>
+                                        </xf:itemset>
+                                    </xf:select1>
+                                </div>
+                                <div class="col-xs-3">
+                                    <xf:select1 class="input-group -form-control" ref="TEI:m[@type = 'suffix' and @n = '2']">
+                                        <xf:label class="input-group-addon">suffix 2</xf:label>
+                                        <xf:itemset nodeset="instance('i-suffix')/option">
+                                            <xf:label ref="."/>
+                                            <xf:value ref="."/>
+                                        </xf:itemset>
+                                    </xf:select1>
+                                </div>
+                                <div class="col-xs-3">
+                                    <xf:select1 class="input-group -form-control" ref="TEI:m[@type = 'suffix' and @n = '1']">
+                                        <xf:label class="input-group-addon">suffix 1</xf:label>
+                                        <xf:itemset nodeset="instance('i-suffix')/option">
+                                            <xf:label ref="."/>
+                                            <xf:value ref="."/>
+                                        </xf:itemset>
+                                    </xf:select1>
+                                </div>
+                            </div>
+                        </xf:group>
+                    </xf:repeat><!--    
+                    <xf:group ref="TEI:gramGrp[1]">
+                        <xf:label/>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <xf:input class="input-group -form-control" ref="@cert">
+                                    <xf:label class="input-group-addon">certian</xf:label>
+                                </xf:input>
+                            </div>
+                            <div class="col-xs-3">
+                                <xf:input class="input-group -form-control" ref="@prefix">
+                                    <xf:label class="input-group-addon">prefix</xf:label>
+                                </xf:input>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 1]">
+                                    <xf:label class="input-group-addon">root</xf:label>
+                                </xf:input>
+                            </div>
+                            <div class="col-xs-2">
+                                <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 1]/@baseForm">
+                                    <xf:label class="input-group-addon">base</xf:label>
+                                </xf:input>
+                            </div>
+                            <div class="col-xs-2">
+                                <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 1]/@type">
+                                    <xf:label class="input-group-addon">type</xf:label>
+                                </xf:input>
+                            </div>
+                            <div class="col-xs-2">
+                                <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 2]">
+                                    <xf:label class="input-group-addon">root</xf:label>
+                                </xf:input>
+                            </div>
+                            <div class="col-xs-2">
+                                <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 2]/@baseForm">
+                                    <xf:label class="input-group-addon">base</xf:label>
+                                </xf:input>
+                            </div>
+                            <div class="col-xs-2">
+                                <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 2]/@type">
+                                    <xf:label class="input-group-addon">type</xf:label>
+                                </xf:input>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <xf:select ref="TEI:m[@type != 'suffix' and @n = 1]/@function" appearance="full" incremental="true">
+                                    <xf:label/>
+                                    <xf:item>
+                                        <xf:label>Verb</xf:label>
+                                        <xf:value>V</xf:value>
+                                    </xf:item>
+                                    <xf:item>
+                                        <xf:label>Noun</xf:label>
+                                        <xf:value>N</xf:value>
+                                    </xf:item>
+                                    <xf:item>
+                                        <xf:label>Adjective</xf:label>
+                                        <xf:value>Adj</xf:value>
+                                    </xf:item>
+                                    <xf:item>
+                                        <xf:label>Pronoun</xf:label>
+                                        <xf:value>Pro</xf:value>
+                                    </xf:item>
+                                    <xf:item>
+                                        <xf:label>Adverb</xf:label>
+                                        <xf:value>Adv</xf:value>
+                                    </xf:item>
+                                </xf:select>
+                            </div>
+                            <div class="col-xs-6">
+                                <xf:select ref="TEI:m[@type != 'suffix' and @n = 2]/@function" appearance="full" incremental="true">
+                                    <xf:label/>
+                                    <xf:item>
+                                        <xf:label>Verb</xf:label>
+                                        <xf:value>V</xf:value>
+                                    </xf:item>
+                                    <xf:item>
+                                        <xf:label>Noun</xf:label>
+                                        <xf:value>N</xf:value>
+                                    </xf:item>
+                                    <xf:item>
+                                        <xf:label>Adjective</xf:label>
+                                        <xf:value>Adj</xf:value>
+                                    </xf:item>
+                                    <xf:item>
+                                        <xf:label>Pronoun</xf:label>
+                                        <xf:value>Pro</xf:value>
+                                    </xf:item>
+                                    <xf:item>
+                                        <xf:label>Adverb</xf:label>
+                                        <xf:value>Adv</xf:value>
+                                    </xf:item>
+                                </xf:select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-tasks"/> semantic ontology
+                                    </span>
+                                    <input class="semantic_tags" id="h-sem-on-1" value=""/>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-tasks"/> semantic ontology
+                                    </span>
+                                    <input class="semantic_tags" id="h-sem-on-2" value=""/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <xf:select1 class="input-group -form-control" ref="TEI:m[@type = 'suffix' and @n = '4']">
+                                    <xf:label class="input-group-addon">suffix 4</xf:label>
+                                    <xf:itemset nodeset="instance('i-suffix')/option">
+                                        <xf:label ref="."/>
+                                        <xf:value ref="."/>
+                                    </xf:itemset>
+                                </xf:select1>
+                            </div>
+                            <div class="col-xs-3">
+                                <xf:select1 class="input-group -form-control" ref="TEI:m[@type = 'suffix' and @n = '3']">
+                                    <xf:label class="input-group-addon">suffix 3</xf:label>
+                                    <xf:itemset nodeset="instance('i-suffix')/option">
+                                        <xf:label ref="."/>
+                                        <xf:value ref="."/>
+                                    </xf:itemset>
+                                </xf:select1>
+                            </div>
+                            <div class="col-xs-3">
+                                <xf:select1 class="input-group -form-control" ref="TEI:m[@type = 'suffix' and @n = '2']">
+                                    <xf:label class="input-group-addon">suffix 2</xf:label>
+                                    <xf:itemset nodeset="instance('i-suffix')/option">
+                                        <xf:label ref="."/>
+                                        <xf:value ref="."/>
+                                    </xf:itemset>
+                                </xf:select1>
+                            </div>
+                            <div class="col-xs-3">
+                                <xf:select1 class="input-group -form-control" ref="TEI:m[@type = 'suffix' and @n = '1']">
+                                    <xf:label class="input-group-addon">suffix 1</xf:label>
+                                    <xf:itemset nodeset="instance('i-suffix')/option">
+                                        <xf:label ref="."/>
+                                        <xf:value ref="."/>
+                                    </xf:itemset>
+                                </xf:select1>
+                            </div>
+                        </div>
+                    </xf:group>
+                    <xf:group ref="TEI:gramGrp[2]">
+                        <xf:label/>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <xf:input class="input-group -form-control" ref="@cert">
+                                    <xf:label class="input-group-addon">certian</xf:label>
+                                </xf:input>
+                            </div>
+                            <div class="col-xs-3">
+                                <xf:input class="input-group -form-control" ref="@prefix">
+                                    <xf:label class="input-group-addon">prefix</xf:label>
+                                </xf:input>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-2">
+                                <xf:input class="input-group -form-control" ref="TEI:m[@type = 'radical' and @n = 1]">
+                                    <xf:label class="input-group-addon">root</xf:label>
+                                </xf:input>
+                            </div>
+                            <div class="col-xs-2">
+                                <xf:input class="input-group -form-control" ref="TEI:m[@type = 'radical' and @n = 1]/@baseForm">
+                                    <xf:label class="input-group-addon">base</xf:label>
+                                </xf:input>
+                            </div>
+                            <div class="col-xs-2">
+                                <xf:input class="input-group -form-control" ref="TEI:m[@type = 'radical' and @n = 1]/@type">
+                                    <xf:label class="input-group-addon">type</xf:label>
+                                </xf:input>
+                            </div>
+                            <div class="col-xs-2">
+                                <xf:input class="input-group -form-control" ref="TEI:m[@type = 'radical' and @n = 2]">
+                                    <xf:label class="input-group-addon">root</xf:label>
+                                </xf:input>
+                            </div>
+                            <div class="col-xs-2">
+                                <xf:input class="input-group -form-control" ref="TEI:m[@type = 'radical' and @n = 2]/@baseForm">
+                                    <xf:label class="input-group-addon">base</xf:label>
+                                </xf:input>
+                            </div>
+                            <div class="col-xs-2">
+                                <xf:input class="input-group -form-control" ref="TEI:m[@type = 'radical' and @n = 2]/@type">
+                                    <xf:label class="input-group-addon">type</xf:label>
+                                </xf:input>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <xf:select ref="TEI:m[@type = 'radical' and @n = 1]/@function" appearance="full" incremental="true">
+                                    <xf:label/>
+                                    <xf:item>
+                                        <xf:label>Verb</xf:label>
+                                        <xf:value>V</xf:value>
+                                    </xf:item>
+                                    <xf:item>
+                                        <xf:label>Noun</xf:label>
+                                        <xf:value>N</xf:value>
+                                    </xf:item>
+                                    <xf:item>
+                                        <xf:label>Adjective</xf:label>
+                                        <xf:value>Adj</xf:value>
+                                    </xf:item>
+                                    <xf:item>
+                                        <xf:label>Pronoun</xf:label>
+                                        <xf:value>Pro</xf:value>
+                                    </xf:item>eXide
+                                    <xf:item>
+                                        <xf:label>Adverb</xf:label>
+                                        <xf:value>Adv</xf:value>
+                                    </xf:item>
+                                </xf:select>
+                            </div>
+                            <div class="col-xs-6">
+                                <xf:select ref="TEI:m[@type = 'radical' and @n = 2]/@function" appearance="full" incremental="true">
+                                    <xf:label/>
+                                    <xf:item>
+                                        <xf:label>Verb</xf:label>
+                                        <xf:value>V</xf:value>
+                                    </xf:item>
+                                    <xf:item>
+                                        <xf:label>Noun</xf:label>
+                                        <xf:value>N</xf:value>
+                                    </xf:item>
+                                    <xf:item>
+                                        <xf:label>Adjective</xf:label>
+                                        <xf:value>Adj</xf:value>
+                                    </xf:item>
+                                    <xf:item>
+                                        <xf:label>Pronoun</xf:label>
+                                        <xf:value>Pro</xf:value>
+                                    </xf:item>
+                                    <xf:item>
+                                        <xf:label>Adverb</xf:label>
+                                        <xf:value>Adv</xf:value>
+                                    </xf:item>
+                                </xf:select>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-tasks"/> semantic ontology
+                                    </span>
+                                    <input class="semantic_tags" id="h-sem-on-3" value="good"/>
+                                </div>
+                            </div>
+                            <div class="col-xs-6">
+                                <div class="input-group">
+                                    <span class="input-group-addon">
+                                        <span class="glyphicon glyphicon-tasks"/> semantic ontology
+                                </span>
+                                    <input class="semantic_tags" id="h-sem-on-4" value="good"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3">
+                                <xf:select1 class="input-group -form-control" ref="TEI:m[@type = 'suffix' and @n = '4']">
+                                    <xf:label class="input-group-addon">suffix 4</xf:label>
+                                    <xf:itemset nodeset="instance('i-suffix')/option">
+                                        <xf:label ref="."/>
+                                        <xf:value ref="."/>
+                                    </xf:itemset>
+                                </xf:select1>
+                            </div>
+                            <div class="col-xs-3">
+                                <xf:select1 class="input-group -form-control" ref="TEI:m[@type = 'suffix' and @n = '3']">
+                                    <xf:label class="input-group-addon">suffix 3</xf:label>
+                                    <xf:itemset nodeset="instance('i-suffix')/option">
+                                        <xf:label ref="."/>
+                                        <xf:value ref="."/>
+                                    </xf:itemset>
+                                </xf:select1>
+                            </div>
+                            <div class="col-xs-3">
+                                <xf:select1 class="input-group -form-control" ref="TEI:m[@type = 'suffix' and @n = '2']">
+                                    <xf:label class="input-group-addon">suffix 2</xf:label>
+                                    <xf:itemset nodeset="instance('i-suffix')/option">
+                                        <xf:label ref="."/>
+                                        <xf:value ref="."/>
+                                    </xf:itemset>
+                                </xf:select1>
+                            </div>
+                            <div class="col-xs-3">
+                                <xf:select1 class="input-group -form-control" ref="TEI:m[@type = 'suffix' and @n = '1']">
+                                    <xf:label class="input-group-addon">suffix 1</xf:label>
+                                    <xf:itemset nodeset="instance('i-suffix')/option">
+                                        <xf:label ref="."/>
+                                        <xf:value ref="."/>
+                                    </xf:itemset>
+                                </xf:select1>
+                            </div>
+                        </div>
+                    </xf:group>
+                    -->
+                </xf:group>
+                <xf:group class="fieldset">
+                    <legend>Meanings of the name &amp; Testimonies</legend>
+                    <xf:group class="fieldset">
+                        <legend>Reference work</legend>
+                        <xf:repeat ref="TEI:cit">
+                            <xf:label/>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <xf:input class="input-group -form-control" ref="TEI:quote">
+                                        <xf:label class="input-group-addon">quote</xf:label>
+                                    </xf:input>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <xf:input class="input-group -form-control" ref="TEI:ref">
+                                        <xf:label class="input-group-addon">reference</xf:label>
+                                    </xf:input>
+                                </div>
+                                <div class="col-xs-3">
+                                    <xf:input class="input-group -form-control" ref="TEI:ref/@target">
+                                        <xf:label class="input-group-addon">link</xf:label>
+                                    </xf:input>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <xf:trigger>
+                                        <xf:label>del</xf:label>
+                                    </xf:trigger>
+                                </div>
+                            </div>
+                        </xf:repeat>
+                        <xf:trigger>
+                            <xf:label class="glyphicon glyphicon-play">add section</xf:label>
+                        </xf:trigger>
+                    </xf:group>
+                    <xf:group class="fieldset">
+                        <legend>Bibliographic references</legend>
+                        <xf:repeat ref="TEI:bibl[@type = 'linguistic']">
+                            <xf:label/>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <xf:input class="input-group -form-control" ref="ref">
+                                        <xf:label class="input-group-addon">reference</xf:label>
+                                    </xf:input>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <xf:trigger>
+                                        <xf:label>del</xf:label>
+                                    </xf:trigger>
+                                </div>
+                            </div>
+                        </xf:repeat>
+                        <xf:trigger class="glyphicon glyphicon-play">
+                            <xf:label>add section</xf:label>
+                        </xf:trigger>
+                    </xf:group>
+                </xf:group>
+                <xf:repeat ref="TEI:bibl[@type = 'auxiliary']">
+                    <xf:label>Linguistic references</xf:label>
+                    <xf:input ref="TEI:ref">
+                        <xf:label>reference</xf:label>
+                    </xf:input>
+                    <xf:trigger>
+                        <xf:label>del</xf:label>
+                    </xf:trigger>
+                </xf:repeat>
+                <xf:trigger>
+                    <xf:label class="glyphicon glyphicon-play">add section</xf:label>
+                </xf:trigger>
+            </xf:group>
+            <xf:submit submission="s-save-data">
+                <xf:label>SAVE</xf:label>
+            </xf:submit>
+        </div>
+        <script type="text/javascript" src="$shared/resources/scripts/jquery/jquery-1.7.1.min.js"/>
+        <script type="text/javascript" src="$shared/resources/scripts/loadsource.js"/>
+        <script type="text/javascript" src="$shared/resources/scripts/bootstrap-3.0.3.min.js"/>
+        <script src="$shared/resources/scripts/jquery/jquery-ui.min.js" type="text/javascript" charset="utf-8"/>
+        <script type="text/javascript" src="bower_components/jquery-tagit/js/tag-it.min.js"/>
+        <script type="text/javascript" src="resources/js/editor.js"/>
+    </body>
+</html>
