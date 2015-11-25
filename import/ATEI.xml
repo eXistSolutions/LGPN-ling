@@ -1,0 +1,879 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Title</title>
+            </titleStmt>
+            <publicationStmt>
+                <p>Publication Information</p>
+            </publicationStmt>
+            <sourceDesc>
+                <p>Information about the source</p>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc>
+            <classDecl>
+                <taxonomy xml:id="semanticFields">
+                    <category xml:id="good">
+                        <catDesc xml:lang="en">good</catDesc>
+                    </category>
+                    <category xml:id="will">
+                        <catDesc xml:lang="en">will</catDesc>
+                    </category>
+                    <category xml:id="advice">
+                        <catDesc xml:lang="en">advice</catDesc>
+                    </category>
+                    <category xml:id="Council">
+                        <catDesc xml:lang="en">Council</catDesc>
+                    </category>
+                    <category xml:id="best">
+                        <catDesc xml:lang="en">best</catDesc>
+                    </category>
+                    <category xml:id="tribe">
+                        <catDesc xml:lang="en">tribe</catDesc>
+                    </category>
+                    <category xml:id="friend">
+                        <catDesc xml:lang="en">friend</catDesc>
+                    </category>
+                    <category xml:id="shame">
+                        <catDesc xml:lang="en">shame</catDesc>
+                    </category>
+                    <category xml:id="ugliness">
+                        <catDesc xml:lang="en">ugliness</catDesc>
+                    </category>
+                    <category xml:id="well">
+                        <catDesc xml:lang="en">well</catDesc>
+                    </category>
+                    <category xml:id="lead">
+                        <catDesc xml:lang="en">lead</catDesc>
+                    </category>
+                    <category xml:id="people">
+                        <catDesc xml:lang="en">people</catDesc>
+                    </category>
+                    <category xml:id="glory">
+                        <catDesc xml:lang="en">glory</catDesc>
+                    </category>
+                    <category xml:id="father">
+                        <catDesc xml:lang="en">father</catDesc>
+                    </category>
+                    <category xml:id="have">
+                        <catDesc xml:lang="en">have</catDesc>
+                    </category>
+                    <category xml:id="hold">
+                        <catDesc xml:lang="en">hold</catDesc>
+                    </category>
+                    <category xml:id="unidentifiable">
+                        <catDesc xml:lang="en">unidentifiable</catDesc>
+                    </category>
+                    <category xml:id="might">
+                        <catDesc xml:lang="en">might</catDesc>
+                    </category>
+                    <category xml:id="shameful">
+                        <catDesc xml:lang="en">shameful</catDesc>
+                    </category>
+                    <category xml:id="ugly">
+                        <catDesc xml:lang="en">ugly</catDesc>
+                    </category>
+                    <category xml:id="hump">
+                        <catDesc xml:lang="en">hump</catDesc>
+                    </category>
+                    <category xml:id="blackberry">
+                        <catDesc xml:lang="en">blackberry (tree)</catDesc>
+                    </category>
+                    <category xml:id="Syrian">
+                        <catDesc xml:lang="en">Syrian</catDesc>
+                    </category>
+                    <category xml:id="town">
+                        <catDesc xml:lang="en">town</catDesc>
+                    </category>
+                    <category xml:id="speak">
+                        <catDesc xml:lang="en">speak</catDesc>
+                    </category>
+                    <category xml:id="day">
+                        <catDesc xml:lang="en">day</catDesc>
+                    </category>
+                    <category xml:id="XXX">
+                        <catDesc xml:lang="en">XXX</catDesc>
+                    </category>
+                    <category xml:id="Abaios">
+                        <catDesc xml:lang="en">Abaios (Apollon)</catDesc>
+                    </category>
+                    <category xml:id="gift">
+                        <catDesc xml:lang="en">gift</catDesc>
+                    </category>
+                    <category xml:id="select">
+                        <catDesc xml:lang="en">select</catDesc>
+                    </category>
+                    <category xml:id="choose">
+                        <catDesc xml:lang="en">choose</catDesc>
+                    </category>
+                    <category xml:id="delicate">
+                        <catDesc xml:lang="en">delicate</catDesc>
+                    </category>
+                    <category xml:id="pretty">
+                        <catDesc xml:lang="en">pretty</catDesc>
+                    </category>
+                    <category xml:id="fight">
+                        <catDesc xml:lang="en">fight</catDesc>
+                    </category>
+                    <category xml:id="hair">
+                        <catDesc xml:lang="en">hair</catDesc>
+                    </category>
+                    <category xml:id="foliage">
+                        <catDesc xml:lang="en">foliage</catDesc>
+                    </category>
+                </taxonomy>
+            </classDecl>
+        </encodingDesc>
+        <revisionDesc>
+            <listChange>
+                <change when="2015-11-24" resp="#MT">initial transform</change>
+            </listChange>
+        </revisionDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <entry xml:id="Agathē">
+                <form type="lemma">
+                    <orth type="greek">Ἀγάθη</orth>
+                    <orth type="latin">Agathē</orth>
+                    <gen>f.</gen>
+                    <date notAfter="0200" notBefore="-0299"/>
+                    <usg/>
+                </form>
+                <gramGrp>
+                    <m ana="#good" baseForm="αγαθ" type="radical" n="1" function="Adj.">Ἀγάθ</m>
+                    <m baseForm="ᾱ" type="suffix" subtype="flexional" n="1">η</m>
+                </gramGrp>
+                <cit>
+                    <quote>http://logeion.uchicago.edu/index.html#%E1%BC%80%CE%B3%CE%B1%CE%B8%CF%8C%CF%82;
+                  DELG s.v. ἀγαθός</quote>
+                </cit>
+                <ref type="linguistic">HPN7</ref>
+            </entry>
+            <entry xml:id="Agathoboula">
+                <form type="lemma">
+                    <orth type="greek">Ἀγαθοβούλα</orth>
+                    <orth type="latin">Agathoboula</orth>
+                    <gen>f.</gen>
+                    <date notAfter="0200" notBefore="-0200"/>
+                    <usg/>
+                </form>
+                <gramGrp>
+                    <m ana="#good" baseForm="αγαθ" type="radical" n="1" function="Adj.">Ἀγαθο</m>
+                    <m ana="#will #advice #Council" baseForm="βoλ" type="radical" n="2" function="N">βούλ</m>
+                    <m baseForm="ᾱ" type="suffix" subtype="flexional" n="1">α</m>
+                </gramGrp>
+                <cit>
+                    <quote>βουλῇ τ'ἀγαθῇ καὶ κακῷ δαίμονι μοχθίζουσι Thgn. 163; DELG s.vv. ἀγαθός,
+                  βούλομαι. Cf. also Hdte 4.134.11.</quote>
+                    <ref target="http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A2008.01.0477%3Avolume%3D1%3Atext%3D11%3Asection%3D2"/>
+                </cit>
+                <ref type="linguistic">HPN7</ref>
+            </entry>
+            <entry xml:id="Astoboulos">
+                <form type="lemma">
+                    <orth type="greek">Ἀστόβουλος</orth>
+                    <orth type="latin">Astoboulos</orth>
+                    <gen>m.</gen>
+                    <date notAfter="-0100" notBefore="-0200"/>
+                    <usg ana="#Thessalian"/>
+                </form>
+                <gramGrp>
+                    <m ana="#best" baseForm="αριστ" type="radical" n="1" function="Adj.">Ἀστό</m>
+                    <m ana="#tribe" baseForm="φῡλ" type="radical" n="2" function="N">βουλ</m>
+                    <m baseForm="os" type="suffix" subtype="flexional" n="1">os</m>
+                </gramGrp>
+                <cit>
+                    <quote>DELG s.v.v. ἀρείων, βούλομαι</quote>
+                </cit>
+                <ref type="linguistic">García-Ramón, ONW, 32,41</ref>
+            </entry>
+            <entry xml:id="Astoboulos1">
+                <form type="lemma">
+                    <orth type="greek">Ἀστόβουλος</orth><!-- Should the name be segmented here or not? If it should, will this compromise the link with the prosopographical database?-->
+                    <orth type="latin">Astoboulos</orth>
+                    <gen>m.</gen>
+                    <date notAfter="-0100" notBefore="-0200"/>
+                    <usg ana="#Thessalian"/>
+                </form>
+                <gramGrp>
+                    <m ana="#best" baseForm="αριστ" type="radical" n="1" function="Adj.">Ἀστό</m>
+                    <m ana="#tribe" baseForm="φῡλ" type="radical" n="2" function="N">βουλ</m>
+                    <m baseForm="os" type="suffix" subtype="flexional" n="1">os</m>
+                </gramGrp>
+                <cit>
+                    <quote>Cf. Thess. Ἀστόφυλος HPN&#160;459; DELG s.vv. ἀρείων, βούλομαι</quote>
+                </cit>
+                <ref type="linguistic">García-Ramón, ONW, 32,41</ref>
+            </entry>
+            <entry xml:id="Philonichidēs">
+                <form type="lemma">
+                    <orth type="greek">Φιλωνιχίδης</orth>
+                    <orth type="latin">Philonichidēs</orth>
+                    <gen>m.</gen>
+                    <date notAfter="-0405" notBefore="-0405"/>
+                    <usg/>
+                </form>
+                <gramGrp>
+                    <m ana="#friend" baseForm="φιλ" type="radical" n="1" function="V;N;Adj">Φιλ</m>
+                    <m baseForm="ων" type="suffix" n="4">ων</m>
+                    <m baseForm="ιχ" type="suffix" n="3">ιχ</m>
+                    <m baseForm="ιδ" type="suffix" n="2">ιδ</m>
+                    <m baseForm="ηs" type="suffix" subtype="flexional" n="1">ης</m>
+                </gramGrp>
+                <cit>
+                    <quote>DELG s.v φίλος</quote>
+                </cit>
+                <ref type="linguistic"/>
+            </entry>
+            <entry xml:id="Aischylis">
+                <form type="lemma">
+                    <orth type="greek">Αἰσχυλίς</orth>
+                    <orth type="latin">Aischylis</orth>
+                    <gen>f.</gen>
+                    <date notAfter="-0001" notBefore="-0500"/>
+                    <usg/>
+                </form>
+                <gramGrp>
+                    <m ana="#shame #ugliness" baseForm="αισχ" type="radical" n="1" function="N">Αἰσχ</m>
+                    <m baseForm="υλ" type="suffix" n="2">υλ</m>
+                    <m baseForm="ιδ" type="suffix" subtype="flexional" n="1">ίς</m>
+                </gramGrp>
+                <cit>
+                    <quote>αἶσχος; DELG s.v. αἶσχος</quote>
+                    <ref target="http://logeion.uchicago.edu/index.html#%CE%B1%E1%BC%B6%CF%83%CF%87%CE%BF%CF%82"/>
+                </cit><!-- here, too, we would like that by clicking on "αἶσχος" the user would be directed towards the preceding webpage -->
+                <ref type="linguistic">OGS3,183, n.82.OGS3,183, n.82.</ref>
+            </entry>
+            <entry xml:id="Euarchidamos">
+                <form type="lemma">
+                    <orth type="greek">Εὐαρχίδαμος</orth>
+                    <orth type="latin">Euarchidamos</orth>
+                    <gen>X.</gen>
+                    <date notAfter="-0360" notBefore="-0370"/>
+                    <usg/>
+                </form>
+                <gramGrp>
+                    <m ana="#well" baseForm="εὐ" type="pre-radical" function="Adv.">Εὐ</m>
+                    <m ana="#lead" baseForm="αρχ" type="radical" n="1" function="V">αρχί</m>
+                    <m ana="#people" baseForm="δᾱμ" type="radical" n="2" function="N">δαμ</m>
+                    <m baseForm="ος" type="suffix" subtype="flexional" n="1">ος</m>
+                </gramGrp>
+                <cit>
+                    <quote>εὐαρχος; DELG s.vv. ἐύς, ἄρχω, δῆμος</quote>
+                    <ref target="http://logeion.uchicago.edu/index.html#%CE%B5%E1%BD%90%CE%B1%CF%81%CF%87%CE%BF%CF%82"/>
+                </cit><!-- idem for "εὐαρχος" and the following hyperlinks -->
+                <ref type="linguistic">Εὐαρχος, HPN 81+177</ref>
+            </entry>
+            <entry xml:id="Kleopas">
+                <form type="lemma">
+                    <orth type="greek">Κλεοπᾶς</orth>
+                    <orth type="latin">Kleopas</orth>
+                    <gen>m.</gen>
+                    <date notAfter="0100" notBefore="0001"/>
+                    <usg/>
+                </form>
+                <gramGrp>
+                    <m ana="#glory" baseForm="κλε(ϝ)" type="radical" n="1" function="Ν">XXX</m>
+                    <m ana="#father" baseForm="πατρ" type="radical" n="2" function="N">π</m>
+                    <m baseForm="ᾶς" type="suffix" subtype="flexional" n="1">ᾶς</m>
+                </gramGrp>
+                <cit>
+                    <quote>DELG s.vv. κλέος, πατήρ</quote>
+                </cit>
+                <ref type="linguistic">Κλεόπατρος, HPN 241+364</ref>
+            </entry>
+            <entry xml:id="Echemmas">
+                <form type="lemma">
+                    <orth type="greek">Ἐχέμμας</orth>
+                    <orth type="latin">Echemmas</orth>
+                    <gen>m.</gen>
+                    <date notAfter="-0100" notBefore="-0400"/>
+                    <usg/>
+                </form>
+                <gramGrp>
+                    <m ana="#have #hold" baseForm="εχ" type="radical" n="1" function="V">Εχέ</m>
+                    <m ana="#unidentifiable" baseForm="μ(--)" type="radical" n="2" function="N">μμ</m>
+                    <m baseForm="ας" type="suffix" subtype="flexional" n="1">ας</m>
+                </gramGrp>
+                <cit>
+                    <quote>e.g. Ἐχεμένης, Ἐχέμαντις etc.; DELG s.v. ἔχω </quote>
+                </cit>
+                <ref type="linguistic">OGS 1, 259</ref>
+            </entry>
+            <entry xml:id="Echemenēs">
+                <form type="lemma">
+                    <orth type="greek">Ἐχεμένης</orth>
+                    <orth type="latin">Echemenēs</orth>
+                    <gen>m.</gen>
+                    <date notBefore="-0458" notAfter="-0031"/>
+                    <usg/>
+                </form>
+                <gramGrp>
+                    <m ana="#have #hold" baseForm="εχ" type="radical" n="1" function="V">Ἐχε</m>
+                    <m ana="#might" baseForm="μεν" type="radical" n="2" function="Ν">μέν</m>
+                    <m baseForm="ης" type="suffix" subtype="flexional" n="1">ης</m>
+                </gramGrp>
+                <cit>
+                    <quote>εἶδον (...) μένος ἐσθλὸν ἔχοντα, Il. 5.516; DELG s.v. ἔχω, μέμονα</quote>
+                </cit>
+                <ref type="linguistic">HPN 183</ref>
+            </entry>
+            <entry xml:id="Aischrybiōn">
+                <form type="lemma">
+                    <orth type="greek">Αἰσχρυβίων</orth>
+                    <orth type="latin">Aischrybiōn</orth>
+                    <gen>m.</gen>
+                    <date notBefore="-0325" notAfter="-0275"/>
+                    <usg/>
+                </form>
+                <gramGrp cert="high"><!-- this is a very problematic entry. There are 2 possible iterpretations of the name and we gave 2 gramGrps, one being the most likely, the other the least -->
+                    <m ana="#shameful #ugly" baseForm="αἰσχρ" type="radical" n="1" function="Adj.">Αἰσχρ</m>
+                    <m ana="#hump" baseForm="(h)uβ" type="radical" n="2" function="N" cert="high">υβ</m>
+                    <m baseForm="ι(-)ων" type="suffix" subtype="flexional" n="1">ίων</m>
+                </gramGrp>
+                <gramGrp cert="low">
+                    <m ana="#shameful #ugly" baseForm="αἰσχρ" type="radical" n="1" function="Adj.">Αἰσχρ</m>
+                    <m baseForm="uβ" type="suffix" n="2" cert="low">υβ</m>
+                    <m baseForm="ι(-)ων" type="suffix" subtype="flexional" n="1">ίων</m>
+                </gramGrp>
+                <cit>
+                    <quote> Thersite : αἴσχιστος δὲ ἀνὴρ (...) τὼ δέ οἱ ὤμω κυρτώ, ἐπὶ στῆθος συνοχωκότε,
+                  Iliade 2, 218; DELG s.vv. αἶσχος, ὑβός</quote>
+                </cit>
+                <ref type="linguistic">Minon, SAGA, p. </ref>
+            </entry>
+            <entry xml:id="Batias">
+                <form type="lemma">
+                    <orth type="greek">Βατιάς</orth>
+                    <orth type="latin">Batias</orth>
+                    <gen>f.</gen>
+                    <date notBefore="-0200" notAfter="-0100"/>
+                    <usg/>
+                </form>
+                <gramGrp>
+                    <m ana="#blackberry" baseForm="βατ" type="radical" n="1" function="Ν">Βατ</m>
+                    <m baseForm="ι(-)αδ" type="suffix" subtype="flexional" n="1">ιάς</m>
+                </gramGrp>
+                <cit>
+                    <quote>http://logeion.uchicago.edu/index.html#%CE%92%CE%AC%CF%84%CE%B9%CE%BF%CE%BD;
+                  DELG s.v. βάτος</quote>
+                </cit>
+                <ref type="linguistic">Curbera, PNAA p. 121</ref>
+            </entry>
+            <entry xml:id="Aischidippos">
+                <form type="lemma">
+                    <orth type="greek">Αἰσχίδιππος</orth>
+                    <orth type="latin">Aischidippos</orth>
+                    <gen>m.</gen>
+                    <date notAfter="-0325" notBefore="-0375"/>
+                    <usg/>
+                </form>
+                <gramGrp>
+                    <m ana="#shame #ugliness" baseForm="αισχ" type="radical" n="1" function="N">Αἰσχίδ</m>
+                    <m baseForm="ιππ" type="radical" n="2">ιππ</m>
+                    <m baseForm="ος" type="suffix" subtype="flexional" n="1">ος</m>
+                </gramGrp>
+                <cit>
+                    <quote>Composé d'un *Αἰσχίδης?; DELG s.vv. αἶσχος, ἵππος</quote>
+                </cit>
+                <ref type="linguistic">pace Dubois, GPN p. 45</ref>
+            </entry>
+            <entry xml:id="Souros">
+                <form type="lemma">
+                    <orth type="greek">Σούρος</orth>
+                    <orth type="latin">Souros</orth>
+                    <gen>m.</gen>
+                    <date notBefore="-0250" notAfter="-0125"/>
+                    <usg ana="#Beotian">Beotian</usg>
+                </form>
+                <gramGrp>
+                    <m ana="#Syrian" baseForm="συρ" type="radical" n="1" function="Ν">Σούρ</m>
+                    <m baseForm="ος" type="suffix" subtype="flexional" n="1">ος</m>
+                </gramGrp>
+                <cit>
+                    <quote>http://logeion.uchicago.edu/index.html#%CE%A3%CF%85%CF%81%CE%BF%CF%82</quote>
+                </cit>
+                <ref type="linguistic">OGS 1, 151</ref>
+            </entry>
+            <entry xml:id="Wastioullei">
+                <form type="lemma">
+                    <orth type="greek">Ϝαστιούλλει</orth>
+                    <orth type="latin">Wastioullei</orth>
+                    <gen>m.</gen>
+                    <date notBefore="-0215" notAfter="-0215" cert="low"/>
+                    <usg ana="#Beotian">Beotian</usg>
+                </form>
+                <gramGrp>
+                    <m ana="#town" baseForm="(Ϝ)αστ" type="radical" n="1" function="Ν">Ϝαστ</m>
+                    <m baseForm="υλ(λ)" type="suffix" n="2">ιούλλ</m>
+                    <m baseForm="εις" type="suffix" subtype="flexional" n="1">ει</m>
+                </gramGrp>
+                <cit>
+                    <quote>http://logeion.uchicago.edu/index.html#%E1%BC%84%CF%83%CF%84%CF%85αἶσχος; DELG
+                  s.v. ἀστύ</quote>
+                </cit>
+                <ref type="linguistic">OGS 2, p. 560; Brixhe 1996 p. XXX</ref>
+            </entry>
+            <entry xml:id="Bōlagoras">
+                <form type="lemma">
+                    <orth type="greek">Βωλαγόρας</orth>
+                    <orth type="latin">Bōlagoras</orth>
+                    <gen>μ.</gen>
+                    <date notBefore="-0500" notAfter="-0200"/>
+                    <usg ana="#Doric #Arcadian">Dor., Arc.</usg>
+                </form>
+                <gramGrp>
+                    <m ana="#will #advice #Council" baseForm="βoλ" type="radical" n="1" function="N">Βωλ</m>
+                    <m ana="#speak" baseForm="αγορ" type="radical" n="2" function="V">αγόρ</m>
+                    <m baseForm="ας" type="suffix" subtype="flexional" n="1">ας</m>
+                </gramGrp>
+                <cit>
+                    <quote> βουληγορέω; DELG s.vv. βούλομαι, ἀγείρω</quote>
+                    <ref target="http://logeion.uchicago.edu/index.html#%CE%B2%CE%BF%CF%85%CE%BB%CE%B7%CE%B3%CE%BF%CF%81%CE%AD%CF%89"/>
+                </cit>
+                <ref type="linguistic">HPN 98+15</ref>
+            </entry>
+            <entry xml:id="Agathameris">
+                <form type="lemma">
+                    <orth type="greek">Ἀγαθαμερίς</orth>
+                    <orth type="latin">Agathameris</orth>
+                    <gen>X.</gen>
+                    <date notBefore="-0300" notAfter="0300"/>
+                    <usg/>
+                </form>
+                <gramGrp>
+                    <m ana="#good" baseForm="αγαθ" type="radical" n="1" function="Adj.">Ἀγαθ</m>
+                    <m ana="#day" baseForm="ᾱμερ" type="radical" n="2" function="N">αμερ</m>
+                    <m baseForm="ιδ" type="suffix" subtype="flexional" n="1">ίς</m>
+                </gramGrp>
+                <cit>
+                    <quote>ζωὴν ἀγαπᾶν καὶ ἰδεῖν ἡμέρας ἀγαθὰς; NT, Εp. Petr. 3.10.2; DELG s.vv. ἀγαθός,
+                  ἠμᾶρ</quote>
+                    <ref target="http://data.perseus.org/citations/urn:cts:greekLit:tlg0031.tlg021.perseus-grc1:3.10"/>
+                </cit>
+                <ref type="linguistic">HPN 8+191</ref>
+            </entry>
+            <entry xml:id="Agathēmeris">
+                <form type="lemma">
+                    <orth type="greek">Ἀγαθ-ημερ-ίς</orth>
+                    <orth type="latin">Agathēmeris</orth>
+                    <gen>f.</gen>
+                    <date notBefore="-0300" notAfter="0300"/>
+                    <usg/>
+                </form>
+                <gramGrp>
+                    <m ana="#good" baseForm="αγαθ" type="radical" n="1" function="Adj.">Ἀγαθ</m>
+                    <m ana="#day" baseForm="ᾱμερ" type="radical" n="2" function="N">ημερ</m>
+                    <m baseForm="ιδ" type="suffix" subtype="flexional" n="1">ίς</m>
+                </gramGrp>
+                <cit>
+                    <quote>ζωὴν ἀγαπᾶν καὶ ἰδεῖν ἡμέρας ἀγαθὰς; NT, Εp. Petr. 3.10.2; DELG s.vv. ἀγαθός,
+                  ἠμᾶρ</quote>
+                    <ref target="http://data.perseus.org/citations/urn:cts:greekLit:tlg0031.tlg021.perseus-grc1:3.10"/>
+                </cit><!-- here we also want "NT, Εp. Petr. 3.10.2" to be clickable > a new window from Perseus (see URL) will open -->
+                <ref type="linguistic">HPN 8+191</ref>
+            </entry>
+            <entry xml:id="Agathēmeros">
+                <form type="lemma">
+                    <orth type="greek">Ἀγαθήμερος</orth>
+                    <orth type="latin">Agathēmeros</orth>
+                    <gen>f.</gen>
+                    <date notBefore="-0300" notAfter="0300"/>
+                    <usg/>
+                </form>
+                <gramGrp>
+                    <m ana="#good" baseForm="αγαθ" type="radical" n="1" function="Adj.">Ἀγαθ</m>
+                    <m ana="#day" baseForm="ᾱμερ" type="radical" n="2" function="N">ήμερ</m>
+                    <m baseForm="ος" type="suffix" subtype="flexional" n="1">ος</m>
+                </gramGrp>
+                <cit>
+                    <quote>ζωὴν ἀγαπᾶν καὶ ἰδεῖν ἡμέρας ἀγαθὰς; NT, Εp. Petr. 3.10.2; DELG s.vv. ἀγαθός,
+                  ἠμᾶρ</quote>
+                    <ref target="http://data.perseus.org/citations/urn:cts:greekLit:tlg0031.tlg021.perseus-grc1:3.10"/>
+                </cit>
+                <ref type="linguistic">HPN 8+191</ref>
+            </entry>
+            <entry xml:id="Agathameros">
+                <form type="lemma">
+                    <orth type="greek">Ἀγαθ-άμερ-ος</orth>
+                    <orth type="latin">Agathameros</orth>
+                    <gen>μ.</gen>
+                    <date notBefore="-0125" notAfter="0300"/>
+                    <usg/>
+                </form>
+                <gramGrp>
+                    <m ana="#good" baseForm="αγαθ" type="radical" n="1" function="Adj.">Ἀγαθ</m>
+                    <m ana="#day" baseForm="ᾱμερ" type="radical" n="2" function="N">άμερ</m>
+                    <m baseForm="ος" type="suffix" subtype="flexional" n="1">ος</m>
+                </gramGrp>
+                <cit>
+                    <quote>ζωὴν ἀγαπᾶν καὶ ἰδεῖν ἡμέρας ἀγαθὰς; NT, Εp. Petr. 3.10.2; DELG s.vv. ἀγαθός,
+                  ἠμᾶρ</quote>
+                    <ref target="http://data.perseus.org/citations/urn:cts:greekLit:tlg0031.tlg021.perseus-grc1:3.10"/>
+                </cit>
+                <ref type="linguistic">HPN 8+191</ref>
+            </entry>
+            <entry xml:id="Agatha">
+                <form type="lemma">
+                    <orth type="greek">Ἀγάθα</orth>
+                    <orth type="latin">Agatha</orth>
+                    <gen>f.</gen>
+                    <date notAfter="-0200" notBefore="0300"/>
+                    <usg/>
+                </form>
+                <gramGrp>
+                    <m ana="#good" baseForm="αγαθ" type="radical" n="1" function="Adj.">Ἀγάθ</m>
+                    <m baseForm="ᾱ" type="suffix" subtype="flexional" n="1">α</m>
+                </gramGrp>
+                <cit>
+                    <quote>http://logeion.uchicago.edu/index.html#%E1%BC%80%CE%B3%CE%B1%CE%B8%CF%8C%CF%82;
+                  DELG s.v. ἀγαθός</quote>
+                </cit>
+                <ref type="linguistic">HPN7</ref>
+            </entry>
+            <entry xml:id="Agathias">
+                <form type="lemma">
+                    <orth type="greek">Ἀγαθ-ίας</orth>
+                    <orth type="latin">Agathias</orth>
+                    <gen>X.</gen>
+                    <date notBefore="-0316" notAfter="0600"/>
+                    <usg/>
+                </form>
+                <gramGrp>
+                    <m ana="#good" baseForm="αγαθ" type="radical" n="1" function="Adj.">Ἀγαθ</m>
+                    <m ana="#XXX" baseForm="XXX" type="radical" n="2" function="XXX">XXX</m>
+                    <m baseForm="ιᾱς" type="suffix" subtype="flexional" n="1">ίας</m>
+                </gramGrp>
+                <cit>
+                    <quote>http://logeion.uchicago.edu/index.html#%E1%BC%80%CE%B3%CE%B1%CE%B8%CF%8C%CF%82;
+                  DELG s.v. ἀγαθός</quote>
+                </cit>
+                <ref type="linguistic">HPN7</ref>
+            </entry>
+            <entry xml:id="Agathinos">
+                <form type="lemma">
+                    <orth type="greek">Ἀγαθῖνος</orth>
+                    <orth type="latin">Agathinos</orth>
+                    <gen>m.</gen>
+                    <date notBefore="-0450" notAfter="0300"/>
+                    <usg/>
+                </form>
+                <gramGrp>
+                    <m ana="#good" baseForm="αγαθ" type="radical" n="1" function="Adj.">Ἀγαθ</m>
+                    <m baseForm="ῑν" type="suffix" n="2">ῖν</m>
+                    <m baseForm="ος" type="suffix" subtype="flexional" n="1">ος</m>
+                </gramGrp>
+                <cit>
+                    <quote>http://logeion.uchicago.edu/index.html#%E1%BC%80%CE%B3%CE%B1%CE%B8%CF%8C%CF%82;
+                  DELG s.v. ἀγαθός</quote>
+                </cit>
+                <ref type="linguistic">OGS 2, 526. PB, s. vv Ἀγαθ-ῖνος, imp. -εῖνος..</ref>
+            </entry>
+            <entry xml:id="Abaios1">
+                <form type="lemma">
+                    <orth type="greek">Ἀβαῖος</orth>
+                    <orth type="latin">Abaios</orth>
+                    <gen>m.</gen>
+                    <date notBefore="-0200" notAfter="-0100"/>
+                    <usg/>
+                </form>
+                <gramGrp>
+                    <m ana="#Abaios" baseForm="Αβαι" type="radical" n="1" function="N">Ἀβαῖ</m>
+                    <m baseForm="ος" type="suffix" subtype="flexional" n="1">ος</m>
+                </gramGrp>
+                <cit>
+                    <quote>http://logeion.uchicago.edu/index.html#%CE%91%CE%B2%CE%B1%CE%B9%CE%BF%CF%82</quote>
+                </cit>
+                <ref type="linguistic">OGS 3, p. 24</ref>
+            </entry>
+            <entry xml:id="Αβēodōros">
+                <form type="lemma">
+                    <orth type="greek">Ἀβηόδωρος</orth>
+                    <orth type="latin">Αβēodōros</orth>
+                    <gen>f.</gen>
+                    <date notBefore="-0400" notAfter="-0200"/>
+                    <usg ana="#Beotian">Beotian</usg>
+                </form>
+                <gramGrp>
+                    <m ana="#Abaios" baseForm="Αβαι" type="radical" n="1" function="N">Ἀβηό</m>
+                    <m ana="#gift" baseForm="δωρ" type="radical" n="2" function="N">δωρ</m>
+                    <m baseForm="ος" type="suffix" subtype="flexional" n="1">ος</m>
+                </gramGrp>
+                <cit>
+                    <quote>http://logeion.uchicago.edu/index.html#%CE%91%CE%B2%CE%B1%CE%B9%CE%BF%CF%82;
+                  http://logeion.uchicago.edu/index.html#%CE%B4%CF%89%CF%81%CE%BF%CE%BD; DELG s.v.
+                  δίδωμι</quote>
+                </cit>
+                <ref type="linguistic">Sittig p. 52</ref>
+            </entry>
+            <entry xml:id="Abaeodōros">
+                <form type="lemma">
+                    <orth type="greek">Ἀβαεόδωρος</orth>
+                    <orth type="latin">Abaeodōros</orth>
+                    <gen>m.</gen>
+                    <date notBefore="-0500" notAfter="-0400"/>
+                    <usg ana="#Beotian">Beotian</usg>
+                </form>
+                <gramGrp>
+                    <m ana="#Abaios" baseForm="Αβαι" type="radical" n="1" function="N">Ἀβαεό</m>
+                    <m ana="#gift" baseForm="δωρ" type="radical" n="2" function="N">δωρ</m>
+                    <m baseForm="ος" type="suffix" subtype="flexional" n="1">ος</m>
+                </gramGrp>
+                <cit>
+                    <quote>DELG s.v. δίδωμι</quote>
+                    <ref target="http://logeion.uchicago.edu/index.html#%CE%91%CE%B2%CE%B1%CE%B9%CE%BF%CF%82"/>
+                    <ref target="http://logeion.uchicago.edu/index.html#%CE%B4%CF%89%CF%81%CE%BF%CE%BD"/>
+                </cit>
+                <ref type="linguistic">Sittig p. 52</ref>
+            </entry>
+            <entry xml:id="Abaiocritos">
+                <form type="lemma">
+                    <orth type="greek">Ἀβαιόκριτος</orth>
+                    <orth type="latin">Abaiocritos</orth>
+                    <gen>m.</gen>
+                    <date notBefore="-0300" notAfter="-0200"/>
+                    <usg/>
+                </form>
+                <gramGrp>
+                    <m ana="#Abaios" baseForm="Αβαι" type="radical" n="1" function="N">Ἀβαιό</m>
+                    <m ana="#select #choose" baseForm="κριν" type="radical" n="2" function="V">κριτ</m>
+                    <m baseForm="ος" type="suffix" subtype="flexional" n="1">ος</m>
+                </gramGrp>
+                <cit>
+                    <quote>DELG s.v. κρίνω</quote>
+                    <ref target="http://logeion.uchicago.edu/index.html#%CE%91%CE%B2%CE%B1%CE%B9%CE%BF%CF%82"/>
+                </cit>
+                <ref type="linguistic">Sittig p. 52</ref>
+            </entry>
+            <entry xml:id="Abēicha">
+                <form type="lemma">
+                    <orth type="greek">Ἀβηΐχα</orth>
+                    <orth type="latin">Abēicha</orth>
+                    <gen>f.</gen>
+                    <date notBefore="-0400" notAfter="-0200"/>
+                    <usg ana="#Beotian">Beotian</usg>
+                </form>
+                <gramGrp>
+                    <m ana="#Abaios" baseForm="Αβαι" type="radical" n="1" function="N">Ἀβη</m>
+                    <m baseForm="ιχ" type="suffix" n="2">ΐχ</m>
+                    <m baseForm="ᾱ" type="suffix" subtype="flexional" n="1">α</m>
+                </gramGrp>
+                <cit>
+                    <quote>http://logeion.uchicago.edu/index.html#%CE%91%CE%B2%CE%B1%CE%B9%CE%BF%CF%82</quote>
+                </cit>
+                <ref type="linguistic">Sittig p. 52</ref>
+            </entry>
+            <entry xml:id="Abaia">
+                <form type="lemma">
+                    <orth type="greek">Ἀβαία</orth>
+                    <orth type="latin">Abaia</orth>
+                    <gen>f.</gen>
+                    <usg>non-Greek</usg>
+                </form>
+            </entry>
+            <entry xml:id="Aischrybas">
+                <form type="lemma">
+                    <orth type="greek">Αἰσχρυβᾶς</orth>
+                    <orth type="latin">Aischrybas</orth>
+                    <gen>m.</gen>
+                    <date notBefore="-0352" notAfter="-0351"/>
+                    <usg/>
+                </form>
+                <gramGrp cert="high"><!-- another problematic entry, with the same content as supre: There are 2 possible iterpretations of the name and we gave 2 gramGrps, one being the most likely, the other the least -->
+                    <m ana="#shameful #ugly" baseForm="αἰσχρ" type="radical" n="1" function="Adj.">Αἰσχρ</m>
+                    <m ana="#hump" baseForm="(h)uβ" type="radical" n="2" function="N" cert="high">υβ</m>
+                    <m baseForm="ᾶς" type="suffix" subtype="flexional" n="1">ᾶς</m>
+                </gramGrp>
+                <gramGrp cert="low">
+                    <m ana="#shameful #ugly" baseForm="αἰσχρ" type="radical" n="1" function="Adj.">Αἰσχρ</m>
+                    <m baseForm="uβ" type="suffix" n="2" cert="low">υβ</m>
+                    <m baseForm="ᾶς" type="suffix" subtype="flexional" n="1">ᾶς</m>
+                </gramGrp>
+                <cit>
+                    <quote> Thersite : αἴσχιστος δὲ ἀνὴρ (...) τὼ δέ οἱ ὤμω κυρτώ, ἐπὶ στῆθος συνοχωκότε,
+                  Iliade 2, 218; DELG s.vv. αἶσχος, ὑβός</quote>
+                </cit>
+                <ref type="linguistic">Minon, SAGA, p. </ref>
+            </entry>
+            <entry xml:id="Aischryba">
+                <form type="lemma">
+                    <orth type="greek">Αἰσχρύβα</orth>
+                    <orth type="latin">Aischryba</orth>
+                    <gen>f.</gen>
+                    <date notBefore="-0300" notAfter="-0200"/>
+                    <usg/>
+                </form>
+                <gramGrp cert="high"><!-- and a third one... -->
+                    <m ana="#shameful #ugly" baseForm="αἰσχρ" type="radical" n="1" function="Adj.">Αἰσχρ</m>
+                    <m ana="#hump" baseForm="(h)uβ" type="radical" n="2" function="N" cert="high">ύβ</m>
+                    <m baseForm="ᾱ" type="suffix" subtype="flexional" n="1">α</m>
+                </gramGrp>
+                <gramGrp cert="low">
+                    <m ana="#shameful #ugly" baseForm="αἰσχρ" type="radical" n="1" function="Adj.">Αἰσχρ</m>
+                    <m baseForm="uβ" type="suffix" n="2" cert="low">ύβ</m>
+                    <m baseForm="ᾱ" type="suffix" subtype="flexional" n="1">α</m>
+                </gramGrp>
+                <cit>
+                    <quote> Thersite : αἴσχιστος δὲ ἀνὴρ (...) τὼ δέ οἱ ὤμω κυρτώ, ἐπὶ στῆθος συνοχωκότε,
+                  Iliade 2, 218; DELG s.vv. αἶσχος, ὑβός</quote>
+                </cit>
+                <ref type="linguistic">Minon, SAGA, p. </ref>
+            </entry>
+            <entry xml:id="Aiscrybēs">
+                <form type="lemma">
+                    <orth type="greek">Αἰσχρύβης</orth>
+                    <orth type="latin">Aiscrybēs</orth>
+                    <gen>X.</gen>
+                    <date notBefore="-0400" notAfter="-0200"/>
+                    <usg/>
+                </form>
+                <gramGrp cert="high"><!-- a fourth one -->
+                    <m ana="#shameful #ugly" baseForm="αἰσχρ" type="radical" n="1" function="Adj.">Αἰσχρ</m>
+                    <m ana="#hump" baseForm="(h)uβ" type="radical" n="2" function="N" cert="high">ύβ</m>
+                    <m baseForm="ης" type="suffix" subtype="flexional" n="1">ης</m>
+                </gramGrp>
+                <gramGrp cert="low">
+                    <m ana="#shameful #ugly" baseForm="αἰσχρ" type="radical" n="1" function="Adj.">Αἰσχρ</m>
+                    <m baseForm="uβ" type="suffix" n="2" cert="low">ύβ</m>
+                    <m baseForm="ᾱς" type="suffix" subtype="flexional" n="1">ης</m>
+                </gramGrp>
+                <cit>
+                    <quote> Thersite : αἴσχιστος δὲ ἀνὴρ (...) τὼ δέ οἱ ὤμω κυρτώ, ἐπὶ στῆθος συνοχωκότε,
+                  Iliade 2, 218; DELG s.vv. αἶσχος, ὑβός</quote>
+                </cit>
+                <ref type="linguistic">Minon, SAGA, p. </ref>
+            </entry>
+            <entry xml:id="Habragora">
+                <form type="lemma">
+                    <orth type="greek">῾Αβραγόρα</orth>
+                    <orth type="latin">Habragora</orth>
+                    <gen>X.</gen>
+                    <date notBefore="-0325" notAfter="-0375"/>
+                    <usg/>
+                </form>
+                <gramGrp>
+                    <m ana="#delicate #pretty" baseForm="(h)αβρ" type="radical" n="1" function="Adj.">῾Αβρ</m>
+                    <m ana="#speak" baseForm="αγορ" type="radical" n="2" function="V">αγόρ</m>
+                    <m baseForm="ᾱ" type="suffix" subtype="flexional" n="1">α</m>
+                </gramGrp>
+                <cit>
+                    <quote>DELG s.vv. ἁβρός, ἀγείρω</quote>
+                </cit>
+                <ref type="linguistic">HPN 6+15</ref>
+            </entry>
+            <entry xml:id="Habromachos">
+                <form type="lemma">
+                    <orth type="greek">῾Αβρόμαχος</orth>
+                    <orth type="latin">Habromachos</orth>
+                    <gen>m.</gen>
+                    <date notBefore="-0328" notAfter="0090"/>
+                    <usg/>
+                </form>
+                <gramGrp>
+                    <m ana="#delicate #pretty" baseForm="(h)αβρ" type="radical" n="1" function="Adj.">῾Αβρό</m>
+                    <m ana="#fight" baseForm="μαχ" type="radical" n="2" function="V">μαχ</m>
+                    <m baseForm="ος" type="suffix" subtype="flexional" n="1">ος</m>
+                </gramGrp>
+                <cit>
+                    <quote>DELG s.vv. ἁβρός, μάχομαι</quote>
+                </cit>
+                <ref type="linguistic">HPN 6+296</ref>
+            </entry>
+            <entry xml:id="Habrotelēs">
+                <form type="lemma">
+                    <orth type="greek">῾Αβροτέλης</orth>
+                    <orth type="latin">Habrotelēs</orth>
+                    <gen>X.</gen>
+                    <date notBefore="-0400" notAfter="-0300"/>
+                    <usg/>
+                </form>
+                <gramGrp>
+                    <m ana="#delicate #pretty" baseForm="(h)αβρ" type="radical" n="1" function="Adj.">῾Αβρό</m>
+                    <m ana="#XXX" baseForm="τελ" type="radical" n="2" function="fin">τέλ</m>
+                    <m baseForm="ης" type="suffix" subtype="flexional" n="1">ης</m>
+                </gramGrp>
+                <cit>
+                    <quote>DELG s.vv. ἁβρός, τέλος</quote>
+                </cit>
+                <ref type="linguistic">HPN 6+421</ref>
+            </entry>
+            <entry xml:id="Habrocomas">
+                <form type="lemma">
+                    <orth type="greek">῾Αβροκόμας</orth>
+                    <orth type="latin">Habrocomas</orth>
+                    <gen>m.</gen>
+                    <date notBefore="-0400" notAfter="0300"/>
+                    <usg/>
+                </form>
+                <gramGrp>
+                    <m ana="#delicate #pretty" baseForm="(h)αβρ" type="radical" n="1" function="Adj.">῾Αβρό</m>
+                    <m ana="#hair #foliage" baseForm="κομ" type="radical" n="2" function="N">κόμ</m>
+                    <m baseForm="ᾱς" type="suffix" subtype="flexional" n="1">ας</m>
+                </gramGrp>
+                <cit>
+                    <quote>Cf. ἁβροκόμης
+                  http://logeion.uchicago.edu/index.html#%CE%B1%CE%B2%CF%81%CE%BF%CE%BA%CE%BF%CE%BC%CE%B7%CF%82
+                  ; DELG s.vv. ἁβρός, κόμη</quote>
+                </cit>
+                <ref type="linguistic">HPN 6+562+ </ref>
+            </entry>
+            <entry xml:id="Aristis">
+                <form type="lemma">
+                    <orth type="greek">᾿Αριστίς</orth>
+                    <orth type="latin">Aristis</orth>
+                    <gen>f.</gen>
+                    <date notBefore="-0400" notAfter="0014"/>
+                    <usg/>
+                </form>
+                <gramGrp>
+                    <m ana="#best" baseForm="αριστ" type="radical" n="1" function="Adj.">᾿Αριστ</m>
+                    <m baseForm="ιδ" type="suffix" subtype="flexional" n="1">ίς</m>
+                </gramGrp>
+                <cit>
+                    <quote>DELG s.v. ἀρείων </quote>
+                    <ref target="http://logeion.uchicago.edu/index.html#%CE%B1%CF%81%CE%B9%CF%83%CF%84%CE%BF%CF%82"/>
+                </cit><!-- here the shema doesn't accept the encoding; probably the same problem as above -->
+                <ref type="linguistic">OGS I, p. 242</ref>
+            </entry>
+            <entry xml:id="Aristis1">
+                <form type="lemma">
+                    <orth type="greek">῎Αριστις</orth>
+                    <orth type="latin">Aristis</orth>
+                    <gen>m.</gen>
+                    <date notBefore="-0560" notAfter="0003"/>
+                    <usg/>
+                </form>
+                <gramGrp>
+                    <m ana="#best" baseForm="αριστ" type="radical" n="1" function="Adj.">῎Αριστ</m>
+                    <m baseForm="ις" type="suffix" subtype="flexional" n="1">ις</m>
+                </gramGrp>
+                <cit>
+                    <quote>DELG s.v. ἀρείων </quote>
+                    <ref target="http://logeion.uchicago.edu/index.html#%CE%B1%CF%81%CE%B9%CF%83%CF%84%CE%BF%CF%82"/>
+                </cit><!-- the same kind of error, again -->
+                <ref type="linguistic">OGS I, p. 205</ref>
+            </entry>
+            <entry xml:id="Habragoras"><!-- put a query (?) before the Greek form when the degree of certainty of a name is low -->
+                <form type="lemma">
+                    <orth type="greek">῾Αβραγόρας</orth>
+                    <orth type="latin">Habragoras</orth>
+                    <gen>m.</gen>
+                    <date notBefore="-0200" notAfter="-0150"/>
+                    <usg/>
+                </form>
+                <gramGrp>
+                    <m ana="#delicate #pretty" baseForm="(h)αβρ" type="radical" n="1" function="Adj.">῾Αβρ</m>
+                    <m ana="#speak" baseForm="αγορ" type="radical" n="2" function="V">αγόρ</m>
+                    <m baseForm="ᾱς" type="suffix" subtype="flexional" n="1">ας</m>
+                </gramGrp>
+                <cit>
+                    <quote>DELG s.vv. ἁβρός, ἀγείρω</quote>
+                </cit>
+                <ref type="linguistic">HPN 6+15</ref>
+            </entry>
+        </body>
+    </text>
+</TEI>

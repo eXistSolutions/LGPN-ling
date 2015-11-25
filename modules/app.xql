@@ -55,3 +55,12 @@ function app:entry-action($node as node(), $model as map(*)) {
     let $entry := $model("entry")
     return <td><a href="editor.xhtml?id={data($entry//TEI:entry[1]/@xml:id)}">EDIT</a></td>
 };
+
+
+(:  LOGIN :)
+declare function app:form-action-to-current-url($node as node(), $model as map(*)) {
+    <form action="{request:get-url()}">{
+        $node/attribute()[not(name(.) = 'action')], 
+        $node/node()
+    }</form>
+};
