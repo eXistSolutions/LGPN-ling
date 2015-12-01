@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:TEI="http://www.tei-c.org/ns/1.0" xmlns:xf="http://www.w3.org/2002/xforms">
     <head>
         <title>LGPN</title><!--
@@ -47,14 +48,14 @@
                                         <m baseForm="" type="suffix" subtype="flexional" n="4"/>
                                     </gramGrp>
                                     <cit>
-                                        <quote></quote> 
-                                        <ref target=""></ref>
+                                        <quote/>
+                                        <ref target=""/>
                                     </cit>
                                     <bibl type="auxiliary">
-                                       <ref></ref>
+                                        <ref/>
                                     </bibl>
                                     <bibl type="linguistic">
-                                       <ref></ref>
+                                        <ref/>
                                     </bibl>
                                 </entry>
                             </body>
@@ -77,20 +78,18 @@
                             <ref target=""/>
                         </cit>
                         <bibl type="auxiliary">
-                           <ref/>
+                            <ref/>
                         </bibl>
                         <bibl type="linguistic">
-                           <ref/>
+                            <ref/>
                         </bibl>
                     </data>
                 </xf:instance>
-                
                 <xf:instance id="i-prefix-1">
                     <data xmlns="">
                         <option/>
                     </data>
                 </xf:instance>
-                
                 <xf:instance id="i-suffix-1">
                     <data xmlns="">
                         <option/>
@@ -294,7 +293,7 @@
             <xf:group ref="//TEI:entry"><!-- GRAMGRP -->
                 <xf:group class="fieldset">
                     <xf:label>
-                        <h3>Segmentation &amp; Root interpretation</h3>
+                        <h3>Segmentation &amp; radical interpretation</h3>
                     </xf:label>
                     <xf:repeat ref="TEI:gramGrp" id="r-gramGrp">
                         <xf:label/>
@@ -303,7 +302,7 @@
                             <div class="row">
                                 <div class="col-xs-3">
                                     <xf:input class="input-group -form-control" ref="@cert">
-                                        <xf:label class="input-group-addon">certian</xf:label>
+                                        <xf:label class="input-group-addon">certain</xf:label>
                                     </xf:input>
                                 </div>
                                 <div class="col-xs-3">
@@ -315,7 +314,7 @@
                             <div class="row">
                                 <div class="col-xs-2">
                                     <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 1]">
-                                        <xf:label class="input-group-addon">root</xf:label>
+                                        <xf:label class="input-group-addon">radical</xf:label>
                                     </xf:input>
                                 </div>
                                 <div class="col-xs-2">
@@ -330,7 +329,7 @@
                                 </div>
                                 <div class="col-xs-2">
                                     <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 2]">
-                                        <xf:label class="input-group-addon">root</xf:label>
+                                        <xf:label class="input-group-addon">radical</xf:label>
                                     </xf:input>
                                 </div>
                                 <div class="col-xs-2">
@@ -410,7 +409,7 @@
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <span class="glyphicon glyphicon-tasks"/>
-                                                semantic ontology
+                                                meanings
                                             </span>
                                             <input class="tags" value=""/>
                                         </div>
@@ -429,7 +428,7 @@
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <span class="glyphicon glyphicon-tasks"/>
-                                                semantic ontology
+                                                meanings
                                             </span>
                                             <input class="tags" value=""/>
                                         </div>
@@ -503,11 +502,11 @@
                 </xf:group>
                 <xf:group class="meanings">
                     <xf:label>
-                        <h3>Meanings of the name &amp; Testimonies</h3>
+                        <h3>Semantics of the name &amp; Evidence</h3>
                     </xf:label>
                     <xf:group>
                         <xf:label>
-                            <h3>Reference work</h3>
+                            <h3>Sources</h3>
                         </xf:label>
                         <xf:repeat ref="TEI:cit" id="r-cit">
                             <xf:label/>
@@ -554,7 +553,7 @@
                     </xf:group>
                     <xf:group class="fieldset">
                         <xf:label>
-                            <h3>Bibliographic references</h3>
+                            <h3>Lexicographic references</h3>
                         </xf:label>
                         <xf:repeat ref="TEI:bibl[@type = 'auxiliary']" id="r-auxiliary">
                             <xf:label/>
@@ -590,7 +589,7 @@
                 </xf:group>
                 <xf:group>
                     <xf:label>
-                        <h3>Linguistic references</h3>
+                        <h3>Onomastic &amp; linguistic bibliography</h3>
                     </xf:label>
                     <xf:repeat ref="TEI:bibl[@type = 'linguistic']" id="r-linguistic">
                         <xf:label/>
