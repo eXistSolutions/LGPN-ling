@@ -36,21 +36,52 @@ function app:entries-paged($node as node(), $model as map(*), $start as xs:integ
 };
 
 declare
-%templates:wrap
 function app:entry-id($node as node(), $model as map(*)) {
     let $entry := $model("entry")
     return <td>{data($entry//TEI:entry/@xml:id)}</td>
 };
 
 declare
-%templates:wrap
-function app:entry-name($node as node(), $model as map(*)) {
+function app:entry-form($node as node(), $model as map(*), $lang as xs:string) {
     let $entry := $model("entry")
-    return <td>{data($entry//TEI:entry/@xml:id)}</td>
+    return <td>{data($entry//TEI:entry//TEI:orth[@type=$lang])}</td>
 };
 
 declare
-%templates:wrap
+function app:entry-dialect($node as node(), $model as map(*)) {
+    let $entry := $model("entry")
+    return <td>{data($entry//TEI:entry/TEI:usg)}</td>
+};
+
+
+declare
+function app:entry-morpheme($node as node(), $model as map(*), $type as xs:string, $position as xs:integer?) {
+    let $entry := $model("entry")
+    return <td>{data($entry//TEI:entry//TEI:m[@type=$type][@n=$position])}</td>
+};
+
+
+declare
+function app:entry-morphemes($node as node(), $model as map(*), $type as xs:string) {
+    let $entry := $model("entry")
+    let $t := 
+        for $e in $entry//TEI:entry//TEI:m[@type=$type]
+        order by $e/@n
+        return $e
+    return <td>{string-join($t, ' - ')}</td>
+};
+
+declare
+function app:entry-morpheme-functions($node as node(), $model as map(*), $type as xs:string) {
+    let $entry := $model("entry")
+    let $t := 
+        for $e in $entry//TEI:entry//TEI:m[@type=$type]/@function
+        order by $e/@n
+        return $e
+    return <td>{string-join($t, '+')}</td>
+};
+
+declare
 function app:entry-action($node as node(), $model as map(*)) {
     let $entry := $model("entry")
     return <td><a href="editor.xhtml?id={data($entry//TEI:entry[1]/@xml:id)}">EDIT</a></td>
