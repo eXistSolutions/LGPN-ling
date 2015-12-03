@@ -36,21 +36,95 @@ function app:entries-paged($node as node(), $model as map(*), $start as xs:integ
 };
 
 declare
-%templates:wrap
 function app:entry-id($node as node(), $model as map(*)) {
     let $entry := $model("entry")
     return <td>{data($entry//TEI:entry/@xml:id)}</td>
 };
 
 declare
-%templates:wrap
-function app:entry-name($node as node(), $model as map(*)) {
+function app:entry-form($node as node(), $model as map(*), $lang as xs:string) {
     let $entry := $model("entry")
-    return <td>{data($entry//TEI:entry/@xml:id)}</td>
+    return <td>{data($entry//TEI:entry//TEI:orth[@type=$lang])}</td>
 };
 
 declare
-%templates:wrap
+function app:entry-dialect($node as node(), $model as map(*)) {
+    let $entry := $model("entry")
+    return <td>{data($entry//TEI:entry/TEI:usg)}</td>
+};
+
+
+declare
+function app:entry-morpheme($node as node(), $model as map(*), $type as xs:string, $position as xs:integer?) {
+    let $entry := $model("entry")
+    return <td>{data($entry//TEI:entry//TEI:m[@type=$type][@n=$position])}</td>
+};
+
+
+declare
+function app:entry-morphemes($node as node(), $model as map(*), $type as xs:string) {
+    let $entry := $model("entry")
+    let $t := 
+        for $e in $entry//TEI:entry//TEI:m[@type=$type]
+        order by $e/@n
+        return $e
+    return <td>{string-join($t, ' - ')}</td>
+};
+
+declare
+function app:entry-morpheme-functions($node as node(), $model as map(*), $type as xs:string) {
+    let $entry := $model("entry")
+    let $t := 
+        for $e in $entry//TEI:entry//TEI:m[@type=$type]/@function
+        order by $e/@n
+        return $e
+    return <td>{string-join($t, '+')}</td>
+};
+
+
+declare
+function app:entry-semantics($node as node(), $model as map(*)) {
+    let $entry := $model("entry")
+    let $t := 
+        for $e in $entry//TEI:entry//TEI:m[@type='radical']
+        order by $e/@n
+        return $e/@ana
+    return <td>{string-join($t, '+')}</td>
+};
+
+declare
+function app:entry-sources($node as node(), $model as map(*), $type as xs:string) {
+    let $entry := $model("entry")
+    (: sources :)
+    let $sources := 
+        for $e in $entry//TEI:entry//TEI:cit
+          let $q := <i style="margin-right: 0.5em;">{$e/TEI:quote/string()}</i>
+          let $s := $e/TEI:ref/string()
+          let $source := if ($e/TEI:ref/string(@target)) then <a href="{$e/TEI:ref/@target}">{$s}</a> else $s
+        return <p>{$q}  {$source}</p>
+    (: lexicographic references :)
+    let $lexicographic := 
+        for $e in $entry//TEI:entry//TEI:bibl[@type='auxiliary']
+          let $ref := <i style="margin-right: 0.5em;">{$e/TEI:ref/string()}</i>
+          let $rest := $e/text()
+          let $source := if ($e/TEI:ref/string(@target)) then <a href="{$e/TEI:ref/@target}">{$ref} {$rest}</a> else ($ref, $rest)
+        return <p>{$source}</p>
+    return <td>{$sources} {if(not(empty($lexicographic))) then  ('Cf. also ', $lexicographic) else ()}</td>
+};
+
+declare
+function app:entry-bibl($node as node(), $model as map(*), $type as xs:string) {
+    let $entry := $model("entry")
+    let $linguistic := 
+        for $e in $entry//TEI:entry//TEI:bibl[@type='linguistic']
+          let $ref := <i style="margin-right: 0.5em;">{$e/TEI:ref/string()}</i>
+          let $rest := $e/text()
+          let $source := if ($e/TEI:ref/string(@target)) then <a href="{$e/TEI:ref/@target}">{$ref} {$rest}</a> else ($ref, $rest)
+        return <p>{$source}</p>
+    return <td>{$linguistic}</td>
+};
+
+declare
 function app:entry-action($node as node(), $model as map(*)) {
     let $entry := $model("entry")
     return <td><a href="editor.xhtml?id={data($entry//TEI:entry[1]/@xml:id)}">EDIT</a></td>

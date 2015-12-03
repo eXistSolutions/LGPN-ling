@@ -1,5 +1,6 @@
 xquery version "3.0";
 
+
 import module namespace login="http://exist-db.org/xquery/login" at "resource:org/exist/xquery/modules/persistentlogin/login.xql";
 
 declare variable $exist:path external;
@@ -17,6 +18,17 @@ else if ($exist:path eq "/") then
     (: forward root path to index.xql :)
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
         <redirect url="index.html"/>
+    </dispatch>
+else if (ends-with($exist:resource, ".html")) then
+    (: the html page is run through view.xql to expand templates :)
+    <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
+        <view>
+            <forward url="{$exist:controller}/modules/view.xql"/>
+        </view>
+		<error-handler>
+			<forward url="{$exist:controller}/error-page.html" method="get"/>
+			<forward url="{$exist:controller}/modules/view.xql"/>
+		</error-handler>
     </dispatch>
 else if (contains($exist:path, "/$shared/")) then
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">

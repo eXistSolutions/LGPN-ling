@@ -16,14 +16,36 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Name</th>
+                                <th>Greek</th>
+                                <th>Latin</th>
+                                <th>Dialect</th>
+                                <th>Period</th>
+                                <th>Prefix</th>
+                                <th>Radical1</th>
+                                <th>Radical2</th>
+                                <th>Suffixation</th>
+                                <th>Radicals typology</th>
+                                <th>Semantics</th>
+                                <th>Sources &amp; lexicographic references</th>
+                                <th>Onomastic &amp; linguistic bibliography</th>
                                 <th/>
                             </tr>
                         </thead>
                         <tbody>
                             <tr class="templates:each?from=entries&amp;to=entry">
                                 <td data-template="app:entry-id"/>
-                                <td data-template="app:entry-name"/>
+                                <td data-template="app:entry-form" data-template-lang="greek"/>
+                                <td data-template="app:entry-form" data-template-lang="latin"/>
+                                <td data-template="app:entry-dialect"/>
+                                <td>period</td>
+                                <td data-template="app:entry-morpheme" data-template-position="1" data-template-type="prefix"/>
+                                <td data-template="app:entry-morpheme" data-template-position="1" data-template-type="radical"/>
+                                <td data-template="app:entry-morpheme" data-template-position="2" data-template-type="radical"/>
+                                <td data-template="app:entry-morphemes" data-template-type="suffix"/>
+                                <td data-template="app:entry-morpheme-functions" data-template-type="radical"/>
+                                <td data-template="app:entry-semantics" data-template-type="radical"/>
+                                <td data-template="app:entry-sources" data-template-type="radical"/>
+                                <td data-template="app:entry-bibl" data-template-type="radical"/><!--                                <td data-template="app:entry-morphemes" data-template-type="radical"/> -->
                                 <td data-template="app:entry-action"/>
                             </tr>
                         </tbody>
