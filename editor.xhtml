@@ -84,133 +84,13 @@
                             <ref/>
                         </bibl>
                     </data>
-                </xf:instance>
-                <xf:instance id="i-prefix-1">
-                    <data xmlns="">
-                        <option/>
-                    </data>
-                </xf:instance>
-                <xf:instance id="i-suffix-1">
-                    <data xmlns="">
-                        <option/>
-                        <option>α</option>
-                        <option>αδ</option>
-                        <option>α(ϝ)</option>
-                        <option>αινα</option>
-                        <option>ακ</option>
-                        <option>αλ</option>
-                        <option>αλλ</option>
-                        <option>αν</option>
-                        <option>ανν</option>
-                        <option>αξ</option>
-                        <option>αρ</option>
-                        <option>ασ</option>
-                        <option>ας</option>
-                        <option>ε</option>
-                        <option>ε(ϝ)</option>
-                        <option>ει</option>
-                        <option>εις</option>
-                        <option>ευς</option>
-                        <option>η</option>
-                        <option>ην</option>
-                        <option>ηρ</option>
-                        <option>(η)ς</option>
-                        <option>ι</option>
-                        <option>ιαν</option>
-                        <option>ιας</option>
-                        <option>ιδ</option>
-                        <option>ικ</option>
-                        <option>ιλ</option>
-                        <option>ιλλ</option>
-                        <option>ιν</option>
-                        <option>ινν</option>
-                        <option>ιον</option>
-                        <option>ιος</option>
-                        <option>ις</option>
-                        <option>ισκ</option>
-                        <option>ισσα</option>
-                        <option>ιτ</option>
-                        <option>ιχ</option>
-                        <option>ιων</option>
-                        <option>μα</option>
-                        <option>(ν)ς</option>
-                        <option>ον</option>
-                        <option>ον</option>
-                        <option>ονν</option>
-                        <option>ος</option>
-                        <option>οῦς</option>
-                        <option>σι</option>
-                        <option>τας</option>
-                        <option>τερ</option>
-                        <option>τηρ</option>
-                        <option>τος</option>
-                        <option>τρ</option>
-                        <option>τωρ</option>
-                        <option>υ</option>
-                        <option>υβ</option>
-                        <option>υκ</option>
-                        <option>υπ</option>
-                        <option>υλ</option>
-                        <option>υλλ</option>
-                        <option>υς</option>
-                        <option>ω</option>
-                        <option>ωϝ</option>
-                        <option>ωι</option>
-                        <option>ων</option>
-                        <option>ως</option>
-                    </data>
-                </xf:instance>
-                <xf:instance id="i-suffix-2">
-                    <data xmlns="">
-                        <option/>
-                        <option>-α</option>
-                        <option>-αδ-</option>
-                        <option>-αν</option>
-                        <option>-αξ</option>
-                        <option>-ας</option>
-                        <option>-ει</option>
-                        <option>-εις</option>
-                        <option>-ευς</option>
-                        <option>-η</option>
-                        <option>-ην-ηρ26</option>
-                        <option>-ης</option>
-                        <option>-ια</option>
-                        <option>-ιας</option>
-                        <option>-ιης</option>
-                        <option>-ιον</option>
-                        <option>-ιος</option>
-                        <option>-ις</option>
-                        <option>-ιων</option>
-                        <option>-µα</option>
-                        <option>-να</option>
-                        <option>-νς</option>
-                        <option>-ον</option>
-                        <option>-ος</option>
-                        <option>-οῦς</option>
-                        <option>-τας</option>
-                        <option>-τηρ</option>
-                        <option>-της</option>
-                        <option>-τος</option>
-                        <option>-τωρ</option>
-                        <option>-υς</option>
-                        <option>-ω</option>
-                        <option>-ωι</option>
-                        <option>-ων</option>
-                        <option>-ως</option>
-                    </data>
-                </xf:instance>
-                <xf:instance id="i-suffix-3">
-                    <data xmlns="">
-                        <option/>
-                        <option>-ας</option>
-                    </data>
-                </xf:instance>
-                <xf:instance id="i-suffix-4">
-                    <data xmlns="">
-                        <option/>
-                        <option>To be done?</option>
-                    </data>
-                </xf:instance>
+                </xf:instance><!-- PREFIXES -->
+                <xf:instance xmlns="" id="i-dialects" src="resources/xml/dialects.xml"/><!-- PREFIXES -->
+                <xf:instance xmlns="" id="i-prefix-1" src="resources/xml/prefixes/prefix-1.xml"/><!-- SUFFIXES -->
+                <xf:instance xmlns="" id="i-suffix-1" src="resources/xml/suffixes/suffix-1.xml"/>
+                <xf:instance xmlns="" id="i-suffix-2" src="resources/xml/suffixes/suffix-2.xml"/>
+                <xf:instance xmlns="" id="i-suffix-3" src="resources/xml/suffixes/suffix-3.xml"/>
+                <xf:instance xmlns="" id="i-suffix-4" src="resources/xml/suffixes/suffix-4.xml"/>
                 <xf:submission id="s-load-data" method="get" replace="instance" ref="instance('i-default')" validate="false" resource="modules/load.xql?id={bf:appContext('id')}">
                     <xf:message ev:event="xforms-submit-done" level="ephemeral">Data have been loaded.</xf:message>
                     <xf:message ev:event="xforms-submit-error">Failed to load data.</xf:message>
@@ -226,7 +106,7 @@
                 <xf:action ev:event="xforms-ready">
                     <xf:send submission="s-load-data" if="bf:appContext('id') != ''"/>
                 </xf:action>
-            </xf:model>
+            </xf:model><!--
             <xf:group>
                 <xf:input ref="//TEI:usg" id="x-dialects">
                     <xf:label>Hidden Control</xf:label>
@@ -235,12 +115,13 @@
                     </xf:action>
                 </xf:input>
             </xf:group>
+            -->
         </div>
         <div class="container">
             <h2>LGPN-Ling</h2>
             <div class="row">
                 <div class="col-xs-6">
-                    <xf:input id="huhu" class="input-group input-group-lg -form-control" ref="//TEI:form[@type='lemma']/TEI:orth[@type='greek']">
+                    <xf:input class="input-group input-group-lg -form-control" ref="//TEI:form[@type='lemma']/TEI:orth[@type='greek']">
                         <xf:label class="input-group-addon">α</xf:label>
                         <xf:hint>greek</xf:hint>
                     </xf:input>
@@ -285,8 +166,16 @@
                 </div>
                 <div class="col-xs-6">
                     <div class="input-group">
+                        <xf:select1 class="input-group -form-control" ref="//TEI:usg">
+                            <xf:label class="input-group-addon">dialect</xf:label>
+                            <xf:itemset nodeset="instance('i-dialects')/option">
+                                <xf:label ref="."/>
+                                <xf:value ref="."/>
+                            </xf:itemset>
+                        </xf:select1><!--
                         <label class="input-group-addon">dialect</label>
                         <input type="text" class="dialect_tags tag-control" id="dialect" value="" placeholder="Enter dialect names separated by space"/>
+                        -->
                     </div>
                 </div>
             </div>
@@ -305,15 +194,23 @@
                                         <xf:label class="input-group-addon">certain</xf:label>
                                     </xf:input>
                                 </div>
-                                <div class="col-xs-3">
+                                <div class="col-xs-3"><!--
                                     <xf:input class="input-group -form-control" ref="TEI:m['prefix' and @n = 1]">
                                         <xf:label class="input-group-addon">prefix</xf:label>
                                     </xf:input>
+                                -->
+                                    <xf:select1 class="input-group -form-control" ref="TEI:m[@type = 'prefix' and @n = 1]">
+                                        <xf:label class="input-group-addon">prefix</xf:label>
+                                        <xf:itemset nodeset="instance('i-prefix-1')/option">
+                                            <xf:label ref="."/>
+                                            <xf:value ref="."/>
+                                        </xf:itemset>
+                                    </xf:select1>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-xs-2">
-                                    <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 1]">
+                                    <xf:input class="input-group -form-control" ref="TEI:m[@type = 'radical' and @n = 1]">
                                         <xf:label class="input-group-addon">radical</xf:label>
                                     </xf:input>
                                 </div>
@@ -322,11 +219,11 @@
                                         <xf:label class="input-group-addon">base</xf:label>
                                     </xf:input>
                                 </div>
-                                <div class="col-xs-2">
+                                <div class="col-xs-2"><!--
                                     <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 1]/@type">
                                         <xf:label class="input-group-addon">type</xf:label>
                                     </xf:input>
-                                </div>
+                                --></div>
                                 <div class="col-xs-2">
                                     <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 2]">
                                         <xf:label class="input-group-addon">radical</xf:label>
@@ -337,11 +234,11 @@
                                         <xf:label class="input-group-addon">base</xf:label>
                                     </xf:input>
                                 </div>
-                                <div class="col-xs-2">
+                                <div class="col-xs-2"><!--
                                     <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 2]/@type">
                                         <xf:label class="input-group-addon">type</xf:label>
                                     </xf:input>
-                                </div>
+                                --></div>
                             </div>
                             <div class="row">
                                 <div class="col-xs-6">
