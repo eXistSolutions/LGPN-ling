@@ -47,17 +47,44 @@ function app:entry-form($node as node(), $model as map(*), $lang as xs:string) {
     return <td>{data($entry//TEI:entry//TEI:orth[@type=$lang])}</td>
 };
 
+
+(:  :U+0300 – U+036F :)
+declare
+function app:entry-stripped($node as node(), $model as map(*), $lang as xs:string) {
+    let $entry := $model("entry")
+    return <td>{replace(normalize-unicode($entry//TEI:entry//TEI:orth[@type=$lang]/string(), 'NFD'), '[\p{M}]', '')}</td>
+};
+
 declare
 function app:entry-dialect($node as node(), $model as map(*)) {
     let $entry := $model("entry")
+    let $subentries : = count($entry//TEI:entry/TEI:gramGrp)
     return <td>{data($entry//TEI:entry/TEI:usg)}</td>
+};
+
+declare
+function app:entry-period($node as node(), $model as map(*)) {
+    let $entry := $model("entry")
+    return <td>period</td>
 };
 
 
 declare
 function app:entry-morpheme($node as node(), $model as map(*), $type as xs:string, $position as xs:integer?) {
     let $entry := $model("entry")
-    return <td>{data($entry//TEI:entry//TEI:m[@type=$type][@n=$position])}</td>
+        let $subentries : = count($entry//TEI:entry//TEI:gramGrp)
+    return <td>
+        {if($subentries > 1) then 
+            <table>
+                {
+                    for $se in $entry//TEI:gramGrp
+                    return <tr><td>{data($se//TEI:m[@type=$type][@n=$position])}&#160;</td></tr>
+
+                }
+            </table>
+            else data($entry//TEI:entry//TEI:m[@type=$type][@n=$position])
+        }
+        </td>
 };
 
 
@@ -73,23 +100,57 @@ function app:entry-morphemes($node as node(), $model as map(*), $type as xs:stri
 
 declare
 function app:entry-morpheme-functions($node as node(), $model as map(*), $type as xs:string) {
-    let $entry := $model("entry")
-    let $t := 
-        for $e in $entry//TEI:entry//TEI:m[@type=$type]/@function
-        order by $e/@n
-        return $e
-    return <td>{string-join($t, '+')}</td>
+    let $entry := $model("entry")//TEI:gramGrp
+    let $functions := 
+        for $se in $entry
+            let $subentry_functions :=
+                for $e in $se//TEI:m[@type=$type]/@function
+                order by $e/@n
+                return $e
+            return string-join($subentry_functions, '+')
+            
+    return 
+        <td>
+            {
+                if (count($functions)>1) 
+                then 
+                    <table> 
+                        {
+                            for $f in $functions 
+                            return <tr><td>{$f}</td></tr>
+                        }
+                    </table> 
+                else $functions
+            }
+        </td>
 };
 
 
 declare
 function app:entry-semantics($node as node(), $model as map(*)) {
-    let $entry := $model("entry")
-    let $t := 
-        for $e in $entry//TEI:entry//TEI:m[@type='radical']
-        order by $e/@n
-        return $e/@ana
-    return <td>{string-join($t, '+')}</td>
+    let $entry := $model("entry")//TEI:gramGrp
+    let $functions := 
+        for $se in $entry
+            let $subentry_functions :=
+                for $e in $se//TEI:m[@type='radical']
+                order by $e/@n
+                return $e/@ana
+            return string-join($subentry_functions, '+')
+            
+    return 
+        <td>
+            {
+                if (count($functions)>1) 
+                then 
+                    <table> 
+                        {
+                            for $f in $functions 
+                            return <tr><td style="border: 1px solid black;">{$f}</td></tr>
+                        }
+                    </table> 
+                else $functions
+            }
+        </td>
 };
 
 declare
@@ -127,7 +188,9 @@ function app:entry-bibl($node as node(), $model as map(*), $type as xs:string) {
 declare
 function app:entry-action($node as node(), $model as map(*)) {
     let $entry := $model("entry")
-    return <td><a href="editor.xhtml?id={data($entry//TEI:entry[1]/@xml:id)}">EDIT</a></td>
+    let $subentries : = count($entry//TEI:entry/TEI:gramGrp)
+    return <td>
+        <a href="editor.xhtml?id={data($entry//TEI:entry[1]/@xml:id)}">EDIT</a></td>
 };
 
 
