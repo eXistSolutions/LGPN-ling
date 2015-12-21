@@ -52,10 +52,10 @@
                                         <ref target=""/>
                                     </cit>
                                     <bibl type="auxiliary">
-                                        <ref/>
+                                        <ref target=""/>
                                     </bibl>
                                     <bibl type="linguistic">
-                                        <ref/>
+                                        <ref target=""/>
                                     </bibl>
                                 </entry>
                             </body>
@@ -78,10 +78,10 @@
                             <ref target=""/>
                         </cit>
                         <bibl type="auxiliary">
-                            <ref/>
+                            <ref target=""/>
                         </bibl>
                         <bibl type="linguistic">
-                            <ref/>
+                            <ref target=""/>
                         </bibl>
                     </data>
                 </xf:instance><!-- PREFIXES -->
@@ -106,7 +106,7 @@
                 <xf:action ev:event="xforms-ready">
                     <xf:send submission="s-load-data" if="bf:appContext('id') != ''"/>
                 </xf:action>
-            </xf:model><!--
+            </xf:model>
             <xf:group>
                 <xf:input ref="//TEI:usg" id="x-dialects">
                     <xf:label>Hidden Control</xf:label>
@@ -115,7 +115,6 @@
                     </xf:action>
                 </xf:input>
             </xf:group>
-            -->
         </div>
         <div class="container">
             <h2>LGPN-Ling</h2>
@@ -135,19 +134,19 @@
             </div>
             <div class="row">
                 <div class="col-xs-2">
-                    <xf:input class="input-group -form-control" ref="//TEI:form[@type='lemma']/TEI:date/@notBefore">
+                    <xf:input class="input-group -form-control" ref="//TEI:form[@type='lemma']/TEI:date/@notBefore" disabled="disabled">
                         <xf:label class="input-group-addon">not before</xf:label>
                         <xf:hint>not before</xf:hint>
                     </xf:input>
                 </div>
                 <div class="col-xs-2">
-                    <xf:input class="input-group -form-control" ref="//TEI:form[@type='lemma']/TEI:date/@notAfter">
+                    <xf:input class="input-group -form-control" ref="//TEI:form[@type='lemma']/TEI:date/@notAfter" disabled="disabled">
                         <xf:label class="input-group-addon">not after</xf:label>
                         <xf:hint>not after</xf:hint>
                     </xf:input>
                 </div>
                 <div class="col-xs-2">
-                    <xf:select1 class="input-group -form-control" ref="//TEI:form[@type='lemma']/TEI:gen">
+                    <xf:select1 class="input-group -form-control" ref="//TEI:form[@type='lemma']/TEI:gen" disabled="disabled">
                         <xf:label class="input-group-addon">gender</xf:label>
                         <xf:hint>gender</xf:hint>
                         <xf:item>
@@ -163,19 +162,27 @@
                             <xf:value>a.</xf:value>
                         </xf:item>
                     </xf:select1>
-                </div>
-                <div class="col-xs-6">
+                </div><!--                <div class="col-xs-6">
                     <div class="input-group">
-                        <xf:select1 class="input-group -form-control" ref="//TEI:usg">
-                            <xf:label class="input-group-addon">dialect</xf:label>
+                        <xf:select class="input-group -form-control" ref="//TEI:usg">
+                            <xf:label class="input-group-addon">dialect (MULTIPLE)</xf:label>
                             <xf:itemset nodeset="instance('i-dialects')/option">
                                 <xf:label ref="."/>
                                 <xf:value ref="."/>
                             </xf:itemset>
-                        </xf:select1><!--
-                        <label class="input-group-addon">dialect</label>
-                        <input type="text" class="dialect_tags tag-control" id="dialect" value="" placeholder="Enter dialect names separated by space"/>
-                        -->
+                        </xf:select>
+                    </div>
+                </div>
+                -->
+                <div class="col-xs-6">
+                    <div class="input-group">
+                        <xf:select class="input-group -form-control" ref="//TEI:usg" appearance="full">
+                            <xf:label class="input-group-addon">dialect (MULTIPLE)</xf:label>
+                            <xf:itemset nodeset="instance('i-dialects')/option">
+                                <xf:label ref="."/>
+                                <xf:value ref="."/>
+                            </xf:itemset>
+                        </xf:select>
                     </div>
                 </div>
             </div>
@@ -191,7 +198,7 @@
                             <div class="row">
                                 <div class="col-xs-3">
                                     <xf:input class="input-group -form-control" ref="@cert">
-                                        <xf:label class="input-group-addon">certain</xf:label>
+                                        <xf:label class="input-group-addon">certainty</xf:label>
                                     </xf:input>
                                 </div>
                                 <div class="col-xs-3"><!--
@@ -211,7 +218,7 @@
                             <div class="row">
                                 <div class="col-xs-2">
                                     <xf:input class="input-group -form-control" ref="TEI:m[@type = 'radical' and @n = 1]">
-                                        <xf:label class="input-group-addon">radical</xf:label>
+                                        <xf:label class="input-group-addon">constituent 1</xf:label>
                                     </xf:input>
                                 </div>
                                 <div class="col-xs-2">
@@ -226,7 +233,7 @@
                                 --></div>
                                 <div class="col-xs-2">
                                     <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 2]">
-                                        <xf:label class="input-group-addon">radical</xf:label>
+                                        <xf:label class="input-group-addon">constituent 2</xf:label>
                                     </xf:input>
                                 </div>
                                 <div class="col-xs-2">
@@ -308,7 +315,7 @@
                                                 <span class="glyphicon glyphicon-tasks"/>
                                                 meanings
                                             </span>
-                                            <input class="tags" value=""/>
+                                            <input class="tags" value="" disabled="disabled"/>
                                         </div>
                                     </span>
                                 </div>
@@ -327,7 +334,7 @@
                                                 <span class="glyphicon glyphicon-tasks"/>
                                                 meanings
                                             </span>
-                                            <input class="tags" value=""/>
+                                            <input class="tags" value="" disabled="disabled"/>
                                         </div>
                                     </span>
                                 </div>
@@ -455,14 +462,19 @@
                         <xf:repeat ref="TEI:bibl[@type = 'auxiliary']" id="r-auxiliary">
                             <xf:label/>
                             <div class="row">
-                                <div class="col-xs-5">
+                                <div class="col-xs-3">
                                     <xf:input class="input-group -form-control" ref="TEI:ref">
                                         <xf:label class="input-group-addon">reference</xf:label>
                                     </xf:input>
                                 </div>
-                                <div class="col-xs-6">
+                                <div class="col-xs-3">
                                     <xf:input class="input-group -form-control" ref="TEI:ref/following-sibling::text()">
                                         <xf:label class="input-group-addon">details</xf:label>
+                                    </xf:input>
+                                </div>
+                                <div class="col-xs-5">
+                                    <xf:input class="input-group -form-control" ref="TEI:ref/@target">
+                                        <xf:label class="input-group-addon">link</xf:label>
                                     </xf:input>
                                 </div>
                                 <div class="col-xs-1">
@@ -491,14 +503,19 @@
                     <xf:repeat ref="TEI:bibl[@type = 'linguistic']" id="r-linguistic">
                         <xf:label/>
                         <div class="row">
-                            <div class="col-xs-5">
+                            <div class="col-xs-3">
                                 <xf:input ref="TEI:ref" class="input-group -form-control">
                                     <xf:label class="input-group-addon">reference</xf:label>
                                 </xf:input>
                             </div>
-                            <div class="col-xs-6">
+                            <div class="col-xs-3">
                                 <xf:input ref="TEI:ref/following-sibling::text()" class="input-group -form-control">
                                     <xf:label class="input-group-addon">details</xf:label>
+                                </xf:input>
+                            </div>
+                            <div class="col-xs-5">
+                                <xf:input class="input-group -form-control" ref="TEI:ref/@target">
+                                    <xf:label class="input-group-addon">link</xf:label>
                                 </xf:input>
                             </div>
                             <div class="col-xs-1">
