@@ -1,56 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <data>
     <option/>
-    <option>-α</option>
-    <option>-αδ-</option>
-    <option>-αν</option>
-    <option>-αξ</option>
-    <option>-ας</option>
-    <option>-ει</option>
-    <option>-εις</option>
-    <option>-ευς</option>
-    <option>-η</option>
-    <option>-ην-ηρ26</option>
-    <option>-ης</option>
-    <option>-ια</option>
-    <option>-ιας</option>
-    <option>-ιης</option>
-    <option>-ιον</option>
-    <option>-ιος</option>
-    <option>-ις</option>
-    <option>-ιων</option>
-    <option>-µα</option>
-    <option>-να</option>
-    <option>-νς</option>
-    <option>-ον</option>
-    <option>-ος</option>
-    <option>-οῦς</option>
-    <option>-τας</option>
-    <option>-τηρ</option>
-    <option>-της</option>
-    <option>-τος</option>
-    <option>-τωρ</option>
-    <option>-υς</option>
-    <option>-ω</option>
-    <option>-ωι</option>
-    <option>-ων</option>
-    <option>-ως</option>
-    <option>(ι)(α)δ</option>
+    <option>αδ</option>
+    <option>ε(:)(ϝ)</option>
+    <option>ιαδ</option>
+    <option>ιδ</option>
     <option>(V)ζ</option>
     <option>(V)θ</option>
     <option>(V)κ</option>
     <option>(V)λ(λ)</option>
-    <option>ιαν</option>
+    <option>αιν</option>
     <option>(V)ν(ν)</option>
-    <option>V(ν)σ</option>
+    <option>ιαν</option>
     <option>(V)ν(τ)</option>
-    <option>(V)ρ</option>
-    <option>(V)σ</option>
+    <option>ιππ</option>
+    <option>(V)ρ(ρ)</option>
     <option>ισκ</option>
-    <option>μα(τ)</option>
+    <option>V(*ν)σ</option>
+    <option>(V)σ(σ)</option>
     <option>(V)τ</option>
+    <option>μᾰ(τ)</option>
+    <option>(V)μεν</option>
+    <option>μον</option>
     <option>τερ</option>
     <option>τηρ</option>
-    <option>(o)υ</option>
+    <option>(V)υ</option>
     <option>(V)χ</option>
 </data>

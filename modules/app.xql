@@ -78,11 +78,13 @@ function app:entry-morpheme($node as node(), $model as map(*), $type as xs:strin
             <table>
                 {
                     for $se in $entry//TEI:gramGrp
-                    return <tr><td>{data($se//TEI:m[@type=$type][@n=$position])}&#160;</td></tr>
+                    let $m := if($type="radical") then data($se//TEI:m[@type=$type][@n=$position]/@baseForm) else data($se//TEI:m[@type=$type][@n=$position])
+                    return <tr><td>{$m}&#160;</td></tr>
 
                 }
             </table>
-            else data($entry//TEI:entry//TEI:m[@type=$type][@n=$position])
+            else 
+                    if($type="radical") then data($entry//TEI:m[@type=$type][@n=$position]/@baseForm) else data($entry//TEI:m[@type=$type][@n=$position])
         }
         </td>
 };
