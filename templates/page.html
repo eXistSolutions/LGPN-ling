@@ -1,22 +1,113 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:i18n="http://exist-db.org/xquery/i18n">
     <head>
-        <title data-template="config:app-title">App Title</title>
+        <title data-template="app:title">App Title</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta data-template="config:app-meta"/>
         <link rel="shortcut icon" href="$shared/resources/images/exist_icon_16x16.ico"/>
+        <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.10/css/jquery.dataTables.min.css"/>
         <link rel="stylesheet" type="text/css" href="$shared/resources/css/bootstrap-3.0.3.min.css"/>
         <link rel="stylesheet" type="text/css" href="resources/css/style.css"/>
         <script type="text/javascript" src="$shared/resources/scripts/jquery/jquery-1.7.1.min.js"/>
         <script type="text/javascript" src="$shared/resources/scripts/loadsource.js"/>
         <script type="text/javascript" src="$shared/resources/scripts/bootstrap-3.0.3.min.js"/>
+        <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.10/js/jquery.dataTables.js"/>
+        <style type="text/css">
+        fieldset {
+    border: 1px solid #eee;
+    padding: 0 1.4em 1.4em 1.4em;
+    -webkit-box-shadow:  0px 0px 0px 0px #000;
+            box-shadow:  0px 0px 0px 0px #000;
+}
+
+legend {
+    width:inherit; /* Or auto */
+    padding:0 10px;
+    border-bottom:none;
+}
+    </style>
+        <script type="text/javascript" class="init">
+
+$(document).ready(function() {
+    $('#datatable').DataTable( {
+        "paging":   true,
+        "ordering": true,
+        "info":     true
+    } );
+} );
+    </script>
     </head>
-    <body id="body">
-        <div id="content" class="container"/>
-        <footer>
-            <a class="poweredby" href="http://exist-db.org">
-                <img src="$shared/resources/images/powered-by.svg" alt="Powered by eXist-db"/>
-            </a>
-        </footer>
+    <body id="body" data-template="app:lang">
+        <div class="i18n:translate?lang=fr&amp;catalogues=data/i18n">
+            <nav class="navbar navbar-default" role="navigation">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"/>
+                        <span class="icon-bar"/>
+                        <span class="icon-bar"/>
+                    </button>
+                    <a data-template="app:title" class="navbar-brand" href="./index.html">App Title</a>
+                </div>
+                <div class="navbar-collapse collapse" id="navbar-collapse-1">
+                    <ul class="nav navbar-nav">
+                        <li class="dropdown" id="about">
+                            <a href="index.html">
+                                <span class="glyphicon glyphicon-search"/>
+                                <i18n:text key="search">Search</i18n:text>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="index.html">
+                                        <i18n:text key="search">Search</i18n:text>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="dropdown" id="entry">
+                            <a href="editor.xhtml">
+                                <span class="glyphicon glyphicon-edit"/>
+                                <i18n:text key="newEntry">New entry</i18n:text>
+                            </a>
+                        </li>
+                        <li class="dropdown" id="names">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <span class="glyphicon glyphicon-inbox"/>
+                                <i18n:text key="nameCatalogue">Name catalogue</i18n:text>
+                            </a>
+                            <ul data-template="app:generate-dropdown-menu" data-template-list="ΑΒΓϜΔΕΖΗΘΙΚΛΜΝΞΟΠΡΣΤΥΦΧΨΩ" data-template-link="index" class="dropdown-menu"/>
+                        </li>
+                        <li class="dropdown" id="about">
+                            <a href="about.html">
+                                <span class="glyphicon glyphicon-home"/>
+                                <i18n:text key="about">About</i18n:text>
+                            </a>
+                        </li><!-- flag icons http://www.freeiconsweb.net/Other-Vector/fllag-iconslanguage-flag.html License : Creative Commons Attribution 3.0 License -->
+                        <li id="fr">
+                            <a href="?lang=fr">
+                                <img src="resources/img/fr.png" style="width: 30px; margin-top: -4px;" title="fr"/>
+                            </a>
+                        </li>
+                        <li id="en">
+                            <a href="?lang=en">
+                                <img src="resources/img/en.png" style="width: 30px; margin-top: -4px;" title="en"/>
+                            </a>
+                        </li>
+                        <li id="de">
+                            <a href="?lang=de">
+                                <img src="resources/img/de.png" style="width: 30px; margin-top: -4px;" title="de"/>
+                            </a>
+                        </li>
+                    </ul>
+                </div><!-- https://pixabay.com/en/athens-greece-acropolis-ruins-315838/ CC0 -->
+                <div style="background-image: url('resources/img/acropolis.jpg'); height: 100px;"/>
+            </nav>
+            <div id="content" class="container"/>
+            <footer>
+                <a class="poweredby" href="http://exist-db.org">
+                    <img src="$shared/resources/images/powered-by.svg" alt="Powered by eXist-db"/>
+                </a>
+            </footer>
+        </div>
     </body>
 </html>

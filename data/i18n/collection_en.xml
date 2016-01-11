@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<catalogue xml:lang="en">
+Lexikon der griechischen Personennamen
+    <msg key="lgpn">Lexicon of Greek Personal Names</msg>
+    <msg key="searchHeading">LGPN Advanced Search</msg>
+    <msg key="search">Search</msg>
+    <msg key="in">in</msg>
+    <msg key="greekAccented">Greek (accented)</msg>
+    <msg key="greekUnaccented">Greek (unaccented)</msg>
+    <msg key="latinTransliteration">Latin transliteration</msg>
+    <msg key="nameVariant">name variant</msg>
+    <msg key="fullText">full text</msg>
+    <msg key="region">region</msg>
+    <msg key="settlement">city</msg>
+    <msg key="subarea">subarea</msg>
+    <msg key="dateBetween">date between</msg>
+    <msg key="and">and</msg>
+    <msg key="anyGender">any</msg>
+    <msg key="status">status</msg>
+    <msg key="legalStatus">legal</msg>
+    <msg key="professionalStatus">professional</msg>
+    <msg key="civicStatus">civic</msg>
+    <msg key="religiousStatus">religious</msg>
+    <msg key="withPrefix">with prefix</msg>
+    <msg key="constituent">constituent</msg>
+    <msg key="matching">matching</msg>
+    <msg key="literalForm">literal form</msg>
+    <msg key="baseFrom">base form</msg>
+    <msg key="position">position</msg>
+    <msg key="any">any</msg>
+    <msg key="verb">Verb</msg>
+    <msg key="noun">Noun</msg>
+    <msg key="adjective">Adjective</msg>
+    <msg key="pronoun">Pronoun</msg>
+    <msg key="adverb">Adverb</msg>
+    <msg key="semanticFields">covering semanticFields</msg>
+    <msg key="containingSuffix">containing suffix</msg>
+    <msg key="nameCatalogue">Name catalogue</msg>
+    <msg key="placeCatalogue">Place catalogue</msg>
+    <msg key="professionCatalogue">Status and profession catalogue</msg>
+    <msg key="about">Status and profession catalogue</msg>
+    <msg key="hits">Results</msg>
+</catalogue>
