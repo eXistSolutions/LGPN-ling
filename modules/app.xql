@@ -6,6 +6,9 @@ declare namespace TEI = "http://www.tei-c.org/ns/1.0";
 
 import module namespace templates="http://exist-db.org/xquery/templates" ;
 import module namespace config="http://www.existsolutions.com/apps/lgpn/config" at "config.xqm";
+import module namespace i18n="http://exist-db.org/xquery/i18n/templates" at "i18n-templates.xql"; 
+import module namespace functx = "http://www.functx.com";
+import module namespace console="http://exist-db.org/xquery/console" at "java:org.exist.console.xquery.ConsoleModule";
 
 (:~
  : This is a sample templating function. It will be called by the templating module if
@@ -16,10 +19,16 @@ import module namespace config="http://www.existsolutions.com/apps/lgpn/config" 
  : @param $node the HTML node with the attribute which triggered this call
  : @param $model a map containing arbitrary data - used to pass information between template calls
  :)
-declare function app:title($node as node(), $model as map(*)) {
-    "LGPN"
+declare %templates:wrap  function app:title($node as node(), $model as map(*)) {
+    "LGPN-Ling"
 };
 
+declare function app:lang($node as node(), $model as map(*), $lang as xs:string?) {
+        session:create(),
+        let $lang := session:set-attribute('lang', $lang)
+(:        let $c := console:log('lang aft ' || session:get-attribute('lang')):)
+        return $model
+};
 
 declare function app:entries($node as node(), $model as map(*)) {
     map { "entries" := collection($config:data-root)//TEI:TEI }
@@ -42,9 +51,9 @@ function app:entry-id($node as node(), $model as map(*)) {
 };
 
 declare
-function app:entry-form($node as node(), $model as map(*), $lang as xs:string) {
+function app:entry-form($node as node(), $model as map(*), $langId as xs:string) {
     let $entry := $model("entry")
-    return <td>{data($entry//TEI:entry//TEI:orth[@type=$lang])}</td>
+    return <td>{data($entry//TEI:entry//TEI:orth[@type=$langId])}</td>
 };
 
 
@@ -192,7 +201,8 @@ function app:entry-action($node as node(), $model as map(*)) {
     let $entry := $model("entry")
     let $subentries : = count($entry//TEI:entry/TEI:gramGrp)
     return <td>
-        <a href="editor.xhtml?id={data($entry//TEI:entry[1]/@xml:id)}">EDIT</a></td>
+        <a href="editor.xhtml?id={data($entry//TEI:entry[1]/@xml:id)}"><span class="glyphicon glyphicon-edit"/></a>
+        </td>
 };
 
 
@@ -202,4 +212,20 @@ declare function app:form-action-to-current-url($node as node(), $model as map(*
         $node/attribute()[not(name(.) = 'action')], 
         $node/node()
     }</form>
+};
+
+
+declare function app:generate-dropdown-menu($node as node(), $model as map(*), $list as xs:string, $link as xs:string) {
+    <ul class="dropdown-menu">
+        {
+            for $letter in functx:chars($list)
+            return 
+                <li>
+                <a>
+                    {attribute href {$link || '.html?letter=' || $letter }}
+                    {$letter} 
+                </a>
+                </li>
+        }
+    </ul>  
 };

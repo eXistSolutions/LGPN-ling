@@ -1,46 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<div xmlns="http://www.w3.org/1999/xhtml" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:i18n="http://exist-db.org/xquery/i18n" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-12">
             <div class="page-header">
                 <h1 data-template="app:title">Generated page</h1>
             </div>
-            <div class="row">
-                <div class="col-xs-12">
-                    <a href="editor.xhtml">NEW Entry</a>
-                </div>
-            </div>
             <div class="row" data-template="app:entries">
-                <div class="col-xs-12">
+                <div class="col-md-12">
                     <table data-template="app:entries-paged" class="table table-striped">
                         <thead>
                             <tr>
-                                <th>ID</th>
-                                <th>Greek</th>
-                                <th>Latin</th>
-                                <th>Noaccent</th>
-                                <th>Dialect</th>
-                                <th>Period</th>
-                                <th>Prefix</th>
-                                <th>Root1</th>
-                                <th>Root2</th>
-                                <th>Suffix4</th>
-                                <th>Suffix3</th>
-                                <th>Suffix2</th>
-                                <th>Suffix1</th>
-                                <th>Radicals typology</th>
-                                <th>Semantics</th>
-                                <th>Sources &amp; lexicographic references</th>
-                                <th>Onomastic &amp; linguistic bibliography</th>
-                                <th/>
+                                <th>
+                                    <i18n:text key="greek">Greek</i18n:text>
+                                </th>
+                                <th>
+                                    <i18n:text key="latin">Latin</i18n:text>
+                                </th>
+                                <th>
+                                    <i18n:text key="dialect">Dialect</i18n:text>
+                                </th>
+                                <th>
+                                    <i18n:text key="period">Period</i18n:text>
+                                </th>
+                                <th>
+                                    <i18n:text key="prefix">Prefix</i18n:text>
+                                </th>
+                                <th>
+                                    <i18n:text key="root">Root</i18n:text>1</th>
+                                <th>
+                                    <i18n:text key="root">Root</i18n:text>2</th>
+                                <th>
+                                    <i18n:text key="suffix">Suffix</i18n:text>4</th>
+                                <th>
+                                    <i18n:text key="suffix">Suffix</i18n:text>3</th>
+                                <th>
+                                    <i18n:text key="suffix">Suffix</i18n:text>2</th>
+                                <th>
+                                    <i18n:text key="suffix">Suffix</i18n:text>1</th>
+                                <th>
+                                    <i18n:text key="radicals">Radicals typology</i18n:text>
+                                </th>
+                                <th>
+                                    <i18n:text key="semantics">Semantics</i18n:text>
+                                </th>
+                                <th>
+                                    <i18n:text key="sources">Sources &amp; lexicographic references</i18n:text>
+                                </th>
+                                <th>
+                                    <i18n:text key="bibliography">Onomastic &amp; linguistic bibliography</i18n:text>
+                                </th>
+                                <th>
+                                    <i18n:text key="edit"/>
+                                </th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="templates:each?from=entries&amp;to=entry">
-                                <td data-template="app:entry-id"/>
-                                <td data-template="app:entry-form" data-template-lang="greek"/>
-                                <td data-template="app:entry-form" data-template-lang="latin"/>
-                                <td data-template="app:entry-stripped" data-template-lang="greek"/>
+                            <tr class="templates:each?from=entries&amp;to=entry"><!--                                <td data-template="app:entry-id"/> -->
+                                <td data-template="app:entry-form" data-template-langId="greek"/>
+                                <td data-template="app:entry-form" data-template-langId="latin"/><!--                                <td data-template="app:entry-stripped" data-template-lang="greek"/> -->
                                 <td data-template="app:entry-dialect"/>
                                 <td data-template="app:entry-period"/>
                                 <td data-template="app:entry-morpheme" data-template-position="1" data-template-type="prefix"/>
