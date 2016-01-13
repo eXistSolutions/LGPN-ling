@@ -31,7 +31,7 @@ declare function app:lang($node as node(), $model as map(*), $lang as xs:string?
 };
 
 declare function app:entries($node as node(), $model as map(*)) {
-    map { "entries" := collection($config:data-root)//TEI:TEI }
+    map { "entries" := collection($config:names-root)//TEI:TEI }
 };
 
 declare
