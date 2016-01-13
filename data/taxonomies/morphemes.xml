@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taxonomy xmlns="http://www.tei-c.org/ns/1.0" xml:id="morphemes">
+    <category xml:id="αγαθ" ana="#good"/>
+    <category xml:id="βoλ" ana="#will #council #advice"/>
+    <category xml:id="αἰσχρ" ana="#shameful #ugly"/>
+    <category xml:id="huβ" ana="#hump"/>
+</taxonomy>
