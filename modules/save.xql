@@ -9,6 +9,6 @@ let $change := <change xmlns="http://www.tei-c.org/ns/1.0" when="{$date}" resp="
 let $data := request:get-data()
 let $name := $data//TEI:orth[@type ="latin"]
 let $log := util:log("INFO", "data: " || count($data))
-let $doc := doc(xmldb:store($config:data-root, concat($name , ".xml"), $data))
+let $doc := doc(xmldb:store($config:names-root, concat($name , ".xml"), $data))
 return 
     update insert $change into $doc//TEI:listChange
