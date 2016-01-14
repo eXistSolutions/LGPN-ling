@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Title</title>
+            </titleStmt>
+            <publicationStmt>
+                <p>Publication Information</p>
+            </publicationStmt>
+            <sourceDesc>
+                <p>Information about the source</p>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc/>
+        <revisionDesc>
+            <listChange/>
+        </revisionDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <entry xml:id="Agathē">
+                <form type="lemma">
+                    <orth type="greek">Ἀγάθη</orth>
+                    <orth type="latin">Agathē</orth>
+                    <gen>f.</gen>
+                    <date notAfter="0200" notBefore="-0299"/>
+                    <usg/>
+                </form>
+                <gramGrp>
+                    <m baseForm="αγαθ" type="radical" n="1" function="Adj.">Ἀγάθ</m>
+                    <m baseForm="ᾱ" type="suffix" subtype="flexional" n="1">η</m>
+                </gramGrp>
+                <cit>
+                    <quote>http://logeion.uchicago.edu/index.html#%E1%BC%80%CE%B3%CE%B1%CE%B8%CF%8C%CF%82;
+                  DELG s.v. ἀγαθός</quote>
+                </cit>
+                <ref type="linguistic">HPN7</ref>
+            </entry>
+        </body>
+    </text>
+</TEI>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Title</title>
+            </titleStmt>
+            <publicationStmt>
+                <p>Publication Information</p>
+            </publicationStmt>
+            <sourceDesc>
+                <p>Information about the source</p>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc/>
+        <revisionDesc>
+            <listChange/>
+        </revisionDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <entry xml:id="Philonichidēs">
+                <form type="lemma">
+                    <orth type="greek">Φιλωνιχίδης</orth>
+                    <orth type="latin">Philonichidēs</orth>
+                    <gen>m.</gen>
+                    <date notAfter="-0405" notBefore="-0405"/>
+                    <usg/>
+                </form>
+                <gramGrp>
+                    <m baseForm="φιλ" type="radical" n="1" function="V;N;Adj">Φιλ</m>
+                    <m baseForm="ων" type="suffix" n="4">ων</m>
+                    <m baseForm="ιχ" type="suffix" n="3">ιχ</m>
+                    <m baseForm="ιδ" type="suffix" n="2">ιδ</m>
+                    <m baseForm="ηs" type="suffix" subtype="flexional" n="1">ης</m>
+                </gramGrp>
+                <cit>
+                    <quote>DELG s.v φίλος</quote>
+                </cit>
+                <ref type="linguistic"/>
+            </entry>
+        </body>
+    </text>
+</TEI>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Title</title>
+            </titleStmt>
+            <publicationStmt>
+                <p>Publication Information</p>
+            </publicationStmt>
+            <sourceDesc>
+                <p>Information about the source</p>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc>
+            <classDecl>
+                <taxonomy xml:id="semanticFields">
+                    <category xml:id="good">
+                        <catDesc xml:lang="en">good</catDesc>
+                        <catDesc xml:lang="fr">bon</catDesc>
+                    </category>
+                    <category xml:id="council">
+                        <catDesc xml:lang="en">council</catDesc>
+                        <catDesc xml:lang="fr">Conseil</catDesc>
+                    </category>
+                    <category xml:id="advice">
+                        <catDesc xml:lang="en">advice</catDesc>
+                        <catDesc xml:lang="fr">conseil</catDesc>
+                    </category>
+                    <category xml:id="will">
+                        <catDesc xml:lang="en">will</catDesc>
+                        <catDesc xml:lang="fr">vouloir</catDesc>
+                    </category>
+                    <category xml:id="shameful">
+                        <catDesc xml:lang="en">shameful</catDesc>
+                        <catDesc xml:lang="fr">honteux</catDesc>
+                    </category>
+                    <category xml:id="ugly">
+                        <catDesc xml:lang="en">ugly</catDesc>
+                        <catDesc xml:lang="fr">laid</catDesc>
+                    </category>
+                    <category xml:id="hump">
+                        <catDesc xml:lang="en">hump</catDesc>
+                        <catDesc xml:lang="fr">bosse</catDesc>
+                    </category>
+                </taxonomy>
+            </classDecl>
+        </encodingDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <entry xml:id="Aiscrybēs">
+                <form type="lemma">
+                    <orth type="greek">Αἰσχρύβης</orth>
+                    <orth type="latin">Aiscrybēs</orth>
+                    <gen>X.</gen>
+                    <date notAfter="-0200" notBefore="-0400"/>
+                    <usg/>
+                </form>
+                <gramGrp cert="high">
+                    <m ana="#shameful #ugly" baseForm="αἰσχρ" function="Adj." n="1" type="radical">Αἰσχρ</m>
+                    <m ana="#hump" baseForm="(h)uβ" cert="high" function="N" n="2" type="radical">ύβ</m>
+                    <m baseForm="ης" n="1" subtype="flexional" type="suffix">ης</m>
+                    <m baseForm="" n="2" subtype="" type="suffix"/>
+                    <m baseForm="" n="3" subtype="" type="suffix"/>
+                    <m baseForm="" n="4" subtype="" type="suffix"/>
+                </gramGrp>
+                <gramGrp cert="low">
+                    <m ana="#shameful #ugly" baseForm="αἰσχρ" function="Adj." n="1" type="radical">Αἰσχρ</m>
+                    <m baseForm="uβ" cert="low" n="2" type="suffix">ύβ</m>
+                    <m baseForm="ᾱς" n="1" subtype="flexional" type="suffix">ης</m>
+                    <m baseForm="" n="3" subtype="" type="suffix"/>
+                    <m baseForm="" n="4" subtype="" type="suffix"/>
+                </gramGrp>
+                <cit>
+                    <quote>αἴσχιστος δὲ ἀνὴρ (...) τὼ δέ οἱ ὤμω κυρτώ, ἐπὶ στῆθος συνοχωκότε</quote>
+                    <ref>Thersite, Iliade 2, 218</ref>
+                </cit>
+                <bibl type="linguistic">
+                    <ref>Minon, SAGA</ref>, p.</bibl>
+                <bibl type="auxiliary">
+                    <ref target="">DELG s.vv. </ref>αἶσχος, ὑβός</bibl>
+            </entry>
+        </body>
+    </text>
+</TEI>

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Title</title>
+            </titleStmt>
+            <publicationStmt>
+                <p>Publication Information</p>
+            </publicationStmt>
+            <sourceDesc>
+                <p>Information about the source</p>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc/>
+        <revisionDesc>
+            <listChange/>
+        </revisionDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <entry xml:id="Astoboulos">
+                <form type="lemma">
+                    <orth type="greek">Ἀστόβουλος</orth>
+                    <orth type="latin">Astoboulos</orth>
+                    <gen>m.</gen>
+                    <date notAfter="-0100" notBefore="-0200"/>
+                    <usg ana="#Thessalian"/>
+                </form>
+                <gramGrp>
+                    <m baseForm="αριστ" type="radical" n="1" function="Adj.">Ἀστό</m>
+                    <m baseForm="φῡλ" type="radical" n="2" function="N">βουλ</m>
+                    <m baseForm="os" type="suffix" subtype="flexional" n="1">os</m>
+                </gramGrp>
+                <cit>
+                    <quote>DELG s.v.v. ἀρείων, βούλομαι</quote>
+                </cit>
+                <ref type="linguistic">García-Ramón, ONW, 32,41</ref>
+            </entry>
+        </body>
+    </text>
+</TEI>
