@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Title</title>
+            </titleStmt>
+            <publicationStmt>
+                <p>Publication Information</p>
+            </publicationStmt>
+            <sourceDesc>
+                <p>Information about the source</p>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc/>
+        <revisionDesc>
+            <listChange/>
+        </revisionDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <entry xml:id="Euarchidamos">
+                <form type="lemma">
+                    <orth type="greek">Εὐαρχίδαμος</orth>
+                    <orth type="latin">Euarchidamos</orth>
+                    <gen>X.</gen>
+                    <date notAfter="-0360" notBefore="-0370"/>
+                    <usg/>
+                </form>
+                <gramGrp>
+                    <m baseForm="εὐ" type="pre-radical" function="Adv.">Εὐ</m>
+                    <m baseForm="αρχ" type="radical" n="1" function="V">αρχί</m>
+                    <m baseForm="δᾱμ" type="radical" n="2" function="N">δαμ</m>
+                    <m baseForm="ος" type="suffix" subtype="flexional" n="1">ος</m>
+                </gramGrp>
+                <cit>
+                    <quote>εὐαρχος; DELG s.vv. ἐύς, ἄρχω, δῆμος</quote>
+                    <ref target="http://logeion.uchicago.edu/index.html#%CE%B5%E1%BD%90%CE%B1%CF%81%CF%87%CE%BF%CF%82"/>
+                </cit><!-- idem for "εὐαρχος" and the following hyperlinks -->
+                <ref type="linguistic">Εὐαρχος, HPN 81+177</ref>
+            </entry>
+        </body>
+    </text>
+</TEI>

@@ -15,6 +15,8 @@
         <encodingDesc/>
         <revisionDesc>
             <listChange>
+                <change resp="#guest" when="2016-01-13">Some changes</change>
+                <change resp="#guest" when="2016-01-13">Some changes</change>
                 <change when="2016-01-13" resp="#guest">Some changes</change>
             </listChange>
         </revisionDesc>
@@ -27,12 +29,12 @@
                     <orth type="latin">Agathoboula</orth>
                     <gen>f.</gen>
                     <date notAfter="0200" notBefore="-0200"/>
-                    <usg/>
+                    <usg> Aeolic Arcado-Cypriot</usg>
                 </form>
                 <gramGrp cert="low">
                     <m baseForm="αγαθ" function="Adj." n="1" type="radical">Ἀγαθο</m>
                     <m baseForm="βoλ" function="N" n="2" type="radical">βούλ</m>
-                    <m baseForm="ᾱ" n="1" subtype="flexional" type="suffix">α</m>
+                    <m baseForm="ᾱ" n="1" subtype="flexional" type="suffix"/>
                 </gramGrp>
                 <cit>
                     <quote>βουλῇ τ'ἀγαθῇ καὶ κακῷ δαίμονι μοχθίζουσι</quote>
