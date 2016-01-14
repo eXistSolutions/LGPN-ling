@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <catalogue xml:lang="en">
-Lexikon der griechischen Personennamen
     <msg key="lgpn">Lexicon of Greek Personal Names</msg>
     <msg key="searchHeading">LGPN Advanced Search</msg>
     <msg key="search">Search</msg>
@@ -25,7 +24,7 @@ Lexikon der griechischen Personennamen
     <msg key="constituent">constituent</msg>
     <msg key="matching">matching</msg>
     <msg key="literalForm">literal form</msg>
-    <msg key="baseFrom">base form</msg>
+    <msg key="baseFrom">root</msg>
     <msg key="position">position</msg>
     <msg key="any">any</msg>
     <msg key="verb">Verb</msg>
@@ -53,11 +52,11 @@ Lexikon der griechischen Personennamen
     <msg key="dialect">Dialectal specificity</msg>
     <msg key="prefix">Prefix</msg>
     <msg key="suffix">Suffix</msg>
-    <msg key="radicals">Radicals typology</msg>
-    <msg key="root">Constituent</msg>
+    <msg key="radicals">Root typology</msg>
+    <msg key="root">Root</msg>
     <msg key="semantics">Semantics</msg>
     <msg key="sources">Sources and lexicographical references</msg>
-    <msg key="bibliography">Onomastique et bibliographie linguistique</msg>
+    <msg key="bibliography">Onomastic and linguistic bibliography</msg>
     <msg key="edit">Edit</msg>
     <msg key="newEntry">New entry</msg>
 </catalogue>
