@@ -10,7 +10,7 @@ var morphemes = new Bloodhound({
 // options being used
 $('#baseForm').typeahead(null, {
   name: 'morphemes',
-  source: meanings,
+  source: morphemes,
   limit: 500
 });
 
