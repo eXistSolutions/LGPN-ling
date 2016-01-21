@@ -185,7 +185,7 @@
             <xf:group ref="//TEI:entry"><!-- GRAMGRP -->
                 <xf:group class="fieldset">
                     <xf:label>
-                        <h3>Segmentation &amp; radical interpretation</h3>
+                        <h3>Segmentation &amp; root interpretation</h3>
                     </xf:label>
                     <xf:repeat ref="TEI:gramGrp" id="r-gramGrp">
                         <xf:label/>
@@ -219,7 +219,7 @@
                                 </div>
                                 <div class="col-xs-2">
                                     <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 1]/@baseForm">
-                                        <xf:label class="input-group-addon">base</xf:label>
+                                        <xf:label class="input-group-addon">root</xf:label>
                                         <xf:action ev:event="xforms-value-changed">
                                             <xf:send submission="s-reload-fill-data"/>
                                         </xf:action>
@@ -240,7 +240,7 @@
                                 </div>
                                 <div class="col-xs-2">
                                     <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 2]/@baseForm" id="baseForm">
-                                        <xf:label class="input-group-addon">base</xf:label>
+                                        <xf:label class="input-group-addon">root</xf:label>
                                         <xf:action ev:event="xforms-value-changed">
                                             <xf:send submission="s-reload-fill-data"/>
                                         </xf:action>
