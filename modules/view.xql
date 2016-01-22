@@ -17,7 +17,7 @@ import module namespace i18n="http://exist-db.org/xquery/i18n/templates" at "i18
 
 declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
 
-declare option output:method "html5";
+declare option output:method "html";
 declare option output:media-type "text/html";
 
 let $config := map {
