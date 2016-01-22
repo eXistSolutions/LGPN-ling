@@ -6,6 +6,8 @@
         -->
         <link rel="stylesheet" type="text/css" href="$shared/resources/css/bootstrap-3.0.3.min.css"/>
         <link rel="stylesheet" type="text/css" href="resources/css/editor.css"/>
+        <script src="resources/js/typeahead.bundle.js"/>
+        <script src="resources/js/typeaheadData.js"/>
     </head>
     <body>
         <div style="display:none">
@@ -93,6 +95,10 @@
                     <xf:message ev:event="xforms-submit-done" level="ephemeral">Data have been saved.</xf:message>
                     <xf:message ev:event="xforms-submit-error">Failed to save data</xf:message>
                 </xf:submission>
+                <xf:submission id="s-reload-fill-data" method="post" replace="instance" validate="false" resource="modules/reload-fill-data.xql">
+                    <xf:message ev:event="xforms-submit-done" level="ephemeral">Data reloaded.</xf:message>
+                    <xf:message ev:event="xforms-submit-error" level="ephemeral">Data reload failed.</xf:message>
+                </xf:submission>
                 <xf:action ev:event="xforms-ready">
                     <xf:send submission="s-load-data" if="bf:appContext('id') != ''"/>
                 </xf:action>
@@ -179,7 +185,7 @@
             <xf:group ref="//TEI:entry"><!-- GRAMGRP -->
                 <xf:group class="fieldset">
                     <xf:label>
-                        <h3>Segmentation &amp; radical interpretation</h3>
+                        <h3>Segmentation &amp; root interpretation</h3>
                     </xf:label>
                     <xf:repeat ref="TEI:gramGrp" id="r-gramGrp">
                         <xf:label/>
@@ -213,8 +219,14 @@
                                 </div>
                                 <div class="col-xs-2">
                                     <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 1]/@baseForm">
-                                        <xf:label class="input-group-addon">base</xf:label>
+                                        <xf:label class="input-group-addon">root</xf:label>
+                                        <xf:action ev:event="xforms-value-changed">
+                                            <xf:send submission="s-reload-fill-data"/>
+                                        </xf:action>
                                     </xf:input>
+                                    <a href="meanings.html" target="_blank">
+                                        <span class="glyphicon glyphicon-plus"/>
+                                    </a>
                                 </div>
                                 <div class="col-xs-2"><!--
                                     <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 1]/@type">
@@ -227,9 +239,15 @@
                                     </xf:input>
                                 </div>
                                 <div class="col-xs-2">
-                                    <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 2]/@baseForm">
-                                        <xf:label class="input-group-addon">base</xf:label>
+                                    <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 2]/@baseForm" id="baseForm">
+                                        <xf:label class="input-group-addon">root</xf:label>
+                                        <xf:action ev:event="xforms-value-changed">
+                                            <xf:send submission="s-reload-fill-data"/>
+                                        </xf:action>
                                     </xf:input>
+                                    <a href="meanings.html" target="_blank">
+                                        <span class="glyphicon glyphicon-plus"/>
+                                    </a>
                                 </div>
                                 <div class="col-xs-2"><!--
                                     <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 2]/@type">

@@ -1,5 +1,19 @@
 $(document).ready(function() {
 
+var morphemes = new Bloodhound({
+  datumTokenizer: Bloodhound.tokenizers.whitespace,
+  queryTokenizer: Bloodhound.tokenizers.whitespace,
+  prefetch: 'modules/json.xqm?type=morphemes'
+});
+
+// passing in `null` for the `options` arguments will result in the default
+// options being used
+$('#baseForm').typeahead(null, {
+  name: 'morphemes',
+  source: morphemes,
+  limit: 500
+});
+
 
 var meanings = new Bloodhound({
   datumTokenizer: Bloodhound.tokenizers.whitespace,

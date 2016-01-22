@@ -11,6 +11,11 @@ declare option output:media-type "text/javascript";
 let $case := request:get-parameter('type', 'names')
 return
 switch ($case)
+case 'morphemes'
+    return
+        let $collection := "/db/apps/lgpn-ling/data/taxonomies/morphemes.xml"
+        for $n in doc($collection)//tei:category/@baseForm
+            return $n/string()
 case 'meanings'
     return
         let $collection := "/db/apps/lgpn-ling/data/taxonomies/ontology.xml"
