@@ -5,9 +5,8 @@
         ~ Copyright (c) 2015. existsolutions - http://www.exsitsolutions.com
         -->
         <link rel="stylesheet" type="text/css" href="$shared/resources/css/bootstrap-3.0.3.min.css"/>
+        <link href="resources/js/vendor/select2/select2.css" rel="stylesheet"/>
         <link rel="stylesheet" type="text/css" href="resources/css/editor.css"/>
-        <script src="resources/js/typeahead.bundle.js"/>
-        <script src="resources/js/typeaheadData.js"/>
     </head>
     <body>
         <div style="display:none">
@@ -247,14 +246,15 @@
                                 </div>
                                 <div class="col-xs-2">
                                     <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 2]/@baseForm" id="baseForm">
+                                        <xf:action ev:event="autocomplete-callback">
+                                            <xf:setvalue ref="." value="event('termValue')"></xf:setvalue>
+                                        </xf:action>
                                         <xf:label class="input-group-addon">root</xf:label>
                                         <xf:action ev:event="xforms-value-changed">
                                             <xf:send submission="s-reload-fill-data"/>
                                         </xf:action>
-                                    </xf:input>
-                                    <a href="meanings.html" target="_blank">
-                                        <span class="glyphicon glyphicon-plus"/>
-                                    </a>
+                                    </xf:input>                                    
+                                    <input type="hidden" data-function="autocomplete" placeholder="Type to search ..." autocomplete="off" />
                                 </div>
                                 <div class="col-xs-2"><!--
                                     <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 2]/@type">
@@ -567,5 +567,7 @@
         <script type="text/javascript" src="$shared/resources/scripts/bootstrap-3.0.3.min.js"/>
         <script src="$shared/resources/scripts/jquery/jquery-ui.min.js" type="text/javascript" charset="utf-8"/>
         <script type="text/javascript" src="resources/js/editor.js"/>
+        <script type="text/javascript" src="resources/js/vendor/select2/select2.js"/>
+        <script type="text/javascript" src="resources/js/select2/select2.js"/>
     </body>
 </html>
