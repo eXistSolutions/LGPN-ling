@@ -83,6 +83,12 @@
                 <xf:instance xmlns="" id="i-suffix-2" src="resources/xml/suffixes/suffix-2.xml"/>
                 <xf:instance xmlns="" id="i-suffix-3" src="resources/xml/suffixes/suffix-3.xml"/>
                 <xf:instance xmlns="" id="i-suffix-4" src="resources/xml/suffixes/suffix-4.xml"/>
+                <xf:instance id="i-meanings-ontology-1">
+                    <TEI:taxonomy/>
+                </xf:instance>
+                <xf:instance id="i-meanings-ontology-2">
+                    <TEI:taxonomy/>
+                </xf:instance>
                 <xf:submission id="s-load-data" method="get" replace="instance" ref="instance('i-default')" validate="false" resource="modules/load.xql?id={bf:appContext('id')}">
                     <xf:message ev:event="xforms-submit-done" level="ephemeral">Data have been loaded.</xf:message>
                     <xf:message ev:event="xforms-submit-error">Failed to load data.</xf:message>
@@ -95,9 +101,15 @@
                     <xf:message ev:event="xforms-submit-done" level="ephemeral">Data have been saved.</xf:message>
                     <xf:message ev:event="xforms-submit-error">Failed to save data</xf:message>
                 </xf:submission>
-                <xf:submission id="s-reload-fill-data" method="post" replace="instance" validate="false" resource="modules/reload-fill-data.xql">
-                    <xf:message ev:event="xforms-submit-done" level="ephemeral">Data reloaded.</xf:message>
-                    <xf:message ev:event="xforms-submit-error" level="ephemeral">Data reload failed.</xf:message>
+                <xf:submission id="s-reload-meanings-1" method="post" replace="instance" validate="false" resource="modules/reload-meanings.xql" ref="instance('i-default')//TEI:entry/TEI:gramGrp[1]/TEI:m[@type != 'suffix' and @n = 1]" targetref="instance('i-meanings-ontology-1')"><!-- TODO remove debug message -->
+                    <xf:message ev:event="xforms-submit-done" level="ephemeral">Meanings reloaded. Content is <xf:output value="string(instance('i-meanings-ontology-1'))"/>
+                    </xf:message>
+                    <xf:message ev:event="xforms-submit-error" level="ephemeral">Meanings reload failed.</xf:message>
+                </xf:submission>
+                <xf:submission id="s-reload-meanings-2" method="post" replace="instance" validate="false" resource="modules/reload-meanings.xql" ref="instance('i-default')//TEI:entry/TEI:gramGrp[1]/TEI:m[@type != 'suffix' and @n = 2]" targetref="instance('i-meanings-ontology-2')"><!-- TODO remove debug message -->
+                    <xf:message ev:event="xforms-submit-done" level="ephemeral">Meanings reloaded. Content is <xf:output value="string(instance('i-meanings-ontology-2'))"/>
+                    </xf:message>
+                    <xf:message ev:event="xforms-submit-error" level="ephemeral">Meanings reload failed.</xf:message>
                 </xf:submission>
                 <xf:action ev:event="xforms-ready">
                     <xf:send submission="s-load-data" if="bf:appContext('id') != ''"/>
@@ -221,7 +233,7 @@
                                     <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 1]/@baseForm">
                                         <xf:label class="input-group-addon">root</xf:label>
                                         <xf:action ev:event="xforms-value-changed">
-                                            <xf:send submission="s-reload-fill-data"/>
+                                            <xf:send submission="s-reload-meanings-1"/>
                                         </xf:action>
                                     </xf:input>
                                     <a href="meanings.html" target="_blank">
@@ -242,7 +254,7 @@
                                     <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 2]/@baseForm" id="baseForm">
                                         <xf:label class="input-group-addon">root</xf:label>
                                         <xf:action ev:event="xforms-value-changed">
-                                            <xf:send submission="s-reload-fill-data"/>
+                                            <xf:send submission="s-reload-meanings-2"/>
                                         </xf:action>
                                     </xf:input>
                                     <a href="meanings.html" target="_blank">
@@ -322,8 +334,12 @@
                                             <span class="input-group-addon">
                                                 <span class="glyphicon glyphicon-tasks"/>
                                                 meanings
+                                            </span><!--<input class="tags" value="" disabled="disabled"/>-->
+                                            <span class="meanings-val">
+                                                <xf:repeat nodeset="instance('i-meanings-ontology-1')//TEI:category">
+                                                    <xf:output ref="TEI:catDesc[@xml:lang='en']"/>
+                                                </xf:repeat>
                                             </span>
-                                            <input class="tags" value="" disabled="disabled"/>
                                         </div>
                                     </span>
                                 </div>
@@ -341,8 +357,12 @@
                                             <span class="input-group-addon">
                                                 <span class="glyphicon glyphicon-tasks"/>
                                                 meanings
+                                            </span><!--<input class="tags" value="" disabled="disabled"/>-->
+                                            <span class="meanings-val">
+                                                <xf:repeat nodeset="instance('i-meanings-ontology-2')//TEI:category">
+                                                    <xf:output ref="TEI:catDesc[@xml:lang='en']"/>
+                                                </xf:repeat>
                                             </span>
-                                            <input class="tags" value="" disabled="disabled"/>
                                         </div>
                                     </span>
                                 </div>

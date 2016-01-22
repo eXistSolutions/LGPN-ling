@@ -69,3 +69,8 @@ body .input-group .tagit li {
 body .xfRequired > .xfLabel::after {
   content: "" !important;
 }
+	
+.meanings-val * {
+    display:inline !important;
+}
+
