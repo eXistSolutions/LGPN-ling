@@ -100,7 +100,9 @@
                     <xf:message ev:event="xforms-submit-error" level="ephemeral">Data reload failed.</xf:message>
                 </xf:submission>
                 
-                <xf:submission id="s-embedHTML" replace="embedHTML" targetid="mountpoint" validate="false" resource="meanings.html" method="get"/>
+                <xf:submission id="s-embedHTML" replace="embedHTML" targetid="mountpoint" validate="false" resource="meanings.html#include" method="get">
+                    <xf:extension includeCSS="true" includeScript="true"></xf:extension>
+                </xf:submission>
                 
                 <xf:action ev:event="xforms-ready">
                     <xf:send submission="s-load-data" if="bf:appContext('id') != ''"/>
