@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:bfc="http://betterform.sourceforge.net/xforms/controls" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:TEI="http://www.tei-c.org/ns/1.0" xmlns:xf="http://www.w3.org/2002/xforms" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:TEI="http://www.tei-c.org/ns/1.0" xmlns:bfc="http://betterform.sourceforge.net/xforms/controls" xmlns:xf="http://www.w3.org/2002/xforms" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
     <head>
         <title>LGPN</title><!--
         ~ Copyright (c) 2015. existsolutions - http://www.exsitsolutions.com
@@ -110,11 +110,9 @@
                     </xf:message>
                     <xf:message ev:event="xforms-submit-error" level="ephemeral">Meanings reload failed.</xf:message>
                 </xf:submission>
-                
                 <xf:submission id="s-embedHTML" replace="embedHTML" targetid="mountpoint" validate="false" resource="meanings.html#include" method="get">
-                    <xf:extension includeCSS="true" includeScript="true"></xf:extension>
+                    <xf:extension includeCSS="true" includeScript="true"/>
                 </xf:submission>
-                
                 <xf:action ev:event="xforms-ready">
                     <xf:send submission="s-load-data" if="bf:appContext('id') != ''"/>
                     <xf:send submission="s-embedHTML"/>
@@ -236,11 +234,22 @@
                                 </div>
                                 <div class="col-xs-2">
                                     <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 1]/@baseForm">
+                                        <xf:action ev:event="autocomplete-callback">
+                                            <xf:setvalue ref="." value="event('termValue')"/>
+                                        </xf:action>
                                         <xf:label class="input-group-addon">root</xf:label>
                                         <xf:action ev:event="xforms-value-changed">
                                             <xf:send submission="s-reload-meanings-1"/>
                                         </xf:action>
                                     </xf:input>
+                                    <input type="hidden" data-function="autocomplete" placeholder="Typee to search ..." autocomplete="off"/><!--
+                                    <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 1]/@baseForm">
+                                        <xf:label class="input-group-addon">root</xf:label>
+                                        <xf:action ev:event="xforms-value-changed">
+                                            <xf:send submission="s-reload-meanings-1"/>
+                                        </xf:action>
+                                    </xf:input>
+                                    -->
                                     <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
                                         <xf:label/>
                                         <bfc:show dialog="meanings" ev:event="DOMActivate"/>
@@ -257,16 +266,16 @@
                                     </xf:input>
                                 </div>
                                 <div class="col-xs-2">
-                                    <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 2]/@baseForm" id="baseForm">
+                                    <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 2]/@baseForm">
                                         <xf:action ev:event="autocomplete-callback">
-                                            <xf:setvalue ref="." value="event('termValue')"></xf:setvalue>
+                                            <xf:setvalue ref="." value="event('termValue')"/>
                                         </xf:action>
                                         <xf:label class="input-group-addon">root</xf:label>
                                         <xf:action ev:event="xforms-value-changed">
                                             <xf:send submission="s-reload-meanings-2"/>
                                         </xf:action>
-                                    </xf:input>                                    
-                                    <input type="hidden" data-function="autocomplete" placeholder="Type to search ..." autocomplete="off" />
+                                    </xf:input>
+                                    <input type="hidden" data-function="autocomplete" placeholder="Typee to search ..." autocomplete="off"/>
                                 </div>
                                 <div class="col-xs-2"><!--
                                     <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 2]/@type">
@@ -581,7 +590,6 @@
             <xf:label>Add meaning</xf:label>
             <div id="mountpoint"/>
         </bfc:dialog>
-                    
         <script type="text/javascript" src="$shared/resources/scripts/jquery/jquery-1.7.1.min.js"/>
         <script type="text/javascript" src="$shared/resources/scripts/loadsource.js"/>
         <script type="text/javascript" src="$shared/resources/scripts/bootstrap-3.0.3.min.js"/>
