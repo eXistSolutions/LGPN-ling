@@ -12,7 +12,7 @@
     <category baseForm="αἰσχρ" ana="#shameful #ugly"/>
     <category baseForm="βoλ" ana="#will #advice #Council"/>
     <category baseForm="βατ" ana="#blackberry"/>
-    <category baseForm="δωρ" ana="#XYZ #123"/>
+    <category baseForm="δωρ" ana="#gift"/>
     <category baseForm="δᾱμ" ana="#people"/>
     <category baseForm="εχ" ana="#have #hold"/>
     <category baseForm="ιππ" ana=""/>
@@ -29,4 +29,5 @@
     <category baseForm="φῡλ" ana="#tribe"/>
     <category baseForm="ᾱμερ" ana="#day"/>
     <category baseForm="αγαθ" ana="#good"/>
+    <category baseForm="blah" ana="#gift"/>
 </taxonomy>

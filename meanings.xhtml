@@ -12,7 +12,20 @@
         <div style="display:none">
             <xf:model id="model-1">
                 <xf:instance id="i-default">
-                    <category xmlns="http://www.tei-c.org/ns/1.0"/>
+                    <category xmlns="http://www.tei-c.org/ns/1.0" baseForm="">
+                        <meaning label="">
+                            <translation xml:lang="en"/>
+                            <translation xml:lang="fr"/>
+                        </meaning>
+                        <meaning label="">
+                            <translation xml:lang="en"/>
+                            <translation xml:lang="fr"/>
+                        </meaning>
+                        <meaning label="">
+                            <translation xml:lang="en"/>
+                            <translation xml:lang="fr"/>
+                        </meaning>
+                    </category>
                 </xf:instance><!--
                 <xf:instance id="i-meanings-ontology-1">
                     <TEI:taxonomy/>
@@ -54,12 +67,14 @@
                 <div class="row">
                     <div class="col-xs-2">
                         <div class="input-group input-group-sm">
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-tag"/> label
-                    </span>
-                            <input name="meaning1" class="form-control" id="meaning1" placeholder="good"/>
+                            <xf:input class="input-group -form-control" ref="TEI:meaning[1]/@label">
+                                <xf:label class="input-group-addon">
+                                    <span class="glyphicon glyphicon-tag"/> label</xf:label>
+                                <xf:hint>meaning</xf:hint>
+                            </xf:input>
                         </div>
                     </div>
+                    <div class="col-xs-1"/><!--
                     <div class="col-xs-2">
                         <div class="input-group input-group-sm">
                             <span class="input-group-addon">
@@ -68,74 +83,37 @@
                             <input type="checkbox" name="new1" class="form-control" id="new1"/>
                         </div>
                     </div>
+                    -->
                     <div class="col-xs-3">
                         <div class="input-group input-group-sm">
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-flag"/> en
-                    </span>
-                            <input name="en" class="form-control" id="en" placeholder="English description"/>
+                            <xf:input class="input-group -form-control" ref="TEI:meaning[1]/TEI:translation[@xml:lang='en']">
+                                <xf:hint>English translation</xf:hint>
+                                <xf:label class="input-group-addon">
+                                    <span class="glyphicon glyphicon-flag"/> en</xf:label>
+                            </xf:input>
                         </div>
                     </div>
                     <div class="col-xs-3">
                         <div class="input-group input-group-sm">
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-flag"/> fr
-                    </span>
-                            <input name="fr" class="form-control" id="fr" placeholder="French description"/>
+                            <xf:input class="input-group -form-control" ref="TEI:meaning[1]/TEI:translation[@xml:lang='fr']">
+                                <xf:hint>French translation</xf:hint>
+                                <xf:label class="input-group-addon">
+                                    <span class="glyphicon glyphicon-flag"/> fr</xf:label>
+                            </xf:input>
                         </div>
                     </div>
                 </div>
                 <br/>
-                <div class="row">
-                    <div class="col-xs-2">
-                        <div class="input-group input-group-sm">
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-tag"/> label
-                    </span>
-                            <input name="meaning2" class="form-control" id="meaning2" placeholder=""/>
-                        </div>
-                    </div>
-                    <div class="col-xs-2">
-                        <div class="input-group input-group-sm">
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-plus"/> new meaning
-                    </span>
-                            <input type="checkbox" name="new2" class="form-control" id="new2"/>
-                        </div>
-                    </div>
-                    <div class="col-xs-3">
-                        <div class="input-group input-group-sm">
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-flag"/> en
-                    </span>
-                            <input name="en" class="form-control" id="en" placeholder="English description"/>
-                        </div>
-                    </div>
-                    <div class="col-xs-3">
-                        <div class="input-group input-group-sm">
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-flag"/> fr
-                            </span>
-                            <input name="fr" class="form-control" id="fr" placeholder="French description"/>
-                        </div>
-                    </div>
-                </div>
                 <br/>
                 <div class="row">
                     <div class="form-group">
                         <div class="col-sm-offset-4">
-                            <xf:submit class="-btn -btn-default -glyphicon -glyphicon-save" submission="s-save-data">
+                            <xf:submit class="-btn -btn-primary -glyphicon -glyphicon-save" submission="s-save-data">
                                 <xf:label>Save</xf:label>
                             </xf:submit>
-                            <button type="submit" class="btn btn-primary">
-                                <i class="glyphicon glyphicon-search"/>
-                        Save
-                    </button>
-                            <span class="glyphicon"/>
-                            <button type="submit" class="btn btn-primary">
-                                <i class="glyphicon glyphicon-search"/>
-                        Cancel
-                    </button>
+                            <xf:trigger class="-bigbtn -btn-primary -glyphicon -glyphicon-trash">
+                                <xf:label>Cancel</xf:label><!-- <script ev:event="DOMActivate" type="text/javascript">close()</script> -->
+                            </xf:trigger>
                         </div>
                     </div>
                 </div>

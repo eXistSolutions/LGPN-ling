@@ -8,18 +8,41 @@ let $data := request:get-data()
 let $id := $data//TEI:category/@baseForm
 (:let $id := 'δωρ':)
 
-let $log := util:log("INFO", "data: " || count($data))
-let $doc := doc($config:taxonomies-root || "/morph.xml")
+let $log := util:log("INFO", "data: " || $data)
+let $morphemes := doc($config:taxonomies-root || "/morphemes.xml")
+let $ontology := doc($config:taxonomies-root || "/ontology.xml")
+
 let $c := console:log('data id' || $id || ' all ' || $data )
-let $replacement := <category baseForm="{$id}" ana="#XYZ #123" xmlns="http://www.tei-c.org/ns/1.0"/>
+
+let $ana := for $meaning in $data//TEI:category/TEI:meaning
+            return string-join('#' || $meaning/@label/string(), ' ')
+            
+let $replacement := <category baseForm="{$id}" ana="{$ana}" xmlns="http://www.tei-c.org/ns/1.0"/>
 return 
-    if($doc//TEI:category[@baseForm=$id]) then
+(
+(:  insert/update morpheme  :)
+    if($morphemes//TEI:category[@baseForm=$id]) then
+        update replace $morphemes//TEI:taxonomy/TEI:category[@baseForm=$id] with $replacement
+    else
+        update insert $replacement into $morphemes//TEI:taxonomy
+,
+(: insert/update meanings :)
+    for $meaning in $data//TEI:category/TEI:meaning
+    let $meaningReplacement := 
+        <category xml:id="{$meaning/@label}" xmlns="http://www.tei-c.org/ns/1.0">
+            <catDesc xml:lang="en">{$meaning/TEI:translation[@xml:lang='en']/string()}</catDesc>
+            <catDesc xml:lang="fr">{$meaning/TEI:translation[@xml:lang='fr']/string()}</catDesc>
+        </category>
+
+    return
+    if($ontology//TEI:category[@xml:id=$meaning/@label]) then
             (
-                    let $c := console:log('update')
- return update replace $doc//TEI:taxonomy/TEI:category[@baseForm=$id] with $replacement
+                let $c := console:log('update')
+                return update replace $ontology//TEI:taxonomy/TEI:category[@xml:id=$meaning/@label] with $meaningReplacement
             )
         else
             (
-                    let $c := console:log('insert' || $replacement)
-                return    update insert $replacement into $doc//TEI:taxonomy
+                let $c := console:log('insert' || $replacement)
+                return    update insert $meaningReplacement into $ontology//TEI:taxonomy
+            )
 )

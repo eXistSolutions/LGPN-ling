@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taxonomy xmlns="http://www.tei-c.org/ns/1.0" xml:id="ontology">
+    <category xml:id="good">
+        <catDesc xml:lang="en">good</catDesc>
+        <catDesc xml:lang="fr">bon</catDesc>
+    </category>
+    <category xml:id="council">
+        <catDesc xml:lang="en">council</catDesc>
+        <catDesc xml:lang="fr">Conseil</catDesc>
+    </category>
+    <category xml:id="advice">
+        <catDesc xml:lang="en">advice</catDesc>
+        <catDesc xml:lang="fr">conseil</catDesc>
+    </category>
+    <category xml:id="will">
+        <catDesc xml:lang="en">will</catDesc>
+        <catDesc xml:lang="fr">vouloir</catDesc>
+    </category>
+    <category xml:id="shameful">
+        <catDesc xml:lang="en">shameful</catDesc>
+        <catDesc xml:lang="fr">honteux</catDesc>
+    </category>
+    <category xml:id="ugly">
+        <catDesc xml:lang="en">ugly</catDesc>
+        <catDesc xml:lang="fr">laid</catDesc>
+    </category>
+    <category xml:id="hump">
+        <catDesc xml:lang="en">hump</catDesc>
+        <catDesc xml:lang="fr">bosse</catDesc>
+    </category>
+    <category xml:id="best">
+        <catDesc xml:lang="en">best</catDesc>
+    </category>
+    <category xml:id="tribe">
+        <catDesc xml:lang="en">tribe</catDesc>
+    </category>
+    <category xml:id="friend">
+        <catDesc xml:lang="en">friend</catDesc>
+    </category>
+    <category xml:id="shame">
+        <catDesc xml:lang="en">shame</catDesc>
+    </category>
+    <category xml:id="ugliness">
+        <catDesc xml:lang="en">ugliness</catDesc>
+    </category>
+    <category xml:id="well">
+        <catDesc xml:lang="en">well</catDesc>
+    </category>
+    <category xml:id="lead">
+        <catDesc xml:lang="en">lead</catDesc>
+    </category>
+    <category xml:id="people">
+        <catDesc xml:lang="en">people</catDesc>
+    </category>
+    <category xml:id="glory">
+        <catDesc xml:lang="en">glory</catDesc>
+    </category>
+    <category xml:id="father">
+        <catDesc xml:lang="en">father</catDesc>
+    </category>
+    <category xml:id="have">
+        <catDesc xml:lang="en">have</catDesc>
+    </category>
+    <category xml:id="hold">
+        <catDesc xml:lang="en">hold</catDesc>
+    </category>
+    <category xml:id="unidentifiable">
+        <catDesc xml:lang="en">unidentifiable</catDesc>
+    </category>
+    <category xml:id="might">
+        <catDesc xml:lang="en">might</catDesc>
+    </category>
+    <category xml:id="blackberry">
+        <catDesc xml:lang="en">blackberry (tree)</catDesc>
+    </category>
+    <category xml:id="Syrian">
+        <catDesc xml:lang="en">Syrian</catDesc>
+    </category>
+    <category xml:id="town">
+        <catDesc xml:lang="en">town</catDesc>
+    </category>
+    <category xml:id="speak">
+        <catDesc xml:lang="en">speak</catDesc>
+    </category>
+    <category xml:id="day">
+        <catDesc xml:lang="en">day</catDesc>
+    </category>
+    <category xml:id="XXX">
+        <catDesc xml:lang="en">XXX</catDesc>
+    </category>
+    <category xml:id="Abaios">
+        <catDesc xml:lang="en">Abaios (Apollon)</catDesc>
+    </category>
+    <category xmlns="" xml:id="gift">
+        <catDesc xml:lang="en">
+            <translation xmlns="http://www.tei-c.org/ns/1.0" xml:lang="en">gift</translation>
+        </catDesc>
+        <catDesc xml:lang="fr">
+            <translation xmlns="http://www.tei-c.org/ns/1.0" xml:lang="fr">aalpha</translation>
+        </catDesc>
+    </category>
+    <category xml:id="select">
+        <catDesc xml:lang="en">select</catDesc>
+    </category>
+    <category xml:id="choose">
+        <catDesc xml:lang="en">choose</catDesc>
+    </category>
+    <category xml:id="delicate">
+        <catDesc xml:lang="en">delicate</catDesc>
+    </category>
+    <category xml:id="pretty">
+        <catDesc xml:lang="en">pretty</catDesc>
+    </category>
+    <category xml:id="fight">
+        <catDesc xml:lang="en">fight</catDesc>
+    </category>
+    <category xml:id="hair">
+        <catDesc xml:lang="en">hair</catDesc>
+    </category>
+    <category xml:id="foliage">
+        <catDesc xml:lang="en">foliage</catDesc>
+    </category>
+    <category xml:id="gift">
+        <catDesc xml:lang="en">gift</catDesc>
+        <catDesc xml:lang="fr">cadeau</catDesc>
+    </category>
+</taxonomy>
