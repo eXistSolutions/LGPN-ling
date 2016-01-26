@@ -212,11 +212,7 @@
                                         <xf:label class="input-group-addon">certainty</xf:label>
                                     </xf:input>
                                 </div>
-                                <div class="col-xs-3"><!--
-                                    <xf:input class="input-group -form-control" ref="TEI:m['prefix' and @n = 1]">
-                                        <xf:label class="input-group-addon">prefix</xf:label>
-                                    </xf:input>
-                                -->
+                                <div class="col-xs-3">
                                     <xf:select1 class="input-group -form-control" ref="TEI:m[@type = 'prefix' and @n = 1]">
                                         <xf:label class="input-group-addon">prefix</xf:label>
                                         <xf:itemset nodeset="instance('i-prefix-1')/option">
@@ -227,12 +223,12 @@
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="col-xs-2">
+                                <div class="col-xs-3">
                                     <xf:input class="input-group -form-control" ref="TEI:m[@type = 'radical' and @n = 1]">
                                         <xf:label class="input-group-addon">constituent 1</xf:label>
                                     </xf:input>
                                 </div>
-                                <div class="col-xs-2">
+                                <div class="col-xs-3">
                                     <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 1]/@baseForm">
                                         <xf:action ev:event="autocomplete-callback">
                                             <xf:setvalue ref="." value="event('termValue')"/>
@@ -242,30 +238,18 @@
                                             <xf:send submission="s-reload-meanings-1"/>
                                         </xf:action>
                                     </xf:input>
-                                    <input type="hidden" data-function="autocomplete" placeholder="Typee to search ..." autocomplete="off"/><!--
-                                    <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 1]/@baseForm">
-                                        <xf:label class="input-group-addon">root</xf:label>
-                                        <xf:action ev:event="xforms-value-changed">
-                                            <xf:send submission="s-reload-meanings-1"/>
-                                        </xf:action>
-                                    </xf:input>
-                                    -->
+                                    <input type="hidden" data-function="autocomplete" placeholder="Type to search ..." autocomplete="off"/>
                                     <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
                                         <xf:label/>
                                         <bfc:show dialog="meanings" ev:event="DOMActivate"/>
                                     </xf:trigger>
                                 </div>
-                                <div class="col-xs-2"><!--
-                                    <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 1]/@type">
-                                        <xf:label class="input-group-addon">type</xf:label>
-                                    </xf:input>
-                                --></div>
-                                <div class="col-xs-2">
+                                <div class="col-xs-3">
                                     <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 2]">
                                         <xf:label class="input-group-addon">constituent 2</xf:label>
                                     </xf:input>
                                 </div>
-                                <div class="col-xs-2">
+                                <div class="col-xs-3">
                                     <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 2]/@baseForm">
                                         <xf:action ev:event="autocomplete-callback">
                                             <xf:setvalue ref="." value="event('termValue')"/>
@@ -275,13 +259,8 @@
                                             <xf:send submission="s-reload-meanings-2"/>
                                         </xf:action>
                                     </xf:input>
-                                    <input type="hidden" data-function="autocomplete" placeholder="Typee to search ..." autocomplete="off"/>
+                                    <input type="hidden" data-function="autocomplete" placeholder="Type to search ..." autocomplete="off"/>
                                 </div>
-                                <div class="col-xs-2"><!--
-                                    <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 2]/@type">
-                                        <xf:label class="input-group-addon">type</xf:label>
-                                    </xf:input>
-                                --></div>
                             </div>
                             <div class="row">
                                 <div class="col-xs-6">

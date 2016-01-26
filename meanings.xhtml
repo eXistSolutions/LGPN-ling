@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:TEI="http://www.tei-c.org/ns/1.0" xmlns:bfc="http://betterform.sourceforge.net/xforms/controls" xmlns:xf="http://www.w3.org/2002/xforms">
+    <head>
+        <title>LGPN</title><!--
+        ~ Copyright (c) 2015. existsolutions - http://www.exsitsolutions.com
+        -->
+        <link rel="stylesheet" type="text/css" href="$shared/resources/css/bootstrap-3.0.3.min.css"/>
+        <link href="resources/js/vendor/select2/select2.css" rel="stylesheet"/>
+        <link rel="stylesheet" type="text/css" href="resources/css/editor.css"/>
+    </head>
+    <body>
+        <div style="display:none">
+            <xf:model id="model-1">
+                <xf:instance id="i-default">
+                    <category xmlns="http://www.tei-c.org/ns/1.0"/>
+                </xf:instance><!--
+                <xf:instance id="i-meanings-ontology-1">
+                    <TEI:taxonomy/>
+                </xf:instance>
+                <xf:instance id="i-meanings-ontology-2">
+                    <TEI:taxonomy/>
+                </xf:instance>
+-->
+                <xf:submission id="s-load-data" method="get" replace="instance" ref="instance('i-default')" validate="false" resource="modules/loadMorpheme.xql?id={bf:appContext('id')}">
+                    <xf:message ev:event="xforms-submit-done" level="ephemeral">Data have been loaded.</xf:message>
+                    <xf:message ev:event="xforms-submit-error">Failed to load data.</xf:message>
+                </xf:submission>
+                <xf:submission id="s-save-data" method="post" replace="none" validate="true" resource="modules/saveMorpheme.xql">
+                    <xf:action ev:event="xforms-submit"><!--                        <xf:setvalue ref="instance('i-default')//TEI:category/@baseForm" value="instance('i-default')//TEI:category/@baseForm"/> -->
+                        <xf:message ev:event="xforms-submit-done" level="ephemeral">Saving...</xf:message>
+                    </xf:action>
+                    <xf:message ev:event="xforms-submit-done" level="ephemeral">Data have been saved.</xf:message>
+                    <xf:message ev:event="xforms-submit-error">Failed to save data</xf:message>
+                </xf:submission>
+                <xf:action ev:event="xforms-ready">
+                    <xf:send submission="s-load-data" if="bf:appContext('id') != ''"/>
+                </xf:action>
+            </xf:model>
+        </div>
+        <div>
+            <fieldset id="segment">
+                <legend>
+            LGPN-Ling morpheme sub-form
+        </legend>
+                <div class="row">
+                    <div class="col-xs-4">
+                        <xf:input class="input-group input-group-lg -form-control" ref="//TEI:category/@baseForm">
+                            <xf:label class="input-group-addon">α</xf:label>
+                            <xf:hint>αγαθ</xf:hint>
+                        </xf:input>
+                    </div>
+                </div>
+                <hr/>
+                <div class="row">
+                    <div class="col-xs-2">
+                        <div class="input-group input-group-sm">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-tag"/> label
+                    </span>
+                            <input name="meaning1" class="form-control" id="meaning1" placeholder="good"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="input-group input-group-sm">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-plus"/> new meaning
+                    </span>
+                            <input type="checkbox" name="new1" class="form-control" id="new1"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="input-group input-group-sm">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-flag"/> en
+                    </span>
+                            <input name="en" class="form-control" id="en" placeholder="English description"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="input-group input-group-sm">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-flag"/> fr
+                    </span>
+                            <input name="fr" class="form-control" id="fr" placeholder="French description"/>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="col-xs-2">
+                        <div class="input-group input-group-sm">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-tag"/> label
+                    </span>
+                            <input name="meaning2" class="form-control" id="meaning2" placeholder=""/>
+                        </div>
+                    </div>
+                    <div class="col-xs-2">
+                        <div class="input-group input-group-sm">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-plus"/> new meaning
+                    </span>
+                            <input type="checkbox" name="new2" class="form-control" id="new2"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="input-group input-group-sm">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-flag"/> en
+                    </span>
+                            <input name="en" class="form-control" id="en" placeholder="English description"/>
+                        </div>
+                    </div>
+                    <div class="col-xs-3">
+                        <div class="input-group input-group-sm">
+                            <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-flag"/> fr
+                            </span>
+                            <input name="fr" class="form-control" id="fr" placeholder="French description"/>
+                        </div>
+                    </div>
+                </div>
+                <br/>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-sm-offset-4">
+                            <xf:submit class="-btn -btn-default -glyphicon -glyphicon-save" submission="s-save-data">
+                                <xf:label>Save</xf:label>
+                            </xf:submit>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="glyphicon glyphicon-search"/>
+                        Save
+                    </button>
+                            <span class="glyphicon"/>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="glyphicon glyphicon-search"/>
+                        Cancel
+                    </button>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+        </div>
+        <script type="text/javascript" src="$shared/resources/scripts/jquery/jquery-1.7.1.min.js"/>
+        <script type="text/javascript" src="$shared/resources/scripts/loadsource.js"/>
+        <script type="text/javascript" src="$shared/resources/scripts/bootstrap-3.0.3.min.js"/>
+        <script src="$shared/resources/scripts/jquery/jquery-ui.min.js" type="text/javascript" charset="utf-8"/>
+        <script type="text/javascript" src="resources/js/editor.js"/>
+        <script type="text/javascript" src="resources/js/vendor/select2/select2.js"/>
+        <script type="text/javascript" src="resources/js/select2/select2.js"/>
+    </body>
+</html>
