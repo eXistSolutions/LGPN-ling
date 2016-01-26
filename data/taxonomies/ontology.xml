@@ -60,9 +60,11 @@
     </category>
     <category xml:id="have">
         <catDesc xml:lang="en">have</catDesc>
+        <catDesc xml:lang="fr">avoir</catDesc>
     </category>
     <category xml:id="hold">
         <catDesc xml:lang="en">hold</catDesc>
+        <catDesc xml:lang="fr"/>
     </category>
     <category xml:id="unidentifiable">
         <catDesc xml:lang="en">unidentifiable</catDesc>
@@ -81,6 +83,7 @@
     </category>
     <category xml:id="speak">
         <catDesc xml:lang="en">speak</catDesc>
+        <catDesc xml:lang="fr">parler</catDesc>
     </category>
     <category xml:id="day">
         <catDesc xml:lang="en">day</catDesc>
@@ -93,6 +96,7 @@
     </category>
     <category xml:id="gift">
         <catDesc xml:lang="en">gift</catDesc>
+        <catDesc xml:lang="fr">cadeau</catDesc>
     </category>
     <category xml:id="select">
         <catDesc xml:lang="en">select</catDesc>

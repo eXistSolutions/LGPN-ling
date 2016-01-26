@@ -6,14 +6,14 @@
     <category baseForm="XXX" ana="#XXX"/>
     <category baseForm="Αβαι" ana="#Abaios"/>
     <category baseForm="αγαθ" ana="#good"/>
-    <category baseForm="αγορ" ana="#speak"/>
+    <category baseForm="αγορ" ana="#speak #good"/>
     <category baseForm="αισχ" ana="#shame #ugliness"/>
     <category baseForm="αριστ" ana="#best"/>
     <category baseForm="αρχ" ana="#lead"/>
     <category baseForm="αἰσχρ" ana="#shameful #ugly"/>
     <category baseForm="βoλ" ana="#will #advice #Council"/>
     <category baseForm="βατ" ana="#blackberry"/>
-    <category baseForm="δωρ" ana="#gift"/>
+    <category baseForm="δωρ" ana="#gift #gift"/>
     <category baseForm="δᾱμ" ana="#people"/>
     <category baseForm="εχ" ana="#have #hold"/>
     <category baseForm="ιππ" ana=""/>

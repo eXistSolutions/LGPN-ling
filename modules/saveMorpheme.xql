@@ -12,8 +12,6 @@ let $log := util:log("INFO", "data: " || $data)
 let $morphemes := doc($config:taxonomies-root || "/morphemes.xml")
 let $ontology := doc($config:taxonomies-root || "/ontology.xml")
 
-let $c := console:log('data id' || $id || ' all ' || $data )
-
 let $ana := for $meaning in $data//TEI:category/TEI:meaning
             return string-join('#' || $meaning/@label/string(), ' ')
             
@@ -37,12 +35,15 @@ return
     return
     if($ontology//TEI:category[@xml:id=$meaning/@label]) then
             (
-                let $c := console:log('update')
+                let $c := console:log('update' || $meaningReplacement)
                 return update replace $ontology//TEI:taxonomy/TEI:category[@xml:id=$meaning/@label] with $meaningReplacement
             )
         else
             (
-                let $c := console:log('insert' || $replacement)
+                let $c := console:log('insert' || $meaningReplacement)
+                
+(:let $c := console:log('data id' || $id || ' all ' || $data ):)
+
                 return    update insert $meaningReplacement into $ontology//TEI:taxonomy
             )
 )
