@@ -5,7 +5,7 @@
     <category baseForm="Ϝαστ" ana="#town"/>
     <category baseForm="XXX" ana="#XXX"/>
     <category baseForm="Αβαι" ana="#Abaios"/>
-    <category baseForm="αγαθ" ana="#good"/>
+    <category baseForm="αγαθ" ana="#good #will #gift #good #will #gift"/>
     <category baseForm="αγορ" ana="#speak #good"/>
     <category baseForm="αισχ" ana="#shame #ugliness"/>
     <category baseForm="αριστ" ana="#best"/>
@@ -29,4 +29,5 @@
     <category baseForm="φιλ" ana="#friend"/>
     <category baseForm="φῡλ" ana="#tribe"/>
     <category baseForm="ᾱμερ" ana="#day"/>
+    <category baseForm="blah" ana="#good #gift"/>
 </taxonomy>
