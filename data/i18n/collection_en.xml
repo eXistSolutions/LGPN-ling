@@ -32,7 +32,7 @@
     <msg key="adjective">Adjective</msg>
     <msg key="pronoun">Pronoun</msg>
     <msg key="adverb">Adverb</msg>
-    <msg key="semanticFields">covering semanticFields</msg>
+    <msg key="semanticFields">semantics</msg>
     <msg key="containingSuffix">containing suffix</msg>
     <msg key="nameCatalogue">Name catalogue</msg>
     <msg key="placeCatalogue">Place catalogue</msg>
@@ -49,14 +49,16 @@
     <msg key="greek">Greek</msg>
     <msg key="latin">Latin</msg>
     <msg key="period">Period</msg>
-    <msg key="dialect">Dialectal specificity</msg>
+    <msg key="gender">Gender</msg>
+    <msg key="dialect">Dialects</msg>
     <msg key="prefix">Prefix</msg>
     <msg key="suffix">Suffix</msg>
-    <msg key="radicals">Root typology</msg>
+    <msg key="suff">Suff.</msg>
+    <msg key="radicals">Structure</msg>
     <msg key="root">Root</msg>
     <msg key="semantics">Semantics</msg>
-    <msg key="sources">Sources and lexicographical references</msg>
-    <msg key="bibliography">Onomastic and linguistic bibliography</msg>
+    <msg key="sources">Lexis</msg>
+    <msg key="bibliography">References</msg>
     <msg key="edit">Edit</msg>
     <msg key="newEntry">New entry</msg>
 </catalogue>

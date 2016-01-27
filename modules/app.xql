@@ -53,7 +53,11 @@ function app:entry-id($node as node(), $model as map(*)) {
 declare
 function app:entry-form($node as node(), $model as map(*), $langId as xs:string) {
     let $entry := $model("entry")
-    return <td>{data($entry//TEI:entry//TEI:orth[@type=$langId])}</td>
+    return 
+        if($langId="greek") then
+        <td><b>{data($entry//TEI:entry//TEI:orth[@type=$langId])}</b></td>
+        else 
+        <td>{data($entry//TEI:entry//TEI:orth[@type=$langId])}</td>
 };
 
 
@@ -79,10 +83,18 @@ function app:entry-period($node as node(), $model as map(*)) {
 
 
 declare
+function app:entry-gender($node as node(), $model as map(*)) {
+    let $entry := $model("entry")
+    return <td>[m/f]</td>
+};
+
+declare
 function app:entry-morpheme($node as node(), $model as map(*), $type as xs:string, $position as xs:integer?) {
     let $entry := $model("entry")
         let $subentries : = count($entry//TEI:entry//TEI:gramGrp)
+        let $bold := if ($type='radical' or $position=1) then 'font-weight: bold;' else ()
     return <td>
+        {attribute style {$bold}}
         {if($subentries > 1) then 
             <table>
                 {

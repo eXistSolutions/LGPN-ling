@@ -11,10 +11,13 @@
                         <thead>
                             <tr>
                                 <th>
+                                    <i18n:text key="latin">Latin</i18n:text>
+                                </th>
+                                <th>
                                     <i18n:text key="greek">Greek</i18n:text>
                                 </th>
                                 <th>
-                                    <i18n:text key="latin">Latin</i18n:text>
+                                    <i18n:text key="gender">Gender</i18n:text>
                                 </th>
                                 <th>
                                     <i18n:text key="dialect">Dialect</i18n:text>
@@ -30,24 +33,24 @@
                                 <th>
                                     <i18n:text key="root">Root</i18n:text>2</th>
                                 <th>
-                                    <i18n:text key="suffix">Suffix</i18n:text>4</th>
+                                    <i18n:text key="suff">Suff.</i18n:text>4</th>
                                 <th>
-                                    <i18n:text key="suffix">Suffix</i18n:text>3</th>
+                                    <i18n:text key="suff">Suff.</i18n:text>3</th>
                                 <th>
-                                    <i18n:text key="suffix">Suffix</i18n:text>2</th>
+                                    <i18n:text key="suff">Suff.</i18n:text>2</th>
                                 <th>
-                                    <i18n:text key="suffix">Suffix</i18n:text>1</th>
+                                    <i18n:text key="suff">Suff.</i18n:text>1</th>
                                 <th>
-                                    <i18n:text key="radicals">Radicals typology</i18n:text>
+                                    <i18n:text key="radicals">Structure</i18n:text>
                                 </th>
                                 <th>
                                     <i18n:text key="semantics">Semantics</i18n:text>
                                 </th>
                                 <th>
-                                    <i18n:text key="sources">Sources &amp; lexicographic references</i18n:text>
+                                    <i18n:text key="sources">Lexis</i18n:text>
                                 </th>
                                 <th>
-                                    <i18n:text key="bibliography">Onomastic &amp; linguistic bibliography</i18n:text>
+                                    <i18n:text key="bibliography">References</i18n:text>
                                 </th>
                                 <th>
                                     <i18n:text key="edit"/>
@@ -56,8 +59,9 @@
                         </thead>
                         <tbody>
                             <tr class="templates:each?from=entries&amp;to=entry"><!--                                <td data-template="app:entry-id"/> -->
-                                <td data-template="app:entry-form" data-template-langId="greek"/>
-                                <td data-template="app:entry-form" data-template-langId="latin"/><!--                                <td data-template="app:entry-stripped" data-template-lang="greek"/> -->
+                                <td data-template="app:entry-form" data-template-langId="latin"/>
+                                <td data-template="app:entry-form" data-template-langId="greek"/><!--                                <td data-template="app:entry-stripped" data-template-lang="greek"/> -->
+                                <td data-template="app:entry-gender"/>
                                 <td data-template="app:entry-dialect"/>
                                 <td data-template="app:entry-period"/>
                                 <td data-template="app:entry-morpheme" data-template-position="1" data-template-type="prefix"/>
