@@ -31,7 +31,13 @@ declare function app:lang($node as node(), $model as map(*), $lang as xs:string?
 };
 
 declare function app:entries($node as node(), $model as map(*)) {
-    map { "entries" := collection($config:names-root)//TEI:TEI }
+    let $entries :=
+    for $i in collection($config:names-root)//TEI:TEI
+    order by $i//TEI:entry//TEI:orth[@type='greek']
+        return $i
+    
+    return
+    map { "entries" := $entries }
 };
 
 declare
