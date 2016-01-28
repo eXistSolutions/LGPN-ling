@@ -37,8 +37,8 @@ declare variable $config:names-root := $config:ling-data-root || "/names";
 declare variable $config:taxonomies-root := $config:ling-data-root || "/taxonomies";
 
  (:prosopographical database data:)
-declare variable $config:lgpn-places := $config:data-root || "//volume0.places.xml";
-declare variable $config:lgpn-names := $config:data-root || "//volume0.names.xml";
+declare variable $config:lgpn-places := $config:data-root || "/volume0.places.xml";
+declare variable $config:lgpn-names := $config:data-root || "/volume0.names.xml";
 
  (:i18n catalogues stay here so far:)
 declare variable $config:i18n-root := $config:app-root || "/data/i18n";
