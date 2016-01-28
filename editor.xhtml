@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:TEI="http://www.tei-c.org/ns/1.0" xmlns:bfc="http://betterform.sourceforge.net/xforms/controls" xmlns:xf="http://www.w3.org/2002/xforms" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
     <head>
         <title>LGPN</title><!--
@@ -75,9 +74,20 @@
                             <ref target=""/>
                         </bibl>
                     </data>
-                </xf:instance><!-- PREFIXES -->
-                <xf:instance xmlns="" id="i-dialects" src="resources/xml/dialects.xml"/><!-- PREFIXES -->
-                <xf:instance xmlns="" id="i-prefix-1" src="resources/xml/prefixes/prefix-1.xml"/><!-- SUFFIXES -->
+                </xf:instance>
+                
+                
+                <xf:instance id="i-controller">
+                    <data xmlns="">
+                        <morpheme/>
+                    </data>
+                </xf:instance>
+                
+                <!-- PREFIXES -->
+                <xf:instance xmlns="" id="i-dialects" src="resources/xml/dialects.xml"/>
+                <!-- PREFIXES -->
+                <xf:instance xmlns="" id="i-prefix-1" src="resources/xml/prefixes/prefix-1.xml"/>
+                <!-- SUFFIXES -->
                 <xf:instance xmlns="" id="i-suffix-1" src="resources/xml/suffixes/suffix-1.xml"/>
                 <xf:instance xmlns="" id="i-suffix-2" src="resources/xml/suffixes/suffix-2.xml"/>
                 <xf:instance xmlns="" id="i-suffix-3" src="resources/xml/suffixes/suffix-3.xml"/>
@@ -110,12 +120,9 @@
                     </xf:message>
                     <xf:message ev:event="xforms-submit-error" level="ephemeral">Meanings reload failed.</xf:message>
                 </xf:submission>
-                <xf:submission id="s-embedHTML" replace="embedHTML" targetid="mountpoint" validate="false" resource="meanings.html#include" method="get">
-                    <xf:extension includeCSS="true" includeScript="true"/>
-                </xf:submission>
                 <xf:action ev:event="xforms-ready">
                     <xf:send submission="s-load-data" if="bf:appContext('id') != ''"/>
-                    <xf:send submission="s-embedHTML"/>
+                    
                 </xf:action>
             </xf:model>
             <xf:group>
@@ -125,6 +132,22 @@
                         <xf:setvalue ref="." value="event('dialects')"/>
                     </xf:action>
                 </xf:input>
+            </xf:group>
+            <xf:group id="load-subform-group">
+                <xf:action ev:event="load-subform-event" if="string-length(instance('i-controller')/morpheme) > 0">
+                    <xf:load show="embed" targetid="mountpoint">
+                        <xf:resource value="concat('meanings.xhtml?morpheme=', instance('i-controller')/morpheme,'#xforms')"/>
+                        <xf:extension includeCSS="false" includeScript="false"/>
+                    </xf:load>
+                    <bfc:show dialog="meanings"/>
+                </xf:action>
+                <xf:action ev:event="load-subform-event" if="string-length(instance('i-controller')/morpheme) = 0">
+                    <xf:load show="embed" targetid="mountpoint">
+                        <xf:resource value="'meanings.xhtml#xforms'"/>
+                        <xf:extension includeCSS="false" includeScript="false"/>
+                    </xf:load>
+                    <bfc:show dialog="meanings"/>
+                </xf:action>
             </xf:group>
         </div>
         <div class="container">
@@ -197,7 +220,8 @@
                     </div>
                 </div>
             </div>
-            <xf:group ref="//TEI:entry"><!-- GRAMGRP -->
+            <xf:group ref="//TEI:entry">
+                <!-- GRAMGRP -->
                 <xf:group class="fieldset">
                     <xf:label>
                         <h3>Segmentation &amp; root interpretation</h3>
@@ -241,7 +265,10 @@
                                     <input type="hidden" data-function="autocomplete" placeholder="Type to search ..." autocomplete="off"/>
                                     <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
                                         <xf:label/>
-                                        <bfc:show dialog="meanings" ev:event="DOMActivate"/>
+                                        <xf:action ev:event="DOMActivate">
+                                            <xf:setvalue ref="instance('i-controller')/morpheme" value="instance('i-default')//TEI:gramGrp[index('r-gramGrp')]/TEI:m[@type != 'suffix' and @n = 1]/@baseForm"/>
+                                            <xf:dispatch name="load-subform-event" targetid="load-subform-group"/>
+                                        </xf:action>
                                     </xf:trigger>
                                     <a href="meanings.xhtml?id=αγαθ" target="_blank">
                                         <span class="glyphicon glyphicon-plus-sign"/>
