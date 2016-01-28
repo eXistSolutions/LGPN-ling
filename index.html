@@ -11,6 +11,9 @@
                         <thead>
                             <tr>
                                 <th>
+                                    <i18n:text key="edit">Latin</i18n:text>
+                                </th>
+                                <th>
                                     <i18n:text key="latin">Latin</i18n:text>
                                 </th>
                                 <th>
@@ -59,6 +62,7 @@
                         </thead>
                         <tbody>
                             <tr class="templates:each?from=entries&amp;to=entry"><!--                                <td data-template="app:entry-id"/> -->
+                                <td data-template="app:entry-action"/>
                                 <td data-template="app:entry-form" data-template-langId="latin"/>
                                 <td data-template="app:entry-form" data-template-langId="greek"/><!--                                <td data-template="app:entry-stripped" data-template-lang="greek"/> -->
                                 <td data-template="app:entry-gender"/>

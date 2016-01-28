@@ -199,7 +199,7 @@ function app:entry-sources($node as node(), $model as map(*), $type as xs:string
           let $rest := $e/text()
           let $source := if ($e/TEI:ref/string(@target)) then <a href="{$e/TEI:ref/@target}">{$ref} {$rest}</a> else ($ref, $rest)
         return <p>{$source}</p>
-    return <td>{$sources} {if(not(empty($lexicographic))) then  ('Cf. also ', $lexicographic) else ()}</td>
+    return <td style="max-width: 200px;">{$sources} {if(not(empty($lexicographic))) then  ('Cf. also ', $lexicographic) else ()}</td>
 };
 
 declare
