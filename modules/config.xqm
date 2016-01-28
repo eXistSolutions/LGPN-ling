@@ -29,10 +29,19 @@ declare variable $config:app-root :=
         substring-before($modulePath, "/modules")
 ;
 
-declare variable $config:data-root := $config:app-root || "/data";
+(:all data to be stored in lgpn-data app:)
+declare variable $config:data-root := "/db/apps/lgpn-data/data";
+declare variable $config:ling-data-root := $config:data-root || "/ling";
 
-declare variable $config:names-root := $config:app-root || "/data/names";
-declare variable $config:taxonomies-root := $config:app-root || "/data/taxonomies";
+declare variable $config:names-root := $config:ling-data-root || "/names";
+declare variable $config:taxonomies-root := $config:ling-data-root || "/taxonomies";
+
+ (:prosopographical database data:)
+declare variable $config:lgpn-places := $config:data-root || "//volume0.places.xml";
+declare variable $config:lgpn-names := $config:data-root || "//volume0.names.xml";
+
+ (:i18n catalogues stay here so far:)
+declare variable $config:i18n-root := $config:app-root || "/data/i18n";
 
 declare variable $config:repo-descriptor := doc(concat($config:app-root, "/repo.xml"))/repo:meta;
 
