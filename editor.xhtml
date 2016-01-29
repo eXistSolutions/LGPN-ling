@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:TEI="http://www.tei-c.org/ns/1.0" xmlns:bfc="http://betterform.sourceforge.net/xforms/controls" xmlns:xf="http://www.w3.org/2002/xforms" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
     <head>
         <title>LGPN</title><!--
@@ -22,8 +23,7 @@
                                 <entry xml:id="uuid-0001">
                                     <form type="lemma">
                                         <orth type="greek"/>
-                                        <orth type="latin"/>
-                                        <gen/>
+                                        <orth type="latin"/><!--                                        <gen/> -->
                                         <date notBefore="" notAfter=""/>
                                         <usg/>
                                     </form>
@@ -75,19 +75,13 @@
                         </bibl>
                     </data>
                 </xf:instance>
-                
-                
                 <xf:instance id="i-controller">
                     <data xmlns="">
                         <morpheme/>
                     </data>
-                </xf:instance>
-                
-                <!-- PREFIXES -->
-                <xf:instance xmlns="" id="i-dialects" src="resources/xml/dialects.xml"/>
-                <!-- PREFIXES -->
-                <xf:instance xmlns="" id="i-prefix-1" src="resources/xml/prefixes/prefix-1.xml"/>
-                <!-- SUFFIXES -->
+                </xf:instance><!-- PREFIXES -->
+                <xf:instance xmlns="" id="i-dialects" src="resources/xml/dialects.xml"/><!-- PREFIXES -->
+                <xf:instance xmlns="" id="i-prefix-1" src="resources/xml/prefixes/prefix-1.xml"/><!-- SUFFIXES -->
                 <xf:instance xmlns="" id="i-suffix-1" src="resources/xml/suffixes/suffix-1.xml"/>
                 <xf:instance xmlns="" id="i-suffix-2" src="resources/xml/suffixes/suffix-2.xml"/>
                 <xf:instance xmlns="" id="i-suffix-3" src="resources/xml/suffixes/suffix-3.xml"/>
@@ -136,7 +130,7 @@
                 </xf:input>
             </xf:group>
             <xf:group id="load-subform-group">
-                <xf:action ev:event="load-subform-event" if="string-length(instance('i-controller')/morpheme) > 0">
+                <xf:action ev:event="load-subform-event" if="string-length(instance('i-controller')/morpheme) &gt; 0">
                     <xf:load show="embed" targetid="mountpoint">
                         <xf:resource value="concat('meanings.xhtml?morpheme=', instance('i-controller')/morpheme,'#xforms')"/>
                         <xf:extension includeCSS="false" includeScript="false"/>
@@ -182,22 +176,10 @@
                     </xf:input>
                 </div>
                 <div class="col-xs-2">
-                    <xf:select1 class="input-group -form-control" ref="//TEI:form[@type='lemma']/TEI:gen" disabled="disabled">
+                    <xf:input class="input-group -form-control" ref="//TEI:form[@type='lemma']/TEI:gen" disabled="disabled">
                         <xf:label class="input-group-addon">gender</xf:label>
                         <xf:hint>gender</xf:hint>
-                        <xf:item>
-                            <xf:label>female</xf:label>
-                            <xf:value>f.</xf:value>
-                        </xf:item>
-                        <xf:item>
-                            <xf:label>male</xf:label>
-                            <xf:value>m.</xf:value>
-                        </xf:item>
-                        <xf:item>
-                            <xf:label>unkown</xf:label>
-                            <xf:value>a.</xf:value>
-                        </xf:item>
-                    </xf:select1>
+                    </xf:input>
                 </div><!--                <div class="col-xs-6">
                     <div class="input-group">
                         <xf:select class="input-group -form-control" ref="//TEI:usg">
@@ -222,8 +204,7 @@
                     </div>
                 </div>
             </div>
-            <xf:group ref="//TEI:entry">
-                <!-- GRAMGRP -->
+            <xf:group ref="//TEI:entry"><!-- GRAMGRP -->
                 <xf:group class="fieldset">
                     <xf:label>
                         <h3>Segmentation &amp; root interpretation</h3>
@@ -272,9 +253,6 @@
                                             <xf:dispatch name="load-subform-event" targetid="load-subform-group"/>
                                         </xf:action>
                                     </xf:trigger>
-                                    <a href="meanings.xhtml?id=αγαθ" target="_blank">
-                                        <span class="glyphicon glyphicon-plus-sign"/>
-                                    </a>
                                 </div>
                                 <div class="col-xs-3">
                                     <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 2]">
@@ -292,9 +270,13 @@
                                         </xf:action>
                                     </xf:input>
                                     <input type="hidden" data-function="autocomplete" placeholder="Type to search ..." autocomplete="off"/>
-                                    <a href="meanings.xhtml?id=βoλ" target="_blank">
-                                        <span class="glyphicon glyphicon-plus-sign"/>
-                                    </a>
+                                    <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
+                                        <xf:label/>
+                                        <xf:action ev:event="DOMActivate">
+                                            <xf:setvalue ref="instance('i-controller')/morpheme" value="instance('i-default')//TEI:gramGrp[index('r-gramGrp')]/TEI:m[@type != 'suffix' and @n = 2]/@baseForm"/>
+                                            <xf:dispatch name="load-subform-event" targetid="load-subform-group"/>
+                                        </xf:action>
+                                    </xf:trigger>
                                 </div>
                             </div>
                             <div class="row">
