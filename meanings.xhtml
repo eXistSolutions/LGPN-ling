@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:TEI="http://www.tei-c.org/ns/1.0" xmlns:bfc="http://betterform.sourceforge.net/xforms/controls" xmlns:xf="http://www.w3.org/2002/xforms">
     <head>
         <title>LGPN</title><!--
@@ -27,7 +28,6 @@
                             </meaning>
                         </category>
                     </xf:instance>
-                    
                     <xf:instance id="i-template">
                         <category xmlns="http://www.tei-c.org/ns/1.0" baseForm="">
                             <meaning label="">
@@ -44,7 +44,6 @@
                             </meaning>
                         </category>
                     </xf:instance>
-                    
                     <xf:submission id="s-load-morpheme" method="get" replace="instance" ref="instance('i-default')" validate="false" resource="modules/loadMorpheme.xql?id={bf:appContext('morpheme')}">
                         <xf:message ev:event="xforms-submit-done" level="ephemeral">Data have been loaded.</xf:message>
                         <xf:message ev:event="xforms-submit-error">Failed to load data.</xf:message>
@@ -83,6 +82,12 @@
                                         <span class="glyphicon glyphicon-tag"/> label</xf:label>
                                     <xf:hint>meaning</xf:hint>
                                 </xf:input>
+                                <xf:input class="input-group -form-control" ref="TEI:meaning[1]/@label">
+                                    <xf:action ev:event="autocomplete-callback">
+                                        <xf:setvalue ref="." value="event('termValue')"/>
+                                    </xf:action>
+                                </xf:input>
+                                <input type="hidden" data-function="autocomplete" placeholder="Type to search ..." autocomplete="off"/>
                             </div>
                         </div>
                         <div class="col-xs-1"/><!--
