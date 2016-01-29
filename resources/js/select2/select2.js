@@ -125,13 +125,15 @@ function initAutocompletes() {
                         termValue: ''
                     })
                 } else {
-                    object = null;
+                    var thingy = null;
                     if (e.added !== undefined) {
-                        object = e.added;
+                        console.log("helllo???");
+                        thingy = e.added;
                     }
-                    if (object !== null) {
+                    if (thingy !== null) {
+                        console.log("CALBBACK:", xformsID);
                         fluxProcessor.dispatchEventType(xformsID, 'autocomplete-callback', {
-                            termValue: object.value
+                            termValue: thingy.value
                         });
                     }
                 }
