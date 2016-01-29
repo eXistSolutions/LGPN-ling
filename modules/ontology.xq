@@ -17,8 +17,8 @@ return
     { for $m in $concepts
         return 
         <term>
-            <id>{$m/@xml:id/string()}</id>
-            <value>{string-join($m//text(), '|')}</value>
+            <value>{$m/@xml:id/string()}</value>
+            <id>{string-join($m//text(), '|')}</id>
         </term>
     }
 </result>

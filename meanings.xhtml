@@ -84,13 +84,15 @@
                                     <xf:label class="input-group-addon">
                                         <span class="glyphicon glyphicon-tag"/> label</xf:label>
                                     <xf:hint>meaning</xf:hint>
-                                </xf:input>
-                                <xf:input class="input-group -form-control" ref="TEI:meaning[1]/@label">
-                                    <xf:action ev:event="autocomplete-callback">
+                                    <xf:action ev:event="ontology_autocomplete-callback">
                                         <xf:setvalue ref="." value="event('termValue')"/>
+                                    </xf:action><!-- TODO: on Change reload en/fr translations for label
+                                    <xf:action ev:event="xforms-value-changed">
+                                            <xf:send submission="s-reload-meanings-1"/>
                                     </xf:action>
+                                    -->
                                 </xf:input>
-                                <input type="hidden" data-function="autocomplete" placeholder="Type to search ..." autocomplete="off"/>
+                                <input type="hidden" data-function="ontology_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
                             </div>
                         </div>
                         <div class="col-xs-1"/><!--
