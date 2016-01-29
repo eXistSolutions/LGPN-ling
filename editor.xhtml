@@ -122,7 +122,9 @@
                 </xf:submission>
                 <xf:action ev:event="xforms-ready">
                     <xf:send submission="s-load-data" if="bf:appContext('id') != ''"/>
-                    
+                    <script>
+                        clearAndInitAutocompletes();    
+                    </script>
                 </xf:action>
             </xf:model>
             <xf:group>

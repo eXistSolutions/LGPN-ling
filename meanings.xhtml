@@ -57,6 +57,9 @@
                     </xf:submission>
                     <xf:action ev:event="xforms-ready">
                         <xf:send submission="s-load-morpheme" if="bf:appContext('morpheme') != ''"/>
+                        <script>
+                            clearAndInitAutocompletes();    
+                        </script>
                     </xf:action>
                 </xf:model>
             </div>
