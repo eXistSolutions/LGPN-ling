@@ -204,13 +204,13 @@ function initOntologyAutocompletes() {
                         termValue: ''
                     })
                 } else {
-                    object = null;
+                    var othingy = null;
                     if (e.added !== undefined) {
-                        object = e.added;
+                        othingy = e.added;
                     }
-                    if (object !== null) {
+                    if (othingy !== null) {
                         fluxProcessor.dispatchEventType(xformsID, 'ontology_autocomplete-callback', {
-                            termValue: object.value
+                            termValue: othingy.value
                         });
                     }
                 }
