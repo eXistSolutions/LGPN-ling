@@ -17,7 +17,7 @@ return
     { for $m in $morphemes
         return 
         <term>
-            <id>{$m/@baseForm/string()}</id>
+            <id>{$m/tei:catDesc/string()}</id>
             <value>{$m/@baseForm/string()}</value>
         </term>
     }

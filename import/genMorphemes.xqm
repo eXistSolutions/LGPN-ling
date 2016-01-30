@@ -8,8 +8,9 @@ group by $bf := $i/@baseForm
 order by $bf
 return 
     <category>
-        {attribute baseForm {$i[1]/@baseForm}}
+        {attribute baseForm {translate($i[1]/@baseForm, '()', '')}}
         {attribute ana {$i[1]/@ana}}
+        <catDesc>{$i[1]/@baseForm/string()}</catDesc>
     </category>
     }
     </taxonomy>

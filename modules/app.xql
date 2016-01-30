@@ -105,13 +105,18 @@ function app:entry-morpheme($node as node(), $model as map(*), $type as xs:strin
             <table>
                 {
                     for $se in $entry//TEI:gramGrp
-                    let $m := if($type="radical") then data($se//TEI:m[@type=$type][@n=$position]/@baseForm) else data($se//TEI:m[@type=$type][@n=$position])
+                    let $m := 
+                        if($type="radical") then 
+                            data(doc($config:taxonomies-root || "/morphemes.xml")//TEI:category[@baseForm=$se//TEI:m[@type=$type][@n=$position]/@baseForm]/TEI:catDesc) 
+                        else data($se//TEI:m[@type=$type][@n=$position])
                     return <tr><td>{$m}&#160;</td></tr>
 
                 }
             </table>
             else 
-                    if($type="radical") then data($entry//TEI:m[@type=$type][@n=$position]/@baseForm) else data($entry//TEI:m[@type=$type][@n=$position])
+                    if($type="radical") then 
+                        data(doc($config:taxonomies-root || "/morphemes.xml")//TEI:category[@baseForm=$entry//TEI:m[@type=$type][@n=$position]/@baseForm]/TEI:catDesc) 
+                    else data($entry//TEI:m[@type=$type][@n=$position])
         }
         </td>
 };
