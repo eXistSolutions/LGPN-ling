@@ -56,4 +56,3 @@ let $data := request:get-data()
 let $log := util:log("INFO", "data: " || $data)
 
 return (local:updateMorpheme($data), local:updateMeanings($data))
-
