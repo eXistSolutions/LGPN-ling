@@ -201,7 +201,7 @@ function app:entry-sources($node as node(), $model as map(*), $type as xs:string
     let $lexicographic := 
         for $e in $entry//TEI:entry//TEI:bibl[@type='auxiliary']
           let $ref := <i style="margin-right: 0.5em;">{$e/TEI:ref/string()}</i>
-          let $rest := $e/text()
+          let $rest := $e/TEI:span/string()
           let $source := if ($e/TEI:ref/string(@target)) then <a href="{$e/TEI:ref/@target}">{$ref} {$rest}</a> else ($ref, $rest)
         return <p>{$source}</p>
     return <td style="max-width: 200px;">{$sources} {if(not(empty($lexicographic))) then  ('Cf. also ', $lexicographic) else ()}</td>
@@ -213,7 +213,7 @@ function app:entry-bibl($node as node(), $model as map(*), $type as xs:string) {
     let $linguistic := 
         for $e in $entry//TEI:entry//TEI:bibl[@type='linguistic']
           let $ref := <i style="margin-right: 0.5em;">{$e/TEI:ref/string()}</i>
-          let $rest := $e/text()
+          let $rest := $e/TEI:span/string()
           let $source := if ($e/TEI:ref/string(@target)) then <a href="{$e/TEI:ref/@target}">{$ref} {$rest}</a> else ($ref, $rest)
         return <p>{$source}</p>
     return <td>{$linguistic}</td>
