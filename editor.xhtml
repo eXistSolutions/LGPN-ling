@@ -51,7 +51,7 @@
                         </text>
                     </TEI>
                 </xf:instance>
-                <xf:bind nodeset="//TEI:orth[@type ='latin']" required="true()" type="xs:string"/>
+                <xf:bind nodeset="//TEI:orth[@type ='latin']" required="true()" type="xs:string"/><!--<xf:bind nodeset="TEI:m[@type = 'radical' and @n = 1]" ref="normalize-space(.)"/>-->
                 <xf:instance id="i-template">
                     <data xmlns="http://www.tei-c.org/ns/1.0">
                         <gramGrp cert="">
@@ -234,6 +234,7 @@
                                 <div class="col-xs-3">
                                     <xf:input class="input-group -form-control" ref="TEI:m[@type = 'radical' and @n = 1]">
                                         <xf:label class="input-group-addon">constituent 1</xf:label>
+                                        <xf:alert>no whitespace allowed</xf:alert>
                                     </xf:input>
                                 </div>
                                 <div class="col-xs-3">
