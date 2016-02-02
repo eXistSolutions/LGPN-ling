@@ -54,8 +54,7 @@
                         <xf:action ev:event="xforms-submit"><!--                        <xf:setvalue ref="instance('i-default')//TEI:category/@baseForm" value="instance('i-default')//TEI:category/@baseForm"/> -->
                             <xf:message ev:event="xforms-submit-done" level="ephemeral">Saving...</xf:message>
                         </xf:action>
-                        <xf:message ev:event="xforms-submit-done" level="ephemeral">Data have been saved.</xf:message>
-                        <xf:message ev:event="xforms-submit-error">Failed to save data</xf:message>
+                        <xf:message ev:event="xforms-submit-done" level="ephemeral">Data have been saved.</xf:message><!--                        <xf:message ev:event="xforms-submit-error">Failed to save data</xf:message> -->
                     </xf:submission>
                     <xf:action ev:event="xforms-ready">
                         <xf:send submission="s-load-morpheme" if="bf:appContext('morpheme') != ''"/>
