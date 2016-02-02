@@ -4,6 +4,7 @@ xquery version "3.0";
  :)
 
 declare namespace loc="http://www.existsolutions.com/apps/lgpn/export-csv";
+declare namespace xs="http://www.w3.org/2001/XMLSchema";
 declare namespace tei = "http://www.tei-c.org/ns/1.0";
 declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
 declare option output:method "text";
@@ -62,17 +63,25 @@ declare function loc:format-as-csv($xml-rows as node()*) as item()* {
     return (for $col at $i in $row/col
         return (
             if($i > 1) then text{$SEPARATOR} else (),
-            string($col)),
+            loc:csv-field($col)),
         '&#x0A;'
         )
 };
 
-(:  For testing, better change to:
-let $_ := response:set-header('content-type', 'text/plain;charset=utf-8')
-let $_ := response:set-header('content-disposition', 'inline;filename="lgpn_data.csv"')
-:)
+declare function loc:csv-field($data as item()*) as xs:string {
+    let $txt := string($data)
+    let $escaped := replace($txt, '"', '""')
+    return
+        ('"' || $escaped || '"')
+};
+
+(:  For testing, better change to: :)
+(:let $_ := response:set-header('content-type', 'text/plain;charset=utf-8'):)
+(:let $_ := response:set-header('content-disposition', 'inline;filename="lgpn_data.csv"'):)
+
 let $_ := response:set-header('content-type', 'text/csv;charset=utf-8')
 let $_ := response:set-header('content-disposition', 'attachment;filename="lgpn_data.csv"')
+
 let $headers := loc:format-as-csv(loc:csv-headers())
 let $docs := loc:all-entries()
 let $rows := loc:csvxml-for-entries($docs)
