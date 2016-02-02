@@ -12,7 +12,7 @@ declare option output:method "text";
 import module namespace config="http://www.existsolutions.com/apps/lgpn/config" at "config.xqm";
 import module namespace app="http://www.existsolutions.com/apps/lgpn/templates" at "app.xql";
 
-declare variable $SEPARATOR := ';';
+declare variable $SEPARATOR := ',';
 
 declare function loc:all-entries() as node()* {
     for $i in collection($config:names-root)//tei:TEI
