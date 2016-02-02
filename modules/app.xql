@@ -161,15 +161,16 @@ function app:entry-morpheme-functions($node as node(), $model as map(*), $type a
 
 
 declare
-function app:entry-semantics($node as node(), $model as map(*)) {
+function app:entry-semantics($node as node(), $model as map(*), $lang as xs:string?) {
     let $entry := $model("entry")//TEI:gramGrp
     let $functions := 
         for $se in $entry
-            let $subentry_functions :=
-                for $e in $se//TEI:m[@type='radical']
-                order by $e/@n
-                return $e/@ana
-            return string-join($subentry_functions, '+')
+            let $labels := tokenize(doc($config:taxonomies-root || "/morphemes.xml")//TEI:category[@baseForm=$se//TEI:m[@type='radical']/@baseForm]/@ana, '\s*#')
+            let $subentry_meanings :=
+                for $m in doc($config:taxonomies-root || "/ontology.xml")//TEI:category[@xml:id=$labels]/TEI:catDesc[@xml:lang=$lang]
+                order by $m
+                return $m
+            return string-join($subentry_meanings, '+')
             
     return 
         <td>
@@ -179,7 +180,7 @@ function app:entry-semantics($node as node(), $model as map(*)) {
                     <table> 
                         {
                             for $f in $functions 
-                            return <tr><td style="border: 1px solid black;">{$f}</td></tr>
+                            return <tr><td style="border: 0px solid black;">{$f}</td></tr>
                         }
                     </table> 
                 else $functions
