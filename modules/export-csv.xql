@@ -64,7 +64,7 @@ declare function loc:format-as-csv($xml-rows as node()*) as item()* {
         return (
             if($i > 1) then text{$SEPARATOR} else (),
             loc:csv-field($col)),
-        '&#x0A;'
+        text{'&#x0A;'}
         )
 };
 
