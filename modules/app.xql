@@ -161,6 +161,7 @@ function app:entry-morpheme-functions($node as node(), $model as map(*), $type a
 
 
 declare
+    %templates:default("lang", 'en')
 function app:entry-semantics($node as node(), $model as map(*), $lang as xs:string?) {
     let $entry := $model("entry")//TEI:gramGrp
     let $functions := 
