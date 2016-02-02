@@ -11,7 +11,7 @@ declare option output:method "text";
 import module namespace config="http://www.existsolutions.com/apps/lgpn/config" at "config.xqm";
 import module namespace app="http://www.existsolutions.com/apps/lgpn/templates" at "app.xql";
 
-declare variable $SEPARATOR := ',';
+declare variable $SEPARATOR := ';';
 
 declare function loc:all-entries() as node()* {
     for $i in collection($config:names-root)//tei:TEI
@@ -27,6 +27,13 @@ declare function loc:csv-headers() as item()* {
         <col>Dialects</col>
         <col>Period</col>
         <col>Base form</col>
+        <col>Radical 1</col>
+        <col>Radical 2</col>
+        <col>Flexional 1</col>
+        <col>Flexional 2</col>
+        <col>Flexional 3</col>
+        <col>Flexional 4</col>
+        <col>Lexis</col>
     </row>
 };
 
@@ -40,6 +47,13 @@ declare function loc:csvxml-for-entries($doc as node()*) as item()* {
         <col><!--TODO: Dialects --></col>
         <col><!--TODO: Period --></col>
         <col>{string($gramGrp/tei:m[@type='prefix']/@baseForm)}</col>
+        <col>{$gramGrp/tei:m[@type='radical' and n='1']/text()}</col>
+        <col>{$gramGrp/tei:m[@type='radical' and n='2']/text()}</col>
+        <col>{$gramGrp/tei:m[@type='flexional' and n='1']/text()}</col>
+        <col>{$gramGrp/tei:m[@type='flexional' and n='2']/text()}</col>
+        <col>{$gramGrp/tei:m[@type='flexional' and n='3']/text()}</col>
+        <col>{$gramGrp/tei:m[@type='flexional' and n='4']/text()}</col>
+        <col>{$entry/tei:cit/tei:quote/text()}</col>
     </row>
 };
 
@@ -47,12 +61,16 @@ declare function loc:format-as-csv($xml-rows as node()*) as item()* {
     for $row in $xml-rows
     return (for $col at $i in $row/col
         return (
-            if($i > 1) then $SEPARATOR else (),
+            if($i > 1) then text{$SEPARATOR} else (),
             string($col)),
         '&#x0A;'
         )
 };
 
+(:  For testing, better change to:
+let $_ := response:set-header('content-type', 'text/plain;charset=utf-8')
+let $_ := response:set-header('content-disposition', 'inline;filename="lgpn_data.csv"')
+:)
 let $_ := response:set-header('content-type', 'text/csv;charset=utf-8')
 let $_ := response:set-header('content-disposition', 'attachment;filename="lgpn_data.csv"')
 let $headers := loc:format-as-csv(loc:csv-headers())
