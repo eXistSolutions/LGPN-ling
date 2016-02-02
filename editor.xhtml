@@ -86,7 +86,7 @@
                         <morpheme/>
                     </data>
                 </xf:instance><!-- PREFIXES -->
-                <xf:instance xmlns="" id="i-dialects" src="resources/xml/dialects.xml"/><!-- PREFIXES -->
+                <xf:instance xmlns="" id="i-dialects" src="../lgpn-data/data/ling/taxonomies/dialects.xml"/><!-- PREFIXES -->
                 <xf:instance xmlns="" id="i-prefix-1" src="resources/xml/prefixes/prefix-1.xml"/><!-- SUFFIXES -->
                 <xf:instance xmlns="" id="i-suffix-1" src="resources/xml/suffixes/suffix-1.xml"/>
                 <xf:instance xmlns="" id="i-suffix-2" src="resources/xml/suffixes/suffix-2.xml"/>
@@ -203,9 +203,9 @@
                     <div class="input-group">
                         <xf:select class="input-group -form-control" ref="//TEI:usg" appearance="full">
                             <xf:label class="input-group-addon">dialect (MULTIPLE)</xf:label>
-                            <xf:itemset nodeset="instance('i-dialects')/option">
-                                <xf:label ref="."/>
-                                <xf:value ref="."/>
+                            <xf:itemset nodeset="instance('i-dialects')//TEI:category">
+                                <xf:label ref="TEI:catDesc[@xml:lang='en'][@ana='short']"/>
+                                <xf:value ref="@xml:id"/>
                             </xf:itemset>
                         </xf:select>
                     </div>
