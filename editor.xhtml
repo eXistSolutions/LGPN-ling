@@ -110,12 +110,12 @@
                     <xf:message ev:event="xforms-submit-done" level="ephemeral">Data have been saved.</xf:message>
                     <xf:message ev:event="xforms-submit-error">Failed to save data</xf:message>
                 </xf:submission>
-                <xf:submission id="s-reload-meanings-1" method="post" replace="instance" validate="false" resource="modules/reload-meanings.xql" ref="instance('i-default')//TEI:entry/TEI:gramGrp[1]/TEI:m[@type != 'suffix' and @n = 1]" targetref="instance('i-meanings-ontology-1')"><!-- TODO remove debug message -->
+                <xf:submission id="s-reload-meanings-1" method="post" replace="instance" validate="false" resource="modules/reload-meanings.xql" ref="instance('i-default')//TEI:entry/TEI:gramGrp[1]/TEI:m[@type = 'radical' and @n = 1]" targetref="instance('i-meanings-ontology-1')"><!-- TODO remove debug message -->
                     <xf:message ev:event="xforms-submit-done" level="ephemeral">Meanings reloaded. Content is <xf:output value="string(instance('i-meanings-ontology-1'))"/>
                     </xf:message>
                     <xf:message ev:event="xforms-submit-error" level="ephemeral">Meanings reload failed.</xf:message>
                 </xf:submission>
-                <xf:submission id="s-reload-meanings-2" method="post" replace="instance" validate="false" resource="modules/reload-meanings.xql" ref="instance('i-default')//TEI:entry/TEI:gramGrp[1]/TEI:m[@type != 'suffix' and @n = 2]" targetref="instance('i-meanings-ontology-2')"><!-- TODO remove debug message -->
+                <xf:submission id="s-reload-meanings-2" method="post" replace="instance" validate="false" resource="modules/reload-meanings.xql" ref="instance('i-default')//TEI:entry/TEI:gramGrp[1]/TEI:m[@type = 'radical' and @n = 2]" targetref="instance('i-meanings-ontology-2')"><!-- TODO remove debug message -->
                     <xf:message ev:event="xforms-submit-done" level="ephemeral">Meanings reloaded. Content is <xf:output value="string(instance('i-meanings-ontology-2'))"/>
                     </xf:message>
                     <xf:message ev:event="xforms-submit-error" level="ephemeral">Meanings reload failed.</xf:message>
@@ -244,7 +244,7 @@
                                     </xf:input>
                                 </div>
                                 <div class="col-xs-3">
-                                    <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 1]/@baseForm">
+                                    <xf:input class="input-group -form-control" ref="TEI:m[@type = 'radical' and @n = 1]/@baseForm">
                                         <xf:action ev:event="autocomplete-callback">
                                             <xf:setvalue ref="." value="event('termValue')"/>
                                         </xf:action>
@@ -263,12 +263,12 @@
                                     </xf:trigger>
                                 </div>
                                 <div class="col-xs-3">
-                                    <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 2]">
+                                    <xf:input class="input-group -form-control" ref="TEI:m[@type = 'radical' and @n = 2]">
                                         <xf:label class="input-group-addon">constituent 2</xf:label>
                                     </xf:input>
                                 </div>
                                 <div class="col-xs-3">
-                                    <xf:input class="input-group -form-control" ref="TEI:m[@type != 'suffix' and @n = 2]/@baseForm">
+                                    <xf:input class="input-group -form-control" ref="TEI:m[@type = 'radical' and @n = 2]/@baseForm">
                                         <xf:action ev:event="autocomplete-callback">
                                             <xf:setvalue ref="." value="event('termValue')"/>
                                         </xf:action>
@@ -281,7 +281,7 @@
                                     <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
                                         <xf:label/>
                                         <xf:action ev:event="DOMActivate">
-                                            <xf:setvalue ref="instance('i-controller')/morpheme" value="instance('i-default')//TEI:gramGrp[index('r-gramGrp')]/TEI:m[@type != 'suffix' and @n = 2]/@baseForm"/>
+                                            <xf:setvalue ref="instance('i-controller')/morpheme" value="instance('i-default')//TEI:gramGrp[index('r-gramGrp')]/TEI:m[@type = 'radical' and @n = 2]/@baseForm"/>
                                             <xf:dispatch name="load-subform-event" targetid="load-subform-group"/>
                                         </xf:action>
                                     </xf:trigger>
@@ -289,7 +289,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-xs-6">
-                                    <xf:select ref="TEI:m[@type != 'suffix' and @n = 1]/@function" appearance="full" incremental="true">
+                                    <xf:select ref="TEI:m[@type = 'radical' and @n = 1]/@function" appearance="full" incremental="true">
                                         <xf:label/>
                                         <xf:item>
                                             <xf:label>Participle</xf:label>
@@ -314,7 +314,7 @@
                                     </xf:select>
                                 </div>
                                 <div class="col-xs-6">
-                                    <xf:select ref="TEI:m[@type != 'suffix' and @n = 2]/@function" appearance="full" incremental="true">
+                                    <xf:select ref="TEI:m[@type = 'radical' and @n = 2]/@function" appearance="full" incremental="true">
                                         <xf:label/>
                                         <xf:item>
                                             <xf:label>Participle</xf:label>
@@ -341,7 +341,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-xs-6">
-                                    <span class="semantic_tags">
+                                    <span class="semantic_tags"><!--
                                         <span style="display:none">
                                             <xf:input ref="TEI:m[@type != 'suffix' and @n = 1]/@ana" incremental="true">
                                                 <xf:label>hidden control!!</xf:label>
@@ -350,6 +350,7 @@
                                                 </xf:action>
                                             </xf:input>
                                         </span>
+                                        -->
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <span class="glyphicon glyphicon-tasks"/>
@@ -364,7 +365,7 @@
                                     </span>
                                 </div>
                                 <div class="col-xs-6">
-                                    <span class="semantic_tags">
+                                    <span class="semantic_tags"><!--
                                         <span style="display:none">
                                             <xf:input id="sem-ont-3" ref="TEI:m[@type != 'suffix' and @n = 2]/@ana">
                                                 <xf:label>hidden controll</xf:label>
@@ -373,6 +374,7 @@
                                                 </xf:action>
                                             </xf:input>
                                         </span>
+                                        -->
                                         <div class="input-group">
                                             <span class="input-group-addon">
                                                 <span class="glyphicon glyphicon-tasks"/>
