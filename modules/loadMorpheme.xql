@@ -9,7 +9,7 @@ import module namespace console="http://exist-db.org/xquery/console" at "java:or
  :  gets separated and turned into proper TEI on save :)
 declare function local:newMorpheme($id) {
         <category xmlns="http://www.tei-c.org/ns/1.0" baseForm="{$id}">
-            <catDesc>{$id}</catDesc>
+            <catDesc ana="">{$id}</catDesc>
             {local:padMeanings(3)}
         </category>
 };

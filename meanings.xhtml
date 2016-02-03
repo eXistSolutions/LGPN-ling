@@ -14,7 +14,7 @@
                 <xf:model id="model-morpheme">
                     <xf:instance id="i-default">
                         <category xmlns="http://www.tei-c.org/ns/1.0" baseForm="">
-                            <catDesc/>
+                            <catDesc ana=""/>
                             <meaning label="">
                                 <translation xml:lang="en"/>
                                 <translation xml:lang="fr"/>
@@ -31,7 +31,7 @@
                     </xf:instance>
                     <xf:instance id="i-template">
                         <category xmlns="http://www.tei-c.org/ns/1.0" baseForm="">
-                            <catDesc/>
+                            <catDesc ana=""/>
                             <meaning label="">
                                 <translation xml:lang="en"/>
                                 <translation xml:lang="fr"/>
@@ -81,6 +81,33 @@
                                 <xf:label class="input-group-addon">root</xf:label>
                                 <xf:hint>(h)αβρ</xf:hint>
                             </xf:input>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="col-xs-8">
+                            <xf:select ref="//TEI:category/TEI:catDesc/@ana" appearance="full" incremental="true">
+                                <xf:label/>
+                                <xf:item>
+                                    <xf:label>Participle</xf:label>
+                                    <xf:value>P</xf:value>
+                                </xf:item>
+                                <xf:item>
+                                    <xf:label>Noun</xf:label>
+                                    <xf:value>N</xf:value>
+                                </xf:item>
+                                <xf:item>
+                                    <xf:label>Adjective</xf:label>
+                                    <xf:value>Adj</xf:value>
+                                </xf:item>
+                                <xf:item>
+                                    <xf:label>Pronoun</xf:label>
+                                    <xf:value>Pro</xf:value>
+                                </xf:item>
+                                <xf:item>
+                                    <xf:label>Adverb</xf:label>
+                                    <xf:value>Adv</xf:value>
+                                </xf:item>
+                            </xf:select>
                         </div>
                     </div>
                     <hr/>
