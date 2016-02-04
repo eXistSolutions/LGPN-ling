@@ -137,11 +137,12 @@ function app:entry-morpheme-functions($node as node(), $model as map(*), $type a
     let $entry := $model("entry")//TEI:gramGrp
     let $functions := 
         for $se in $entry
-            let $subentry_functions :=
-                for $e in $se//TEI:m[@type=$type]/@function
-                order by $e/@n
-                return $e
-            return string-join($subentry_functions, '+')
+            let $morph :=
+            for $bf in $se//TEI:m[@type='radical']/@baseForm
+                let $labels := tokenize(doc($config:taxonomies-root || "/morphemes.xml")//TEI:category[@baseForm=$bf]/TEI:catDesc/@ana, '\s*#')
+
+            return string-join($labels, '; ')
+        return string-join($morph, '+')
             
     return 
         <td>
