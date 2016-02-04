@@ -257,7 +257,7 @@
                                     <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
                                         <xf:label/>
                                         <xf:action ev:event="DOMActivate">
-                                            <xf:setvalue ref="instance('i-controller')/morpheme" value="instance('i-default')//TEI:gramGrp[index('r-gramGrp')]/TEI:m[@type != 'suffix' and @n = 1]/@baseForm"/>
+                                            <xf:setvalue ref="instance('i-controller')/morpheme" value="instance('i-default')//TEI:gramGrp[index('r-gramGrp')]/TEI:m[@type = 'radical' and @n = 1]/@baseForm"/>
                                             <xf:dispatch name="load-subform-event" targetid="load-subform-group"/>
                                         </xf:action>
                                     </xf:trigger>
@@ -285,6 +285,58 @@
                                             <xf:dispatch name="load-subform-event" targetid="load-subform-group"/>
                                         </xf:action>
                                     </xf:trigger>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <xf:select ref="TEI:m[@type = 'radical' and @n = 1]/@function" appearance="full" incremental="true">
+                                        <xf:label/>
+                                        <xf:item>
+                                            <xf:label>Participle</xf:label>
+                                            <xf:value>P</xf:value>
+                                        </xf:item>
+                                        <xf:item>
+                                            <xf:label>Noun</xf:label>
+                                            <xf:value>N</xf:value>
+                                        </xf:item>
+                                        <xf:item>
+                                            <xf:label>Adjective</xf:label>
+                                            <xf:value>Adj</xf:value>
+                                        </xf:item>
+                                        <xf:item>
+                                            <xf:label>Pronoun</xf:label>
+                                            <xf:value>Pro</xf:value>
+                                        </xf:item>
+                                        <xf:item>
+                                            <xf:label>Adverb</xf:label>
+                                            <xf:value>Adv</xf:value>
+                                        </xf:item>
+                                    </xf:select>
+                                </div>
+                                <div class="col-xs-6">
+                                    <xf:select ref="TEI:m[@type = 'radical' and @n = 2]/@function" appearance="full" incremental="true">
+                                        <xf:label/>
+                                        <xf:item>
+                                            <xf:label>Participle</xf:label>
+                                            <xf:value>P</xf:value>
+                                        </xf:item>
+                                        <xf:item>
+                                            <xf:label>Noun</xf:label>
+                                            <xf:value>N</xf:value>
+                                        </xf:item>
+                                        <xf:item>
+                                            <xf:label>Adjective</xf:label>
+                                            <xf:value>Adj</xf:value>
+                                        </xf:item>
+                                        <xf:item>
+                                            <xf:label>Pronoun</xf:label>
+                                            <xf:value>Pro</xf:value>
+                                        </xf:item>
+                                        <xf:item>
+                                            <xf:label>Adverb</xf:label>
+                                            <xf:value>Adv</xf:value>
+                                        </xf:item>
+                                    </xf:select>
                                 </div>
                             </div>
                             <div class="row">
