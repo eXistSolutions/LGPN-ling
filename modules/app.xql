@@ -135,15 +135,14 @@ function app:entry-morphemes($node as node(), $model as map(*), $type as xs:stri
 declare
 function app:entry-morpheme-functions($node as node(), $model as map(*), $type as xs:string) {
     let $entry := $model("entry")//TEI:gramGrp
+                let $c := console:log($model?entry//TEI:orth[@type="latin"])
     let $functions := 
         for $se in $entry
             let $morph :=
-            for $bf in $se//TEI:m[@type='radical']/@baseForm
+            for $bf in $se//TEI:m[@type='radical']/@baseForm[string(.)]
                 let $labels := tokenize(doc($config:taxonomies-root || "/morphemes.xml")//TEI:category[@baseForm=$bf]/TEI:catDesc/@ana, '\s*#')
-
-            return string-join($labels, '; ')
+            return  string-join($labels, ';') 
         return string-join($morph, '+')
-            
     return 
         <td>
             {
@@ -167,14 +166,14 @@ function app:entry-semantics($node as node(), $model as map(*), $lang as xs:stri
     let $functions := 
         for $se in $entry
             let $morph :=
-            for $bf in $se//TEI:m[@type='radical']/@baseForm
+            for $bf in $se//TEI:m[@type='radical']/@baseForm[string(.)]
                 let $labels := tokenize(doc($config:taxonomies-root || "/morphemes.xml")//TEI:category[@baseForm=$bf]/@ana, '\s*#')
 
                 let $concept :=
                     for $m in doc($config:taxonomies-root || "/ontology.xml")//TEI:category[@xml:id=$labels]/TEI:catDesc[@xml:lang=$lang]
                     order by $m
                     return $m
-            return string-join($concept, '; ')
+            return string-join($concept, ', ')
         return string-join($morph, '+')
     return 
         <td>
