@@ -75,10 +75,16 @@ function app:entry-stripped($node as node(), $model as map(*), $lang as xs:strin
 };
 
 declare
-function app:entry-dialect($node as node(), $model as map(*)) {
-    let $entry := $model("entry")
-    let $subentries : = count($entry//TEI:entry/TEI:gramGrp)
-    return <td>{data($entry//TEI:entry/TEI:usg)}</td>
+    %templates:wrap
+    %templates:default("lang", 'en')
+function app:entry-dialect($node as node(), $model as map(*), $lang as xs:string?) {
+    let $labels := tokenize($model?entry//TEI:usg, '\s+')
+    let $dialects :=
+    
+        for $e in doc($config:taxonomies-root || "/dialects.xml")//TEI:category[@xml:id=$labels]/TEI:catDesc[@ana="full"][@xml:lang=$lang]
+        return $e
+    
+    return string-join($dialects, ', ')
 };
 
 declare
