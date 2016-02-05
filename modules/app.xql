@@ -140,8 +140,9 @@ function app:entry-morpheme-functions($node as node(), $model as map(*), $type a
             let $morph :=
             for $bf in $se//TEI:m[@type='radical']/@baseForm
                 let $labels := tokenize(doc($config:taxonomies-root || "/morphemes.xml")//TEI:category[@baseForm=$bf]/TEI:catDesc/@ana, '\s*#')
+                let $c := console:log($labels)
 
-            return string-join($labels, '; ')
+            return string-join($labels, ';')
         return string-join($morph, '+')
             
     return 
@@ -174,7 +175,7 @@ function app:entry-semantics($node as node(), $model as map(*), $lang as xs:stri
                     for $m in doc($config:taxonomies-root || "/ontology.xml")//TEI:category[@xml:id=$labels]/TEI:catDesc[@xml:lang=$lang]
                     order by $m
                     return $m
-            return string-join($concept, '; ')
+            return string-join($concept, ', ')
         return string-join($morph, '+')
     return 
         <td>
