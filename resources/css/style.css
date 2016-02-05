@@ -1,4 +1,7 @@
 /* Application styles could go here */
+.glyphicon {
+    margin-right: 4px;
+}
 .profiling .nav {
     margin-top: 10px;
 }
