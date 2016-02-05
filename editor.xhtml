@@ -101,6 +101,10 @@
                 <xf:submission id="s-load-data" method="get" replace="instance" ref="instance('i-default')" validate="false" resource="modules/load.xql?id={bf:appContext('id')}">
                     <xf:message ev:event="xforms-submit-done" level="ephemeral">Data have been loaded.</xf:message>
                     <xf:message ev:event="xforms-submit-error">Failed to load data.</xf:message>
+                    <xf:action ev:event="xforms-submit-done">
+                        <xf:send submission="s-reload-meanings-1"/>
+                        <xf:send submission="s-reload-meanings-2"/>
+                    </xf:action>
                 </xf:submission>
                 <xf:submission id="s-save-data" method="post" replace="none" validate="true" resource="modules/save.xql">
                     <xf:action ev:event="xforms-submit">
