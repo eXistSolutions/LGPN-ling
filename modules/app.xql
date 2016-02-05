@@ -173,12 +173,9 @@ function app:entry-semantics($node as node(), $model as map(*), $lang as xs:stri
         for $se in $entry
             let $morph :=
             for $bf in $se//TEI:m[@type='radical']/@baseForm[string(.)]
-                let $labels := tokenize(doc($config:taxonomies-root || "/morphemes.xml")//TEI:category[@baseForm=$bf]/@ana, '\s*#')
-
                 let $concept :=
-                    for $m in doc($config:taxonomies-root || "/ontology.xml")//TEI:category[@xml:id=$labels]/TEI:catDesc[@xml:lang=$lang]
-                    order by $m
-                    return $m
+                    for $m in tokenize(doc($config:taxonomies-root || "/morphemes.xml")//TEI:category[@baseForm=$bf]/@ana, '\s*#')
+                    return doc($config:taxonomies-root || "/ontology.xml")//TEI:category[@xml:id=$m]/TEI:catDesc[@xml:lang=$lang]
             return string-join($concept, ', ')
         return string-join($morph, '+')
     return 
