@@ -6,85 +6,85 @@
                 <h1 data-template="app:title">Generated page</h1>
             </div>
             <div class="row" data-template="app:entries">
-                <div class="col-md-12">
-		    <div><a href="modules/export-csv.xql">Export as CSV</a></div>
-                    <table data-template="app:entries-paged" class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th>
-                                    <i18n:text key="edit">Latin</i18n:text>
-                                </th>
-                                <th>
-                                    <i18n:text key="latin">Latin</i18n:text>
-                                </th>
-                                <th>
-                                    <i18n:text key="greek">Greek</i18n:text>
-                                </th>
-                                <th>
-                                    <i18n:text key="gender">Gender</i18n:text>
-                                </th>
-                                <th>
-                                    <i18n:text key="dialect">Dialect</i18n:text>
-                                </th>
-                                <th>
-                                    <i18n:text key="period">Period</i18n:text>
-                                </th>
-                                <th>
-                                    <i18n:text key="prefix">Prefix</i18n:text>
-                                </th>
-                                <th>
-                                    <i18n:text key="root">Root</i18n:text>1</th>
-                                <th>
-                                    <i18n:text key="root">Root</i18n:text>2</th>
-                                <th>
-                                    <i18n:text key="suff">Suff.</i18n:text>4</th>
-                                <th>
-                                    <i18n:text key="suff">Suff.</i18n:text>3</th>
-                                <th>
-                                    <i18n:text key="suff">Suff.</i18n:text>2</th>
-                                <th>
-                                    <i18n:text key="suff">Suff.</i18n:text>1</th>
-                                <th>
-                                    <i18n:text key="radicals">Structure</i18n:text>
-                                </th>
-                                <th>
-                                    <i18n:text key="semantics">Semantics</i18n:text>
-                                </th>
-                                <th>
-                                    <i18n:text key="sources">Lexis</i18n:text>
-                                </th>
-                                <th>
-                                    <i18n:text key="bibliography">References</i18n:text>
-                                </th>
-                                <th>
-                                    <i18n:text key="edit"/>
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="templates:each?from=entries&amp;to=entry"><!--                                <td data-template="app:entry-id"/> -->
-                                <td data-template="app:entry-action"/>
-                                <td data-template="app:entry-form" data-template-langId="latin"/>
-                                <td data-template="app:entry-form" data-template-langId="greek"/><!--                                <td data-template="app:entry-stripped" data-template-lang="greek"/> -->
-                                <td data-template="app:entry-gender"/>
-                                <td data-template="app:entry-dialect"/>
-                                <td data-template="app:entry-period"/>
-                                <td data-template="app:entry-morpheme" data-template-position="1" data-template-type="prefix"/>
-                                <td data-template="app:entry-morpheme" data-template-position="1" data-template-type="radical"/>
-                                <td data-template="app:entry-morpheme" data-template-position="2" data-template-type="radical"/>
-                                <td data-template="app:entry-morpheme" data-template-position="4" data-template-type="suffix"/>
-                                <td data-template="app:entry-morpheme" data-template-position="3" data-template-type="suffix"/>
-                                <td data-template="app:entry-morpheme" data-template-position="2" data-template-type="suffix"/>
-                                <td data-template="app:entry-morpheme" data-template-position="1" data-template-type="suffix"/><!--                                <td data-template="app:entry-morphemes" data-template-type="suffix"/> -->
-                                <td data-template="app:entry-morpheme-functions" data-template-type="radical"/>
-                                <td data-template="app:entry-semantics" data-template-type="radical"/>
-                                <td data-template="app:entry-sources" data-template-type="radical"/>
-                                <td data-template="app:entry-bibl" data-template-type="radical"/><!--                                <td data-template="app:entry-morphemes" data-template-type="radical"/> -->
-                                <td data-template="app:entry-action"/>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div>
+                    <a href="modules/export-csv.xql">Export as CSV</a>
                 </div>
+                <table data-template="app:entries-paged" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>
+                                <i18n:text key="edit">Latin</i18n:text>
+                            </th>
+                            <th>
+                                <i18n:text key="latin">Latin</i18n:text>
+                            </th>
+                            <th>
+                                <i18n:text key="greek">Greek</i18n:text>
+                            </th>
+                            <th>
+                                <i18n:text key="gender">Gender</i18n:text>
+                            </th>
+                            <th>
+                                <i18n:text key="dialect">Dialect</i18n:text>
+                            </th>
+                            <th>
+                                <i18n:text key="period">Period</i18n:text>
+                            </th>
+                            <th>
+                                <i18n:text key="prefix">Prefix</i18n:text>
+                            </th>
+                            <th>
+                                <i18n:text key="root">Root</i18n:text>1</th>
+                            <th>
+                                <i18n:text key="root">Root</i18n:text>2</th>
+                            <th>
+                                <i18n:text key="suff">Suff.</i18n:text>4</th>
+                            <th>
+                                <i18n:text key="suff">Suff.</i18n:text>3</th>
+                            <th>
+                                <i18n:text key="suff">Suff.</i18n:text>2</th>
+                            <th>
+                                <i18n:text key="suff">Suff.</i18n:text>1</th>
+                            <th>
+                                <i18n:text key="radicals">Structure</i18n:text>
+                            </th>
+                            <th>
+                                <i18n:text key="semantics">Semantics</i18n:text>
+                            </th>
+                            <th>
+                                <i18n:text key="sources">Lexis</i18n:text>
+                            </th>
+                            <th>
+                                <i18n:text key="bibliography">References</i18n:text>
+                            </th>
+                            <th>
+                                <i18n:text key="edit"/>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="templates:each?from=entries&amp;to=entry"><!--                                <td data-template="app:entry-id"/> -->
+                            <td data-template="app:entry-action"/>
+                            <td data-template="app:entry-form" data-template-langId="latin"/>
+                            <td data-template="app:entry-form" data-template-langId="greek"/><!--                                <td data-template="app:entry-stripped" data-template-lang="greek"/> -->
+                            <td data-template="app:entry-gender"/>
+                            <td data-template="app:entry-dialect"/>
+                            <td data-template="app:entry-period"/>
+                            <td data-template="app:entry-morpheme" data-template-position="1" data-template-type="prefix"/>
+                            <td data-template="app:entry-morpheme" data-template-position="1" data-template-type="radical"/>
+                            <td data-template="app:entry-morpheme" data-template-position="2" data-template-type="radical"/>
+                            <td data-template="app:entry-morpheme" data-template-position="4" data-template-type="suffix"/>
+                            <td data-template="app:entry-morpheme" data-template-position="3" data-template-type="suffix"/>
+                            <td data-template="app:entry-morpheme" data-template-position="2" data-template-type="suffix"/>
+                            <td data-template="app:entry-morpheme" data-template-position="1" data-template-type="suffix"/><!--                                <td data-template="app:entry-morphemes" data-template-type="suffix"/> -->
+                            <td data-template="app:entry-morpheme-functions" data-template-type="radical"/>
+                            <td data-template="app:entry-semantics" data-template-type="radical"/>
+                            <td data-template="app:entry-sources" data-template-type="radical"/>
+                            <td data-template="app:entry-bibl" data-template-type="radical"/><!--                                <td data-template="app:entry-morphemes" data-template-type="radical"/> -->
+                            <td data-template="app:entry-action"/>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
