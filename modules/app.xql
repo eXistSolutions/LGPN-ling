@@ -141,15 +141,14 @@ function app:entry-morphemes($node as node(), $model as map(*), $type as xs:stri
 declare
 function app:entry-morpheme-functions($node as node(), $model as map(*), $type as xs:string) {
     let $entry := $model("entry")//TEI:gramGrp
-                let $c := console:log($model?entry//TEI:orth[@type="latin"])
+(:                let $c := console:log($model?entry//TEI:orth[@type="latin"]):)
     let $functions := 
         for $se in $entry
-            let $morph :=
-            for $bf in $se//TEI:m[@type='radical']/@baseForm[string(.)]
-                let $labels := tokenize(doc($config:taxonomies-root || "/morphemes.xml")//TEI:category[@baseForm=$bf]/TEI:catDesc/@ana, '\s*#')
-            return  string-join($labels, ';') 
-        return string-join($morph, '+')
-    return 
+            let $subentry_functions :=
+                for $e in $se//TEI:m[@type=$type]/@function[string(.)]
+                order by $e/@n
+                return $e
+            return string-join($subentry_functions, '+')    return 
         <td>
             {
                 if (count($functions)>1) 

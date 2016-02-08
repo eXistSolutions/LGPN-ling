@@ -28,13 +28,13 @@
                                         <usg/>
                                     </form>
                                     <gramGrp cert="high">
-                                        <m baseForm="" type="prefix" subtype="flexional" n="1"/>
-                                        <m baseForm="" type="radical" n="1" cert=""/>
-                                        <m baseForm="" type="radical" n="2" cert=""/>
+                                        <m baseForm="" type="prefix" n="1"/>
+                                        <m baseForm="" type="radical" n="1" function="" cert=""/>
+                                        <m baseForm="" type="radical" n="2" function="" cert=""/>
                                         <m baseForm="" type="suffix" subtype="flexional" n="1"/>
-                                        <m baseForm="" type="suffix" subtype="flexional" n="2"/>
-                                        <m baseForm="" type="suffix" subtype="flexional" n="3"/>
-                                        <m baseForm="" type="suffix" subtype="flexional" n="4"/>
+                                        <m baseForm="" type="suffix" n="2"/>
+                                        <m baseForm="" type="suffix" n="3"/>
+                                        <m baseForm="" type="suffix" n="4"/>
                                     </gramGrp>
                                     <cit>
                                         <quote/>
@@ -58,13 +58,13 @@
                 <xf:instance id="i-template">
                     <data xmlns="http://www.tei-c.org/ns/1.0">
                         <gramGrp cert="">
-                            <m baseForm="" type="prefix" subtype="" n="1"/>
-                            <m baseForm="" type="radical" n="1" cert=""/>
-                            <m baseForm="" type="radical" n="2" cert=""/>
-                            <m baseForm="" type="suffix" subtype="" n="1"/>
-                            <m baseForm="" type="suffix" subtype="" n="2"/>
-                            <m baseForm="" type="suffix" subtype="" n="3"/>
-                            <m baseForm="" type="suffix" subtype="" n="4"/>
+                            <m baseForm="" type="prefix" n="1"/>
+                            <m baseForm="" type="radical" n="1" function="" cert=""/>
+                            <m baseForm="" type="radical" n="2" function="" cert=""/>
+                            <m baseForm="" type="suffix" subtype="flexional" n="1"/>
+                            <m baseForm="" type="suffix" n="2"/>
+                            <m baseForm="" type="suffix" n="3"/>
+                            <m baseForm="" type="suffix" n="4"/>
                         </gramGrp>
                         <cit>
                             <quote/>
@@ -289,6 +289,58 @@
                                             <xf:dispatch name="load-subform-event" targetid="load-subform-group"/>
                                         </xf:action>
                                     </xf:trigger>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <xf:select ref="TEI:m[@type = 'radical' and @n = 1]/@function" appearance="full" incremental="true">
+                                        <xf:label/>
+                                        <xf:item>
+                                            <xf:label>Participle</xf:label>
+                                            <xf:value>P</xf:value>
+                                        </xf:item>
+                                        <xf:item>
+                                            <xf:label>Noun</xf:label>
+                                            <xf:value>N</xf:value>
+                                        </xf:item>
+                                        <xf:item>
+                                            <xf:label>Adjective</xf:label>
+                                            <xf:value>Adj</xf:value>
+                                        </xf:item>
+                                        <xf:item>
+                                            <xf:label>Pronoun</xf:label>
+                                            <xf:value>Pro</xf:value>
+                                        </xf:item>
+                                        <xf:item>
+                                            <xf:label>Adverb</xf:label>
+                                            <xf:value>Adv</xf:value>
+                                        </xf:item>
+                                    </xf:select>
+                                </div>
+                                <div class="col-xs-6">
+                                    <xf:select ref="TEI:m[@type = 'radical' and @n = 2]/@function" appearance="full" incremental="true">
+                                        <xf:label/>
+                                        <xf:item>
+                                            <xf:label>Participle</xf:label>
+                                            <xf:value>P</xf:value>
+                                        </xf:item>
+                                        <xf:item>
+                                            <xf:label>Noun</xf:label>
+                                            <xf:value>N</xf:value>
+                                        </xf:item>
+                                        <xf:item>
+                                            <xf:label>Adjective</xf:label>
+                                            <xf:value>Adj</xf:value>
+                                        </xf:item>
+                                        <xf:item>
+                                            <xf:label>Pronoun</xf:label>
+                                            <xf:value>Pro</xf:value>
+                                        </xf:item>
+                                        <xf:item>
+                                            <xf:label>Adverb</xf:label>
+                                            <xf:value>Adv</xf:value>
+                                        </xf:item>
+                                    </xf:select>
                                 </div>
                             </div>
                             <div class="row">

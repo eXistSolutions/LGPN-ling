@@ -9,7 +9,7 @@ import module namespace console="http://exist-db.org/xquery/console" at "java:or
  :  gets separated and turned into proper TEI on save :)
 declare function local:newMorpheme($id) {
         <category xmlns="http://www.tei-c.org/ns/1.0" baseForm="{$id}">
-            <catDesc ana="">{$id}</catDesc>
+            <catDesc>{$id}</catDesc>
             {local:padMeanings(3)}
         </category>
 };
@@ -25,6 +25,7 @@ declare function local:padMeanings($number) {
 };
 
 let $id := request:get-parameter('id', '')
+let $c := console:log('load ' || $id )
 let $entry := collection($config:taxonomies-root)//TEI:taxonomy[@xml:id="morphemes"]/TEI:category[@baseForm=$id][1]
 
 return    

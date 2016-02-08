@@ -41,7 +41,7 @@ declare function local:updateMorpheme($data) {
                         {$data//TEI:category/TEI:catDesc}
                     </category>
     
-    let $c := console:log('replacement' || $replacement)
+(:    let $c := console:log('replacement' || $replacement):)
     
     return
         if($morphemes//TEI:category[@baseForm=$id]) 
