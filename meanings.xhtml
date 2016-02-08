@@ -56,18 +56,9 @@
                         </xf:action>
                         <xf:message ev:event="xforms-submit-done" level="ephemeral">Data have been saved.</xf:message><!--                        <xf:message ev:event="xforms-submit-error">Failed to save data</xf:message> -->
                     </xf:submission>
-                    <xf:submission id="s-load-trans-1" method="post" replace="instance" validate="false" resource="modules/load-root-translations.xql" ref="instance('i-default')/TEI:meaning[1]" targetref="instance('i-default')/TEI:meaning[1]"><!-- TODO remove debug message -->
-                        <xf:message ev:event="xforms-submit-done" level="ephemeral">Translations 1 reloaded.</xf:message>
-                        <xf:message ev:event="xforms-submit-error" level="ephemeral">Translations 1 reload failed.</xf:message>
-                    </xf:submission>
-                    <xf:submission id="s-load-trans-2" method="post" replace="instance" validate="false" resource="modules/load-root-translations.xql" ref="instance('i-default')/TEI:meaning[2]" targetref="instance('i-default')/TEI:meaning[2]"><!-- TODO remove debug message -->
-                        <xf:message ev:event="xforms-submit-done" level="ephemeral">Translations 2 reloaded.</xf:message>
-                        <xf:message ev:event="xforms-submit-error" level="ephemeral">Translations 2 reload failed.</xf:message>
-                    </xf:submission>
-                    <xf:submission id="s-load-trans-3" method="post" replace="instance" validate="false" resource="modules/load-root-translations.xql" ref="instance('i-default')/TEI:meaning[3]" targetref="instance('i-default')/TEI:meaning[3]"><!-- TODO remove debug message -->
-                        <xf:message ev:event="xforms-submit-done" level="ephemeral">Translations 3 reloaded.</xf:message>
-                        <xf:message ev:event="xforms-submit-error" level="ephemeral">Translations 3 reload failed.</xf:message>
-                    </xf:submission>
+                    <xf:submission id="s-load-trans-1" method="post" replace="instance" validate="false" resource="modules/load-root-translations.xql" ref="instance('i-default')/TEI:meaning[1]" targetref="instance('i-default')/TEI:meaning[1]"/>
+                    <xf:submission id="s-load-trans-2" method="post" replace="instance" validate="false" resource="modules/load-root-translations.xql" ref="instance('i-default')/TEI:meaning[2]" targetref="instance('i-default')/TEI:meaning[2]"/>
+                    <xf:submission id="s-load-trans-3" method="post" replace="instance" validate="false" resource="modules/load-root-translations.xql" ref="instance('i-default')/TEI:meaning[3]" targetref="instance('i-default')/TEI:meaning[3]"/>
                     <xf:action ev:event="xforms-ready">
                         <xf:send submission="s-load-morpheme" if="bf:appContext('morpheme') != ''"/>
                         <script>
@@ -228,7 +219,7 @@
                                         <xf:setvalue ref="." value="event('termValue')"/>
                                     </xf:action>
                                     <xf:action ev:event="xforms-value-changed">
-                                        <xf:send submission="s-load-trans-2"/>
+                                        <xf:send submission="s-load-trans-3"/>
                                     </xf:action>
                                 </xf:input>
                                 <input type="hidden" data-function="ontology_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
