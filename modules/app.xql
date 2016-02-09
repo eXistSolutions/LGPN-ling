@@ -88,16 +88,23 @@ function app:entry-dialect($node as node(), $model as map(*), $lang as xs:string
 };
 
 declare
+ %templates:wrap
 function app:entry-period($node as node(), $model as map(*)) {
-    let $entry := $model("entry")
-    return <td>period</td>
+    let $name := $model("entry")//TEI:orth[@type='greek']
+    let $dates :=(
+        min(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:birth/@notBefore[string(.)]/string()),
+        max(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:birth/@notBefore[string(.)]/string()))
+    return string-join($dates, '|')
 };
 
-
 declare
+ %templates:wrap
 function app:entry-gender($node as node(), $model as map(*)) {
-    let $entry := $model("entry")
-    return <td>[m/f]</td>
+    let $name := $model("entry")//TEI:orth[@type='greek']
+    let $genders :=
+        for $g in distinct-values(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:sex/@value/string())
+        return if (number($g)=2) then "f." else "m."
+    return string-join($genders, '|')
 };
 
 declare
