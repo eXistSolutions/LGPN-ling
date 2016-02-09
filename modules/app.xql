@@ -89,6 +89,13 @@ function app:entry-dialect($node as node(), $model as map(*), $lang as xs:string
 
 declare
  %templates:wrap
+function app:entry-attestations($node as node(), $model as map(*)) {
+    let $name := $model("entry")//TEI:orth[@type='greek']
+    return count(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person)
+};
+
+declare
+ %templates:wrap
 function app:entry-period($node as node(), $model as map(*)) {
     let $name := $model("entry")//TEI:orth[@type='greek']
     let $dates :=(
