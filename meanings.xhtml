@@ -14,7 +14,7 @@
                 <xf:model id="model-morpheme">
                     <xf:instance id="i-default">
                         <category xmlns="http://www.tei-c.org/ns/1.0" baseForm="">
-                            <catDesc/>
+                            <catDesc ana=""/>
                             <meaning label="">
                                 <translation xml:lang="en"/>
                                 <translation xml:lang="fr"/>
@@ -31,7 +31,7 @@
                     </xf:instance>
                     <xf:instance id="i-template">
                         <category xmlns="http://www.tei-c.org/ns/1.0" baseForm="">
-                            <catDesc/>
+                            <catDesc ana=""/>
                             <meaning label="">
                                 <translation xml:lang="en"/>
                                 <translation xml:lang="fr"/>
@@ -46,6 +46,9 @@
                             </meaning>
                         </category>
                     </xf:instance>
+                    <xf:instance id="i-global-variables">
+                        <global-variables xmlns="" number-of-meaning-being-reloaded="0"/>
+                    </xf:instance>
                     <xf:submission id="s-load-morpheme" method="get" replace="instance" ref="instance('i-default')" validate="false" resource="modules/loadMorpheme.xql?id={bf:appContext('morpheme')}">
                         <xf:message ev:event="xforms-submit-done" level="ephemeral">Data have been loaded.</xf:message>
                         <xf:message ev:event="xforms-submit-error">Failed to load data.</xf:message>
@@ -56,9 +59,7 @@
                         </xf:action>
                         <xf:message ev:event="xforms-submit-done" level="ephemeral">Data have been saved.</xf:message><!--                        <xf:message ev:event="xforms-submit-error">Failed to save data</xf:message> -->
                     </xf:submission>
-                    <xf:submission id="s-load-trans-1" method="post" replace="instance" validate="false" resource="modules/load-root-translations.xql" ref="instance('i-default')/TEI:meaning[1]" targetref="instance('i-default')/TEI:meaning[1]"/>
-                    <xf:submission id="s-load-trans-2" method="post" replace="instance" validate="false" resource="modules/load-root-translations.xql" ref="instance('i-default')/TEI:meaning[2]" targetref="instance('i-default')/TEI:meaning[2]"/>
-                    <xf:submission id="s-load-trans-3" method="post" replace="instance" validate="false" resource="modules/load-root-translations.xql" ref="instance('i-default')/TEI:meaning[3]" targetref="instance('i-default')/TEI:meaning[3]"/>
+                    <xf:submission id="s-load-trans" method="post" replace="instance" validate="false" resource="modules/load-root-translations.xql" ref="instance('i-default')/TEI:meaning[instance('i-global-variables')/@number-of-meaning-being-reloaded/number()]" targetref="instance('i-default')/TEI:meaning[instance('i-global-variables')/@number-of-meaning-being-reloaded/number()]"/>
                     <xf:action ev:event="xforms-ready">
                         <xf:send submission="s-load-morpheme" if="bf:appContext('morpheme') != ''"/>
                         <script>
@@ -85,7 +86,7 @@
                                 <xf:hint>(h)αβρ</xf:hint>
                             </xf:input>
                         </div>
-                    </div><!--
+                    </div>
                     <div>
                         <div class="col-xs-8">
                             <xf:select ref="//TEI:category/TEI:catDesc/@ana" appearance="full" incremental="true">
@@ -113,7 +114,6 @@
                             </xf:select>
                         </div>
                     </div>
-                    -->
                     <hr/>
                     <div class="row">
                         <div class="col-xs-2">
@@ -126,7 +126,8 @@
                                         <xf:setvalue ref="." value="event('termValue')"/>
                                     </xf:action>
                                     <xf:action ev:event="xforms-value-changed">
-                                        <xf:send submission="s-load-trans-1"/>
+                                        <xf:setvalue ref="instance('i-global-variables')/@number-of-meaning-being-reloaded" value="1"/>
+                                        <xf:send submission="s-load-trans"/>
                                     </xf:action>
                                 </xf:input>
                                 <input type="hidden" data-function="ontology_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
@@ -173,7 +174,8 @@
                                         <xf:setvalue ref="." value="event('termValue')"/>
                                     </xf:action>
                                     <xf:action ev:event="xforms-value-changed">
-                                        <xf:send submission="s-load-trans-2"/>
+                                        <xf:setvalue ref="instance('i-global-variables')/@number-of-meaning-being-reloaded" value="2"/>
+                                        <xf:send submission="s-load-trans"/>
                                     </xf:action>
                                 </xf:input>
                                 <input type="hidden" data-function="ontology_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
@@ -220,7 +222,8 @@
                                         <xf:setvalue ref="." value="event('termValue')"/>
                                     </xf:action>
                                     <xf:action ev:event="xforms-value-changed">
-                                        <xf:send submission="s-load-trans-3"/>
+                                        <xf:setvalue ref="instance('i-global-variables')/@number-of-meaning-being-reloaded" value="3"/>
+                                        <xf:send submission="s-load-trans"/>
                                     </xf:action>
                                 </xf:input>
                                 <input type="hidden" data-function="ontology_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
@@ -264,7 +267,8 @@
                                     <xf:label>Save</xf:label>
                                 </xf:submit>
                                 <xf:trigger class="-bigbtn -btn-primary -glyphicon -glyphicon-trash">
-                                    <xf:label>Cancel</xf:label><!-- <script ev:event="DOMActivate" type="text/javascript">close()</script> -->
+                                    <xf:label>Cancel</xf:label>
+                                    <script ev:event="DOMActivate" type="text/javascript">dijit.byId("meanings").hide()</script>
                                 </xf:trigger>
                             </div>
                         </div>
