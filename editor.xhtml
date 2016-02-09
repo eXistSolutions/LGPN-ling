@@ -243,9 +243,13 @@
                             <div class="row">
                                 <div class="col-xs-3">
                                     <xf:input class="input-group -form-control" ref="TEI:m[@type = 'radical' and @n = 1]">
+                                        <xf:action ev:event="constituent_autocomplete-callback">
+                                            <xf:setvalue ref="." value="event('termValue')"/>
+                                        </xf:action>
                                         <xf:label class="input-group-addon">constituent 1</xf:label>
                                         <xf:alert>no whitespace allowed</xf:alert>
                                     </xf:input>
+                                    <input type="hidden" data-function="constituent_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
                                 </div>
                                 <div class="col-xs-3">
                                     <xf:input class="input-group -form-control" ref="TEI:m[@type = 'radical' and @n = 1]/@baseForm">
@@ -268,8 +272,13 @@
                                 </div>
                                 <div class="col-xs-3">
                                     <xf:input class="input-group -form-control" ref="TEI:m[@type = 'radical' and @n = 2]">
+                                        <xf:action ev:event="constituent_autocomplete-callback">
+                                            <xf:setvalue ref="." value="event('termValue')"/>
+                                        </xf:action>
                                         <xf:label class="input-group-addon">constituent 2</xf:label>
+                                        <xf:alert>no whitespace allowed</xf:alert>
                                     </xf:input>
+                                    <input type="hidden" data-function="constituent_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
                                 </div>
                                 <div class="col-xs-3">
                                     <xf:input class="input-group -form-control" ref="TEI:m[@type = 'radical' and @n = 2]/@baseForm">
