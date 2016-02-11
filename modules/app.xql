@@ -101,7 +101,7 @@ function app:entry-period($node as node(), $model as map(*)) {
     let $dates :=(
         min(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:birth/@notBefore[string(.)]),
         max(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:birth/@notAfter[string(.)]))
-    return string-join($dates, '|')
+    return string-join($dates, '/')
 };
 
 declare

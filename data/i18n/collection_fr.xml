@@ -47,7 +47,7 @@
     <msg key="relationships">Filiation</msg>
     <msg key="queryPlease">Entrez votre demande...</msg>
     <msg key="greek">Grec</msg>
-    <msg key="latin">Latin</msg>
+    <msg key="latin">Translittération</msg>
     <msg key="period">Période</msg>
     <msg key="gender">Genre</msg>
     <msg key="dialect">Dialecte</msg>

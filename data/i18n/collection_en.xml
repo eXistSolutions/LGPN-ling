@@ -47,7 +47,7 @@
     <msg key="relationships">Relationships</msg>
     <msg key="queryPlease">Please enter query...</msg>
     <msg key="greek">Greek</msg>
-    <msg key="latin">Latin</msg>
+    <msg key="latin">Transliteration</msg>
     <msg key="period">Period</msg>
     <msg key="gender">Gender</msg>
     <msg key="dialect">Dialects</msg>
