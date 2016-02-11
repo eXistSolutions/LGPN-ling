@@ -92,18 +92,32 @@
                 <xf:instance xmlns="" id="i-suffix-2" src="resources/xml/suffixes/suffix-2.xml"/>
                 <xf:instance xmlns="" id="i-suffix-3" src="resources/xml/suffixes/suffix-3.xml"/>
                 <xf:instance xmlns="" id="i-suffix-4" src="resources/xml/suffixes/suffix-4.xml"/>
-                <xf:instance id="i-meanings-ontology-1">
-                    <TEI:taxonomy/>
-                </xf:instance>
-                <xf:instance id="i-meanings-ontology-2">
-                    <TEI:taxonomy/>
+                <xf:instance id="i-meanings">
+                    <meanings xmlns="">
+                        <being-reloaded grp="0" n=""/>
+                        <target>
+                            <TEI:taxonomy/>
+                        </target>
+                        <template>
+                            <meaning grp="0" n="0"/>
+                        </template><!-- and actual entries created dynamically e.g.:
+                        <meaning grp="1" n="1">
+                            <TEI:taxonomy/>
+                        </meaning>
+                        -->
+                    </meanings>
                 </xf:instance>
                 <xf:submission id="s-load-data" method="get" replace="instance" ref="instance('i-default')" validate="false" resource="modules/load.xql?id={bf:appContext('id')}">
                     <xf:message ev:event="xforms-submit-done" level="ephemeral">Data have been loaded.</xf:message>
                     <xf:message ev:event="xforms-submit-error">Failed to load data.</xf:message>
                     <xf:action ev:event="xforms-submit-done">
-                        <xf:send submission="s-reload-meanings-1"/>
-                        <xf:send submission="s-reload-meanings-2"/>
+                        <xf:action while="instance('i-meanings')/being-reloaded/@grp &lt; count(instance('i-default')//TEI:gramGrp)">
+                            <xf:setvalue ref="instance('i-meanings')/being-reloaded/@grp" value="instance('i-meanings')/being-reloaded/@grp + 1"/>
+                            <xf:setvalue ref="instance('i-meanings')/being-reloaded/@n" value="1"/>
+                            <xf:send submission="s-reload-meanings"/>
+                            <xf:setvalue ref="instance('i-meanings')/being-reloaded/@n" value="2"/>
+                            <xf:send submission="s-reload-meanings"/>
+                        </xf:action>
                     </xf:action>
                 </xf:submission>
                 <xf:submission id="s-save-data" method="post" replace="none" validate="true" resource="modules/save.xql">
@@ -114,14 +128,17 @@
                     <xf:message ev:event="xforms-submit-done" level="ephemeral">Data have been saved.</xf:message>
                     <xf:message ev:event="xforms-submit-error">Failed to save data</xf:message>
                 </xf:submission>
-                <xf:submission id="s-reload-meanings-1" method="post" replace="instance" validate="false" resource="modules/reload-meanings.xql" ref="instance('i-default')//TEI:entry/TEI:gramGrp[1]/TEI:m[@type = 'radical' and @n = 1]" targetref="instance('i-meanings-ontology-1')"><!-- TODO remove debug message -->
-                    <xf:message ev:event="xforms-submit-done" level="ephemeral">Meanings reloaded. Content is <xf:output value="string(instance('i-meanings-ontology-1'))"/>
-                    </xf:message>
-                    <xf:message ev:event="xforms-submit-error" level="ephemeral">Meanings reload failed.</xf:message>
-                </xf:submission>
-                <xf:submission id="s-reload-meanings-2" method="post" replace="instance" validate="false" resource="modules/reload-meanings.xql" ref="instance('i-default')//TEI:entry/TEI:gramGrp[1]/TEI:m[@type = 'radical' and @n = 2]" targetref="instance('i-meanings-ontology-2')"><!-- TODO remove debug message -->
-                    <xf:message ev:event="xforms-submit-done" level="ephemeral">Meanings reloaded. Content is <xf:output value="string(instance('i-meanings-ontology-2'))"/>
-                    </xf:message>
+                <xf:submission id="s-reload-meanings" method="post" replace="instance" validate="false" resource="modules/reload-meanings.xql" ref="instance('i-default')//TEI:entry/TEI:gramGrp[instance('i-meanings')/being-reloaded/@grp/number()]/TEI:m[@type = 'radical' and @n = instance('i-meanings')/being-reloaded/@n]" targetref="instance('i-meanings')/target/TEI:taxonomy">
+                    <xf:action ev:event="xforms-submit-done">
+                        <xf:action if="not(instance('i-meanings')/meaning[@grp=instance('i-meanings')/being-reloaded/@grp and @n=instance('i-meanings')/being-reloaded/@n])">
+                            <xf:insert context="instance('i-meanings')" nodeset="*[last()]" origin="instance('i-meanings')/template/meaning"/>
+                            <xf:setvalue ref="instance('i-meanings')/meaning[@grp='0']/@n" value="instance('i-meanings')/being-reloaded/@n"/>
+                            <xf:setvalue ref="instance('i-meanings')/meaning[@grp='0']/@grp" value="instance('i-meanings')/being-reloaded/@grp"/>
+                        </xf:action>
+                        <xf:delete context="instance('i-meanings')/meaning[@grp=instance('i-meanings')/being-reloaded/@grp and @n=instance('i-meanings')/being-reloaded/@n]" nodeset="*"/>
+                        <xf:insert context="instance('i-meanings')/meaning[@grp=instance('i-meanings')/being-reloaded/@grp and @n=instance('i-meanings')/being-reloaded/@n]" origin="instance('i-meanings')/target/*"/>
+                        <xf:delete context="instance('i-meanings')/target/TEI:taxonomy" nodeset="*|@*"/>
+                    </xf:action>
                     <xf:message ev:event="xforms-submit-error" level="ephemeral">Meanings reload failed.</xf:message>
                 </xf:submission>
                 <xf:action ev:event="xforms-ready">
@@ -258,7 +275,9 @@
                                         </xf:action>
                                         <xf:label class="input-group-addon">root</xf:label>
                                         <xf:action ev:event="xforms-value-changed">
-                                            <xf:send submission="s-reload-meanings-1"/>
+                                            <xf:setvalue ref="instance('i-meanings')/being-reloaded/@grp" value="count(context()/preceding::TEI:gramGrp)+1"/>
+                                            <xf:setvalue ref="instance('i-meanings')/being-reloaded/@n" value="1"/>
+                                            <xf:send submission="s-reload-meanings"/>
                                         </xf:action>
                                     </xf:input>
                                     <input type="hidden" data-function="autocomplete" placeholder="Type to search ..." autocomplete="off"/>
@@ -287,7 +306,9 @@
                                         </xf:action>
                                         <xf:label class="input-group-addon">root</xf:label>
                                         <xf:action ev:event="xforms-value-changed">
-                                            <xf:send submission="s-reload-meanings-2"/>
+                                            <xf:setvalue ref="instance('i-meanings')/being-reloaded/@grp" value="count(context()/preceding::TEI:gramGrp)+1"/>
+                                            <xf:setvalue ref="instance('i-meanings')/being-reloaded/@n" value="2"/>
+                                            <xf:send submission="s-reload-meanings"/>
                                         </xf:action>
                                     </xf:input>
                                     <input type="hidden" data-function="autocomplete" placeholder="Type to search ..." autocomplete="off"/>
@@ -370,7 +391,7 @@
                                                 meanings
                                             </span><!--<input class="tags" value="" disabled="disabled"/>-->
                                             <span class="meanings-val">
-                                                <xf:repeat nodeset="instance('i-meanings-ontology-1')//TEI:category">
+                                                <xf:repeat nodeset="instance('i-meanings')/meaning[@grp=count(current()/preceding::TEI:gramGrp)+1 and @n=1]//TEI:category" id="r-meanings-1">
                                                     <xf:output ref="TEI:catDesc[@xml:lang='en']"/>
                                                 </xf:repeat>
                                             </span>
@@ -394,7 +415,7 @@
                                                 meanings
                                             </span><!--<input class="tags" value="" disabled="disabled"/>-->
                                             <span class="meanings-val">
-                                                <xf:repeat nodeset="instance('i-meanings-ontology-2')//TEI:category">
+                                                <xf:repeat nodeset="instance('i-meanings')/meaning[@grp=count(current()/preceding::TEI:gramGrp)+1 and @n=2]//TEI:category" id="r-meanings-2">
                                                     <xf:output ref="TEI:catDesc[@xml:lang='en']"/>
                                                 </xf:repeat>
                                             </span>

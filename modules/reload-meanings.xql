@@ -13,7 +13,7 @@ let $baseForm := string($data/*/@baseForm)
 let $morphemes := doc($config:taxonomies-root || '/morphemes.xml')
 let $ontology := doc($config:taxonomies-root || '/ontology.xml')
 return
-<tei:taxonomy xml:id="ontology">
+<tei:taxonomy>
 {
     for $attr in $morphemes//tei:category[@baseForm=$baseForm]/@ana
     for $category-id in tokenize($attr, '\s*#')
