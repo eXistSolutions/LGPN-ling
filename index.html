@@ -9,11 +9,11 @@
                 <div>
                     <a href="modules/export-csv.xql">Export as CSV</a>
                 </div>
-                <table data-template="app:entries-paged" class="table table-striped">
+                <table id="datatable" class="display table table-striped" cellspacing="0" width="100%" data-template="app:entries-paged">
                     <thead>
                         <tr>
                             <th>
-                                <i18n:text key="edit">Latin</i18n:text>
+                                <i18n:text key="edit">edit</i18n:text>
                             </th>
                             <th>
                                 <i18n:text key="latin">Latin</i18n:text>
@@ -60,13 +60,10 @@
                             <th>
                                 <i18n:text key="bibliography">References</i18n:text>
                             </th>
-                            <th>
-                                <i18n:text key="edit"/>
-                            </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="templates:each?from=entries&amp;to=entry"><!--                                <td data-template="app:entry-id"/> -->
+                        <tr class="templates:each?from=entries&amp;to=entry">
                             <td data-template="app:entry-action"/>
                             <td data-template="app:entry-form" data-template-langId="latin"/>
                             <td data-template="app:entry-form" data-template-langId="greek"/><!--                                <td data-template="app:entry-stripped" data-template-lang="greek"/> -->
@@ -85,7 +82,6 @@
                             <td data-template="app:entry-semantics" data-template-type="radical"/>
                             <td data-template="app:entry-sources" data-template-type="radical"/>
                             <td data-template="app:entry-bibl" data-template-type="radical"/><!--                                <td data-template="app:entry-morphemes" data-template-type="radical"/> -->
-                            <td data-template="app:entry-action"/>
                         </tr>
                     </tbody>
                 </table>

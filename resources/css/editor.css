@@ -1,6 +1,10 @@
 body {
   background: #FFF;
+  font-family: "Arial Unicode MS", Helvetica, Arial, sans-serif;
   /* FIX bootstrap for betterform */
+}
+body input {
+  font-family: "Arial Unicode MS", Helvetica, Arial, sans-serif;
 }
 body fieldset {
   border: 1px solid #EEE;
@@ -54,6 +58,11 @@ body .xfTrigger .btn {
   height: 34px;
   padding: 0px;
 }
+body .xfTrigger .bigbtn {
+  width: 64px;
+  height: 32px;
+  padding: 0px;
+}
 body .xfSubmit .btn::before {
   padding-right: 6px;
 }
@@ -69,8 +78,10 @@ body .input-group .tagit li {
 body .xfRequired > .xfLabel::after {
   content: "" !important;
 }
-	
-.meanings-val * {
-    display:inline !important;
+body .invisible {
+  display: none;
 }
-
+body .dimmed {
+  color: #aaa;
+  font-size: 0.9em;
+}

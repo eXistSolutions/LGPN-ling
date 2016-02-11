@@ -32,8 +32,8 @@ declare function app:lang($node as node(), $model as map(*), $lang as xs:string?
 
 declare function app:entries($node as node(), $model as map(*)) {
     let $entries :=
-    for $i in collection($config:names-root)//TEI:TEI
-    order by $i//TEI:entry//TEI:orth[@type='greek']
+    for $i in collection($config:names-root)//TEI:gramGrp
+    order by $i/parent::TEI:entry//TEI:orth[@type='greek']
         return $i
     
     return
@@ -51,168 +51,195 @@ function app:entries-paged($node as node(), $model as map(*), $start as xs:integ
 };
 
 declare
+ %templates:wrap
 function app:entry-id($node as node(), $model as map(*)) {
     let $entry := $model("entry")
-    return <td>{data($entry//TEI:entry/@xml:id)}</td>
+    return data($entry/parent::TEI:entry/@xml:id)
 };
 
 declare
+    %templates:wrap
 function app:entry-form($node as node(), $model as map(*), $langId as xs:string) {
     let $entry := $model("entry")
+    let $pos := count($entry/preceding-sibling::TEI:gramGrp)
+    let $bold := if ($langId='greek') then 'font-weight: bold;' else ()
+    let $first :=  if ($pos) then 'dimmed' else () 
+
+    let $content := data($entry/parent::TEI:entry//TEI:orth[@type=$langId])
+
     return 
-        if($langId="greek") then
-        <td><b>{data($entry//TEI:entry//TEI:orth[@type=$langId])}</b></td>
-        else 
-        <td>{data($entry//TEI:entry//TEI:orth[@type=$langId])}</td>
+        <span>
+            {attribute style {$bold}}
+            {attribute class {$first}}
+            {$content}
+        </span>
 };
 
-
-(:  :U+0300 – U+036F :)
 declare
+    %templates:wrap
+
 function app:entry-stripped($node as node(), $model as map(*), $lang as xs:string) {
     let $entry := $model("entry")
-    return <td>{replace(normalize-unicode($entry//TEI:entry//TEI:orth[@type=$lang]/string(), 'NFD'), '[\p{M}]', '')}</td>
+    return replace(normalize-unicode($entry/parent::TEI:entry//TEI:orth[@type=$lang]/string(), 'NFD'), '[\p{M}]', '')
 };
 
 declare
     %templates:wrap
     %templates:default("lang", 'en')
 function app:entry-dialect($node as node(), $model as map(*), $lang as xs:string?) {
-    let $labels := tokenize($model?entry//TEI:usg, '\s+')
+    let $pos := count($model?entry/preceding-sibling::TEI:gramGrp)
+    let $labels := tokenize($model("entry")/parent::TEI:entry//TEI:usg, '\s+')
     let $dialects :=
     
         for $e in doc($config:taxonomies-root || "/dialects.xml")//TEI:category[@xml:id=$labels]/TEI:catDesc[@ana="full"][@xml:lang=$lang]
         return $e
     
-    return string-join($dialects, ', ')
+    let $content:= string-join($dialects, ', ')
+    return 
+        if($pos) then <span class="invisible">{$content}</span> else $content
 };
 
 declare
  %templates:wrap
 function app:entry-attestations($node as node(), $model as map(*)) {
-    let $name := $model("entry")//TEI:orth[@type='greek']
-    return count(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person)
+    let $pos := count($model?entry/preceding-sibling::TEI:gramGrp)
+    let $name := $model("entry")/parent::TEI:entry//TEI:orth[@type='greek']
+    let $content:= count(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person)
+    return 
+        if($pos) then <span class="invisible">{$content}</span> else $content
 };
 
 declare
  %templates:wrap
 function app:entry-period($node as node(), $model as map(*)) {
-    let $name := $model("entry")//TEI:orth[@type='greek']
+    let $pos := count($model?entry/preceding-sibling::TEI:gramGrp)
+    let $name := $model("entry")/parent::TEI:entry//TEI:orth[@type='greek']
     let $dates :=(
         min(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:birth/@notBefore[string(.)]),
         max(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:birth/@notAfter[string(.)]))
-    return string-join($dates, '/')
+    let $content := string-join($dates, '/')
+    return 
+        if($pos) then <span class="invisible">{$content}</span> else $content
 };
 
 declare
  %templates:wrap
 function app:entry-gender($node as node(), $model as map(*)) {
-    let $name := $model("entry")//TEI:orth[@type='greek']
+    let $pos := count($model?entry/preceding-sibling::TEI:gramGrp)
+    let $name := $model("entry")/parent::TEI:entry//TEI:orth[@type='greek']
     let $genders :=
         for $g in distinct-values(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:sex/@value/string())
         return if (number($g)=2) then "f." else "m."
-    return string-join($genders, '|')
+    let $content:= string-join($genders, '|')
+    return 
+        if($pos) then <span class="invisible">{$content}</span> else $content
 };
 
 declare
+    %templates:wrap
 function app:entry-morpheme($node as node(), $model as map(*), $type as xs:string, $position as xs:integer?) {
-    let $entry := $model("entry")
-        let $subentries : = count($entry//TEI:entry//TEI:gramGrp)
-        let $bold := if ($type='radical' or $position=1) then 'font-weight: bold;' else ()
-    return <td>
-        {attribute style {$bold}}
-        {if($subentries > 1) then 
-            <table>
-                {
-                    for $se in $entry//TEI:gramGrp
-                    let $m := 
-                        if($type="radical") then 
-                            data(doc($config:taxonomies-root || "/morphemes.xml")//TEI:category[@baseForm=$se//TEI:m[@type=$type][@n=$position]/@baseForm]/TEI:catDesc) 
-                        else data($se//TEI:m[@type=$type][@n=$position])
-                    return <tr><td>{$m}&#160;</td></tr>
+           (:  content of preceding/following gramGrp made invisible to make
+           sure even after sorting/filtering the rows from same name stay together:)
+        (
+            for $e in $model?entry/preceding-sibling::TEI:gramGrp
+            return app:morpheme($e, 1, $type, $position)
+        ,
+            app:morpheme($model?entry, 0, $type, $position)
+        ,
+            for $e in $model?entry/following-sibling::TEI:gramGrp
+            return app:morpheme($e, 1, $type, $position)
+        )
+};
 
-                }
-            </table>
-            else 
-                    if($type="radical") then 
+declare function app:morpheme($entry as node(), $invisible as xs:integer, $type as xs:string, $position as xs:integer?) {
+        let $bold := if ($type='radical' or $position=1) then 'font-weight: bold;' else ()
+        let $first :=  if (count($entry/preceding-sibling::TEI:gramGrp)) then 'dimmed' else () 
+
+        let $class := if ($invisible) then 'invisible' else $first
+    return <span>
+        {attribute style {$bold}}
+        {attribute class {$class}}
+        {            if($type="radical") then 
                         data(doc($config:taxonomies-root || "/morphemes.xml")//TEI:category[@baseForm=$entry//TEI:m[@type=$type][@n=$position]/@baseForm]/TEI:catDesc) 
                     else data($entry//TEI:m[@type=$type][@n=$position])
         }
-        </td>
-};
-
-
-declare
-function app:entry-morphemes($node as node(), $model as map(*), $type as xs:string) {
-    let $entry := $model("entry")
-    let $t := 
-        for $e in $entry//TEI:entry//TEI:m[@type=$type]
-        order by $e/@n
-        return $e
-    return <td>{string-join($t, ' - ')}</td>
+        </span>
 };
 
 declare
+    %templates:wrap
 function app:entry-morpheme-functions($node as node(), $model as map(*), $type as xs:string) {
-    let $entry := $model("entry")//TEI:gramGrp
-(:                let $c := console:log($model?entry//TEI:orth[@type="latin"]):)
+           (:  content of preceding/following gramGrp made invisible to make
+           sure even after sorting/filtering the rows from same name stay together:)
+        (
+            for $e in $model?entry/preceding-sibling::TEI:gramGrp
+            return app:morpheme-functions($e, 1, $type)
+        ,
+            app:morpheme-functions($model?entry, 0, $type)
+        ,
+            for $e in $model?entry/following-sibling::TEI:gramGrp
+            return app:morpheme-functions($e, 1, $type)
+        )
+};
+
+declare function app:morpheme-functions($entry as node(), $invisible as xs:integer, $type as xs:string) {
+    let $first :=  if (count($entry/preceding-sibling::TEI:gramGrp)) then 'dimmed' else () 
+
+    let $class := if ($invisible) then 'invisible' else $first
     let $functions := 
-        for $se in $entry
-            let $subentry_functions :=
-                for $e in $se//TEI:m[@type=$type]/@function[string(.)]
+                for $e in $entry//TEI:m[@type=$type]/@function[string(.)]
                 order by $e/@n
                 return $e
-            return string-join($subentry_functions, '+')    return 
-        <td>
-            {
-                if (count($functions)>1) 
-                then 
-                    <table> 
-                        {
-                            for $f in $functions 
-                            return <tr><td>{$f}</td></tr>
-                        }
-                    </table> 
-                else $functions
-            }
-        </td>
+    return 
+        <span>
+            {attribute class {$class}}
+            {string-join($functions, '+')}
+        </span>
 };
 
 declare
+    %templates:wrap
     %templates:default("lang", 'en')
 function app:entry-semantics($node as node(), $model as map(*), $lang as xs:string?) {
-    let $entry := $model("entry")//TEI:gramGrp
+           (:  content of preceding/following gramGrp made invisible to make
+           sure even after sorting/filtering the rows from same name stay together:)
+        (
+            for $e in $model?entry/preceding-sibling::TEI:gramGrp
+            return app:semantics($e, 1, $lang)
+        ,
+            app:semantics($model?entry, 0, $lang)
+        ,
+            for $e in $model?entry/following-sibling::TEI:gramGrp
+            return app:semantics($e, 1, $lang)
+        )
+};
+
+declare function app:semantics($entry as node(), $invisible as xs:integer, $lang as xs:string) {
+    let $first :=  if (count($entry/preceding-sibling::TEI:gramGrp)) then 'dimmed' else () 
+
+    let $class := if ($invisible) then 'invisible' else $first
     let $functions := 
-        for $se in $entry
-            let $morph :=
-            for $bf in $se//TEI:m[@type='radical']/@baseForm[string(.)]
+            for $bf in $entry//TEI:m[@type='radical']/@baseForm[string(.)]
                 let $concept :=
                     for $m in tokenize(doc($config:taxonomies-root || "/morphemes.xml")//TEI:category[@baseForm=$bf]/@ana, '\s*#')
                     return doc($config:taxonomies-root || "/ontology.xml")//TEI:category[@xml:id=$m]/TEI:catDesc[@xml:lang=$lang]
             return string-join($concept, ', ')
-        return string-join($morph, '+')
-    return 
-        <td>
-            {
-                if (count($functions)>1) 
-                then 
-                    <table> 
-                        {
-                            for $f in $functions 
-                            return <tr><td style="border: 0px solid black;">{$f}</td></tr>
-                        }
-                    </table> 
-                else $functions
-            }
-        </td>
+    return
+        <span>
+            {attribute class {$class}}
+            {string-join($functions, '+')}
+        </span>
 };
 
 declare
+%templates:wrap
 function app:entry-sources($node as node(), $model as map(*), $type as xs:string) {
+    let $pos := count($model?entry/preceding-sibling::TEI:gramGrp)
+
     let $entry := $model("entry")
     (: sources :)
     let $sources := 
-        for $e in $entry//TEI:entry//TEI:cit
+        for $e in $entry/parent::TEI:entry//TEI:cit
           let $q := <i style="margin-right: 0.5em;">{$e/TEI:quote/string()}</i>
           let $s := $e/TEI:ref/string()
           let $source := if ($e/TEI:ref/string(@target)) then <a href="{$e/TEI:ref/@target}">{$s}</a> else $s
@@ -224,28 +251,37 @@ function app:entry-sources($node as node(), $model as map(*), $type as xs:string
           let $rest := $e/TEI:span/string()
           let $source := if ($e/TEI:ref/string(@target)) then <a href="{$e/TEI:ref/@target}">{$ref} {$rest}</a> else ($ref, $rest)
         return <p>{$source}</p>
-    return <td style="max-width: 200px;">{$sources} {if(not(empty($lexicographic))) then  ('Cf. also ', $lexicographic) else ()}</td>
+    let $content := ($sources, if(not(empty($lexicographic))) then  ('Cf. also ', $lexicographic) else ())
+    return 
+        if($pos) then <span class="invisible">{$content}</span> else $content
+    
 };
 
 declare
+%templates:wrap
 function app:entry-bibl($node as node(), $model as map(*), $type as xs:string) {
+    let $pos := count($model?entry/preceding-sibling::TEI:gramGrp)
     let $entry := $model("entry")
-    let $linguistic := 
-        for $e in $entry//TEI:entry//TEI:bibl[@type='linguistic']
+    let $content := 
+        for $e in $entry/parent::TEI:entry//TEI:bibl[@type='linguistic']
           let $ref := <i style="margin-right: 0.5em;">{$e/TEI:ref/string()}</i>
           let $rest := $e/TEI:span/string()
           let $source := if ($e/TEI:ref/string(@target)) then <a href="{$e/TEI:ref/@target}">{$ref} {$rest}</a> else ($ref, $rest)
         return <p>{$source}</p>
-    return <td>{$linguistic}</td>
+    return 
+        if($pos) then <span class="invisible">{$content}</span> else $content
+    
 };
 
 declare
+%templates:wrap
 function app:entry-action($node as node(), $model as map(*)) {
     let $entry := $model("entry")
-    let $subentries : = count($entry//TEI:entry/TEI:gramGrp)
-    return <td>
-        <a href="editor.xhtml?id={data($entry//TEI:entry[1]/@xml:id)}"><span class="glyphicon glyphicon-edit"/></a>
-        </td>
+    let $pos := count($model?entry/preceding-sibling::TEI:gramGrp)
+    return 
+(:        if(not($pos)) then:)
+        <a href="editor.xhtml?id={data($entry/parent::TEI:entry/@xml:id)}"><span class="glyphicon glyphicon-edit"/></a>
+(:        else ():)
 };
 
 
