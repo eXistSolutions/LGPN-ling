@@ -71,6 +71,7 @@ function app:entry-form($node as node(), $model as map(*), $langId as xs:string)
         <span>
             {attribute style {$bold}}
             {attribute class {$first}}
+            <span class="invisible">{replace(normalize-unicode($content, 'NFD'), '[\p{M}\p{Sk}]', '')}</span>
             {$content}
         </span>
 };
@@ -80,7 +81,7 @@ declare
 
 function app:entry-stripped($node as node(), $model as map(*), $lang as xs:string) {
     let $entry := $model("entry")
-    return replace(normalize-unicode($entry/parent::TEI:entry//TEI:orth[@type=$lang]/string(), 'NFD'), '[\p{M}]', '')
+    return replace(normalize-unicode($entry/parent::TEI:entry//TEI:orth[@type=$lang]/string(), 'NFD'), '[\p{M}\p{Sk}]', '')
 };
 
 declare
@@ -279,9 +280,9 @@ function app:entry-action($node as node(), $model as map(*)) {
     let $entry := $model("entry")
     let $pos := count($model?entry/preceding-sibling::TEI:gramGrp)
     return 
-(:        if(not($pos)) then:)
+        if(not($pos)) then
         <a href="editor.xhtml?id={data($entry/parent::TEI:entry/@xml:id)}"><span class="glyphicon glyphicon-edit"/></a>
-(:        else ():)
+        else ()
 };
 
 
