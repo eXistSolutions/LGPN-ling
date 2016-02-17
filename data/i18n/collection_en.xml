@@ -50,7 +50,7 @@
     <msg key="latin">Transliteration</msg>
     <msg key="period">Period</msg>
     <msg key="gender">Gender</msg>
-    <msg key="dialect">Dialects</msg>
+    <msg key="dialect">Dialect(s)</msg>
     <msg key="prefix">Prefix</msg>
     <msg key="suffix">Suffix</msg>
     <msg key="suff">Suff.</msg>
