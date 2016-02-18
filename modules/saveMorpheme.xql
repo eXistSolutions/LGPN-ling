@@ -7,9 +7,9 @@ import module namespace console="http://exist-db.org/xquery/console" at "java:or
 declare function local:updateMeanings($data) {
     let $ontology := doc($config:taxonomies-root || "/ontology.xml")
 
-    for $meaning in $data//TEI:category/TEI:meaning
+    for $meaning in $data//TEI:category/TEI:meaning[string(@label)]
     let $meaningReplacement := 
-        if($meaning/TEI:translation[@xml:lang='en']/string() and $meaning/TEI:translation[@xml:lang='fr']/string())
+        if($meaning/TEI:translation[@xml:lang='en']/string() or $meaning/TEI:translation[@xml:lang='fr']/string())
             then
                 <category xml:id="{$meaning/@label/string()}" xmlns="http://www.tei-c.org/ns/1.0">
                     <catDesc xml:lang="en">{$meaning/TEI:translation[@xml:lang='en']/string()}</catDesc>
