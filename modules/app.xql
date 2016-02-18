@@ -23,6 +23,46 @@ declare %templates:wrap  function app:title($node as node(), $model as map(*)) {
     "LGPN-Ling"
 };
 
+
+declare
+    %templates:wrap
+function app:check-login($node as node(), $model as map(*)) {
+    let $user := request:get-attribute("org.exist.lgpn-ling.user")
+    return
+        if ($user) then
+            templates:process($node/*[2], $model)
+        else
+            templates:process($node/*[1], $model)
+};
+
+
+declare function app:entries-header($node as node(), $model as map(*)) {
+    let $user := request:get-attribute("org.exist.lgpn-ling.user")
+    return
+        if($user) then
+            <th>
+                <span class="glyphicon glyphicon-edit">edit</span>
+            </th>
+                else ()
+};
+declare
+    %templates:wrap
+function app:current-user($node as node(), $model as map(*)) {
+    request:get-attribute("org.exist.lgpn-ling.user")
+};
+
+declare
+    %templates:wrap
+function app:show-if-logged-in($node as node(), $model as map(*)) {
+    let $user := request:get-attribute("org.exist.lgpn-ling.user")
+    return
+        if ($user) then
+            templates:process($node/node(), $model)
+        else
+            ()
+};
+
+
 declare function app:lang($node as node(), $model as map(*), $lang as xs:string?) {
         session:create(),
         let $lang := session:set-attribute('lang', $lang)
@@ -275,16 +315,34 @@ function app:entry-bibl($node as node(), $model as map(*), $type as xs:string) {
 };
 
 declare
-%templates:wrap
-function app:entry-action($node as node(), $model as map(*)) {
+function app:entry-action($node as node(), $model as map(*), $action as xs:string?) {
+    let $user := request:get-attribute("org.exist.lgpn-ling.user")
+    return
+        if ($user) then
+    
+    
     let $entry := $model("entry")
     let $pos := count($model?entry/preceding-sibling::TEI:gramGrp)
+    let $action:=  if($action='delete') then <a href="delete.xqm?id={data($entry/parent::TEI:entry/@xml:id)}"><span class="glyphicon glyphicon-trash"/></a> else   <a href="editor.xhtml?id={data($entry/parent::TEI:entry/@xml:id)}"><span class="glyphicon glyphicon-edit"/></a>
     return 
-        if(not($pos)) then
-        <a href="editor.xhtml?id={data($entry/parent::TEI:entry/@xml:id)}"><span class="glyphicon glyphicon-edit"/></a>
-        else ()
+        <td>
+        {
+            if(not($pos)) then
+                $action
+            else ()
+        }
+        </td>
+    else
+        ()
 };
 
+
+declare function app:delete-entry($node as node(), $model as map(*), $id as xs:string?) {
+    let $entry := collection($config:names-root)//TEI:entry/id($id)[1]
+    let $del := if($entry) then xmldb:remove(util:collection-name($entry), util:document-name($entry)) else ('blah')
+     
+    return $del
+};
 
 (:  LOGIN :)
 declare function app:form-action-to-current-url($node as node(), $model as map(*)) {

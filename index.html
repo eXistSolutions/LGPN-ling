@@ -12,7 +12,7 @@
                 <table id="datatable" class="display table table-striped" cellspacing="0" width="100%" data-template="app:entries-paged">
                     <thead>
                         <tr>
-                            <th>
+                            <th data-template="app:entries-header">
                                 <i18n:text key="edit">edit</i18n:text>
                             </th>
                             <th>
@@ -66,7 +66,7 @@
                         <tr class="templates:each?from=entries&amp;to=entry">
                             <td data-template="app:entry-action"/>
                             <td data-template="app:entry-form" data-template-langId="latin"/>
-                            <td data-template="app:entry-form" data-template-langId="greek"/><!--                                <td data-template="app:entry-stripped" data-template-lang="greek"/> -->
+                            <td data-template="app:entry-form" data-template-langId="greek"/>
                             <td data-template="app:entry-attestations"/>
                             <td data-template="app:entry-gender"/>
                             <td data-template="app:entry-dialect"/>
@@ -77,11 +77,11 @@
                             <td data-template="app:entry-morpheme" data-template-position="4" data-template-type="suffix"/>
                             <td data-template="app:entry-morpheme" data-template-position="3" data-template-type="suffix"/>
                             <td data-template="app:entry-morpheme" data-template-position="2" data-template-type="suffix"/>
-                            <td data-template="app:entry-morpheme" data-template-position="1" data-template-type="suffix"/><!--                                <td data-template="app:entry-morphemes" data-template-type="suffix"/> -->
+                            <td data-template="app:entry-morpheme" data-template-position="1" data-template-type="suffix"/>
                             <td data-template="app:entry-morpheme-functions" data-template-type="radical"/>
                             <td data-template="app:entry-semantics" data-template-type="radical"/>
                             <td data-template="app:entry-sources" data-template-type="radical"/>
-                            <td data-template="app:entry-bibl" data-template-type="radical"/><!--                                <td data-template="app:entry-morphemes" data-template-type="radical"/> -->
+                            <td data-template="app:entry-bibl" data-template-type="radical"/>
                         </tr>
                     </tbody>
                 </table>
