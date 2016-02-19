@@ -280,7 +280,7 @@ function app:entry-sources($node as node(), $model as map(*), $type as xs:string
     let $entry := $model("entry")
     (: sources :)
     let $sources := 
-        for $e in $entry/parent::TEI:entry//TEI:cit
+        for $e in $entry/parent::TEI:entry//TEI:cit[string(.)]
           let $q := <i style="margin-right: 0.5em;">{$e/TEI:quote/string()}</i>
           let $s := $e/TEI:ref/string()
           let $rest := $e/TEI:span/string()
@@ -288,15 +288,15 @@ function app:entry-sources($node as node(), $model as map(*), $type as xs:string
         return <p>{$q}  {$source}</p>
     (: lexicographic references :)
     let $lexicographic := 
-        for $e in $entry//TEI:entry//TEI:bibl[@type='auxiliary']
+        for $e in $entry/parent::TEI:entry//TEI:bibl[@type='auxiliary'][string(.)]
           let $ref := <i style="margin-right: 0.5em;">{$e/TEI:ref/string()}</i>
           let $rest := $e/TEI:span/string()
           let $source := if ($e/TEI:ref/string(@target)) then <a href="{$e/TEI:ref/@target}">{$ref} {$rest}</a> else ($ref, $rest)
         return <p>{$source}</p>
-    let $content := ($sources, if(not(empty($lexicographic))) then  ('Cf. also ', $lexicographic) else ())
+    let $cf := if(not(empty($sources))) then 'Cf. ' else ()
+    let $content := ($sources, if(not(empty($lexicographic))) then  ($cf, $lexicographic) else ())
     return 
         if($pos) then <span class="invisible">{$content}</span> else $content
-    
 };
 
 declare
