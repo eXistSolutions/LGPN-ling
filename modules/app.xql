@@ -283,7 +283,8 @@ function app:entry-sources($node as node(), $model as map(*), $type as xs:string
         for $e in $entry/parent::TEI:entry//TEI:cit
           let $q := <i style="margin-right: 0.5em;">{$e/TEI:quote/string()}</i>
           let $s := $e/TEI:ref/string()
-          let $source := if ($e/TEI:ref/string(@target)) then <a href="{$e/TEI:ref/@target}">{$s}</a> else $s
+          let $rest := $e/TEI:span/string()
+          let $source := if ($e/TEI:ref/string(@target)) then <a href="{$e/TEI:ref/@target}">{$s} {$rest}</a> else string-join(($s, $rest), ' ')
         return <p>{$q}  {$source}</p>
     (: lexicographic references :)
     let $lexicographic := 
