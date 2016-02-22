@@ -108,6 +108,13 @@ function app:entry-id($node as node(), $model as map(*)) {
 };
 
 declare
+ %templates:wrap
+function app:entry-update($node as node(), $model as map(*)) {
+    let $entry := $model("entry")
+    return max($entry/ancestor::TEI:TEI//TEI:change/@when/string())
+};
+
+declare
     %templates:wrap
 function app:entry-form($node as node(), $model as map(*), $langId as xs:string) {
     let $entry := $model("entry")
