@@ -37,6 +37,21 @@ else if ($exist:resource eq 'save.xql') then (
         </view>
 	</dispatch>
     )
+else if ($exist:resource eq 'save.xql') then (
+    login:set-user("org.exist.lgpn-ling", (), false()),
+(:    console:log(sm:id() || ' save ' || request:get-attribute("org.exist.lgpn-ling.user")),:)
+    if (request:get-attribute("org.exist.lgpn-ling.user")) then
+    <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
+        <cache-control cache="yes"/>
+    </dispatch>
+    else 
+    <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
+        <view>
+    		<forward url="{$exist:controller}/error-page.html" method="get"/>
+			<forward url="{$exist:controller}/modules/view.xql"/>
+        </view>
+	</dispatch>
+    )
 else if ($exist:path eq "/") then (
     login:set-user("org.exist.lgpn-ling", (), false()),
 (:    console:log(sm:id() || ' editor ' || request:get-attribute("org.exist.lgpn-ling.user")),:)

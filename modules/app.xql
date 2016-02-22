@@ -34,6 +34,29 @@ function app:login-status($node as node(), $model as map(*), $loginStatus as xs:
     else ()
 };
 
+
+declare
+function app:delete-status($node as node(), $model as map(*), $delete as xs:string?) {
+    if($delete) then 
+    (app:delete-entry($delete),    
+    <div class="row" data-template="app:entries">
+        <div class="alert alert-danger col-sm-6">
+            <strong>Deleting </strong> {$delete}!
+        </div>
+    </div>)
+    else ()
+};
+
+
+declare
+function app:delete-entry($id as xs:string?) {
+(:let $id := request:get-parameter('id', ''):)
+(: let $console := console:log($id):)
+    let $entry := collection($config:names-root)//TEI:entry/id($id)[1]
+    let $del := if($entry) then xmldb:remove(util:collection-name($entry), util:document-name($entry)) else ('failed to delete')
+return $del
+};
+
 declare
     %templates:wrap
 function app:check-login($node as node(), $model as map(*)) {
@@ -46,12 +69,16 @@ function app:check-login($node as node(), $model as map(*)) {
 };
 
 
-declare function app:entries-header($node as node(), $model as map(*)) {
+declare function app:entries-header($node as node(), $model as map(*), $type as xs:string?) {
     let $user := request:get-attribute("org.exist.lgpn-ling.user")
+    let $action := if($type='delete') then 
+                    <span class="glyphicon glyphicon-trash"/>
+                else 
+                    <span class="glyphicon glyphicon-edit"/>
     return
         if($user) then
             <th>
-                <span class="glyphicon glyphicon-edit">edit</span>
+                {$action}
             </th>
                 else ()
 };
@@ -109,7 +136,7 @@ function app:entry-id($node as node(), $model as map(*)) {
 
 declare
  %templates:wrap
-function app:entry-update($node as node(), $model as map(*)) {
+function app:entry-updated($node as node(), $model as map(*)) {
     let $entry := $model("entry")
     return max($entry/ancestor::TEI:TEI//TEI:change/@when/string())
 };
@@ -341,7 +368,22 @@ function app:entry-action($node as node(), $model as map(*), $action as xs:strin
     
     let $entry := $model("entry")
     let $pos := count($model?entry/preceding-sibling::TEI:gramGrp)
-    let $action:=  if($action='delete') then <a href="delete.xqm?id={data($entry/parent::TEI:entry/@xml:id)}"><span class="glyphicon glyphicon-trash"/></a> else   <a href="editor.xhtml?id={data($entry/parent::TEI:entry/@xml:id)}"><span class="glyphicon glyphicon-edit"/></a>
+    let $action:=  if($action='delete') then 
+        <div>
+<!--
+<form method="GET" action="?id={data($entry/parent::TEI:entry/@xml:id)}&amp;action=delete" style="display:inline">
+                <button class="btn btn-xs btn-danger" type="button" data-toggle="modal" data-target="#confirmDelete" data-title="Delete Name" data-message="Are you sure you want to delete this name?">
+                <i class="glyphicon glyphicon-trash"></i> Delete
+                </button>
+            </form>
+-->            <a href="?delete={data($entry/parent::TEI:entry/@xml:id)}">
+                <button class="btn btn-xs btn-danger" type="button" onClick="window.confirm('Are you sure you want to delete {data($entry/parent::TEI:entry//TEI:orth[@type="greek"])}?')" data-title="Delete Name {data($entry/parent::TEI:entry//TEI:orth[@type="greek"])}">
+                <i class="glyphicon glyphicon-trash"></i> Delete
+                </button>
+            </a>
+            </div>
+        else   
+            <a href="editor.xhtml?id={data($entry/parent::TEI:entry/@xml:id)}"><span class="glyphicon glyphicon-edit"/></a>
     return 
         <td>
         {
@@ -354,13 +396,6 @@ function app:entry-action($node as node(), $model as map(*), $action as xs:strin
         ()
 };
 
-
-declare function app:delete-entry($node as node(), $model as map(*), $id as xs:string?) {
-    let $entry := collection($config:names-root)//TEI:entry/id($id)[1]
-    let $del := if($entry) then xmldb:remove(util:collection-name($entry), util:document-name($entry)) else ('blah')
-     
-    return $del
-};
 
 (:  LOGIN :)
 declare function app:form-action-to-current-url($node as node(), $model as map(*)) {
