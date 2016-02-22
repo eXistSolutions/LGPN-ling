@@ -9,16 +9,23 @@ declare variable $exist:resource external;
 declare variable $exist:controller external;
 declare variable $exist:prefix external;
 declare variable $exist:root external;
-
+let $c := console:log($exist:resource || request:get-query-string())
+return
 if ($exist:path eq '') then (
         login:set-user("org.exist.lgpn-ling", (), false()),
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
         <redirect url="{request:get-uri()}/"/>
     </dispatch>
 )    
+else if (ends-with(request:get-query-string(), 'logout=true')) then (
+    login:set-user("org.exist.lgpn-ling", (), false()),
+    <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
+        <redirect url="{$exist:resource}"/>
+    </dispatch>
+)
 else if ($exist:resource eq 'save.xql') then (
     login:set-user("org.exist.lgpn-ling", (), false()),
-    console:log(sm:id() || ' save ' || request:get-attribute("org.exist.lgpn-ling.user")),
+(:    console:log(sm:id() || ' save ' || request:get-attribute("org.exist.lgpn-ling.user")),:)
     if (request:get-attribute("org.exist.lgpn-ling.user")) then
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
         <cache-control cache="yes"/>
@@ -33,7 +40,7 @@ else if ($exist:resource eq 'save.xql') then (
     )
 else if ($exist:path eq "/") then (
     login:set-user("org.exist.lgpn-ling", (), false()),
-    console:log(sm:id() || ' editor ' || request:get-attribute("org.exist.lgpn-ling.user")),
+(:    console:log(sm:id() || ' editor ' || request:get-attribute("org.exist.lgpn-ling.user")),:)
     (: forward root path to index.xql :)
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
         <redirect url="index.html"/>
@@ -44,7 +51,7 @@ else if ($exist:path eq "/") then (
     to the login.html page. :)
 else if ($exist:resource eq 'editor.xhtml') then (
     login:set-user("org.exist.lgpn-ling", (), false()),
-    console:log(sm:id() || ' editor ' || request:get-attribute("org.exist.lgpn-ling.user")),
+(:    console:log(sm:id() || ' editor ' || request:get-attribute("org.exist.lgpn-ling.user")),:)
     if (request:get-attribute("org.exist.lgpn-ling.user")) then
         <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
             <cache-control cache="no-cache"/>
