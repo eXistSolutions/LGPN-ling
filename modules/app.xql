@@ -24,6 +24,22 @@ declare %templates:wrap  function app:title($node as node(), $model as map(*)) {
 };
 
 declare
+function app:column-order($node as node(), $model as map(*)) {
+    let $user := request:get-attribute("org.exist.lgpn-ling.user")
+    let $number :=
+        if ($user) then 18 else 17
+    let $otherNumber :=
+        if ($user) then 2 else 1
+
+    return        
+                <script type="text/javascript">
+        var firstSort={$number};
+        var secondSort={$otherNumber};
+        </script>
+
+};
+
+declare
 function app:login-status($node as node(), $model as map(*), $loginStatus as xs:string?) {
     if($loginStatus='failed') then 
     <div class="row" data-template="app:entries">
