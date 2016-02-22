@@ -370,14 +370,15 @@ function app:entry-action($node as node(), $model as map(*), $action as xs:strin
     let $pos := count($model?entry/preceding-sibling::TEI:gramGrp)
     let $action:=  if($action='delete') then 
         <div>
-<!--
-<form method="GET" action="?id={data($entry/parent::TEI:entry/@xml:id)}&amp;action=delete" style="display:inline">
+
+<form method="GET" action="?delete={data($entry/parent::TEI:entry/@xml:id)}" style="display:inline">
                 <button class="btn btn-xs btn-danger" type="button" data-toggle="modal" data-target="#confirmDelete" data-title="Delete Name" data-message="Are you sure you want to delete this name?">
-                <i class="glyphicon glyphicon-trash"></i> Delete
+                <i class="glyphicon glyphicon-trash"></i> Delete via modal
                 </button>
             </form>
--->            <a href="?delete={data($entry/parent::TEI:entry/@xml:id)}">
-                <button class="btn btn-xs btn-danger" type="button" onClick="window.confirm('Are you sure you want to delete {data($entry/parent::TEI:entry//TEI:orth[@type="greek"])}?')" data-title="Delete Name {data($entry/parent::TEI:entry//TEI:orth[@type="greek"])}">
+<br/>
+            <a href="?delete={data($entry/parent::TEI:entry/@xml:id)}">
+                <button class="btn btn-xs btn-danger" type="button" onClick="return window.confirm('Are you sure you want to delete {data($entry/parent::TEI:entry//TEI:orth[@type="greek"])}?')" data-title="Delete Name {data($entry/parent::TEI:entry//TEI:orth[@type="greek"])}">
                 <i class="glyphicon glyphicon-trash"></i> Delete
                 </button>
             </a>
