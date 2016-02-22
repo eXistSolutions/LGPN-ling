@@ -23,6 +23,16 @@ declare %templates:wrap  function app:title($node as node(), $model as map(*)) {
     "LGPN-Ling"
 };
 
+declare
+function app:login-status($node as node(), $model as map(*), $loginStatus as xs:string?) {
+    if($loginStatus='failed') then 
+    <div class="row" data-template="app:entries">
+        <div class="alert alert-danger col-sm-6">
+            <strong>Login required</strong> to edit data!
+        </div>
+    </div>
+    else ()
+};
 
 declare
     %templates:wrap
