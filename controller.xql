@@ -12,11 +12,25 @@ declare variable $exist:root external;
 
 if ($exist:path eq '') then (
         login:set-user("org.exist.lgpn-ling", (), false()),
-
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
         <redirect url="{request:get-uri()}/"/>
     </dispatch>
 )    
+else if ($exist:resource eq 'save.xql') then (
+    login:set-user("org.exist.lgpn-ling", (), false()),
+    console:log(sm:id() || ' save ' || request:get-attribute("org.exist.lgpn-ling.user")),
+    if (request:get-attribute("org.exist.lgpn-ling.user")) then
+    <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
+        <cache-control cache="yes"/>
+    </dispatch>
+    else 
+    <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
+        <view>
+    		<forward url="{$exist:controller}/error-page.html" method="get"/>
+			<forward url="{$exist:controller}/modules/view.xql"/>
+        </view>
+	</dispatch>
+    )
 else if ($exist:path eq "/") then (
     login:set-user("org.exist.lgpn-ling", (), false()),
     console:log(sm:id() || ' editor ' || request:get-attribute("org.exist.lgpn-ling.user")),
@@ -47,21 +61,6 @@ else if ($exist:resource eq 'editor.xhtml') then (
             </view>
         </dispatch>
 )
-else if ($exist:resource eq 'save.xql') then (
-    login:set-user("org.exist.lgpn-ling", (), false()),
-    console:log(sm:id() || ' save ' || request:get-attribute("org.exist.lgpn-ling.user")),
-    if (request:get-attribute("org.exist.lgpn-ling.user")) then
-    <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
-        <cache-control cache="yes"/>
-    </dispatch>
-    else 
-    <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
-        <view>
-    		<forward url="{$exist:controller}/error-page.html" method="get"/>
-			<forward url="{$exist:controller}/modules/view.xql"/>
-        </view>
-	</dispatch>
-    )
     (: the html page is run through view.xql to expand templates :)
 else if (ends-with($exist:resource, ".html")) then (
     login:set-user("org.exist.lgpn-ling", (), false()),
@@ -85,8 +84,6 @@ else if (contains($exist:path, "/$shared/")) then (
         </forward>
     </dispatch>)
 else (
-        login:set-user("org.exist.lgpn-ling", (), false()),
-
     console:log(' else ' || request:get-attribute("org.exist.lgpn-ling.user")),
     (: everything else is passed through :)
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">

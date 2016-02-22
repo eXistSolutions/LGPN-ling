@@ -6,14 +6,9 @@ import module namespace config="http://www.existsolutions.com/apps/lgpn/config" 
 import module namespace console="http://exist-db.org/xquery/console" at "java:org.exist.console.xquery.ConsoleModule";
 
 let $id := normalize-unicode(request:get-parameter('id', ''), 'NFD')
+(:let $id := request:get-parameter('id', 'Habrōnax'):)
+ let $console := console:log($id)
+(: let $console := console:log(for $i in string-to-codepoints($id) return $i || ' '):)
 let $entry := collection($config:names-root)//TEI:entry/id($id)[1]
-let $c := console:log($id ||  ' ' || $entry)
-let $d := string-to-codepoints($id)
-let $e :=
-for $i in $d
-    let $e := $i || ' '
-    return $e
-let $f := console:log($e)
-
 return $entry/ancestor::TEI:TEI
     
