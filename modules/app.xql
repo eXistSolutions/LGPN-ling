@@ -154,7 +154,9 @@ declare
  %templates:wrap
 function app:entry-updated($node as node(), $model as map(*)) {
     let $entry := $model("entry")
-    return max($entry/ancestor::TEI:TEI//TEI:change/@when/string())
+    let $updated := if($entry) then xmldb:last-modified(util:collection-name($entry), util:document-name($entry)) else ()
+    return <span>{substring-before($updated, 'T')}<span class="invisible">{$updated}</span></span>
+(:    return max($entry/ancestor::TEI:TEI//TEI:change/@when/string()):)
 };
 
 declare
