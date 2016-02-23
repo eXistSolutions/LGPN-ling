@@ -84,6 +84,16 @@ function app:check-login($node as node(), $model as map(*)) {
             templates:process($node/*[1], $model)
 };
 
+declare
+function app:menu-protected($node as node(), $model as map(*)) {
+    let $user := request:get-attribute("org.exist.lgpn-ling.user")
+    return
+        if ($user) then
+            templates:process($node/*, $model)
+        else
+            ()
+};
+
 
 declare function app:entries-header($node as node(), $model as map(*), $type as xs:string?) {
     let $user := request:get-attribute("org.exist.lgpn-ling.user")

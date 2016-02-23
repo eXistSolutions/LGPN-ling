@@ -80,11 +80,20 @@ $(document).ready(function() {
                                 </li>
                             </ul>
                         </li>
-                        <li class="dropdown" id="entry">
-                            <a href="editor.xhtml">
-                                <span class="glyphicon glyphicon-edit"/>
-                                <i18n:text key="newEntry">New entry</i18n:text>
-                            </a>
+                        <li data-template="app:menu-protected">
+                            <li class="dropdown" id="entry">
+                                <a href="editor.xhtml">
+                                    <span class="glyphicon glyphicon-edit"/>
+                                    <i18n:text key="newEntry">New entry</i18n:text>
+                                </a>
+                            </li><!--
+                            <li class="dropdown" id="morphemes">
+                                <a href="morphemes.html">
+                                    <span class="glyphicon glyphicon-list"/>
+                                    <i18n:text key="morphemes">Morphemes</i18n:text>
+                                </a>
+                            </li>
+                            -->
                         </li>
                         <li class="dropdown" id="names">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
