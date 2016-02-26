@@ -32,25 +32,36 @@ function morpheme:delete-status($node as node(), $model as map(*), $delete as xs
     else ()
 };
 
-
 declare
-function morpheme:delete-entry($id as xs:string?) {
-(:let $id := request:get-parameter('id', ''):)
-(: let $console := console:log($id):)
-    let $entry := collection($config:names-root)//TEI:entry/id($id)[1]
-    let $del := if($entry) then xmldb:remove(util:collection-name($entry), util:document-name($entry)) else ('failed to delete')
-return $del
-};
-
-declare
-    %templates:wrap
-function morpheme:show-if-logged-in($node as node(), $model as map(*)) {
+function morpheme:entry-action($node as node(), $model as map(*), $action as xs:string?) {
     let $user := request:get-attribute("org.exist.lgpn-ling.user")
     return
         if ($user) then
-            templates:process($node/node(), $model)
+    let $entry := $model("entry")
+    let $a:=  if($action='delete') then 
+        if(count(collection($config:names-root)//TEI:m[@baseForm=$entry/@baseForm]))
+        then ()
         else
-            ()
+            <a href="?delete={$entry/@baseForm/string()}">
+                <button class="btn btn-xs btn-danger" type="button" onClick="return window.confirm('Are you sure you want to delete {data($entry/@baseForm)}?')" data-title="Delete Name {data($entry)}">
+                <i class="glyphicon glyphicon-trash"></i> Delete
+                </button>
+            </a>
+        else   
+            <a href="editor.xhtml?id={data($entry/@baseForm)}"><span class="glyphicon glyphicon-edit"/></a>
+    return 
+        <td>{$a}</td>
+    else
+        ()
+};
+
+
+declare
+function morpheme:delete-entry($id as xs:string?) {
+    if (count(collection($config:names-root)//TEI:m[@baseForm=$id])) 
+        then ()
+        else
+            update delete doc($config:taxonomies-root || "/morphemes.xml")//TEI:category[@baseForm=$id]
 };
 
 declare
@@ -97,41 +108,3 @@ function morpheme:count($node as node(), $model as map(*)) {
     return count(collection($config:names-root)//TEI:m[@baseForm=$entry/@baseForm])
 };
 
-declare
-function morpheme:entry-action($node as node(), $model as map(*), $action as xs:string?) {
-    let $user := request:get-attribute("org.exist.lgpn-ling.user")
-    return
-        if ($user) then
-    
-    
-    let $entry := $model("entry")
-    let $pos := count($model?entry/preceding-sibling::TEI:gramGrp)
-    let $action:=  if($action='delete') then 
-        <div>
-<!--
-<form method="GET" action="?delete={data($entry/parent::TEI:entry/@xml:id)}" style="display:inline">
-                <button class="btn btn-xs btn-danger" type="button" data-toggle="modal" data-target="#confirmDelete" data-title="Delete Name" data-message="Are you sure you want to delete this name?">
-                <i class="glyphicon glyphicon-trash"></i> Delete via modal
-                </button>
-            </form>
-<br/>
--->
-            <a href="?delete={data($entry/parent::TEI:entry/@xml:id)}">
-                <button class="btn btn-xs btn-danger" type="button" onClick="return window.confirm('Are you sure you want to delete {data($entry/parent::TEI:entry//TEI:orth[@type="greek"])}?')" data-title="Delete Name {data($entry/parent::TEI:entry//TEI:orth[@type="greek"])}">
-                <i class="glyphicon glyphicon-trash"></i> Delete
-                </button>
-            </a>
-            </div>
-        else   
-            <a href="editor.xhtml?id={data($entry/parent::TEI:entry/@xml:id)}"><span class="glyphicon glyphicon-edit"/></a>
-    return 
-        <td>
-        {
-            if(not($pos)) then
-                $action
-            else ()
-        }
-        </td>
-    else
-        ()
-};
