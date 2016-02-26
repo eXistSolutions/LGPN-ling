@@ -84,16 +84,6 @@ function app:check-login($node as node(), $model as map(*)) {
             templates:process($node/*[1], $model)
 };
 
-declare
-function app:menu-protected($node as node(), $model as map(*)) {
-    let $user := request:get-attribute("org.exist.lgpn-ling.user")
-    return
-        if ($user) then
-            templates:process($node/*, $model)
-        else
-            ()
-};
-
 
 declare function app:entries-header($node as node(), $model as map(*), $type as xs:string?) {
     let $user := request:get-attribute("org.exist.lgpn-ling.user")
@@ -178,11 +168,17 @@ function app:entry-form($node as node(), $model as map(*), $langId as xs:string)
     let $first :=  if ($pos) then 'dimmed' else () 
 
     let $content := data($entry/parent::TEI:entry//TEI:orth[@type=$langId])
+    let $variant := if($langId='latin') 
+        then 
+            <span class="invisible">{replace($entry/parent::TEI:entry//TEI:orth[@type='variant'], "(\(\w*\))", "")}</span> 
+        else 
+            ()
 
     return 
         <span>
             {attribute style {$bold}}
             {attribute class {$first}}
+            {$variant}
             <span class="invisible">{replace(normalize-unicode($content, 'NFD'), '[\p{M}\p{Sk}]', '')}</span>
             {$content}
         </span>

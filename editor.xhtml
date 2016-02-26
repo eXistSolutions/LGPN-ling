@@ -23,7 +23,8 @@
                                 <entry xml:id="uuid-0001">
                                     <form type="lemma">
                                         <orth type="greek"/>
-                                        <orth type="latin"/><!--                                        <gen/> -->
+                                        <orth type="latin"/>
+                                        <orth type="variant"/><!--                                        <gen/> -->
                                         <date notBefore="" notAfter=""/>
                                         <usg/>
                                     </form>
@@ -174,18 +175,30 @@
             </xf:group>
         </div>
         <div class="container">
-            <h2>LGPN-Ling</h2>
             <div class="row">
-                <div class="col-xs-6">
+                <div class="col-xs-8">
+                    <h2>LGPN-Ling</h2>
+                </div><!--div class="col-xs-2">
+                    <h3><a href="#confirmDelete" data-toggle="modal"><span class="glyphicon glyphicon-trash"/> Delete</a></h3>
+                </div-->
+            </div>
+            <div class="row">
+                <div class="col-xs-4">
                     <xf:input class="input-group input-group-lg -form-control" ref="//TEI:form[@type='lemma']/TEI:orth[@type='greek']">
                         <xf:label class="input-group-addon">α</xf:label>
                         <xf:hint>greek</xf:hint>
                     </xf:input>
                 </div>
-                <div class="col-xs-6">
+                <div class="col-xs-4">
                     <xf:input class="input-group input-group-lg -form-control" ref="//TEI:form[@type='lemma']/TEI:orth[@type='latin']">
                         <xf:label class="input-group-addon glyphicon glyphicon-font"/>
                         <xf:hint>latin</xf:hint>
+                    </xf:input>
+                </div>
+                <div class="col-xs-4">
+                    <xf:input class="input-group input-group-lg -form-control" ref="//TEI:form[@type='lemma']/TEI:orth[@type='variant']">
+                        <xf:label class="input-group-addon">(H)</xf:label>
+                        <xf:hint>latin variant (with parentheses)</xf:hint>
                     </xf:input>
                 </div>
             </div>
@@ -630,6 +643,27 @@
             <xf:label>Add meaning</xf:label>
             <div id="mountpoint"/>
         </bfc:dialog>
+        <div id="confirmDelete" class="modal fade" tabindex="-1" style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                        <h4 class="modal-title">Confirm delete</h4>
+                    </div>
+                    <form class="form form-horizontal" action="index.html?delete=aa" method="POST">
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label class="control-label col-sm-10">you sure want to delete <xf:label ref="bf:appContext('id')"/>?</label>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-primary" data-dismiss="modal" aria-hidden="true">Cancel</button>
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div><!-- Modal Dialog -->
         <script type="text/javascript" src="$shared/resources/scripts/jquery/jquery-1.7.1.min.js"/>
         <script type="text/javascript" src="$shared/resources/scripts/loadsource.js"/>
         <script type="text/javascript" src="$shared/resources/scripts/bootstrap-3.0.3.min.js"/>
