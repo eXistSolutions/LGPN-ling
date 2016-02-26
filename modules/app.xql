@@ -168,7 +168,7 @@ function app:entry-form($node as node(), $model as map(*), $langId as xs:string)
     let $first :=  if ($pos) then 'dimmed' else () 
 
     let $content := data($entry/parent::TEI:entry//TEI:orth[@type=$langId])
-    let $variant := if($langId='latin') 
+    let $variant := if($langId='variant') 
         then 
             <span class="invisible">{replace($entry/parent::TEI:entry//TEI:orth[@type='variant'], "(\(\w*\))", "")}</span> 
         else 
