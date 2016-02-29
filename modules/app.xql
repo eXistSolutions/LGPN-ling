@@ -340,6 +340,7 @@ declare function app:semantics($entry as node(), $invisible as xs:integer, $lang
         </span>
 };
 
+
 declare
 %templates:wrap
 function app:entry-sources($node as node(), $model as map(*), $type as xs:string) {
@@ -356,11 +357,12 @@ function app:entry-sources($node as node(), $model as map(*), $type as xs:string
         return <p>{$q}  {$source}</p>
     (: lexicographic references :)
     let $lexicographic := 
-        for $e in $entry/parent::TEI:entry//TEI:bibl[@type='auxiliary'][string(.)]
+        for $e in $entry/parent::TEI:entry//TEI:bibl[string(.)]
+(:        [@type='auxiliary']:)
           let $ref := <i style="margin-right: 0.5em;">{$e/TEI:ref/string()}</i>
           let $rest := $e/TEI:span/string()
           let $source := if ($e/TEI:ref/string(@target)) then <a href="{$e/TEI:ref/@target}">{$ref} {$rest}</a> else ($ref, $rest)
-        return <p>{$source}</p>
+        return if ($e/@type='auxiliary') then <p>{$source}</p> else ()
     let $cf := if(not(empty($sources))) then 'Cf. ' else ()
     let $content := ($sources, if(not(empty($lexicographic))) then  ($cf, $lexicographic) else ())
     return 
@@ -373,11 +375,12 @@ function app:entry-bibl($node as node(), $model as map(*), $type as xs:string) {
     let $pos := count($model?entry/preceding-sibling::TEI:gramGrp)
     let $entry := $model("entry")
     let $content := 
-        for $e in $entry/parent::TEI:entry//TEI:bibl[@type='linguistic']
+        for $e in $entry/parent::TEI:entry//TEI:bibl
+(:        [@type='linguistic']:)
           let $ref := <i style="margin-right: 0.5em;">{$e/TEI:ref/string()}</i>
           let $rest := $e/TEI:span/string()
           let $source := if ($e/TEI:ref/string(@target)) then <a href="{$e/TEI:ref/@target}">{$ref} {$rest}</a> else ($ref, $rest)
-        return <p>{$source}</p>
+        return if ($e/@type='linguistic') then <p>{$source}</p> else ()
     return 
         if($pos) then <span class="invisible">{$content}</span> else $content
     
