@@ -52,7 +52,7 @@
     <msg key="gender">Gender</msg>
     <msg key="dialect">Dialect</msg>
     <msg key="dialects">Dialect(s)</msg>
-    <msg key="prefix">Prefix</msg>
+    <msg key="prefix">PreRoot</msg>
     <msg key="suffix">Suffix</msg>
     <msg key="suff">Suff.</msg>
     <msg key="radicals">Structure</msg>
