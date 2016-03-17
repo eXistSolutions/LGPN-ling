@@ -126,7 +126,7 @@ declare function app:lang($node as node(), $model as map(*), $lang as xs:string?
 declare function app:entries($node as node(), $model as map(*)) {
     let $entries :=
     for $i in collection($config:names-root)//TEI:gramGrp
-    order by $i/parent::TEI:entry//TEI:orth[@type='greek']
+    order by $i/parent::TEI:entry//TEI:orth[@type='greek'][1]
         return $i
     
     return
@@ -167,10 +167,10 @@ function app:entry-form($node as node(), $model as map(*), $langId as xs:string)
     let $bold := if ($langId='greek') then 'font-weight: bold;' else ()
     let $first :=  if ($pos) then 'dimmed' else () 
 
-    let $content := data($entry/parent::TEI:entry//TEI:orth[@type=$langId])
+    let $content := data($entry/parent::TEI:entry//TEI:orth[@type=$langId][1])
     let $variant := if($langId='variant') 
         then 
-            <span class="invisible">{replace($entry/parent::TEI:entry//TEI:orth[@type='variant'], "(\(\w*\))", "")}</span> 
+            <span class="invisible">{replace($entry/parent::TEI:entry//TEI:orth[@type='variant'][1], "(\(\w*\))", "")}</span> 
         else 
             ()
 

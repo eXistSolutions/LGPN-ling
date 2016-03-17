@@ -24,22 +24,7 @@ else if (ends-with(request:get-query-string(), 'logout=true')) then (
 )
 else if ($exist:resource eq 'save.xql') then (
     login:set-user("org.exist.lgpn-ling", (), false()),
-(:    console:log(sm:id() || ' save ' || request:get-attribute("org.exist.lgpn-ling.user")),:)
-    if (request:get-attribute("org.exist.lgpn-ling.user")) then
-    <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
-        <cache-control cache="yes"/>
-    </dispatch>
-    else 
-    <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
-        <view>
-    		<forward url="{$exist:controller}/error-page.html" method="get"/>
-			<forward url="{$exist:controller}/modules/view.xql"/>
-        </view>
-	</dispatch>
-    )
-else if ($exist:resource eq 'save.xql') then (
-    login:set-user("org.exist.lgpn-ling", (), false()),
-(:    console:log(sm:id() || ' save ' || request:get-attribute("org.exist.lgpn-ling.user")),:)
+    console:log(sm:id() || ' save ' || request:get-attribute("org.exist.lgpn-ling.user")),
     if (request:get-attribute("org.exist.lgpn-ling.user")) then
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
         <cache-control cache="yes"/>
@@ -65,7 +50,7 @@ else if ($exist:path eq "/") then (
     to the index.html page. :)
 else if ($exist:resource eq 'editor.xhtml') then (
     login:set-user("org.exist.lgpn-ling", (), false()),
-(:    console:log(sm:id() || ' editor ' || request:get-attribute("org.exist.lgpn-ling.user")),:)
+    console:log(sm:id() || ' editor ' || request:get-attribute("org.exist.lgpn-ling.user")),
     if (request:get-attribute("org.exist.lgpn-ling.user")) then
         <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
             <cache-control cache="no-cache"/>
@@ -96,8 +81,10 @@ else if (contains($exist:path, "/$shared/")) then (
             <set-header name="Cache-Control" value="max-age=3600, must-revalidate"/>
         </forward>
     </dispatch>)
-else 
+else (
+    login:set-user("org.exist.lgpn-ling", (), false()),
     (: everything else is passed through :)
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
         <cache-control cache="yes"/>
     </dispatch>
+    )
