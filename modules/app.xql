@@ -146,14 +146,14 @@ function app:entries-paged($node as node(), $model as map(*), $start as xs:integ
 declare
  %templates:wrap
 function app:entry-id($node as node(), $model as map(*)) {
-    let $entry := $model("entry")
+    let $entry := $model?entry
     return data($entry/parent::TEI:entry/@xml:id)
 };
 
 declare
  %templates:wrap
 function app:entry-updated($node as node(), $model as map(*)) {
-    let $entry := $model("entry")
+    let $entry := $model?entry
     let $updated := if($entry) then xmldb:last-modified(util:collection-name($entry), util:document-name($entry)) else ()
     return <span>{substring-before($updated, 'T')}<span class="invisible">{$updated}</span></span>
 (:    return max($entry/ancestor::TEI:TEI//TEI:change/@when/string()):)
@@ -162,7 +162,7 @@ function app:entry-updated($node as node(), $model as map(*)) {
 declare
     %templates:wrap
 function app:entry-form($node as node(), $model as map(*), $langId as xs:string) {
-    let $entry := $model("entry")
+    let $entry := $model?entry
     let $pos := count($entry/preceding-sibling::TEI:gramGrp)
     let $bold := if ($langId='greek') then 'font-weight: bold;' else ()
     let $first :=  if ($pos) then 'dimmed' else () 
@@ -188,7 +188,7 @@ declare
     %templates:wrap
 
 function app:entry-stripped($node as node(), $model as map(*), $lang as xs:string) {
-    let $entry := $model("entry")
+    let $entry := $model?entry
     return replace(normalize-unicode($entry/parent::TEI:entry//TEI:orth[@type=$lang]/string(), 'NFD'), '[\p{M}\p{Sk}]', '')
 };
 
@@ -197,7 +197,7 @@ declare
     %templates:default("lang", 'en')
 function app:entry-dialect($node as node(), $model as map(*), $lang as xs:string?) {
     let $pos := count($model?entry/preceding-sibling::TEI:gramGrp)
-    let $labels := tokenize($model("entry")/parent::TEI:entry//TEI:usg, '\s+')
+    let $labels := tokenize($model?entry/parent::TEI:entry//TEI:usg, '\s+')
     let $dialects :=
     
         for $e in doc($config:taxonomies-root || "/dialects.xml")//TEI:category[@xml:id=$labels]/TEI:catDesc[@ana="full"][@xml:lang=$lang]
@@ -212,7 +212,7 @@ declare
  %templates:wrap
 function app:entry-attestations($node as node(), $model as map(*)) {
     let $pos := count($model?entry/preceding-sibling::TEI:gramGrp)
-    let $name := $model("entry")/parent::TEI:entry//TEI:orth[@type='greek']
+    let $name := $model?entry/parent::TEI:entry//TEI:orth[@type='greek']
     let $content:= count(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person)
     return 
         if($pos) then <span class="invisible">{$content}</span> else $content
@@ -222,7 +222,7 @@ declare
  %templates:wrap
 function app:entry-period($node as node(), $model as map(*)) {
     let $pos := count($model?entry/preceding-sibling::TEI:gramGrp)
-    let $name := $model("entry")/parent::TEI:entry//TEI:orth[@type='greek']
+    let $name := $model?entry/parent::TEI:entry//TEI:orth[@type='greek']
     let $dates :=(
         min(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:birth/@notBefore[string(.)]),
         max(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:birth/@notAfter[string(.)]))
@@ -235,7 +235,7 @@ declare
  %templates:wrap
 function app:entry-gender($node as node(), $model as map(*)) {
     let $pos := count($model?entry/preceding-sibling::TEI:gramGrp)
-    let $name := $model("entry")/parent::TEI:entry//TEI:orth[@type='greek']
+    let $name := $model?entry/parent::TEI:entry//TEI:orth[@type='greek']
     let $genders :=
         for $g in distinct-values(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:sex/@value/string())
         return if (number($g)=2) then "f." else "m."
@@ -340,28 +340,50 @@ declare function app:semantics($entry as node(), $invisible as xs:integer, $lang
         </span>
 };
 
+declare function app:reference-entry($entry, $type) {
+    let $q := if($type='cit')
+        then <i style="margin-right: 0.5em;">{$entry/TEI:quote/string()}</i>
+        else ()
+
+    let $author := if ($entry/TEI:author/string()) then $entry/TEI:author/string() || ' ' else ()
+    let $ref := <i style="margin-right: 0.5em;">{$entry/TEI:ref/string()}</i>
+    let $rest := $entry/TEI:span/string()
+    let $source := 
+        if ($entry/TEI:ref/string(@target)) 
+            then <a href="{$entry/TEI:ref/@target}">{$author}{$ref} {$rest}</a> 
+            else ($author, $ref, $rest)
+    return ($q, $source)    
+};
+
+declare
+%templates:wrap
+function app:entry-bibl($node as node(), $model as map(*), $type as xs:string) {
+    let $pos := count($model?entry/preceding-sibling::TEI:gramGrp)
+    let $content := 
+        for $e in $model?entry/parent::TEI:entry//TEI:bibl
+(:        [@type='linguistic']:)
+            let $source := app:reference-entry($e, 'bibl')
+        return if ($e/@type='linguistic') then <p>{$source}</p> else ()
+    return 
+        if($pos) then <span class="invisible">{$content}</span> else $content
+};
 
 declare
 %templates:wrap
 function app:entry-sources($node as node(), $model as map(*), $type as xs:string) {
     let $pos := count($model?entry/preceding-sibling::TEI:gramGrp)
 
-    let $entry := $model("entry")
     (: sources :)
     let $sources := 
-        for $e in $entry/parent::TEI:entry//TEI:cit[string(.)]
-          let $q := <i style="margin-right: 0.5em;">{$e/TEI:quote/string()}</i>
-          let $s := $e/TEI:ref/string()
-          let $rest := $e/TEI:span/string()
-          let $source := if ($e/TEI:ref/string(@target)) then <a href="{$e/TEI:ref/@target}">{$s} {$rest}</a> else string-join(($s, $rest), ' ')
-        return <p>{$q}  {$source}</p>
+        for $e in $model?entry/parent::TEI:entry//TEI:cit[string(.)]
+        let $source := app:reference-entry($e, 'cit')
+        return <p>{$source}</p>
+
     (: lexicographic references :)
     let $lexicographic := 
-        for $e in $entry/parent::TEI:entry//TEI:bibl[string(.)]
+        for $e in $model?entry/parent::TEI:entry//TEI:bibl[string(.)]
 (:        [@type='auxiliary']:)
-          let $ref := <i style="margin-right: 0.5em;">{$e/TEI:ref/string()}</i>
-          let $rest := $e/TEI:span/string()
-          let $source := if ($e/TEI:ref/string(@target)) then <a href="{$e/TEI:ref/@target}">{$ref} {$rest}</a> else ($ref, $rest)
+            let $source := app:reference-entry($e, 'bibl')
         return if ($e/@type='auxiliary') then <p>{$source}</p> else ()
     let $cf := if(not(empty($sources))) then 'Cf. ' else ()
     let $content := ($sources, if(not(empty($lexicographic))) then  ($cf, $lexicographic) else ())
@@ -369,22 +391,6 @@ function app:entry-sources($node as node(), $model as map(*), $type as xs:string
         if($pos) then <span class="invisible">{$content}</span> else $content
 };
 
-declare
-%templates:wrap
-function app:entry-bibl($node as node(), $model as map(*), $type as xs:string) {
-    let $pos := count($model?entry/preceding-sibling::TEI:gramGrp)
-    let $entry := $model("entry")
-    let $content := 
-        for $e in $entry/parent::TEI:entry//TEI:bibl
-(:        [@type='linguistic']:)
-          let $ref := <i style="margin-right: 0.5em;">{$e/TEI:ref/string()}</i>
-          let $rest := $e/TEI:span/string()
-          let $source := if ($e/TEI:ref/string(@target)) then <a href="{$e/TEI:ref/@target}">{$ref} {$rest}</a> else ($ref, $rest)
-        return if ($e/@type='linguistic') then <p>{$source}</p> else ()
-    return 
-        if($pos) then <span class="invisible">{$content}</span> else $content
-    
-};
 
 declare
 function app:entry-action($node as node(), $model as map(*), $action as xs:string?) {
@@ -392,8 +398,7 @@ function app:entry-action($node as node(), $model as map(*), $action as xs:strin
     return
         if ($user) then
     
-    
-    let $entry := $model("entry")
+    let $entry := $model?entry
     let $pos := count($model?entry/preceding-sibling::TEI:gramGrp)
     let $action:=  if($action='delete') then 
         <div>
