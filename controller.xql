@@ -56,8 +56,18 @@ else if ($exist:resource eq 'editor.xhtml') then (
             <cache-control cache="no-cache"/>
         </dispatch>
     else 
+(:        <redirect url="index.html?loginStatus=failed"/>:)
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
-        <redirect url="index.html?loginStatus=failed"/>
+        <forward url="{$exist:controller}/index.html"/>
+        <view>
+            <forward url="{$exist:controller}/modules/view.xql">
+                <add-parameter name="loginStatus" value="failed"/>
+            </forward>
+        </view>
+		<error-handler>
+			<forward url="{$exist:controller}/error-page.html" method="get"/>
+			<forward url="{$exist:controller}/modules/view.xql"/>
+		</error-handler>
     </dispatch>
 )
     (: the html page is run through view.xql to expand templates :)
