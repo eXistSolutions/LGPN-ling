@@ -55,7 +55,7 @@
     <msg key="prefix">PreRoot</msg>
     <msg key="suffix">Suffix</msg>
     <msg key="suff">Suff.</msg>
-    <msg key="radicals">Structure</msg>
+    <msg key="radicals">Name structure</msg>
     <msg key="root">Root</msg>
     <msg key="roots">Roots</msg>
     <msg key="semantics">Roots Semantics</msg>

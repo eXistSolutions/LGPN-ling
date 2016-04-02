@@ -55,7 +55,7 @@
     <msg key="prefix">Préradical</msg>
     <msg key="suffix">Suffixe</msg>
     <msg key="suff">Suff.</msg>
-    <msg key="radicals">Structure</msg>
+    <msg key="radicals">Structure du nom</msg>
     <msg key="root">Radical</msg>
     <msg key="roots">Radicaux</msg>
     <msg key="semantics">Sens des radicaux</msg>
