@@ -23,12 +23,11 @@ import module namespace console="http://exist-db.org/xquery/console" at "java:or
 declare
 function morpheme:delete-status($node as node(), $model as map(*), $delete as xs:string?) {
     if($delete) then 
-    (morpheme:delete-entry($delete),    
-    <div class="row">
-        <div class="alert alert-danger col-sm-6">
-            <strong>Deleting </strong> {$delete}!
+        <div class="row">
+            <div class="alert alert-danger col-sm-6">
+                {morpheme:delete-entry($delete)}
+            </div>
         </div>
-    </div>)
     else ()
 };
 
@@ -58,10 +57,12 @@ function morpheme:entry-action($node as node(), $model as map(*), $action as xs:
 
 declare
 function morpheme:delete-entry($id as xs:string?) {
+    let $del :=
     if (count(collection($config:names-root)//TEI:m[@baseForm=$id])) 
-        then ()
+        then 'fail'
         else
             update delete doc($config:taxonomies-root || "/morphemes.xml")//TEI:category[@baseForm=$id]
+    return if($del='fail') then ('Failed to delete ', <strong>{$id}</strong>, ', references exist!') else (<strong>{$id}</strong>, ' deleted')
 };
 
 declare

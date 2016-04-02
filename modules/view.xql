@@ -14,6 +14,7 @@ import module namespace templates="http://exist-db.org/xquery/templates" ;
 import module namespace config="http://www.existsolutions.com/apps/lgpn/config" at "config.xqm";
 import module namespace app="http://www.existsolutions.com/apps/lgpn/templates" at "app.xql";
 import module namespace morpheme="http://www.existsolutions.com/apps/lgpn/morpheme" at "morpheme.xql";
+import module namespace meaning="http://www.existsolutions.com/apps/lgpn/meaning" at "meaning.xql";
 import module namespace i18n="http://exist-db.org/xquery/i18n/templates" at "i18n-templates.xql"; 
 
 declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";

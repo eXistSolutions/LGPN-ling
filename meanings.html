@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<div xmlns="http://www.w3.org/1999/xhtml" xmlns:i18n="http://exist-db.org/xquery/i18n" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
+    <script type="text/javascript" class="init">
+
+$(document).ready(function() {
+    $('#morphemetable').DataTable( {
+        "columnDefs": [
+//    { "orderable": false, "targets": 0 }
+  ],
+        "order": [[ 2, "desc" ],[ 3, "asc" ]],
+        "paging":   true,
+        "ordering": true,
+        "info":     true
+    } );
+} );
+    </script>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="page-header">
+                <h3>
+                    <i18n:text key="meanings">List of meanings</i18n:text>
+                </h3>
+            </div>
+            <div class="row" data-template="app:login-status"/>
+            <div class="row" data-template="meaning:delete-status"/>
+            <div class="row">
+                <table id="morphemetable" class="display table table-striped" cellspacing="0" width="100%" data-template="meaning:entries">
+                    <thead>
+                        <tr>
+                            <th>
+                                <i18n:text key="id">Id</i18n:text>
+                            </th>
+                            <th>
+                                <i18n:text key="fr">fr</i18n:text>
+                            </th>
+                            <th>
+                                <i18n:text key="en">en</i18n:text>
+                            </th>
+                            <th data-template="app:entries-header" data-template-type="delete"/>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="templates:each?from=entries&amp;to=entry">
+                            <td data-template="meaning:meaning-id"/>
+                            <td data-template="meaning:meaning" data-template-language="fr"/>
+                            <td data-template="meaning:meaning" data-template-language="en"/>
+                            <td data-template="meaning:entry-action" data-template-action="delete"/>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
