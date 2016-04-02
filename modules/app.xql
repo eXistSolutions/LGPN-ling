@@ -52,25 +52,22 @@ function app:login-status($node as node(), $model as map(*), $loginStatus as xs:
 
 
 declare
-function app:delete-status($node as node(), $model as map(*), $delete as xs:string?) {
+function app:delete-name($node as node(), $model as map(*), $delete as xs:string?) {
     if($delete) then 
-    (app:delete-entry($delete),    
-    <div class="row" data-template="app:entries">
-        <div class="alert alert-danger col-sm-6">
-            <strong>Deleting </strong> {$delete}!
+        <div class="row">
+            <div class="alert alert-danger col-sm-6">
+                <strong>{app:delete-entry($delete)}</strong>!
+            </div>
         </div>
-    </div>)
     else ()
 };
 
 
 declare
 function app:delete-entry($id as xs:string?) {
-(:let $id := request:get-parameter('id', ''):)
-(: let $console := console:log($id):)
     let $entry := collection($config:names-root)//TEI:entry/id($id)[1]
-    let $del := if($entry) then xmldb:remove(util:collection-name($entry), util:document-name($entry)) else ('failed to delete')
-return $del
+    let $del := if($entry) then xmldb:remove(util:collection-name($entry), util:document-name($entry)) else ('fail')
+    return if($del='fail') then ('Failed to delete ', <strong>{$id}</strong>) else (<strong>{$id}</strong>, ' deleted')
 };
 
 declare
@@ -410,11 +407,12 @@ function app:entry-action($node as node(), $model as map(*), $action as xs:strin
             </form>
 <br/>
 -->
-            <a href="?delete={data($entry/parent::TEI:entry/@xml:id)}">
-                <button class="btn btn-xs btn-danger" type="button" onClick="return window.confirm('Are you sure you want to delete {data($entry/parent::TEI:entry//TEI:orth[@type="greek"])}?')" data-title="Delete Name {data($entry/parent::TEI:entry//TEI:orth[@type="greek"])}">
+            <form method="POST" action="">
+                <input type="hidden" name="delete" value="{data($entry/parent::TEI:entry/@xml:id)}"/>
+                <button class="btn btn-xs btn-danger" type="submit" onClick="return window.confirm('Are you sure you want to delete {data($entry/parent::TEI:entry//TEI:orth[@type="greek"])}?')" data-title="Delete Name {data($entry/parent::TEI:entry//TEI:orth[@type="greek"])}">
                 <i class="glyphicon glyphicon-trash"></i> Delete
                 </button>
-            </a>
+            </form>
             </div>
         else   
             <a href="editor.xhtml?id={data($entry/parent::TEI:entry/@xml:id)}"><span class="glyphicon glyphicon-edit"/></a>
