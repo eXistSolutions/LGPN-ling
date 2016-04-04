@@ -31,7 +31,7 @@ declare variable $config:app-root :=
 
 (:all data to be stored in lgpn-data app:)
 declare variable $config:data-root := "/db/apps/lgpn-data/data";
-declare variable $config:ling-data-root := $config:data-root || "/ling";
+declare variable $config:ling-data-root := "/db/apps/lgpn-ling-data/data";
 
 declare variable $config:names-root := $config:ling-data-root || "/names";
 declare variable $config:taxonomies-root := $config:ling-data-root || "/taxonomies";
