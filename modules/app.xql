@@ -342,7 +342,7 @@ declare function app:reference-entry($entry, $type) {
         then <i style="margin-right: 0.5em;">{$entry/TEI:quote/string()}</i>
         else ()
 
-    let $author := if ($entry/TEI:author/string()) then $entry/TEI:author/string() || ' ' else ()
+    let $author := if ($entry//TEI:author/string()) then $entry//TEI:author/string() || ' ' else ()
     let $ref := <i style="margin-right: 0.5em;">{$entry/TEI:ref/string()}</i>
     let $rest := $entry/TEI:span/string()
     let $source := 
