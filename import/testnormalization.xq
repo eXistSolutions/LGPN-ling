@@ -25,14 +25,15 @@ for $node in $input
         default return $node
 };
 
-let $test := <text type="mytype">
+let $test := <text type="mytype" xmlns="http://www.tei-c.org/ns/1.0">
                     <p>
                         <!-- comment -->
-a) "Βαβύριος"
-b) "Βαβύριος"
+                        a) "Βαβύριος"
+                        b) "Βαβύριος"
                         <ala>ala</ala>
                         <makota> blah </makota>
                     </p>
             </text>
 
-    return local:normalize($test)
+    let $test2 := local:normalize($test)
+    return $test2//TEI:p
