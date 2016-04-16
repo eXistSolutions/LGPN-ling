@@ -49,6 +49,17 @@ $(document).ready(function() {
         "ordering": true,
         "info":     true
     } );
+    $('#servertable').DataTable( {
+        "processing": true,
+        "serverSide": true,
+        "ajax": "modules/load-names.xqm",
+        "lengthMenu": [ [50, 100, 500, -1], [50, 100, 500, "All"] ],
+        "order": [[ 1, "asc" ],[ 0, "asc" ]],
+        "paging":   true,
+        "ordering": true,
+        "info":     true
+    } );
+    
 } );
 
 

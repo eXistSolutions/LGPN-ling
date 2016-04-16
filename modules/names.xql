@@ -46,7 +46,6 @@ function names:entry-id($entry as node()) {
 };
 
 declare
- %templates:wrap
 function names:entry-updated($entry as node()) {
     let $updated := if($entry) then xmldb:last-modified(util:collection-name($entry), util:document-name($entry)) else ()
     return <span>{substring-before($updated, 'T')}<span class="invisible">{$updated}</span></span>
@@ -97,8 +96,8 @@ declare
 function names:entry-attestations($entry as node()) {
     let $pos := count($entry/preceding-sibling::TEI:gramGrp)
 
-    let $name := $entry/parent::TEI:entry//TEI:orth[@type='greek']/string()
-    let $att:= doc($config:lgpn-volumes)//TEI:persName[.=$name]
+    let $name := $entry/parent::TEI:entry//TEI:orth[@type='greek']
+    let $att:= collection($config:data-root)//TEI:persName[.=$name]
     let $content :=count($att[@type="main"])
 (: let $content := 'blah':)
 (:        let $content := count(doc("/db/apps/lgpn-data/data/volume0.xml")//TEI:persName[@type="main"][.='Ἀγάθανδρος']):)
@@ -109,9 +108,10 @@ function names:entry-attestations($entry as node()) {
 };
 
 declare
-function names:entry-period($node as node(), $model as map(*)) {
-    let $pos := count($model?entry/preceding-sibling::TEI:gramGrp)
-    let $name := $model?entry/parent::TEI:entry//TEI:orth[@type='greek']
+function names:entry-period($entry as node()) {
+    let $pos := count($entry/preceding-sibling::TEI:gramGrp)
+
+    let $name := $entry/parent::TEI:entry//TEI:orth[@type='greek']/string()
     let $dates :=(
         min(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:birth/@notBefore[string(.)]),
         max(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:birth/@notAfter[string(.)]))
@@ -121,7 +121,6 @@ function names:entry-period($node as node(), $model as map(*)) {
 };
 
 declare
- %templates:wrap
 function names:entry-gender($node as node(), $model as map(*)) {
     let $pos := count($model?entry/preceding-sibling::TEI:gramGrp)
     let $name := $model?entry/parent::TEI:entry//TEI:orth[@type='greek']
@@ -134,56 +133,25 @@ function names:entry-gender($node as node(), $model as map(*)) {
 };
 
 declare
-    %templates:wrap
-function names:entry-morpheme($node as node(), $model as map(*), $type as xs:string, $position as xs:integer?) {
-           (:  content of preceding/following gramGrp made invisible to make
-           sure even after sorting/filtering the rows from same name stay together:)
-        (
-            for $e in $model?entry/preceding-sibling::TEI:gramGrp
-            return names:morpheme($e, 1, $type, $position)
-        ,
-            names:morpheme($model?entry, 0, $type, $position)
-        ,
-            for $e in $model?entry/following-sibling::TEI:gramGrp
-            return names:morpheme($e, 1, $type, $position)
-        )
-};
-
-declare function names:morpheme($entry as node(), $invisible as xs:integer, $type as xs:string, $position as xs:integer?) {
+function names:entry-morpheme($entry as node(), $type as xs:string, $position as xs:integer?) {
         let $bold := if ($type='radical' or $position=1) then 'font-weight: bold;' else ()
-        let $first :=  if (count($entry/preceding-sibling::TEI:gramGrp)) then 'dimmed' else () 
+        let $class :=  if (count($entry/preceding-sibling::TEI:gramGrp)) then 'dimmed' else () 
 
-        let $class := if ($invisible) then 'invisible' else $first
     return <span>
         {attribute style {$bold}}
         {attribute class {$class}}
-        {            if($type="radical") then 
-                        data(doc($config:taxonomies-root || "/morphemes.xml")//TEI:category[@baseForm=$entry//TEI:m[@type=$type][@n=$position]/@baseForm]/TEI:catDesc) 
-                    else data($entry//TEI:m[@type=$type][@n=$position])
+        {
+            if($type="radical") then 
+                data(doc($config:taxonomies-root || "/morphemes.xml")//TEI:category[@baseForm=$entry//TEI:m[@type=$type][@n=$position]/@baseForm]/TEI:catDesc) 
+            else data($entry//TEI:m[@type=$type][@n=$position])
         }
         </span>
 };
 
 declare
-    %templates:wrap
-function names:entry-morpheme-functions($node as node(), $model as map(*), $type as xs:string) {
-           (:  content of preceding/following gramGrp made invisible to make
-           sure even after sorting/filtering the rows from same name stay together:)
-        (
-            for $e in $model?entry/preceding-sibling::TEI:gramGrp
-            return names:morpheme-functions($e, 1, $type)
-        ,
-            names:morpheme-functions($model?entry, 0, $type)
-        ,
-            for $e in $model?entry/following-sibling::TEI:gramGrp
-            return names:morpheme-functions($e, 1, $type)
-        )
-};
+function names:entry-morpheme-functions($entry as node(), $type as xs:string) {
+    let $class :=  if (count($entry/preceding-sibling::TEI:gramGrp)) then 'dimmed' else () 
 
-declare function names:morpheme-functions($entry as node(), $invisible as xs:integer, $type as xs:string) {
-    let $first :=  if (count($entry/preceding-sibling::TEI:gramGrp)) then 'dimmed' else () 
-
-    let $class := if ($invisible) then 'invisible' else $first
     let $functions := 
                 for $e in $entry//TEI:m[@type=$type]/@function[string(.)]
                 order by $e/@n
@@ -195,27 +163,11 @@ declare function names:morpheme-functions($entry as node(), $invisible as xs:int
         </span>
 };
 
+
 declare
-    %templates:wrap
-    %templates:default("lang", 'en')
-function names:entry-semantics($node as node(), $model as map(*), $lang as xs:string?) {
-           (:  content of preceding/following gramGrp made invisible to make
-           sure even after sorting/filtering the rows from same name stay together:)
-        (
-            for $e in $model?entry/preceding-sibling::TEI:gramGrp
-            return names:semantics($e, 1, $lang)
-        ,
-            names:semantics($model?entry, 0, $lang)
-        ,
-            for $e in $model?entry/following-sibling::TEI:gramGrp
-            return names:semantics($e, 1, $lang)
-        )
-};
+function names:entry-semantics($entry as node(), $lang as xs:string?) {
+    let $class :=  if (count($entry/preceding-sibling::TEI:gramGrp)) then 'dimmed' else () 
 
-declare function names:semantics($entry as node(), $invisible as xs:integer, $lang as xs:string) {
-    let $first :=  if (count($entry/preceding-sibling::TEI:gramGrp)) then 'dimmed' else () 
-
-    let $class := if ($invisible) then 'invisible' else $first
     let $functions := 
             for $bf in $entry//TEI:m[@type='radical']/@baseForm[string(.)]
                 let $concept :=
@@ -245,11 +197,10 @@ declare function names:reference-entry($entry, $type) {
 };
 
 declare
-%templates:wrap
-function names:entry-bibl($node as node(), $model as map(*), $type as xs:string) {
-    let $pos := count($model?entry/preceding-sibling::TEI:gramGrp)
+function names:entry-bibl($entry as node()) {
+    let $pos := count($entry/preceding-sibling::TEI:gramGrp)
     let $content := 
-        for $e in $model?entry/parent::TEI:entry//TEI:bibl
+        for $e in $entry/parent::TEI:entry//TEI:bibl
 (:        [@type='linguistic']:)
             let $source := names:reference-entry($e, 'bibl')
         return if ($e/@type='linguistic') then <p>{$source}</p> else ()
@@ -258,19 +209,18 @@ function names:entry-bibl($node as node(), $model as map(*), $type as xs:string)
 };
 
 declare
-%templates:wrap
-function names:entry-sources($node as node(), $model as map(*), $type as xs:string) {
-    let $pos := count($model?entry/preceding-sibling::TEI:gramGrp)
+function names:entry-sources($entry as node()) {
+    let $pos := count($entry/preceding-sibling::TEI:gramGrp)
 
     (: sources :)
     let $sources := 
-        for $e in $model?entry/parent::TEI:entry//TEI:cit[string(.)]
+        for $e in $entry/parent::TEI:entry//TEI:cit[string(.)]
         let $source := names:reference-entry($e, 'cit')
         return <p>{$source}</p>
 
     (: lexicographic references :)
     let $lexicographic := 
-        for $e in $model?entry/parent::TEI:entry//TEI:bibl[string(.)]
+        for $e in $entry/parent::TEI:entry//TEI:bibl[string(.)]
 (:        [@type='auxiliary']:)
             let $source := names:reference-entry($e, 'bibl')
         return if ($e/@type='auxiliary') then <p>{$source}</p> else ()
@@ -282,13 +232,12 @@ function names:entry-sources($node as node(), $model as map(*), $type as xs:stri
 
 
 declare
-function names:entry-action($node as node(), $model as map(*), $action as xs:string?) {
+function names:entry-action($entry as node(), $action as xs:string?) {
     let $user := request:get-attribute("org.exist.lgpn-ling.user")
     return
         if ($user) then
     
-    let $entry := $model?entry
-    let $pos := count($model?entry/preceding-sibling::TEI:gramGrp)
+    let $pos := count($entry/preceding-sibling::TEI:gramGrp)
     let $action:=  if($action='delete') then 
         <div>
 <!--
