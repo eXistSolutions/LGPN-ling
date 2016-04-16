@@ -14,7 +14,8 @@ declare option output:media-type "text/javascript";
 (:http://localhost:8080/exist/apps/lgpn-ling/modules/load-names.xqm?draw=3&columns%5B0%5D%5Bdata%5D=0&columns%5B0%5D%5Bname%5D=&columns%5B0%5D%5Bsearchable%5D=true&columns%5B0%5D%5Borderable%5D=true&columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false&columns%5B1%5D%5Bdata%5D=1&columns%5B1%5D%5Bname%5D=&columns%5B1%5D%5Bsearchable%5D=true&columns%5B1%5D%5Borderable%5D=true&columns%5B1%5D%5Bsearch%5D%5Bvalue%5D=&columns%5B1%5D%5Bsearch%5D%5Bregex%5D=false&order%5B0%5D%5Bcolumn%5D=0&order%5B0%5D%5Bdir%5D=asc&start=0&length=50&search%5Bvalue%5D=bb&search%5Bregex%5D=false&_=1459939775375:)
 
 (:let $search := request:get-parameter('search', ''):)
-let $search := request:get-parameter('search[value]', '')
+let $svalue := request:get-parameter('search[value]', '')
+let $search := if ($svalue) then $svalue else ''
 
 let $draw := request:get-parameter('draw', '1')
 let $recordsTotal := count(collection($config:names-root)//tei:entry)
@@ -42,13 +43,28 @@ let $recordsTotal := count(collection($config:names-root)//tei:entry)
 (:      :)
 
     let $results :=
-    for $i in collection($config:names-root)//tei:gramGrp
+    for $i in collection($config:names-root)//tei:orth[contains(., $search)]/ancestor::tei:entry//tei:gramGrp
     order by $i/parent::tei:entry//tei:orth[@type='greek'][1]
         return map {
             "0" := names:entry-form($i, 'greek'),
             "1" := names:entry-form($i, 'variant'),
-            "2" := names:entry-attestations($i),
-            "3" := $i/parent::tei:entry//tei:orth[@type='latin']/string()
+            "2" := names:entry-dialect($i, 'en'),
+            "3" := names:entry-attestations($i),
+            "4" := names:entry-form($i, 'variant'),
+            "5" := names:entry-form($i, 'variant'),
+            "6" := names:entry-form($i, 'variant'),
+            "7" := names:entry-form($i, 'variant'),
+            "8" := names:entry-form($i, 'variant'),
+            "9" := names:entry-form($i, 'variant'),
+            "10" := names:entry-form($i, 'variant'),
+            "11" := names:entry-form($i, 'variant'),
+            "12" := names:entry-form($i, 'variant'),
+            "13" := names:entry-form($i, 'variant'),
+            "14" := names:entry-form($i, 'variant'),
+            "15" := names:entry-form($i, 'variant'),
+            "16" := names:entry-form($i, 'variant'),
+            "17" := names:entry-form($i, 'variant'),
+            "18" := $i/parent::tei:entry//tei:orth[@type='latin']/string()
             
         }
 
@@ -69,5 +85,3 @@ let $recordsFiltered := count($results)
 			"recordsFiltered" :=  $recordsFiltered,
 			"data"            := $results
 		}
-
-

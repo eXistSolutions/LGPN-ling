@@ -54,7 +54,6 @@ function names:entry-updated($entry as node()) {
 };
 
 declare
-    %templates:wrap
 function names:entry-form($entry as node(), $langId as xs:string) {
     let $pos := count($entry/preceding-sibling::TEI:gramGrp)
     let $bold := if ($langId='greek') then 'font-weight: bold;' else ()
@@ -71,42 +70,38 @@ function names:entry-form($entry as node(), $langId as xs:string) {
         <span>
             {attribute style {$bold}}
             {attribute class {$first}}
-            {$variant}
-            <span class="invisible">{replace(normalize-unicode($content, 'NFD'), '[\p{M}\p{Sk}]', '')}</span>
             {$content}
         </span>
 };
 
-declare
-    %templates:wrap
-
-function names:entry-stripped($entry as node(), $lang as xs:string) {
-    replace(normalize-unicode($entry/parent::TEI:entry//TEI:orth[@type=$lang]/string(), 'NFD'), '[\p{M}\p{Sk}]', '')
-};
+(:declare:)
+(:function names:entry-stripped($entry as node(), $lang as xs:string) {:)
+(:    replace(normalize-unicode($entry/parent::TEI:entry//TEI:orth[@type=$lang]/string(), 'NFD'), '[\p{M}\p{Sk}]', ''):)
+(:};:)
 
 declare
-    %templates:default("lang", 'en')
-function names:entry-dialect($node as node(), $model as map(*), $lang as xs:string?) {
-    let $pos := count($model?entry/preceding-sibling::TEI:gramGrp)
-    let $labels := tokenize($model?entry/parent::TEI:entry//TEI:usg, '\s+')
+function names:entry-dialect($entry as node(), $lang as xs:string?) {
+    let $pos := count($entry/preceding-sibling::TEI:gramGrp)
+    let $labels := tokenize($entry/parent::TEI:entry//TEI:usg, '\s+')
     let $dialects :=
-    
-        for $e in doc($config:taxonomies-root || "/dialects.xml")//TEI:category[@xml:id=$labels]/TEI:catDesc[@ana="full"][@xml:lang=$lang]
-        return $e
+        for $e in doc($config:taxonomies-root || "/dialects.xml")//TEI:category[@xml:id=$labels]/TEI:catDesc
+        (: filtering moved to output because otherwise an error occurs :)
+        return $e[@ana="full"][@xml:lang='en']
     
     let $content:= string-join($dialects, ', ')
-    return 
-        if($pos) then <span class="invisible">{$content}</span> else $content
+    return $content
+(:        if($pos) then <span class="invisible">{$content}</span> else $content:)
 };
 
 declare
 function names:entry-attestations($entry as node()) {
-(:    let $pos := count($entry/preceding-sibling::TEI:gramGrp):)
+    let $pos := count($entry/preceding-sibling::TEI:gramGrp)
 
-(:    let $name := $entry/parent::TEI:entry//TEI:orth[@type='greek']/string():)
-(:    let $content:= count(doc($config:lgpn-volumes)//TEI:persName[.=$name]):)
+    let $name := $entry/parent::TEI:entry//TEI:orth[@type='greek']/string()
+    let $att:= doc($config:lgpn-volumes)//TEI:persName[.=$name]
+    let $content :=count($att[@type="main"])
 (: let $content := 'blah':)
-        let $content := count(doc("/db/apps/lgpn-data/data/volume0.xml")//TEI:persName[@type="main"][.='Ἀγάθανδρος'])
+(:        let $content := count(doc("/db/apps/lgpn-data/data/volume0.xml")//TEI:persName[@type="main"][.='Ἀγάθανδρος']):)
 
     return 
 (:        if($pos) then <span class="invisible">{$content}</span> else :)
