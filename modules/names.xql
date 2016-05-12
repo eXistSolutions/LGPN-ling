@@ -97,14 +97,14 @@ function names:entry-attestations($entry as node()) {
     let $pos := count($entry/preceding-sibling::TEI:gramGrp)
 
     let $name := $entry/parent::TEI:entry//TEI:orth[@type='greek']
-    let $att:= collection($config:data-root)//TEI:persName[.=$name]
-    let $content :=count($att[@type="main"])
+(:    let $att:= collection($config:data-root)//TEI:persName[.=$name]:)
+(:    let $content :=count($att[@type="main"]):)
 (: let $content := 'blah':)
 (:        let $content := count(doc("/db/apps/lgpn-data/data/volume0.xml")//TEI:persName[@type="main"][.='Ἀγάθανδρος']):)
 
     return 
 (:        if($pos) then <span class="invisible">{$content}</span> else :)
-            $content
+            $name
 };
 
 declare
@@ -267,29 +267,4 @@ function names:entry-action($entry as node(), $action as xs:string?) {
         </td>
     else
         ()
-};
-
-
-(:  LOGIN :)
-declare function names:form-action-to-current-url($node as node(), $model as map(*)) {
-    <form action="{request:get-url()}">{
-        $node/attribute()[not(name(.) = 'action')], 
-        $node/node()
-    }</form>
-};
-
-
-declare function names:generate-dropdown-menu($node as node(), $model as map(*), $list as xs:string, $link as xs:string) {
-    <ul class="dropdown-menu">
-        {
-            for $letter in functx:chars($list)
-            return 
-                <li>
-                <a>
-                    {attribute href {$link || '.html?letter=' || $letter }}
-                    {$letter} 
-                </a>
-                </li>
-        }
-    </ul>  
 };

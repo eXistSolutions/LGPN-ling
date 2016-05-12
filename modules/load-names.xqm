@@ -1,4 +1,4 @@
-xquery version "3.0";
+xquery version "3.1";
 
 declare namespace output = "http://www.w3.org/2010/xslt-xquery-serialization";
 declare namespace json="http://www.json.org";
@@ -7,7 +7,7 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
 import module namespace config="http://www.existsolutions.com/apps/lgpn/config" at "config.xqm";
 import module namespace names="http://www.existsolutions.com/apps/lgpn/names" at "names.xql";
 import module namespace login="http://exist-db.org/xquery/login" at "resource:org/exist/xquery/modules/persistentlogin/login.xql";
-import module namespace console="http://exist-db.org/xquery/console" at "java:org.exist.console.xquery.ConsoleModule";
+(:import module namespace console="http://exist-db.org/xquery/console" at "java:org.exist.console.xquery.ConsoleModule";:)
 
 (: Switch to JSON serialization :)
 declare option output:method "json";
@@ -48,6 +48,7 @@ declare function local:orderBy($index, $dir) {
 };
 
 let $setuser :=  login:set-user("org.exist.lgpn-ling", (), false())
+(:let $setuser := 'edouard':)
 
 (:let $search := request:get-parameter('search', ''):)
 let $search := if (request:get-parameter('search[value]', '')) then request:get-parameter('search[value]', '') else ''
@@ -63,24 +64,24 @@ let $recordsTotal := count(collection($config:names-root)//tei:gramGrp)
 
 let $offset :=     if (request:get-attribute("org.exist.lgpn-ling.user")) then 0 else -1
 
-let $collection := 'collection($config:names-root)//tei:orth[contains(., $search)]/ancestor::tei:entry//tei:gramGrp'
+let $collection := 'collection($config:names-root)//tei:orth[contains(., normalize-unicode($search, "NFC"))]/ancestor::tei:entry//tei:gramGrp'
 let $orderby := local:orderBy(number($ordInd)+$offset, $ordDir)
 
-  let $c:= console:log($ordInd || ' ' || $ordDir)
+(:  let $c:= console:log($ordInd || ' ' || $ordDir):)
 
     let $query :=
     'for $i in ' || $collection ||
     ' order by ' || $orderby ||
     ' return $i'
   
-  let $c:= console:log($query)
+(:  let $c:= console:log($query):)
     
     let $selection := util:eval($query)
     
     let $results :=
     for $i in subsequence($selection, $start, $end)
         return 
-    map:new(
+    map:new( 
             (
                 if($offset=0) then map:entry(0, names:entry-action($i, '')) else (),
                 map:entry($offset+1, names:entry-form($i, 'variant')),
@@ -111,5 +112,5 @@ let $recordsFiltered := count($selection)
 			"draw" := $draw,
 			"recordsTotal"    :=  $recordsTotal,
 			"recordsFiltered" :=  $recordsFiltered,
-			"data"            := $results
+			"data"            := if(count($results)>1) then $results else array{$results} 
 		}
