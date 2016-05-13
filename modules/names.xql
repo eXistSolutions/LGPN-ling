@@ -97,14 +97,10 @@ function names:entry-attestations($entry as node()) {
     let $pos := count($entry/preceding-sibling::TEI:gramGrp)
 
     let $name := $entry/parent::TEI:entry//TEI:orth[@type='greek']
-(:    let $att:= collection($config:data-root)//TEI:persName[.=$name]:)
-(:    let $content :=count($att[@type="main"]):)
-(: let $content := 'blah':)
-(:        let $content := count(doc("/db/apps/lgpn-data/data/volume0.xml")//TEI:persName[@type="main"][.='Ἀγάθανδρος']):)
+    let $content := count(collection($config:data-root)//TEI:persName[@type="main"][.=$name])
 
     return 
-(:        if($pos) then <span class="invisible">{$content}</span> else :)
-            $name
+        if($pos) then <span class="invisible">{$content}</span> else $content
 };
 
 declare
@@ -121,9 +117,9 @@ function names:entry-period($entry as node()) {
 };
 
 declare
-function names:entry-gender($node as node(), $model as map(*)) {
-    let $pos := count($model?entry/preceding-sibling::TEI:gramGrp)
-    let $name := $model?entry/parent::TEI:entry//TEI:orth[@type='greek']
+function names:entry-gender($entry as node()) {
+    let $pos := count($entry/preceding-sibling::TEI:gramGrp)
+    let $name := $entry/parent::TEI:entry//TEI:orth[@type='greek']
     let $genders :=
         for $g in distinct-values(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:sex/@value/string())
         return if (number($g)=2) then "f." else "m."
@@ -224,7 +220,8 @@ function names:entry-sources($entry as node()) {
 (:        [@type='auxiliary']:)
             let $source := names:reference-entry($e, 'bibl')
         return if ($e/@type='auxiliary') then <p>{$source}</p> else ()
-    let $cf := if(not(empty($sources))) then 'Cf. ' else ()
+(:      removing cf label, needs to be replaced with special form elements :)
+    let $cf := if(not(empty($sources))) then () else ()
     let $content := ($sources, if(not(empty($lexicographic))) then  ($cf, $lexicographic) else ())
     return 
         if($pos) then <span class="invisible">{$content}</span> else $content
@@ -240,18 +237,10 @@ function names:entry-action($entry as node(), $action as xs:string?) {
     let $pos := count($entry/preceding-sibling::TEI:gramGrp)
     let $action:=  if($action='delete') then 
         <div>
-<!--
-<form method="GET" action="?delete={data($entry/parent::TEI:entry/@xml:id)}" style="display:inline">
-                <button class="btn btn-xs btn-danger" type="button" data-toggle="modal" data-target="#confirmDelete" data-title="Delete Name" data-message="Are you sure you want to delete this name?">
-                <i class="glyphicon glyphicon-trash"></i> Delete via modal
-                </button>
-            </form>
-<br/>
--->
             <form method="POST" action="">
                 <input type="hidden" name="delete" value="{data($entry/parent::TEI:entry/@xml:id)}"/>
-                <button class="btn btn-xs btn-danger" type="submit" onClick="return window.confirm('Are you sure you want to delete {data($entry/parent::TEI:entry//TEI:orth[@type="greek"])}?')" data-title="Delete Name {data($entry/parent::TEI:entry//TEI:orth[@type="greek"])}">
-                <i class="glyphicon glyphicon-trash"></i> Delete
+                <button class="glyphicon glyphicon-trash btn btn-xs btn-danger" type="submit" onClick="return window.confirm('Are you sure you want to delete {data($entry/parent::TEI:entry//TEI:orth[@type="greek"])}?')" data-title="Delete Name {data($entry/parent::TEI:entry//TEI:orth[@type="greek"])}">
+                 Delete
                 </button>
             </form>
             </div>

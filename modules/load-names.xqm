@@ -33,14 +33,15 @@ declare function local:orderBy($index, $dir) {
     case '8'
         return "$i/parent::tei:entry//tei:m[@type='radical'][@n='1']"
     default
-        return '$i/parent::tei:entry//tei:orth[@type="greek"][1] ' 
-        
+        return 'replace($i/parent::tei:entry//tei:orth[@type="greek"][1],  "[\p{M}\p{Sk}]", "")' 
+        (:    replace(normalize-unicode($entry/parent::TEI:entry//TEI:orth[@type=$lang]/string(), 'NFD'), '[\p{M}\p{Sk}]', ''):)
+
     let $collation:= 
         switch($index)
             case '2'
             case '8'
             case '9'
-                return 'collation "?lang=grc"'
+                return ' collation "?lang=el-grc&amp;amp;strength=primary&amp;amp;decomposition=standard"' 
             default 
                 return ()
         
@@ -86,10 +87,10 @@ let $orderby := local:orderBy(number($ordInd)+$offset, $ordDir)
                 if($offset=0) then map:entry(0, names:entry-action($i, '')) else (),
                 map:entry($offset+1, names:entry-form($i, 'variant')),
                 map:entry($offset+2, names:entry-form($i, 'greek')),
-                map:entry($offset+3, 'att'),
-                map:entry($offset+4, 'genre'),
+                map:entry($offset+3, names:entry-attestations($i)),
+                map:entry($offset+4, names:entry-gender($i)),
                 map:entry($offset+5, names:entry-dialect($i, 'en')),
-                map:entry($offset+6, 'period'),
+                map:entry($offset+6, names:entry-period($i)),
                 map:entry($offset+7, names:entry-morpheme($i, 'prefix', 1)),
                 map:entry($offset+8, names:entry-morpheme($i, 'radical', 1)),
                 map:entry($offset+9, names:entry-morpheme($i, 'radical', 2)),
