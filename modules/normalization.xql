@@ -7,12 +7,10 @@ import module namespace functx = "http://www.functx.com";
 declare namespace TEI = "http://www.tei-c.org/ns/1.0";
 
 declare function normalization:normalize-greek($input as xs:string?) as xs:string? {
-    let $from := 	('῾Α', '῞Α')
-    let $to := 	('Ἁ', 'Ἄ')
-
+    let $from := ('῾Α', '῞Α')
+    let $to := ('Ἁ', 'Ἄ')
 return
-
-functx:replace-multi($input,$from,$to)
+    functx:replace-multi($input,$from,$to)
 };
 
 declare function normalization:normalize($input as item()*) as item()* {
