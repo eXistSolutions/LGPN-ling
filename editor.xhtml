@@ -132,6 +132,14 @@
                     </xf:action>
                 </xf:submission>
                 <xf:submission id="s-save-data" method="post" replace="none" validate="true" resource="modules/save.xql">
+                    <xf:header>
+                        <xf:name>userid</xf:name>
+                        <xf:value>{bf:appContext('id')}</xf:value>
+                    </xf:header>
+                    <xf:header>
+                        <xf:name>password</xf:name>
+                        <xf:value/>
+                    </xf:header>
                     <xf:action ev:event="xforms-submit">
                         <xf:setvalue ref="instance('i-default')//TEI:entry/@xml:id" value="instance('i-default')//TEI:orth[@type='latin']"/>
                         <xf:message ev:event="xforms-submit-done" level="ephemeral">Saving...</xf:message>
@@ -139,7 +147,12 @@
                     <xf:message ev:event="xforms-submit-done" level="ephemeral">Data have been saved.</xf:message>
                     <xf:message ev:event="xforms-submit-error">Failed to save data</xf:message>
                 </xf:submission>
-                <xf:submission id="s-reload-meanings" method="post" replace="instance" validate="false" resource="modules/reload-meanings.xql" ref="instance('i-default')//TEI:entry/TEI:gramGrp[instance('i-meanings')/being-reloaded/@grp/number()]/TEI:m[@type = 'radical' and @n = instance('i-meanings')/being-reloaded/@n]" targetref="instance('i-meanings')/target/TEI:taxonomy">
+                <xf:submission id="s-reload-meanings" method="post" replace="instance" validate="false" resource="modules/reload-meanings.xql" ref="instance('i-default')//TEI:entry/TEI:gramGrp[instance('i-meanings')/being-reloaded/@grp/number()]/TEI:m[@type = 'radical' and @n = instance('i-meanings')/being-reloaded/@n]" targetref="instance('i-meanings')/target/TEI:taxonomy"><!--
+                    <xf:header>
+                        <xf:name>userid</xf:name>
+                        <xf:value>admin</xf:value>
+                    </xf:header>
+-->
                     <xf:action ev:event="xforms-submit-done">
                         <xf:action if="not(instance('i-meanings')/meaning[@grp=instance('i-meanings')/being-reloaded/@grp and @n=instance('i-meanings')/being-reloaded/@n])">
                             <xf:insert context="instance('i-meanings')" nodeset="*[last()]" origin="instance('i-meanings')/template/meaning"/>
@@ -660,9 +673,10 @@
                 </xf:group>
             </xf:group>
             <br/>
-            <xf:submit class="-btn -btn-default -glyphicon -glyphicon-save" submission="s-save-data">
+            <xf:submit class="-btn -btn-success -glyphicon -glyphicon-save" submission="s-save-data">
                 <xf:label>Save</xf:label>
             </xf:submit>
+            <a href="index.html" class="btn btn-default glyphicon glyphicon-out">Return to the list of names without saving</a>
         </div>
         <bfc:dialog id="meanings" src="meanings.html">
             <xf:label>Add meaning</xf:label>
