@@ -65,7 +65,7 @@ let $recordsTotal := count(collection($config:names-root)//tei:gramGrp)
 
 let $offset :=     if (request:get-attribute("org.exist.lgpn-ling.user")) then 0 else -1
 
-let $collection := 'collection($config:names-root)//tei:orth[contains(., normalize-unicode($search, "NFC"))]/ancestor::tei:entry//tei:gramGrp'
+let $collection := 'collection($config:names-root)//tei:orth[contains(upper-case(.), normalize-unicode(upper-case($search), "NFC"))]/ancestor::tei:entry//tei:gramGrp'
 let $orderby := local:orderBy(number($ordInd)+$offset, $ordDir)
 
 (:  let $c:= console:log($ordInd || ' ' || $ordDir):)
