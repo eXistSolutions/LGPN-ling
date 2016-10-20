@@ -122,12 +122,25 @@ declare function app:lang($node as node(), $model as map(*), $lang as xs:string?
 
 declare function app:entries($node as node(), $model as map(*)) {
     let $entries :=
+(:    for $i in collection($config:names-root)//TEI:entry[starts-with(.//TEI:orth[@type='latin'], 'A')]//TEI:gramGrp:)
     for $i in collection($config:names-root)//TEI:gramGrp
     order by $i/parent::TEI:entry//TEI:orth[@type='greek'][1]
         return $i
     
     return
     map { "entries" := $entries }
+};
+
+declare
+    %templates:replace
+    %templates:default("start", 1)
+    %templates:default("max", 10)
+function app:entries-each($node as node(), $model as map(*)) {
+    for $entry in $model("entries")
+    return 
+        <tr>
+        {templates:process($node/node(), map:new(($model, map { "entry" := $entry })))}
+        </tr>
 };
 
 declare

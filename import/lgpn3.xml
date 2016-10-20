@@ -1,109 +1,113 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
-<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
+<?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?><?xml-model href="http://www.tei-c.org/release/xml/tei/custom/schema/relaxng/tei_all.rng" type="application/xml"
 	schematypens="http://purl.oclc.org/dsdl/schematron"?>
 <TEI xmlns="http://www.tei-c.org/ns/1.0">
-  <teiHeader>
-      <fileDesc>
-         <titleStmt>
-            <title>Title</title>
-         </titleStmt>
-         <publicationStmt>
-            <p>Publication Information</p>
-         </publicationStmt>
-         <sourceDesc>
-            <p>Information about the source</p>
-         </sourceDesc>
-      </fileDesc>
-     <encodingDesc>
-        <classDecl>
-           <!-- flat taxonomy with <catDesc> entries for every language; links to appropriate ontologies realised through corresp attribute  -->
-           <taxonomy xml:id="semanticFields">
-              <category xml:id="good" >
-                 <catDesc xml:lang="en">good</catDesc>
-                 <catDesc xml:lang="fr">bon</catDesc>
-              </category>
-              <category xml:id="council">
-                 <catDesc xml:lang="en">council</catDesc>
-                 <catDesc xml:lang="fr">Conseil</catDesc>
-              </category>
-              <category xml:id="advice">
-                 <catDesc xml:lang="en">advice</catDesc>
-                 <catDesc xml:lang="fr">conseil</catDesc>
-              </category>
-              <category xml:id="will">
-                 <catDesc  xml:lang="en">will</catDesc>
-                 <catDesc  xml:lang="fr">vouloir</catDesc>
-              </category>
-              <category xml:id="shameful">
-                 <catDesc  xml:lang="en">shameful</catDesc>
-                 <catDesc  xml:lang="fr">honteux</catDesc>
-              </category>
-              <category xml:id="ugly">
-                 <catDesc  xml:lang="en">ugly</catDesc>
-                 <catDesc  xml:lang="fr">laid</catDesc>
-              </category>
-              <category xml:id="hump">
-                 <catDesc  xml:lang="en">hump</catDesc>
-                 <catDesc  xml:lang="fr">bosse</catDesc>
-              </category>
-           </taxonomy>
-        </classDecl>
-     </encodingDesc>
-  </teiHeader>
-  <text>
-      <body>
-         <entry xml:id="Agathoboula">
-            <form type="lemma">
-               <orth type="greek">Ἀγαθοβούλα</orth>
-               <orth type="latin">Agathoboula</orth>
-               <gen>f.</gen>
-               <date notAfter="0200" notBefore="-0200"/>
-               <usg/>
-            </form>
-            <gramGrp cert="low">
-               <!-- there should be closed list values in a schema for attributes on m: @type, @subtype and @function -->
-               <m baseForm="αγαθ" type="radical" n="1" function="Adj." ana="#good">Ἀγαθο</m>
-               <m baseForm="βoλ" type="radical" n="2" function="N" ana="#will #council">βούλ</m>
-               <m baseForm="ᾱ" type="suffix" subtype="flexional" n="1">α</m>
-            </gramGrp>
-            <cit>
-               <quote>βουλῇ τ'ἀγαθῇ καὶ κακῷ δαίμονι μοχθίζουσι</quote> 
-               <ref target="http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A2008.01.0477%3Avolume%3D1%3Atext%3D11%3Asection%3D2">Thgn. 163</ref>
-            </cit>
-            <cit>
-               <quote>ἀγαθός, βούλομαι</quote>
-               <ref>DELG s.vv.</ref>
-            </cit>
-            <bibl type="auxiliary">
-               <ref>Hdte</ref>  4.134.11
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title>Title</title>
+            </titleStmt>
+            <publicationStmt>
+                <p>Publication Information</p>
+            </publicationStmt>
+            <sourceDesc>
+                <p>Information about the source</p>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc>
+            <classDecl><!-- flat taxonomy with <catDesc> entries for every language; links to appropriate ontologies realised through corresp attribute  -->
+                <taxonomy xml:id="semanticFields">
+                    <category xml:id="good">
+                        <catDesc xml:lang="en">good</catDesc>
+                        <catDesc xml:lang="fr">bon</catDesc>
+                    </category>
+                    <category xml:id="council">
+                        <catDesc xml:lang="en">council</catDesc>
+                        <catDesc xml:lang="fr">Conseil</catDesc>
+                    </category>
+                    <category xml:id="advice">
+                        <catDesc xml:lang="en">advice</catDesc>
+                        <catDesc xml:lang="fr">conseil</catDesc>
+                    </category>
+                    <category xml:id="will">
+                        <catDesc xml:lang="en">will</catDesc>
+                        <catDesc xml:lang="fr">vouloir</catDesc>
+                    </category>
+                    <category xml:id="shameful">
+                        <catDesc xml:lang="en">shameful</catDesc>
+                        <catDesc xml:lang="fr">honteux</catDesc>
+                    </category>
+                    <category xml:id="ugly">
+                        <catDesc xml:lang="en">ugly</catDesc>
+                        <catDesc xml:lang="fr">laid</catDesc>
+                    </category>
+                    <category xml:id="hump">
+                        <catDesc xml:lang="en">hump</catDesc>
+                        <catDesc xml:lang="fr">bosse</catDesc>
+                    </category>
+                </taxonomy>
+            </classDecl>
+        </encodingDesc>
+    </teiHeader>
+    <text>
+        <body>
+            <entry xml:id="Agathoboula">
+                <form type="lemma">
+                    <orth type="greek">Ἀγαθοβούλα</orth>
+                    <orth type="latin">Agathoboula</orth>
+                    <gen>f.</gen>
+                    <date notAfter="0200" notBefore="-0200"/>
+                    <usg/>
+                </form>
+                <gramGrp cert="low"><!-- there should be closed list values in a schema for attributes on m: @type, @subtype and @function -->
+                    <m baseForm="αγαθ" type="radical" n="1" function="Adj." ana="#good">Ἀγαθο</m>
+                    <m baseForm="βoλ" type="radical" n="2" function="N" ana="#will #council">βούλ</m>
+                    <m baseForm="ᾱ" type="suffix" subtype="flexional" n="1">α</m>
+                </gramGrp>
+                <cit>
+                    <quote>βουλῇ τ'ἀγαθῇ καὶ κακῷ δαίμονι μοχθίζουσι</quote>
+                    <ref target="http://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A2008.01.0477%3Avolume%3D1%3Atext%3D11%3Asection%3D2">Thgn. 163</ref>
+                </cit>
+                <cit>
+                    <quote>ἀγαθός, βούλομαι</quote>
+                    <ref>DELG s.vv.</ref>
+                </cit>
+                <bibl type="auxiliary">
+                    <ref>Hdte</ref>  4.134.11
             </bibl>
-            <bibl type="linguistic">
-               <ref>HPN7</ref>
-            </bibl>
-         </entry>
-         <entry xml:id="Aiscrybēs">
-            <form type="lemma">
-               <orth type="greek">Αἰσχρύβης</orth>
-               <orth type="latin">Aiscrybēs</orth>
-               <gen>X.</gen>
-               <date notBefore="-0400" notAfter="-0200"/>
-               <usg/>
-            </form>
-            <gramGrp cert="high">
-               <m baseForm="αἰσχρ" type="radical" n="1" function="Adj." ana="#shameful #ugly">Αἰσχρ</m>
-               <m baseForm="(h)uβ" type="radical" n="2" function="N" cert="high" ana="#hump">ύβ</m>
-               <m baseForm="ης" type="suffix" subtype="flexional" n="1">ης</m>             
-            </gramGrp>
-            <gramGrp cert="low">
-               <m baseForm="αἰσχρ" type="radical" n="1" function="Adj." ana="#shameful #ugly">Αἰσχρ</m>
-               <m baseForm="uβ" type="suffix" n="2" cert="low">ύβ</m>
-               <m baseForm="ᾱς" type="suffix" subtype="flexional" n="1">ης</m>             
-            </gramGrp>
-            <cit><quote>αἴσχιστος δὲ ἀνὴρ (...) τὼ δέ οἱ ὤμω κυρτώ, ἐπὶ στῆθος συνοχωκότε</quote><ref>Thersite, Iliade 2, 218</ref></cit>
-            <cit><quote>αἶσχος, ὑβός</quote><ref>DELG s.vv. </ref></cit>
-            <bibl type="linguistic"><ref>Minon, SAGA</ref>, p.</bibl>
-         </entry>
-      </body>
-  </text>
+                <bibl type="linguistic">
+                    <ref>HPN7</ref>
+                </bibl>
+            </entry>
+            <entry xml:id="Aiscrybēs">
+                <form type="lemma">
+                    <orth type="greek">Αἰσχρύβης</orth>
+                    <orth type="latin">Aiscrybēs</orth>
+                    <gen>X.</gen>
+                    <date notBefore="-0400" notAfter="-0200"/>
+                    <usg/>
+                </form>
+                <gramGrp cert="high">
+                    <m baseForm="αἰσχρ" type="radical" n="1" function="Adj." ana="#shameful #ugly">Αἰσχρ</m>
+                    <m baseForm="(h)uβ" type="radical" n="2" function="N" cert="high" ana="#hump">ύβ</m>
+                    <m baseForm="ης" type="suffix" subtype="flexional" n="1">ης</m>
+                </gramGrp>
+                <gramGrp cert="low">
+                    <m baseForm="αἰσχρ" type="radical" n="1" function="Adj." ana="#shameful #ugly">Αἰσχρ</m>
+                    <m baseForm="uβ" type="suffix" n="2" cert="low">ύβ</m>
+                    <m baseForm="ᾱς" type="suffix" subtype="flexional" n="1">ης</m>
+                </gramGrp>
+                <cit>
+                    <quote>αἴσχιστος δὲ ἀνὴρ (...) τὼ δέ οἱ ὤμω κυρτώ, ἐπὶ στῆθος συνοχωκότε</quote>
+                    <ref>Thersite, Iliade 2, 218</ref>
+                </cit>
+                <cit>
+                    <quote>αἶσχος, ὑβός</quote>
+                    <ref>DELG s.vv. </ref>
+                </cit>
+                <bibl type="linguistic">
+                    <ref>Minon, SAGA</ref>, p.</bibl>
+            </entry>
+        </body>
+    </text>
 </TEI>

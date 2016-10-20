@@ -11,6 +11,7 @@ declare namespace templates="http://exist-db.org/xquery/templates";
 declare namespace repo="http://exist-db.org/xquery/repo";
 declare namespace expath="http://expath.org/ns/pkg";
 
+declare variable $config:dba-credentials := ("admin", "$impl3");
 (: 
     Determine the application root collection from the current module load path.
 :)

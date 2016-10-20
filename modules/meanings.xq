@@ -12,11 +12,14 @@ declare option output:media-type "text/javascript";
 let $case := request:get-parameter('type', '')
 let $data := request:get-parameter('query', '')
 
-            let $morphemes :=  doc($config:taxonomies-root || "/morphemes.xml")//tei:category[starts-with(./@baseForm, $data)]
+            let $morphemes :=  doc($config:taxonomies-root || "/morphemes.xml")//tei:category[starts-with(replace(normalize-unicode(./@baseForm, 'NFD'), '[\p{M}\p{Sk}]', ''), replace(normalize-unicode($data, 'NFD'), '[\p{M}\p{Sk}]', ''))]
+
+(:            let $morphemes :=  doc($config:taxonomies-root || "/morphemes.xml")//tei:category[starts-with(./@baseForm, $data)]:)
             return
             <result>
                 <total>{count($morphemes)}</total>
                 { for $m in $morphemes
+                    order by $m/@baseForm
                     return 
                     <term>
                         <id>{$m/tei:catDesc/string()}</id>

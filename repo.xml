@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <meta xmlns="http://exist-db.org/xquery/repo">
-    <description>lgpn</description>
+    <description>lgpn-ling</description>
+    <author>Magdalena Turska</author>
     <author>Tobi Krebs</author>
     <website>http://www.existsolutions.com</website>
     <status>alpha</status>
@@ -10,5 +11,6 @@
     <target>lgpn-ling</target>
     <prepare>pre-install.xql</prepare>
     <finish>post-install.xql</finish>
-    <permissions xmlns:repo="http://exist-db.org/xquery/repo" password="" user="lgpn" group="lgpn" mode="rwxrwxrwx"/>
+    <permissions xmlns:repo="http://exist-db.org/xquery/repo" user="lgpn" group="lgpn" mode="rwxrwxrwx"/>
+    <deployed>2016-05-17T00:49:14.373+02:00</deployed>
 </meta>

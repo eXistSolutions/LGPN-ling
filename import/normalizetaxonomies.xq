@@ -8,4 +8,4 @@ import module namespace normalization="http://www.existsolutions.com/apps/lgpn/n
 let $doc := doc($config:taxonomies-root || "/morphemes.xml")
 
 let $data := normalization:normalize($doc//TEI:taxonomy)
-return        xmldb:store($config:taxonomies-root, "morphemes.xml", $data)
+(:return        xmldb:store($config:taxonomies-root, "morphemes.xml", $data):)
