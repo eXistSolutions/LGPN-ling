@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+    <option xml:id="ltXY">&lt;XY</option>
+    <option xml:id="ltYX">&lt;YX</option>
+    <option xml:id="gtXY">&gt;XY</option>
+    <option xml:id="gtYX">&gt;YX</option>
+    <option xml:id="slashYX">/YX</option>
+</data>

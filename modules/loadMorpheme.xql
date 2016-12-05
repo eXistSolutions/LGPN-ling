@@ -33,14 +33,17 @@ return
         <category xmlns="http://www.tei-c.org/ns/1.0" baseForm="{$id}">
             {$entry/TEI:catDesc}
             {
-            for $meaning at $i in collection($config:taxonomies-root)//TEI:taxonomy[@xml:id="ontology"]/TEI:category[@xml:id=tokenize($entry/@ana, '\s*#')]
+                let $meanings := tokenize($entry/@ana, '\s*#')
+                return 
+            (for $meaning at $i in collection($config:taxonomies-root)//TEI:taxonomy[@xml:id="ontology"]/TEI:category[@xml:id=$meanings]
                 return
                     <meaning label="{$meaning/@xml:id/string()}">
                         <translation xml:lang="fr">{$meaning/TEI:catDesc[@xml:lang="fr"]/string()}</translation>
                         <translation xml:lang="en">{$meaning/TEI:catDesc[@xml:lang="en"]/string()}</translation>
                     </meaning>
+                    ,
+                    local:padMeanings(3+count($meanings)))
             }
-            {local:padMeanings(count(tokenize($entry/@ana, '\s*#')))}
         </category>
     else 
         local:newMorpheme($id)
