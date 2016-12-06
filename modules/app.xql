@@ -312,7 +312,7 @@ declare function app:morpheme-functions($entry as node(), $invisible as xs:integ
     return 
         <span>
             {attribute class {$class}}
-            {string-join($functions, '+')}
+            {string-join($functions, '-')}
         </span>
 };
 
@@ -346,7 +346,7 @@ declare function app:semantics($entry as node(), $invisible as xs:integer, $lang
     return
         <span>
             {attribute class {$class}}
-            {string-join($functions, '+')}
+            {string-join($functions, '-')}
         </span>
 };
 
