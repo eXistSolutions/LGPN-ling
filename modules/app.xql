@@ -309,10 +309,18 @@ declare function app:morpheme-functions($entry as node(), $invisible as xs:integ
                 for $e in $entry//TEI:m[@type=$type]/@function[string(.)]
                 order by $e/@n
                 return $e
+    
+    let $labels := doc($config:dictionaries-root || '/classification.xml')
+    let $morphemes := for $m in $entry//TEI:m[@type=$type] return 
+        ($m/@subtype, if(string($m/@ana)) then '(' || $m/@ana || ')' else ())
+    let $headedness := string-join(($morphemes , $labels//id($entry/@type)), '')
+    let $other := $entry/@ana
+    let $parens := if(string($headedness) or string($other)) then '(' || string-join(($headedness, $other), ', ') || ')' else ()
     return 
         <span>
             {attribute class {$class}}
             {string-join($functions, '-')}
+            {$parens}
         </span>
 };
 

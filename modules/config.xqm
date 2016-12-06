@@ -30,12 +30,13 @@ declare variable $config:app-root :=
         substring-before($modulePath, "/modules")
 ;
 
-(:all data to be stored in lgpn-data app:)
+(:all data to be stored in lgpn-ling-data app:)
 declare variable $config:data-root := "/db/apps/lgpn-data/data";
 declare variable $config:ling-data-root := "/db/apps/lgpn-ling-data/data";
 
 declare variable $config:names-root := $config:ling-data-root || "/names";
 declare variable $config:taxonomies-root := $config:ling-data-root || "/taxonomies";
+declare variable $config:dictionaries-root := $config:app-root || "/resources/xml";
 
  (:prosopographical database data:)
 declare variable $config:lgpn-places := $config:data-root || "/volume0.places.xml";
