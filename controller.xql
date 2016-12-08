@@ -19,7 +19,7 @@ if ($exist:path eq '') then (
 else if (ends-with(request:get-query-string(), 'logout=true')) then (
     login:set-user("org.exist.lgpn-ling", (), false()),
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
-        <redirect url="{$exist:resource}"/>
+        <redirect url="about.html"/>
     </dispatch>
 )
 else if ($exist:resource eq 'save.xql') then (
@@ -42,7 +42,7 @@ else if ($exist:path eq "/") then (
 (:    console:log(sm:id() || ' editor ' || request:get-attribute("org.exist.lgpn-ling.user")),:)
     (: forward root path to index.xql :)
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
-        <redirect url="index.html"/>
+        <redirect url="about.html"/>
     </dispatch>
 )
     (:  Protected resource: user is required to log in with valid credentials.
