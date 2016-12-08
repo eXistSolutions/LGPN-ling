@@ -312,15 +312,16 @@ declare function app:morpheme-functions($entry as node(), $invisible as xs:integ
     
     let $labels := doc($config:dictionaries-root || '/classification.xml')
     let $morphemes := for $m in $entry//TEI:m[@type=$type] return 
-        ($m/@subtype, if(string($m/@ana)) then '(' || $m/@ana || ')' else ())
+    
+        ($m/@subtype, if(string($m/@ana)) then $m/@ana else ())
     let $headedness := string-join(($morphemes , $labels//id($entry/@type)), '')
     let $other := $entry/@ana
-    let $parens := if(string($headedness) or string($other)) then '(' || string-join(($headedness, if($other/string()) then $other else ()), ', ') || ')' else ()
+    let $parens := if(string($headedness) or string($other)) then '(' || string-join(($headedness, if($other) then $other else ()), ' ') || ')' else ()
     return 
         <span>
             {attribute class {$class}}
             {string-join($functions, '-')}
-            {$parens}
+            {if($parens) then (<br/>, $parens) else ()}
         </span>
 };
 
