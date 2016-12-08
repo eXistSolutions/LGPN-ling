@@ -64,13 +64,13 @@
                 <xf:instance id="i-template">
                     <data xmlns="http://www.tei-c.org/ns/1.0">
                         <gramGrp cert="" ana="">
-                                        <m baseForm="" type="prefix" n="1" function="" ana=""/>
-                                        <m baseForm="" type="radical" n="1" function="" ana="" short="" cert=""/>
-                                        <m baseForm="" type="radical" n="2" function="" ana="" short="" cert=""/>
-                                        <m baseForm="" type="suffix" subtype="flexional" n="1"/>
-                                        <m baseForm="" type="suffix" n="2"/>
-                                        <m baseForm="" type="suffix" n="3"/>
-                                        <m baseForm="" type="suffix" n="4"/>
+                            <m baseForm="" type="prefix" n="1" function="" ana=""/>
+                            <m baseForm="" type="radical" n="1" function="" ana="" short="" cert=""/>
+                            <m baseForm="" type="radical" n="2" function="" ana="" short="" cert=""/>
+                            <m baseForm="" type="suffix" subtype="flexional" n="1"/>
+                            <m baseForm="" type="suffix" n="2"/>
+                            <m baseForm="" type="suffix" n="3"/>
+                            <m baseForm="" type="suffix" n="4"/>
                         </gramGrp>
                         <cit>
                             <quote/>
@@ -324,13 +324,12 @@
                                         </xf:select>
                                     </div>
                                 </div>
-
                             </div>
                             <div class="row">
                                 <div class="col-xs-3">
-                    <xf:input class="input-group -form-control" ref="TEI:m[@type = 'prefix' and @n = 1]">
-                        <xf:label class="input-group-addon">preconstituent</xf:label>
-                    </xf:input>
+                                    <xf:input class="input-group -form-control" ref="TEI:m[@type = 'prefix' and @n = 1]">
+                                        <xf:label class="input-group-addon">preconstituent</xf:label>
+                                    </xf:input>
                                 </div>
                                 <div class="col-xs-2">
                                     <xf:select1 class="input-group -form-control" ref="TEI:m[@type = 'prefix' and @n = 1]/@baseForm">
@@ -343,7 +342,7 @@
                                 </div>
                                 <div class="col-xs-5">
                                     <div class="input-group">
-                                        <xf:select class="input-group -form-control" ref="TEI:m[@type = 'prefix' and @n = 1]/@ana" appearance="full">
+                                        <xf:select class="input-group -form-control" ref="TEI:m[@type = 'prefix' and @n = 1]/@function" appearance="full">
                                             <xf:label class="input-group-addon">function</xf:label>
                                             <xf:itemset nodeset="instance('i-functions')//option">
                                                 <xf:label ref="."/>
@@ -527,7 +526,6 @@
                                 </div>
                             </div>
                             <div class="row">
-
                                 <div class="col-xs-6">
                                     <span class="semantic_tags"><!--
                                         <span style="display:none">
