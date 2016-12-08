@@ -315,7 +315,7 @@ declare function app:morpheme-functions($entry as node(), $invisible as xs:integ
         ($m/@subtype, if(string($m/@ana)) then '(' || $m/@ana || ')' else ())
     let $headedness := string-join(($morphemes , $labels//id($entry/@type)), '')
     let $other := $entry/@ana
-    let $parens := if(string($headedness) or string($other)) then '(' || string-join(($headedness, $other), ', ') || ')' else ()
+    let $parens := if(string($headedness) or string($other)) then '(' || string-join(($headedness, if($other/string()) then $other else ()), ', ') || ')' else ()
     return 
         <span>
             {attribute class {$class}}
