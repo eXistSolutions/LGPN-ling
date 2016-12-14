@@ -234,9 +234,9 @@ function app:entry-period($node as node(), $model as map(*)) {
     let $pos := count($model?entry/preceding-sibling::TEI:gramGrp)
     let $name := $model?entry/parent::TEI:entry//TEI:orth[@type='greek']
     let $dates :=(
-        min(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:birth/@notBefore[string(.)]),
-        max(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:birth/@notAfter[string(.)]))
-    let $content := string-join($dates, '/')
+        min(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:birth/@notBefore[string(.)][string(.)!='-0999']),
+        max(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:birth/@notAfter[string(.)][string(.)!='0999']))
+    let $content := if(count($dates)) then string-join($dates, '/') else '?'
     return 
         if($pos) then <span class="invisible">{$content}</span> else $content
 };
