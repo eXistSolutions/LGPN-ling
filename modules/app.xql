@@ -303,16 +303,20 @@ function app:entry-morpheme-functions($node as node(), $model as map(*), $type a
 
 declare function app:morpheme-functions($entry as node(), $invisible as xs:integer, $type as xs:string) {
     let $first :=  if (count($entry/preceding-sibling::TEI:gramGrp)) then 'dimmed' else () 
-
     let $class := if ($invisible) then 'invisible' else $first
+(:   combining following two lines into one results in false positives returned, see low hypothesis for Alketēs,
+ : https://github.com/eXistSolutions/LGPN-ling/issues/300
+     let $typeMorphemes:= $entry/descendant-or-self::TEI:m[@type='radical']
+: 	:)
+    let $typeMorphemes := $entry//TEI:m
+    let $typeMorphemes:= $typeMorphemes/descendant-or-self::TEI:m[@type='radical']
     let $functions := 
-                for $e in $entry//TEI:m[@type=$type]/@function[string(.)]
+                for $e in $typeMorphemes/@function[string(.)]
                 order by $e/@n
                 return $e
     
     let $labels := doc($config:dictionaries-root || '/classification.xml')
-    let $morphemes := for $m in $entry//TEI:m[@type=$type] return 
-    
+    let $morphemes := for $m in $typeMorphemes return 
         ($m/@subtype, if(string($m/@ana)) then $m/@ana else ())
     let $headedness := string-join(($morphemes , $labels//id($entry/@type)), '')
     let $other := $entry/@ana
