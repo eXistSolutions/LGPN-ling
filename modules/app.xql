@@ -309,7 +309,7 @@ declare function app:morpheme-functions($entry as node(), $invisible as xs:integ
      let $typeMorphemes:= $entry/descendant-or-self::TEI:m[@type='radical']
 : 	:)
     let $typeMorphemes := $entry//TEI:m
-    let $typeMorphemes:= $typeMorphemes/descendant-or-self::TEI:m[@type='radical']
+    let $typeMorphemes:= $typeMorphemes/descendant-or-self::TEI:m[@type!='suffix']
     let $functions := 
                 for $e in $typeMorphemes/@function[string(.)]
                 order by $e/@n
