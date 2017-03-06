@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <catalogue xml:lang="en">
     <msg key="lgpn">Lexicon of Greek Personal Names</msg>
     <msg key="searchHeading">LGPN Advanced Search</msg>
@@ -51,8 +50,8 @@
     <msg key="period">Period</msg>
     <msg key="gender">Gender</msg>
     <msg key="dialect">Dialect</msg>
-    <msg key="dialects">Dialect(s)</msg>
-    <msg key="prefix">PreRoot</msg>
+    <msg key="dialects">Dialectal/Areal, Bilingual</msg>
+    <msg key="prefix">Prefix</msg>
     <msg key="suffix">Suffix</msg>
     <msg key="suff">Suff.</msg>
     <msg key="radicals">Name structure</msg>
@@ -60,7 +59,7 @@
     <msg key="roots">Roots</msg>
     <msg key="semantics">Roots Semantics</msg>
     <msg key="sources">Lexis</msg>
-    <msg key="bibliography">References</msg>
+    <msg key="bibliography">Onomastics</msg>
     <msg key="edit">Edit</msg>
     <msg key="newEntry">New entry</msg>
     <msg key="meanings">Meanings</msg>

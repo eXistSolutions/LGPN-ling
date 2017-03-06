@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <catalogue xml:lang="fr">
     <msg key="lgpn">LGPN</msg>
     <msg key="searchHeading">LGPN Recherche avancée</msg>
@@ -51,8 +50,8 @@
     <msg key="period">Période</msg>
     <msg key="gender">Genre</msg>
     <msg key="dialect">Dialecte</msg>
-    <msg key="dialects">Dialecte(s)</msg>
-    <msg key="prefix">Préradical</msg>
+    <msg key="dialects">Dialectal/aréal, bilingue</msg>
+    <msg key="prefix">Préfixe</msg>
     <msg key="suffix">Suffixe</msg>
     <msg key="suff">Suff.</msg>
     <msg key="radicals">Structure du nom</msg>
@@ -60,7 +59,7 @@
     <msg key="roots">Radicaux</msg>
     <msg key="semantics">Sens des radicaux</msg>
     <msg key="sources">Lexis</msg>
-    <msg key="bibliography">Bibliographie</msg>
+    <msg key="bibliography">Onomastique</msg>
     <msg key="edit">modifier</msg>
     <msg key="newEntry">Saisie des données</msg>
     <msg key="meanings">Sens</msg>
