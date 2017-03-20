@@ -7,7 +7,7 @@ declare namespace tei="http://www.tei-c.org/ns/1.0";
 import module namespace config="http://www.existsolutions.com/apps/lgpn/config" at "config.xqm";
 import module namespace names="http://www.existsolutions.com/apps/lgpn/names" at "names.xql";
 import module namespace login="http://exist-db.org/xquery/login" at "resource:org/exist/xquery/modules/persistentlogin/login.xql";
-(:import module namespace console="http://exist-db.org/xquery/console" at "java:org.exist.console.xquery.ConsoleModule";:)
+import module namespace console="http://exist-db.org/xquery/console" at "java:org.exist.console.xquery.ConsoleModule";
 
 (: Switch to JSON serialization :)
 declare option output:method "json";
@@ -26,15 +26,21 @@ declare option output:media-type "text/javascript";
 (:length=50:)
 declare function local:orderBy($index, $dir) {
     let $direction := if ($dir='desc') then ' descending' else ()
+let $c:= console:log($index)
+
     let $orderBy :=
     switch($index)
-    case '1'
+    case 1
         return "$i/parent::tei:entry//tei:orth[@type='latin'][1]"
-    case '8'
-        return "$i/parent::tei:entry//tei:m[@type='radical'][@n='1']"
+(:    case 8:)
+(:        return "$i/parent::tei:entry//tei:m[@type='radical'][@n='1'][1]":)
+    case 16
+        return "$i/ancestor::tei:TEI//tei:change[last()]/@when"
     default
         return 'replace($i/parent::tei:entry//tei:orth[@type="greek"][1],  "[\p{M}\p{Sk}]", "")' 
         (:    replace(normalize-unicode($entry/parent::TEI:entry//TEI:orth[@type=$lang]/string(), 'NFD'), '[\p{M}\p{Sk}]', ''):)
+
+let $c:= console:log($orderBy)
 
     let $collation:= 
         switch($index)
@@ -46,6 +52,8 @@ declare function local:orderBy($index, $dir) {
                 return ()
         
     return $orderBy || $direction || $collation
+    
+    
 };
 
 let $setuser :=  login:set-user("org.exist.lgpn-ling", (), false())
@@ -65,17 +73,23 @@ let $recordsTotal := count(collection($config:names-root)//tei:gramGrp)
 
 let $offset :=     if (request:get-attribute("org.exist.lgpn-ling.user")) then 0 else -1
 
+let $c:=console:log('offset ' || $offset)
+
 let $collection := 'collection($config:names-root)//tei:orth[contains(upper-case(.), normalize-unicode(upper-case($search), "NFC"))]/ancestor::tei:entry//tei:gramGrp'
-let $orderby := local:orderBy(number($ordInd)+$offset, $ordDir)
+
+let $roff:=$offset+number($ordInd)
+let $c:=console:log($roff)
+let $orderby := local:orderBy($offset+number($ordInd), $ordDir)
 
 (:  let $c:= console:log($ordInd || ' ' || $ordDir):)
+
 
     let $query :=
     'for $i in ' || $collection ||
     ' order by ' || $orderby ||
     ' return $i'
   
-(:  let $c:= console:log($query):)
+  let $c:= console:log($query)
     
     let $selection := util:eval($query)
     

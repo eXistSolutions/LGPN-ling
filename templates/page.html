@@ -54,9 +54,8 @@ $(document).ready(function() {
         "serverSide": true,
         "ajax": "modules/load-names.xqm",
         "lengthMenu": [ [50, 100, 500, -1], [50, 100, 500, "All"] ],
-        "order": [[ 1, "asc" ],[ 0, "asc" ]],
+        "order": [[ firstSort, "desc" ],[ 1, "asc" ]],
         "paging":   true,
-        "ordering": true,
         "info":     true
     } );
     
@@ -79,6 +78,8 @@ $(document).ready(function() {
                 </div>
                 <div class="navbar-collapse collapse" id="navbar-collapse-1">
                     <ul class="nav navbar-nav">
+                        <li data-template="app:show-if-logged-in">
+                        
                         <li class="dropdown" id="about">
                             <a href="index.html">
                                 <span class="glyphicon glyphicon-search"/>
@@ -92,7 +93,19 @@ $(document).ready(function() {
                                 </li>
                             </ul>
                         </li>
-                        <li data-template="app:show-if-logged-in">
+                            <li class="dropdown" id="about">
+                                <a href="indexold.html">
+                                    <span class="glyphicon glyphicon-search"/>
+                                    <i18n:text key="search-alt">alt</i18n:text>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <a href="indexold.html">
+                                            <i18n:text key="search-alt">alt</i18n:text>
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
                             <li class="dropdown" id="entry">
                                 <a href="editor.xhtml">
                                     <span class="glyphicon glyphicon-edit"/>

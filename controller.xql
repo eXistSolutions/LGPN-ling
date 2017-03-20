@@ -10,6 +10,10 @@ declare variable $exist:controller external;
 declare variable $exist:prefix external;
 declare variable $exist:root external;
 
+declare variable $logout := request:get-parameter("logout", ());
+declare variable $login := request:get-parameter("user", ());
+
+
 if ($exist:path eq '') then (
         login:set-user("org.exist.lgpn-ling", (), false()),
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
@@ -47,7 +51,7 @@ else if ($exist:path eq "/") then (
 )
     (:  Protected resource: user is required to log in with valid credentials.
     If the login fails or no credentials were provided, the request is redirected
-    to the index.html page. :)
+    to the about.html page. :)
 else if ($exist:resource eq 'editor.xhtml') then (
     login:set-user("org.exist.lgpn-ling", (), false()),
     console:log(sm:id() || ' editor ' || request:get-attribute("org.exist.lgpn-ling.user")),
@@ -58,7 +62,7 @@ else if ($exist:resource eq 'editor.xhtml') then (
     else 
 (:        <redirect url="index.html?loginStatus=failed"/>:)
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
-        <forward url="{$exist:controller}/index.html"/>
+        <forward url="{$exist:controller}/about.html"/>
         <view>
             <forward url="{$exist:controller}/modules/view.xql">
                 <add-parameter name="loginStatus" value="failed"/>
@@ -69,9 +73,15 @@ else if ($exist:resource eq 'editor.xhtml') then (
 			<forward url="{$exist:controller}/modules/view.xql"/>
 		</error-handler>
     </dispatch>
+
+) else if ($logout or $login) then (
+    login:set-user("org.exist.lgpn-ling", (), false()),
+    <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
+        <redirect url="{replace(request:get-uri(), "^(.*)\?", "$1")}"/>
+    </dispatch>
 )
-    (: the html page is run through view.xql to expand templates :)
-else if (ends-with($exist:resource, ".html")) then (
+    (: the about.html page is run through view.xql to expand templates :)
+else if (ends-with($exist:resource, "about.html")) then (
     login:set-user("org.exist.lgpn-ling", (), false()),
     (: the html page is run through view.xql to expand templates :)
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
@@ -83,6 +93,44 @@ else if (ends-with($exist:resource, ".html")) then (
 			<forward url="{$exist:controller}/modules/view.xql"/>
 		</error-handler>
     </dispatch>
+
+
+    )
+
+
+    (: other html pages are only available for logged in users is run through view.xql to expand templates :)
+else if (ends-with($exist:resource, ".html")) then (
+    login:set-user("org.exist.lgpn-ling", (), false()),
+    console:log(sm:id() || ' editor ' || request:get-attribute("org.exist.lgpn-ling.user")),
+    if (request:get-attribute("org.exist.lgpn-ling.user")) then
+    (: the html page is run through view.xql to expand templates :)
+    <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
+        <view>
+            <forward url="{$exist:controller}/modules/view.xql"/>
+        </view>
+		<error-handler>
+			<forward url="{$exist:controller}/error-page.html" method="get"/>
+			<forward url="{$exist:controller}/modules/view.xql"/>
+		</error-handler>
+    </dispatch>
+    else 
+(:        <redirect url="index.html?loginStatus=failed"/>:)
+    <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
+        <forward url="{$exist:controller}/about.html"/>
+        <view>
+            <forward url="{$exist:controller}/modules/view.xql">
+                <add-parameter name="loginStatus" value="failed"/>
+            </forward>
+        </view>
+		<error-handler>
+			<forward url="{$exist:controller}/error-page.html" method="get"/>
+			<forward url="{$exist:controller}/modules/view.xql"/>
+		</error-handler>
+    </dispatch>
+
+
+
+
     )
 else if (contains($exist:path, "/$shared/")) then (
         login:set-user("org.exist.lgpn-ling", (), false()),
