@@ -62,14 +62,17 @@ let $setuser :=  login:set-user("org.exist.lgpn-ling", (), false())
 (:let $search := request:get-parameter('search', ''):)
 let $search := if (request:get-parameter('search[value]', '')) then request:get-parameter('search[value]', '') else ''
 
+let $recordsTotal := count(collection($config:names-root)//tei:gramGrp)
+
 let $start := number(request:get-parameter('start', ''))
-let $end := $start + number(request:get-parameter('length', ''))
+let $length := number(request:get-parameter('length', ''))
+
+let $end := if($length>0) then ($start + $length) else $recordsTotal
 
 let $ordInd := request:get-parameter('order[0][column]', '1')
 let $ordDir := request:get-parameter('order[0][dir]', 'asc')
 
 let $draw := request:get-parameter('draw', '1')
-let $recordsTotal := count(collection($config:names-root)//tei:gramGrp)
 
 let $offset :=     if (request:get-attribute("org.exist.lgpn-ling.user")) then 0 else -1
 
