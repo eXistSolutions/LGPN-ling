@@ -137,9 +137,9 @@ function names:entry-morpheme($entry as node(), $type as xs:string, $position as
         {attribute style {$bold}}
         {attribute class {$class}}
         {
-            if($type="radical") then 
+(:            if($type="radical") then :)
                 data(doc($config:taxonomies-root || "/morphemes.xml")//TEI:category[@baseForm=$entry//TEI:m[@type=$type][@n=$position]/@baseForm]/TEI:catDesc) 
-            else data($entry//TEI:m[@type=$type][@n=$position])
+(:            else data($entry//TEI:m[@type=$type][@n=$position]):)
         }
         </span>
 };
@@ -165,7 +165,7 @@ function names:entry-semantics($entry as node(), $lang as xs:string?) {
     let $class :=  if (count($entry/preceding-sibling::TEI:gramGrp)) then 'dimmed' else () 
 
     let $functions := 
-            for $bf in $entry//TEI:m[@type='radical']/@baseForm[string(.)]
+            for $bf in $entry//TEI:m[@type=('radical', 'prefix')]/@baseForm[string(.)]
                 let $concept :=
                     for $m in tokenize(doc($config:taxonomies-root || "/morphemes.xml")//TEI:category[@baseForm=$bf]/@ana, '\s*#')
                     return doc($config:taxonomies-root || "/ontology.xml")//TEI:category[@xml:id=$m]/TEI:catDesc[@xml:lang=$lang]

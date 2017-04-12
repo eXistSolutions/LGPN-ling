@@ -24,6 +24,14 @@ declare %templates:wrap  function app:title($node as node(), $model as map(*)) {
 };
 
 declare
+    %templates:default("lang", 'en')
+
+function app:about($node as node(), $model as map(*), $lang as xs:string) {
+    let $path:=$config:app-root || "/data/articles/about-" || $lang || ".html"
+    return doc($path)
+};
+
+declare
 function app:column-order($node as node(), $model as map(*)) {
     let $user := request:get-attribute("org.exist.lgpn-ling.user")
     let $number :=
@@ -278,9 +286,10 @@ declare function app:morpheme($entry as node(), $invisible as xs:integer, $type 
     return <span>
         {attribute style {$bold}}
         {attribute class {$class}}
-        {            if($type="radical") then 
+        {
+(:            if($type="radical") then :)
                         data(doc($config:taxonomies-root || "/morphemes.xml")//TEI:category[@baseForm=$entry//TEI:m[@type=$type][@n=$position]/@baseForm]/TEI:catDesc) 
-                    else data($entry//TEI:m[@type=$type][@n=$position])
+(:                    else data($entry//TEI:m[@type=$type][@n=$position]):)
         }
         </span>
 };
@@ -351,7 +360,7 @@ declare function app:semantics($entry as node(), $invisible as xs:integer, $lang
 
     let $class := if ($invisible) then 'invisible' else $first
     let $functions := 
-            for $bf in $entry//TEI:m[@type='radical']/@baseForm[string(.)]
+            for $bf in $entry//TEI:m[@type=('radical', 'prefix')]/@baseForm[string(.)]
                 let $concept :=
                     for $m in tokenize(doc($config:taxonomies-root || "/morphemes.xml")//TEI:category[@baseForm=$bf]/@ana, '\s*#')
                     return doc($config:taxonomies-root || "/ontology.xml")//TEI:category[@xml:id=$m]/TEI:catDesc[@xml:lang=$lang]
@@ -359,7 +368,7 @@ declare function app:semantics($entry as node(), $invisible as xs:integer, $lang
     return
         <span>
             {attribute class {$class}}
-            {string-join($functions, '-')}
+            {string-join($functions, '+')}
         </span>
 };
 

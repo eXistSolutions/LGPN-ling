@@ -325,33 +325,75 @@
                                     </div>
                                 </div>
                             </div>
+                            <hr/>
+                            
                             <div class="row">
                                 <div class="col-xs-3">
                                     <xf:input class="input-group -form-control" ref="TEI:m[@type = 'prefix' and @n = 1]">
-                                        <xf:label class="input-group-addon">preconstituent</xf:label>
+                                        <xf:action ev:event="constituent_autocomplete-callback">
+                                            <xf:setvalue ref="." value="event('termValue')"/>
+                                        </xf:action>
+                                        <xf:label class="input-group-addon">preconstituent 1</xf:label>
+                                        <xf:alert>no whitespace allowed</xf:alert>
                                     </xf:input>
+                                    <input type="hidden" data-function="constituent_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
                                 </div>
-                                <div class="col-xs-2">
-                                    <xf:select1 class="input-group -form-control" ref="TEI:m[@type = 'prefix' and @n = 1]/@baseForm">
+                                <div class="col-xs-3">
+                                    <xf:input class="input-group -form-control" ref="TEI:m[@type = 'prefix' and @n = 1]/@baseForm">
+                                        <xf:action ev:event="autocomplete-callback">
+                                            <xf:setvalue ref="." value="event('termValue')"/>
+                                        </xf:action>
                                         <xf:label class="input-group-addon">preroot</xf:label>
-                                        <xf:itemset nodeset="instance('i-prefix-1')/option">
-                                            <xf:label ref="."/>
-                                            <xf:value ref="."/>
-                                        </xf:itemset>
-                                    </xf:select1>
+                                        <!--
+                                        <xf:action ev:event="xforms-value-changed">
+                                            <xf:setvalue ref="instance('i-meanings')/being-reloaded/@grp" value="count(context()/preceding::TEI:gramGrp)+1"/>
+                                            <xf:setvalue ref="instance('i-meanings')/being-reloaded/@n" value="1"/>
+                                            <xf:send submission="s-reload-meanings"/>
+                                        </xf:action>
+                                        -->
+                                    </xf:input>
+                                    <input type="hidden" data-function="autocomplete" placeholder="Type to search ..." autocomplete="off"/>
+                                    <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
+                                        <xf:label/>
+                                        <xf:action ev:event="DOMActivate">
+                                            <xf:setvalue ref="instance('i-controller')/morpheme" value="instance('i-default')//TEI:gramGrp[index('r-gramGrp')]/TEI:m[@type = 'prefix' and @n = 1]/@baseForm"/>
+                                            <xf:dispatch name="load-subform-event" targetid="load-subform-group"/>
+                                        </xf:action>
+                                    </xf:trigger>
                                 </div>
-                                <div class="col-xs-5">
-                                    <div class="input-group">
-                                        <xf:select class="input-group -form-control" ref="TEI:m[@type = 'prefix' and @n = 1]/@function" appearance="full">
-                                            <xf:label class="input-group-addon">function</xf:label>
-                                            <xf:itemset nodeset="instance('i-functions')//option">
-                                                <xf:label ref="."/>
-                                                <xf:value ref="@xml:id"/>
-                                            </xf:itemset>
-                                        </xf:select>
-                                    </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-6">
+                                    <xf:select ref="TEI:m[@type = 'prefix' and @n = 1]/@function" appearance="full" incremental="true">
+                                        <xf:label/>
+                                        <xf:item>
+                                            <xf:label>Verb</xf:label>
+                                            <xf:value>V</xf:value>
+                                        </xf:item>
+                                        <xf:item>
+                                            <xf:label>Noun</xf:label>
+                                            <xf:value>N</xf:value>
+                                        </xf:item>
+                                        <xf:item>
+                                            <xf:label>Adjective</xf:label>
+                                            <xf:value>Adj</xf:value>
+                                        </xf:item>
+                                        <xf:item>
+                                            <xf:label>Pronoun</xf:label>
+                                            <xf:value>Pro</xf:value>
+                                        </xf:item>
+                                        <xf:item>
+                                            <xf:label>Adverb</xf:label>
+                                            <xf:value>Adv</xf:value>
+                                        </xf:item>
+                                    </xf:select>
                                 </div>
-                                <div class="col-xs-2">
+                                <div class="col-xs-6">
+                                <!-- preroot meanings -->
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-3">
                                     <div class="input-group">
                                         <xf:select class="input-group -form-control" ref="TEI:m[@type = 'prefix' and @n = 1]/@subtype" appearance="full">
                                             <xf:label class="input-group-addon">head.</xf:label>
@@ -363,6 +405,7 @@
                                     </div>
                                 </div>
                             </div>
+                            <hr/>
                             <div class="row">
                                 <div class="col-xs-3">
                                     <xf:input class="input-group -form-control" ref="TEI:m[@type = 'radical' and @n = 1]">
