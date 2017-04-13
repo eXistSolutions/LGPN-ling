@@ -25,7 +25,6 @@ declare %templates:wrap  function app:title($node as node(), $model as map(*)) {
 
 declare
     %templates:default("lang", 'en')
-
 function app:about($node as node(), $model as map(*), $lang as xs:string) {
     let $path:=$config:app-root || "/data/articles/about-" || $lang || ".html"
     return doc($path)

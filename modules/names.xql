@@ -148,14 +148,28 @@ declare
 function names:entry-morpheme-functions($entry as node(), $type as xs:string) {
     let $class :=  if (count($entry/preceding-sibling::TEI:gramGrp)) then 'dimmed' else () 
 
+(:   combining following two lines into one results in false positives returned, see low hypothesis for Alketēs,
+ : https://github.com/eXistSolutions/LGPN-ling/issues/300
+     let $typeMorphemes:= $entry/descendant-or-self::TEI:m[@type='radical']
+: 	:)
+    let $typeMorphemes := $entry//TEI:m
+    let $typeMorphemes:= $typeMorphemes/descendant-or-self::TEI:m[@type!='suffix']
     let $functions := 
-                for $e in $entry//TEI:m[@type=$type]/@function[string(.)]
+                for $e in $typeMorphemes/@function[string(.)]
                 order by $e/@n
                 return $e
+    
+    let $labels := doc($config:dictionaries-root || '/classification.xml')
+    let $morphemes := for $m in $typeMorphemes return 
+        ($m/@subtype, if(string($m/@ana)) then $m/@ana else ())
+    let $headedness := string-join(($morphemes , $labels//id($entry/@type)), '')
+    let $other := $entry/@ana
+    let $parens := if(string($headedness) or string($other)) then '(' || string-join(($headedness, if(string($other)) then $other else ()), ' ') || ')' else ()
     return 
         <span>
             {attribute class {$class}}
-            {string-join($functions, '+')}
+            {string-join($functions, '-')}
+            {if($parens) then (<br/>, $parens) else ()}
         </span>
 };
 
@@ -173,7 +187,7 @@ function names:entry-semantics($entry as node(), $lang as xs:string?) {
     return
         <span>
             {attribute class {$class}}
-            {string-join($functions, '+')}
+            {string-join($functions, '-')}
         </span>
 };
 
