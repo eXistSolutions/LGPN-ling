@@ -34,11 +34,11 @@ let $c:= console:log($index)
         return "$i/parent::tei:entry//tei:orth[@type='latin'][1]"
 (:    case 8:)
 (:        return "$i/parent::tei:entry//tei:m[@type='radical'][@n='1'][1]":)
-    case 16
-        return "$i/ancestor::tei:TEI//tei:change[last()]/@when"
+    case 18
+        return "root($i)//tei:change[last()]/@when"
     default
-        return 'replace($i/parent::tei:entry//tei:orth[@type="greek"][1],  "[\p{M}\p{Sk}]", "")' 
-        (:    replace(normalize-unicode($entry/parent::TEI:entry//TEI:orth[@type=$lang]/string(), 'NFD'), '[\p{M}\p{Sk}]', ''):)
+        return "root($i)//tei:change[last()]/@when"
+(:        return 'replace($i/parent::tei:entry//tei:orth[@type="greek"][1],  "[\p{M}\p{Sk}]", "")' :)
 
 let $c:= console:log($orderBy)
 
@@ -78,7 +78,13 @@ let $offset :=     if (request:get-attribute("org.exist.lgpn-ling.user")) then 0
 
 let $c:=console:log('offset ' || $offset)
 
-let $collection := 'collection($config:names-root)//tei:orth[contains(upper-case(.), normalize-unicode(upper-case($search), "NFC"))]/ancestor::tei:entry//tei:gramGrp'
+let $qs := normalize-unicode(upper-case($search), "NFD")
+let $collection := 'collection($config:names-root)//tei:orth[
+        contains(upper-case(normalize-unicode(., "NFD")), "'|| $qs || '") 
+            or 
+        contains(upper-case(replace(normalize-unicode(., "NFD"), "[\p{M}\p{Sk}]", "")), "'|| $qs || '")
+        ]/ancestor::tei:entry//tei:gramGrp'
+
 
 let $roff:=$offset+number($ordInd)
 let $c:=console:log($roff)

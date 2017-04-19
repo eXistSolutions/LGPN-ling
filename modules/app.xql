@@ -25,6 +25,7 @@ declare %templates:wrap  function app:title($node as node(), $model as map(*)) {
 
 declare
     %templates:default("lang", 'en')
+
 function app:about($node as node(), $model as map(*), $lang as xs:string) {
     let $path:=$config:app-root || "/data/articles/about-" || $lang || ".html"
     return doc($path)
@@ -217,7 +218,7 @@ function app:entry-dialect($node as node(), $model as map(*), $lang as xs:string
     let $labels := tokenize($model?entry/parent::TEI:entry//TEI:usg, '\s+')
     let $dialects :=
     
-        for $e in doc($config:taxonomies-root || "/dialects.xml")//TEI:category[@xml:id=$labels]/TEI:catDesc[@ana="full"][@xml:lang=$lang]
+        for $e in doc($config:taxonomies-root || "/dialects.xml")//id($labels)/TEI:catDesc[@ana="full"][@xml:lang=$lang]
         return $e
     
     let $content:= string-join($dialects, ', ')
@@ -280,15 +281,16 @@ function app:entry-morpheme($node as node(), $model as map(*), $type as xs:strin
 declare function app:morpheme($entry as node(), $invisible as xs:integer, $type as xs:string, $position as xs:integer?) {
         let $bold := if ($type='radical' or $position=1) then 'font-weight: bold;' else ()
         let $first :=  if (count($entry/preceding-sibling::TEI:gramGrp)) then 'dimmed' else () 
-
+    
         let $class := if ($invisible) then 'invisible' else $first
     return <span>
         {attribute style {$bold}}
         {attribute class {$class}}
         {
-(:            if($type="radical") then :)
-                        data(doc($config:taxonomies-root || "/morphemes.xml")//TEI:category[@baseForm=$entry//TEI:m[@type=$type][@n=$position]/@baseForm]/TEI:catDesc) 
-(:                    else data($entry//TEI:m[@type=$type][@n=$position]):)
+            if($type!="suffix") then 
+                data(doc($config:taxonomies-root || "/morphemes.xml")//TEI:category[@baseForm=$entry//TEI:m[@type=$type][@n=$position]/@baseForm]/TEI:catDesc) 
+            else 
+                data($entry//TEI:m[@type=$type][@n=$position])
         }
         </span>
 };
@@ -317,7 +319,7 @@ declare function app:morpheme-functions($entry as node(), $invisible as xs:integ
      let $typeMorphemes:= $entry/descendant-or-self::TEI:m[@type='radical']
 : 	:)
     let $typeMorphemes := $entry//TEI:m
-    let $typeMorphemes:= $typeMorphemes/descendant-or-self::TEI:m[@type!='suffix']
+    let $typeMorphemes:= $typeMorphemes/descendant-or-self::TEI:m[@type=('prefix', 'radical')]
     let $functions := 
                 for $e in $typeMorphemes/@function[string(.)]
                 order by $e/@n

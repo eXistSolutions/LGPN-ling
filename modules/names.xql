@@ -137,9 +137,9 @@ function names:entry-morpheme($entry as node(), $type as xs:string, $position as
         {attribute style {$bold}}
         {attribute class {$class}}
         {
-(:            if($type="radical") then :)
+            if($type!="suffix") then 
                 data(doc($config:taxonomies-root || "/morphemes.xml")//TEI:category[@baseForm=$entry//TEI:m[@type=$type][@n=$position]/@baseForm]/TEI:catDesc) 
-(:            else data($entry//TEI:m[@type=$type][@n=$position]):)
+            else data($entry//TEI:m[@type=$type][@n=$position])
         }
         </span>
 };
