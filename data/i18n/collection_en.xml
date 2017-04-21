@@ -56,9 +56,9 @@
     <msg key="suffix">Suffix</msg>
     <msg key="suff">Suff.</msg>
     <msg key="radicals">Name structure</msg>
-    <msg key="root">Root</msg>
-    <msg key="roots">Roots</msg>
-    <msg key="semantics">Roots Semantics</msg>
+    <msg key="root">Base/Root</msg>
+    <msg key="roots">Bases/Roots</msg>
+    <msg key="semantics">Prefixes &amp; Bases meanings</msg>
     <msg key="sources">Lexis</msg>
     <msg key="bibliography">Onomastics</msg>
     <msg key="edit">Edit</msg>
