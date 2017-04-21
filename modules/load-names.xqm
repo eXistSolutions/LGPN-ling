@@ -74,7 +74,8 @@ let $ordDir := request:get-parameter('order[0][dir]', 'asc')
 
 let $draw := request:get-parameter('draw', '1')
 
-let $offset :=     if (request:get-attribute("org.exist.lgpn-ling.user")) then 0 else -1
+(:let $offset :=     if (request:get-attribute("org.exist.lgpn-ling.user")) then 0 else -1:)
+let $offset := 0
 
 let $c:=console:log('offset ' || $offset)
 
@@ -101,6 +102,7 @@ let $orderby := local:orderBy($offset+number($ordInd), $ordDir)
   let $c:= console:log($query)
     
     let $selection := util:eval($query)
+    let $lang:=request:get-parameter('lang', 'fr')
     
     let $results :=
     for $i in subsequence($selection, $start, $end)
@@ -112,7 +114,7 @@ let $orderby := local:orderBy($offset+number($ordInd), $ordDir)
                 map:entry($offset+2, names:entry-form($i, 'greek')),
                 map:entry($offset+3, names:entry-attestations($i)),
                 map:entry($offset+4, names:entry-gender($i)),
-                map:entry($offset+5, names:entry-dialect($i, 'en')),
+                map:entry($offset+5, names:entry-dialect($i, $lang)),
                 map:entry($offset+6, names:entry-period($i)),
                 map:entry($offset+7, names:entry-morpheme($i, 'prefix', 1)),
                 map:entry($offset+8, names:entry-morpheme($i, 'radical', 1)),
@@ -122,7 +124,7 @@ let $orderby := local:orderBy($offset+number($ordInd), $ordDir)
                 map:entry($offset+12, names:entry-morpheme($i, 'suffix', 2)),
                 map:entry($offset+13, names:entry-morpheme($i, 'suffix', 1)),
                 map:entry($offset+14, names:entry-morpheme-functions($i, 'radical')),
-                map:entry($offset+15, names:entry-semantics($i, 'en')),
+                map:entry($offset+15, names:entry-semantics($i, $lang)),
                 map:entry($offset+16, names:entry-sources($i)),
                 map:entry($offset+17, names:entry-bibl($i)),
                 map:entry($offset+18, names:entry-updated($i)),
