@@ -168,7 +168,7 @@ function names:entry-morpheme-functions($entry as node(), $type as xs:string) {
     return 
         <span>
             {attribute class {$class}}
-            {string-join($functions, '-')}
+            {string-join($functions, codepoints-to-string(8212))}
             {if($parens) then (<br/>, $parens) else ()}
         </span>
 };
