@@ -79,11 +79,11 @@ let $offset := 0
 
 let $c:=console:log('offset ' || $offset)
 
-let $qs := normalize-unicode(upper-case($search), "NFD")
+let $qs := normalize-unicode($search, "NFD")
 let $collection := 'collection($config:names-root)//tei:orth[
-        contains(upper-case(normalize-unicode(., "NFD")), "'|| $qs || '") 
+        contains(normalize-unicode(., "NFD"), "'|| $qs || '") 
             or 
-        contains(upper-case(replace(normalize-unicode(., "NFD"), "[\p{M}\p{Sk}]", "")), "'|| $qs || '")
+        contains(replace(normalize-unicode(., "NFD"), "[\p{M}\p{Sk}]", ""), "'|| $qs || '")
         ]/ancestor::tei:entry//tei:gramGrp'
 
 
@@ -116,6 +116,16 @@ let $orderby := local:orderBy($offset+number($ordInd), $ordDir)
                 map:entry($offset+4, names:entry-gender($i)),
                 map:entry($offset+5, names:entry-dialect($i, $lang)),
                 map:entry($offset+6, names:entry-period($i)),
+
+(:                map:entry($offset+7, names:entry-period($i)),:)
+(:                map:entry($offset+8, names:entry-period($i)),:)
+(:                map:entry($offset+9, names:entry-period($i)),:)
+(:                map:entry($offset+10, names:entry-period($i)),:)
+(:                map:entry($offset+11, names:entry-period($i)),:)
+(:                map:entry($offset+12, names:entry-period($i)),:)
+(:                map:entry($offset+13, names:entry-period($i)),:)
+
+                
                 map:entry($offset+7, names:entry-morpheme($i, 'prefix', 1)),
                 map:entry($offset+8, names:entry-morpheme($i, 'radical', 1)),
                 map:entry($offset+9, names:entry-morpheme($i, 'radical', 2)),
