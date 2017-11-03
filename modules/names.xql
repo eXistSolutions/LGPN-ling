@@ -59,9 +59,9 @@ function names:entry-form($entry as node(), $langId as xs:string) {
     let $first :=  if ($pos) then 'dimmed' else () 
 
     let $content := data($entry/parent::TEI:entry//TEI:orth[@type=$langId][1])
-    let $variant := if($langId='variant') 
+    let $h-variant := if($langId='h-variant') 
         then 
-            <span class="invisible">{replace($entry/parent::TEI:entry//TEI:orth[@type='variant'][1], "(\(\w*\))", "")}</span> 
+            <span class="invisible">{replace($entry/parent::TEI:entry//TEI:orth[@type='h-variant'][1], "(\(\w*\))", "")}</span> 
         else 
             ()
 
@@ -132,6 +132,7 @@ declare
 function names:entry-morpheme($entry as node(), $type as xs:string, $position as xs:integer?) {
         let $bold := if ($type='radical' or $position=1) then 'font-weight: bold;' else ()
         let $class :=  if (count($entry/preceding-sibling::TEI:gramGrp)) then 'dimmed' else () 
+        let $baseForm := $entry//TEI:m[@type=$type][@n=$position]/@baseForm
 
     return <span>
         {attribute style {$bold}}
@@ -140,6 +141,7 @@ function names:entry-morpheme($entry as node(), $type as xs:string, $position as
             if($type!="suffix") then 
                 data(doc($config:taxonomies-root || "/morphemes.xml")//TEI:category[@baseForm=$entry//TEI:m[@type=$type][@n=$position]/@baseForm]/TEI:catDesc) 
             else data($entry//TEI:m[@type=$type][@n=$position])
+
         }
         </span>
 };

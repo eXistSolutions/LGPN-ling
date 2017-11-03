@@ -186,9 +186,9 @@ function app:entry-form($node as node(), $model as map(*), $langId as xs:string)
     let $first :=  if ($pos) then 'dimmed' else () 
 
     let $content := data($entry/parent::TEI:entry//TEI:orth[@type=$langId][1])
-    let $variant := if($langId='variant') 
+    let $h-variant := if($langId='h-variant') 
         then 
-            <span class="invisible">{replace($entry/parent::TEI:entry//TEI:orth[@type='variant'][1], "(\(\w*\))", "")}</span> 
+            <span class="invisible">{replace($entry/parent::TEI:entry//TEI:orth[@type='h-variant'][1], "(\(\w*\))", "")}</span> 
         else 
             ()
 
@@ -196,7 +196,7 @@ function app:entry-form($node as node(), $model as map(*), $langId as xs:string)
         <span>
             {attribute style {$bold}}
             {attribute class {$first}}
-            {$variant}
+            {$h-variant}
             <span class="invisible">{replace(normalize-unicode($content, 'NFD'), '[\p{M}\p{Sk}]', '')}</span>
             {$content}
         </span>
