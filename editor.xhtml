@@ -80,6 +80,11 @@
                             <m baseForm="" type="suffix" n="3"/>
                             <m baseForm="" type="suffix" n="4"/>
                         </gramGrp>
+                        <form type="variant">
+                            <gen/>
+                            <usg/>
+                            <orth/>
+                        </form>
                         <cit type="source">
                             <quote/>
                             <bibl>
@@ -112,6 +117,7 @@
                     </data>
                 </xf:instance><!-- PREFIXES -->
                 <xf:instance xmlns="" id="i-dialects" src="../lgpn-ling-data/data/taxonomies/dialects.xml"/><!-- PREFIXES -->
+                <xf:instance xmlns="" id="i-genders" src="../lgpn-ling-data/data/taxonomies/genders.xml"/><!-- PREFIXES -->
                 <xf:instance xmlns="" id="i-prefix-1" src="resources/xml/prefixes/prefix-1.xml"/><!-- SUFFIXES -->
                 <xf:instance xmlns="" id="i-suffix-1" src="resources/xml/suffixes/suffix-1.xml"/>
                 <xf:instance xmlns="" id="i-suffix-2" src="resources/xml/suffixes/suffix-2.xml"/>
@@ -295,6 +301,64 @@
                 </div>
             </div>
             <xf:group ref="//TEI:entry"><!-- GRAMGRP -->
+                <xf:group class="fieldset">
+                    <div class="row">
+                        <div class="col-xs-11">
+                            <xf:label>
+                                <h3>Name variants</h3>
+                            </xf:label>
+                        </div>
+                        <div class="col-xs-1">
+                            <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
+                                <xf:label/>
+                                <xf:insert context="//TEI:entry" nodeset="TEI:form" origin="instance('i-template')//TEI:form[@type='variant']"/>
+                            </xf:trigger>
+                        </div>
+                    </div>
+                    <xf:repeat ref="TEI:form[@type='variant']" id="r-nameVariant">
+                        <xf:label/>
+                        <xf:group ref=".">
+                            <xf:label/>
+                            <div class="row">
+                                <div class="col-xs-3">
+                                    <xf:select1 class="input-group -form-control" ref="TEI:gen">
+                                        <xf:label class="input-group-addon">Gender</xf:label>
+                                        <xf:itemset nodeset="instance('i-genders')//TEI:category">
+                                            <xf:label ref="TEI:catDesc[@xml:lang='en'][@ana='short']"/>
+                                            <xf:value ref="@xml:id"/>
+                                        </xf:itemset>
+                                    </xf:select1>
+                                </div>
+                                <div class="col-xs-3">
+                                    <xf:input class="input-group -form-control" ref="TEI:orth">
+                                        <xf:label class="input-group-addon">form</xf:label>
+                                    </xf:input>
+                                </div>
+                                <div class="col-xs-3">
+                                <div class="input-group">
+                                    <xf:select1 class="input-group -form-control" ref="TEI:usg">
+                                        <xf:label class="input-group-addon">Dialect</xf:label>
+                                        <xf:itemset nodeset="instance('i-dialects')//TEI:category">
+                                            <xf:label ref="TEI:catDesc[@xml:lang='en'][@ana='short']"/>
+                                            <xf:value ref="@xml:id"/>
+                                        </xf:itemset>
+                                    </xf:select1>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-11"/>
+                                <div class="col-xs-1">
+                                    <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-trash">
+                                        <xf:label/>
+                                        <xf:delete nodeset="//TEI:form[@type='variant'][index('r-nameVariant')]"/>
+                                    </xf:trigger>
+                                </div>
+                            </div>
+                        </xf:group>
+                    </xf:repeat>
+                </xf:group>
+                <hr/>
                 <xf:group class="fieldset">
                     <div class="row">
                         <div class="col-xs-11">
