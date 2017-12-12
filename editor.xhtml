@@ -30,7 +30,12 @@
                                         <date notBefore="" notAfter=""/>
                                         <usg/>
                                     </form>
-                                    <gramGrp cert="high" ana="" type="">
+                                    <gramGrp type="classification">
+                                        <gram type="fictitious"/>
+                                        <gram type="GPR"/>
+                                        <gram type="sublemma" ana="monosemic"/>
+                                    </gramGrp>
+                                    <gramGrp cert="high" ana="" type="segmentation" subtype="">
                                         <m baseForm="" type="prefix" n="1" function="" ana="" subtype=""/>
                                         <m baseForm="" type="radical" n="1" function="" ana="" subtype="" cert=""/>
                                         <m baseForm="" type="radical" n="2" function="" ana="" subtype="" cert=""/>
@@ -71,7 +76,7 @@
                 <xf:bind nodeset="//TEI:orth[@type ='latin']" required="true()" type="xs:string"/><!--<xf:bind nodeset="TEI:m[@type = 'radical' and @n = 1]" ref="normalize-space(.)"/>-->
                 <xf:instance id="i-template">
                     <data xmlns="http://www.tei-c.org/ns/1.0">
-                        <gramGrp cert="" ana="">
+                        <gramGrp cert="" ana="" type="segmentation" subtype="">
                             <m baseForm="" type="prefix" n="1" function="" ana="" subtype=""/>
                             <m baseForm="" type="radical" n="1" function="" ana="" subtype="" cert=""/>
                             <m baseForm="" type="radical" n="2" function="" ana="" subtype="" cert=""/>
@@ -129,6 +134,8 @@
                 <xf:instance xmlns="" id="i-functions" src="resources/xml/functions.xml"/>
                 <xf:instance xmlns="" id="i-other" src="resources/xml/other.xml"/>
                 <xf:instance xmlns="" id="i-name-characteristic" src="resources/xml/name-characteristic.xml"/>
+                <xf:instance xmlns="" id="i-fictitious" src="resources/xml/fictitious.xml"/>
+                <xf:instance xmlns="" id="i-gpr" src="resources/xml/gpr.xml"/>
                 <xf:instance id="i-meanings">
                     <meanings xmlns="">
                         <being-reloaded grp="0" n=""/>
@@ -148,7 +155,7 @@
                     <xf:message ev:event="xforms-submit-done" level="ephemeral">Data have been loaded.</xf:message>
                     <xf:message ev:event="xforms-submit-error">Failed to load data.</xf:message>
                     <xf:action ev:event="xforms-submit-done">
-                        <xf:action while="instance('i-meanings')/being-reloaded/@grp &lt; count(instance('i-default')//TEI:gramGrp)">
+                        <xf:action while="instance('i-meanings')/being-reloaded/@grp &lt; count(instance('i-default')//TEI:gramGrp[@type='segmentation'])">
                             <xf:setvalue ref="instance('i-meanings')/being-reloaded/@grp" value="instance('i-meanings')/being-reloaded/@grp + 1"/>
                             <xf:setvalue ref="instance('i-meanings')/being-reloaded/@n" value="1"/>
                             <xf:send submission="s-reload-meanings"/>
@@ -173,7 +180,7 @@
                     <xf:message ev:event="xforms-submit-done" level="ephemeral">Data have been saved.</xf:message>
                     <xf:message ev:event="xforms-submit-error">Failed to save data</xf:message>
                 </xf:submission>
-                <xf:submission id="s-reload-meanings" method="post" replace="instance" validate="false" resource="modules/reload-meanings.xql" ref="instance('i-default')//TEI:entry/TEI:gramGrp[instance('i-meanings')/being-reloaded/@grp/number()]/TEI:m[@type = 'radical' and @n = instance('i-meanings')/being-reloaded/@n]" targetref="instance('i-meanings')/target/TEI:taxonomy"><!--
+                <xf:submission id="s-reload-meanings" method="post" replace="instance" validate="false" resource="modules/reload-meanings.xql" ref="instance('i-default')//TEI:entry/TEI:gramGrp[@type='segmentation'][instance('i-meanings')/being-reloaded/@grp/number()]/TEI:m[@type = 'radical' and @n = instance('i-meanings')/being-reloaded/@n]" targetref="instance('i-meanings')/target/TEI:taxonomy"><!--
                     <xf:header>
                         <xf:name>userid</xf:name>
                         <xf:value>admin</xf:value>
@@ -255,6 +262,30 @@
                         <xf:label class="input-group-addon">LGPN</xf:label>
                         <xf:hint>LGPN variant (if differs)</xf:hint>
                     </xf:input>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3">
+                    <div class="input-group">
+                        <xf:select class="input-group -form-control" ref="//TEI:gramGrp[@type='classification']/TEI:gram[@type='fictitious']" appearance="full">
+                            <xf:label class="input-group-addon"/>
+                            <xf:itemset nodeset="instance('i-fictitious')//option">
+                                <xf:label ref="."/>
+                                <xf:value ref="."/>
+                            </xf:itemset>
+                        </xf:select>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <div class="input-group">
+                        <xf:select class="input-group -form-control" ref="//TEI:gramGrp[@type='classification']/TEI:gram[@type='GPR']" appearance="full">
+                            <xf:label class="input-group-addon"/>
+                            <xf:itemset nodeset="instance('i-gpr')//option">
+                                <xf:label ref="."/>
+                                <xf:value ref="."/>
+                            </xf:itemset>
+                        </xf:select>
+                    </div>
                 </div>
             </div>
             <div class="row"><!--
@@ -369,14 +400,14 @@
                         <div class="col-xs-1">
                             <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
                                 <xf:label/>
-                                <xf:insert context="//TEI:entry" nodeset="TEI:gramGrp" origin="instance('i-template')//TEI:gramGrp"/>
+                                <xf:insert context="//TEI:entry" nodeset="TEI:gramGrp" origin="instance('i-template')//TEI:gramGrp[@type='segmentation']"/>
                                 <script>
                                     clearAndInitSemantics();  
                                 </script>
                             </xf:trigger>
                         </div>
                     </div>
-                    <xf:repeat ref="TEI:gramGrp" id="r-gramGrp">
+                    <xf:repeat ref="TEI:gramGrp[@type='segmentation']" id="r-gramGrp">
                         <xf:label/>
                         <xf:group ref=".">
                             <xf:label/>
@@ -388,7 +419,7 @@
                                 </div>
                                 <div class="col-xs-6">
                                     <div class="input-group">
-                                        <xf:select1 class="input-group -form-control" ref="@type">
+                                        <xf:select1 class="input-group -form-control" ref="@subtype">
                                             <xf:label class="input-group-addon">Structuration &amp; Semantics of the Complex names</xf:label>
                                             <xf:itemset nodeset="instance('i-classification')//option">
                                                 <xf:label ref="."/>
@@ -430,7 +461,7 @@
                                         <xf:label class="input-group-addon">preroot</xf:label>
                                         <!--
                                         <xf:action ev:event="xforms-value-changed">
-                                            <xf:setvalue ref="instance('i-meanings')/being-reloaded/@grp" value="count(context()/preceding::TEI:gramGrp)+1"/>
+                                            <xf:setvalue ref="instance('i-meanings')/being-reloaded/@grp" value="count(context()/preceding::TEI:gramGrp[@type='segmentation'])+1"/>
                                             <xf:setvalue ref="instance('i-meanings')/being-reloaded/@n" value="1"/>
                                             <xf:send submission="s-reload-meanings"/>
                                         </xf:action>
@@ -440,7 +471,7 @@
                                     <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
                                         <xf:label/>
                                         <xf:action ev:event="DOMActivate">
-                                            <xf:setvalue ref="instance('i-controller')/morpheme" value="instance('i-default')//TEI:gramGrp[index('r-gramGrp')]/TEI:m[@type = 'prefix' and @n = 1]/@baseForm"/>
+                                            <xf:setvalue ref="instance('i-controller')/morpheme" value="instance('i-default')//TEI:gramGrp[@type='segmentation'][index('r-gramGrp')]/TEI:m[@type = 'prefix' and @n = 1]/@baseForm"/>
                                             <xf:dispatch name="load-subform-event" targetid="load-subform-group"/>
                                         </xf:action>
                                     </xf:trigger>
@@ -508,7 +539,7 @@
                                         </xf:action>
                                         <xf:label class="input-group-addon">root</xf:label>
                                         <xf:action ev:event="xforms-value-changed">
-                                            <xf:setvalue ref="instance('i-meanings')/being-reloaded/@grp" value="count(context()/preceding::TEI:gramGrp)+1"/>
+                                            <xf:setvalue ref="instance('i-meanings')/being-reloaded/@grp" value="count(context()/preceding::TEI:gramGrp[@type='segmentation'])+1"/>
                                             <xf:setvalue ref="instance('i-meanings')/being-reloaded/@n" value="1"/>
                                             <xf:send submission="s-reload-meanings"/>
                                         </xf:action>
@@ -517,7 +548,7 @@
                                     <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
                                         <xf:label/>
                                         <xf:action ev:event="DOMActivate">
-                                            <xf:setvalue ref="instance('i-controller')/morpheme" value="instance('i-default')//TEI:gramGrp[index('r-gramGrp')]/TEI:m[@type = 'radical' and @n = 1]/@baseForm"/>
+                                            <xf:setvalue ref="instance('i-controller')/morpheme" value="instance('i-default')//TEI:gramGrp[@type='segmentation'][index('r-gramGrp')]/TEI:m[@type = 'radical' and @n = 1]/@baseForm"/>
                                             <xf:dispatch name="load-subform-event" targetid="load-subform-group"/>
                                         </xf:action>
                                     </xf:trigger>
@@ -539,7 +570,7 @@
                                         </xf:action>
                                         <xf:label class="input-group-addon">root</xf:label>
                                         <xf:action ev:event="xforms-value-changed">
-                                            <xf:setvalue ref="instance('i-meanings')/being-reloaded/@grp" value="count(context()/preceding::TEI:gramGrp)+1"/>
+                                            <xf:setvalue ref="instance('i-meanings')/being-reloaded/@grp" value="count(context()/preceding::TEI:gramGrp[@type='segmentation'])+1"/>
                                             <xf:setvalue ref="instance('i-meanings')/being-reloaded/@n" value="2"/>
                                             <xf:send submission="s-reload-meanings"/>
                                         </xf:action>
@@ -548,7 +579,7 @@
                                     <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
                                         <xf:label/>
                                         <xf:action ev:event="DOMActivate">
-                                            <xf:setvalue ref="instance('i-controller')/morpheme" value="instance('i-default')//TEI:gramGrp[index('r-gramGrp')]/TEI:m[@type = 'radical' and @n = 2]/@baseForm"/>
+                                            <xf:setvalue ref="instance('i-controller')/morpheme" value="instance('i-default')//TEI:gramGrp[@type='segmentation'][index('r-gramGrp')]/TEI:m[@type = 'radical' and @n = 2]/@baseForm"/>
                                             <xf:dispatch name="load-subform-event" targetid="load-subform-group"/>
                                         </xf:action>
                                     </xf:trigger>
@@ -670,7 +701,7 @@
                                                 meanings
                                             </span><!--<input class="tags" value="" disabled="disabled"/>-->
                                             <span class="meanings-val">
-                                                <xf:repeat nodeset="instance('i-meanings')/meaning[@grp=count(current()/preceding::TEI:gramGrp)+1 and @n=1]//TEI:category" id="r-meanings-1">
+                                                <xf:repeat nodeset="instance('i-meanings')/meaning[@grp=count(current()/preceding::TEI:gramGrp[@type='segmentation'])+1 and @n=1]//TEI:category" id="r-meanings-1">
                                                     <xf:output ref="TEI:catDesc[@xml:lang='en']"/>
                                                 </xf:repeat>
                                             </span>
@@ -694,7 +725,7 @@
                                                 meanings
                                             </span><!--<input class="tags" value="" disabled="disabled"/>-->
                                             <span class="meanings-val">
-                                                <xf:repeat nodeset="instance('i-meanings')/meaning[@grp=count(current()/preceding::TEI:gramGrp)+1 and @n=2]//TEI:category" id="r-meanings-2">
+                                                <xf:repeat nodeset="instance('i-meanings')/meaning[@grp=count(current()/preceding::TEI:gramGrp[@type='segmentation'])+1 and @n=2]//TEI:category" id="r-meanings-2">
                                                     <xf:output ref="TEI:catDesc[@xml:lang='en']"/>
                                                 </xf:repeat>
                                             </span>
@@ -745,7 +776,7 @@
                                 <div class="col-xs-1">
                                     <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-trash">
                                         <xf:label/>
-                                        <xf:delete nodeset="//TEI:gramGrp[index('r-gramGrp')]"/>
+                                        <xf:delete nodeset="//TEI:gramGrp[@type='segmentation'][index('r-gramGrp')]"/>
                                         <script>
                                              clearAndInitSemantics();  
                                         </script>
