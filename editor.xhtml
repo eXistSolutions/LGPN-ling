@@ -28,12 +28,12 @@
                                         <orth type="lgpn"/>
                                         <!--                                        <gen/> -->
                                         <date notBefore="" notAfter=""/>
-                                        <usg/>
                                     </form>
                                     <gramGrp type="classification">
                                         <gram type="fictitious"/>
                                         <gram type="GPR"/>
                                         <gram type="sublemma" ana="monosemic"/>
+                                        <usg type="lang"/>
                                     </gramGrp>
                                     <gramGrp cert="high" ana="" type="segmentation" subtype="">
                                         <m baseForm="" type="prefix" n="1" function="" ana="" subtype=""/>
@@ -85,6 +85,7 @@
                             <m baseForm="" type="suffix" n="3"/>
                             <m baseForm="" type="suffix" n="4"/>
                         </gramGrp>
+                        <usg type="lang"/>
                         <re>
                             <form>
                                 <lbl>son</lbl>
@@ -340,31 +341,55 @@
                         <xf:hint>gender</xf:hint>
                     </xf:input>
                 </div>
-                                --><!--                <div class="col-xs-6">
-                    <div class="input-group">
-                        <xf:select class="input-group -form-control" ref="//TEI:usg">
-                            <xf:label class="input-group-addon">dialect (MULTIPLE)</xf:label>
-                            <xf:itemset nodeset="instance('i-dialects')/option">
-                                <xf:label ref="."/>
-                                <xf:value ref="."/>
-                            </xf:itemset>
-                        </xf:select>
-                    </div>
-                </div>
-                -->
-                <div class="col-xs-12">
-                    <div class="input-group">
-                        <xf:select class="input-group -form-control" ref="//TEI:usg" appearance="full">
-                            <xf:label class="input-group-addon">dialect</xf:label>
-                            <xf:itemset nodeset="instance('i-dialects')//TEI:category">
-                                <xf:label ref="TEI:catDesc[@xml:lang='en'][@ana='short']"/>
-                                <xf:value ref="@xml:id"/>
-                            </xf:itemset>
-                        </xf:select>
-                    </div>
-                </div>
+                                -->
             </div>
-            <xf:group ref="//TEI:entry"><!-- GRAMGRP -->
+            <xf:group ref="//TEI:entry">
+            <!-- GRAMGRP -->
+                <xf:group class="fieldset">
+                    <div class="row">
+                        <div class="col-xs-11">
+                            <xf:label>
+                                <h3>Dialects</h3>
+                            </xf:label>
+                        </div>
+                        <div class="col-xs-1">
+                            <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
+                                <xf:label/>
+                                <xf:insert context="//TEI:gramGrp[@type='classification']" nodeset="TEI:usg" origin="instance('i-template')//TEI:usg[@type='lang']"/>
+                            </xf:trigger>
+                        </div>
+                    </div>
+                <xf:group ref="//TEI:gramGrp[@type='classification']">
+                    <xf:repeat ref="TEI:usg[@type='lang']" id="r-dialect">
+                        <xf:label/>
+                        <xf:group ref=".">
+                            <xf:label/>
+                            <div class="row">
+                                <div class="col-xs-3">
+                                <div class="input-group">
+                                    <xf:select1 class="input-group -form-control" ref=".">
+                                        <xf:label class="input-group-addon">Dialect</xf:label>
+                                        <xf:itemset nodeset="instance('i-dialects')//TEI:category">
+                                            <xf:label ref="TEI:catDesc[@xml:lang='en'][@ana='short']"/>
+                                            <xf:value ref="@xml:id"/>
+                                        </xf:itemset>
+                                    </xf:select1>
+                                </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-11"/>
+                                <div class="col-xs-1">
+                                    <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-trash">
+                                        <xf:label/>
+                                        <xf:delete nodeset="//TEI:usg[@type='lang'][index('r-dialect')]"/>
+                                    </xf:trigger>
+                                </div>
+                            </div>
+                        </xf:group>
+                    </xf:repeat>
+                </xf:group>
+                </xf:group>
                 <xf:group class="fieldset">
                     <div class="row">
                         <div class="col-xs-11">
