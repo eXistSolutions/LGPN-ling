@@ -136,6 +136,8 @@
                 <xf:instance xmlns="" id="i-suffix-3" src="resources/xml/suffixes/suffix-3.xml"/>
                 <xf:instance xmlns="" id="i-suffix-4" src="resources/xml/suffixes/suffix-4.xml"/>
                 <xf:instance xmlns="" id="i-classification" src="resources/xml/classification.xml"/>
+                <xf:instance xmlns="" id="i-polysemic" src="resources/xml/polysemic.xml"/>
+                <xf:instance xmlns="" id="i-sublemma" src="resources/xml/sublemma.xml"/>
                 <xf:instance xmlns="" id="i-relations" src="resources/xml/relations.xml"/>
                 <xf:instance xmlns="" id="i-prefix-headedness" src="resources/xml/prefix-headedness.xml"/>
                 <xf:instance xmlns="" id="i-headedness" src="resources/xml/headedness.xml"/>
@@ -319,6 +321,30 @@
                             <xf:label class="input-group-addon">name</xf:label>
                             <xf:hint>relative name</xf:hint>
                         </xf:input>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3">
+                    <div class="input-group">
+                        <xf:select1 class="input-group -form-control" ref="//TEI:gramGrp[@type='classification']/TEI:gram[@type='sublemma']">
+                                        <xf:label class="input-group-addon">Sublemma</xf:label>
+                                        <xf:itemset nodeset="instance('i-sublemma')//option">
+                                            <xf:label ref="."/>
+                                            <xf:value ref="@xml:id"/>
+                                        </xf:itemset>
+                        </xf:select1>
+                    </div>
+                </div>
+                <div class="col-xs-2">
+                    <div class="input-group">
+                        <xf:select class="input-group -form-control" ref="//TEI:gramGrp[@type='classification']/TEI:gram[@ana]" appearance="full">
+                        <xf:label class="input-group-addon">Polysemic</xf:label>
+                            <xf:itemset nodeset="instance('i-polysemic')//option">
+                                <xf:label ref="."/>
+                                <xf:value ref="."/>
+                            </xf:itemset>
+                        </xf:select>
                     </div>
                 </div>
             </div>
