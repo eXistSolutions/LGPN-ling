@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+    <option xml:id="son">son</option>
+    <option xml:id="daugter">daughter</option>
+    <option xml:id="father">father</option>
+    <option xml:id="mother">mother</option>
+</data>
