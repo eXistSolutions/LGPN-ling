@@ -36,9 +36,9 @@
                                         <usg type="lang"/>
                                     </gramGrp>
                                     <gramGrp cert="high" ana="" type="segmentation" subtype="">
-                                        <m baseForm="" type="prefix" n="1" function="" ana="" subtype=""/>
-                                        <m baseForm="" type="radical" n="1" function="" ana="" subtype="" cert=""/>
-                                        <m baseForm="" type="radical" n="2" function="" ana="" subtype="" cert=""/>
+                                        <m baseForm="" type="prefix" n="1" function="" ana="" subtype="" corresp=""/>
+                                        <m baseForm="" type="radical" n="1" function="" ana="" subtype="" cert="" corresp=""/>
+                                        <m baseForm="" type="radical" n="2" function="" ana="" subtype="" cert="" corresp=""/>
                                         <m baseForm="" type="suffix" subtype="flexional" n="1"/>
                                         <m baseForm="" type="suffix" n="2"/>
                                         <m baseForm="" type="suffix" n="3"/>
@@ -77,9 +77,9 @@
                 <xf:instance id="i-template">
                     <data xmlns="http://www.tei-c.org/ns/1.0">
                         <gramGrp cert="" ana="" type="segmentation" subtype="">
-                            <m baseForm="" type="prefix" n="1" function="" ana="" subtype=""/>
-                            <m baseForm="" type="radical" n="1" function="" ana="" subtype="" cert=""/>
-                            <m baseForm="" type="radical" n="2" function="" ana="" subtype="" cert=""/>
+                            <m baseForm="" type="prefix" n="1" function="" ana="" subtype="" corresp=""/>
+                            <m baseForm="" type="radical" n="1" function="" ana="" subtype="" cert="" corresp=""/>
+                            <m baseForm="" type="radical" n="2" function="" ana="" subtype="" cert="" corresp=""/>
                             <m baseForm="" type="suffix" subtype="flexional" n="1"/>
                             <m baseForm="" type="suffix" n="2"/>
                             <m baseForm="" type="suffix" n="3"/>
@@ -733,15 +733,22 @@
                                         </xf:select>
                                     </div>
                                 </div>
-                                <div class="col-xs-3">
+                                <div class="col-xs-1">
+                                    <xf:select class="input-group -form-control" ref="TEI:m[@type = 'radical' and @n = 1]/@ana" appearance="full" incremental="true">
+                                        <xf:item>
+                                            <xf:label>Abbr</xf:label>
+                                            <xf:value>AbbrC</xf:value>
+                                        </xf:item>
+                                    </xf:select>
+                                </div>
+                                <div class="col-xs-2">
                                     <div class="input-group">
-                                        <xf:select class="input-group -form-control" ref="TEI:m[@type = 'radical' and @n = 1]/@ana" appearance="full">
-                                            <xf:label class="input-group-addon"/>
-                                            <xf:itemset nodeset="instance('i-other')//option">
-                                                <xf:label ref="."/>
-                                                <xf:value ref="."/>
-                                            </xf:itemset>
-                                        </xf:select>
+                                        <xf:input class="input-group -form-control" ref="TEI:m[@type = 'radical' and @n = 1]/@corresp">
+                                            <xf:label class="input-group-addon">
+                                                <span class="glyphicon glyphicon-tag"/>
+                                            </xf:label>
+                                            <xf:hint>linked compound</xf:hint>
+                                        </xf:input>
                                     </div>
                                 </div>
                                 <div class="col-xs-3">
@@ -755,15 +762,22 @@
                                         </xf:select>
                                     </div>
                                 </div>
-                                <div class="col-xs-3">
+                                <div class="col-xs-1">
+                                    <xf:select class="input-group -form-control" ref="TEI:m[@type = 'radical' and @n = 2]/@ana" appearance="full" incremental="true">
+                                        <xf:item>
+                                            <xf:label>Abbr</xf:label>
+                                            <xf:value>AbbrC</xf:value>
+                                        </xf:item>
+                                    </xf:select>
+                                </div>
+                                <div class="col-xs-2">
                                     <div class="input-group">
-                                        <xf:select class="input-group -form-control" ref="TEI:m[@type = 'radical' and @n = 2]/@ana" appearance="full">
-                                            <xf:label class="input-group-addon"/>
-                                            <xf:itemset nodeset="instance('i-other')//option">
-                                                <xf:label ref="."/>
-                                                <xf:value ref="."/>
-                                            </xf:itemset>
-                                        </xf:select>
+                                        <xf:input class="input-group -form-control" ref="TEI:m[@type = 'radical' and @n = 2]/@corresp">
+                                            <xf:label class="input-group-addon">
+                                                <span class="glyphicon glyphicon-tag"/>
+                                            </xf:label>
+                                            <xf:hint>linked compound</xf:hint>
+                                        </xf:input>
                                     </div>
                                 </div>
                             </div>
