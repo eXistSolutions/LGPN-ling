@@ -392,19 +392,16 @@
                             <xf:label/>
                             <div class="row">
                                 <div class="col-xs-3">
-                                <div class="input-group">
-                                    <xf:select1 class="input-group -form-control" ref=".">
-                                        <xf:label class="input-group-addon">Dialect</xf:label>
-                                        <xf:itemset nodeset="instance('i-dialects')//TEI:category">
-                                            <xf:label ref="TEI:catDesc[@xml:lang='en'][@ana='short']"/>
-                                            <xf:value ref="@xml:id"/>
-                                        </xf:itemset>
-                                    </xf:select1>
+                                    <div class="input-group">
+                                        <xf:select1 class="input-group -form-control" ref=".">
+                                            <xf:label class="input-group-addon">Dialect</xf:label>
+                                            <xf:itemset nodeset="instance('i-dialects')//TEI:category">
+                                                <xf:label ref="TEI:catDesc[@xml:lang='en'][@ana='short']"/>
+                                                <xf:value ref="@xml:id"/>
+                                            </xf:itemset>
+                                        </xf:select1>
+                                    </div>
                                 </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-11"/>
                                 <div class="col-xs-1">
                                     <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-trash">
                                         <xf:label/>
