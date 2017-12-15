@@ -883,12 +883,22 @@
                 </xf:group>
                 <xf:group class="meanings">
                     <xf:label>
-                        <h3>Semantics of the name &amp; Evidence</h3>
+                        <h3>Lexical connections</h3>
                     </xf:label>
                     <xf:group>
-                        <xf:label>
-                            <h3>Sources</h3>
-                        </xf:label>
+                        <div class="row">
+                            <div class="col-xs-11">
+                                <xf:label>
+                                    <h3>Lexical or lexicographic ancient sources</h3>
+                                </xf:label>
+                            </div>
+                            <div class="col-xs-1">
+                                <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
+                                    <xf:label/>
+                                    <xf:insert context="//TEI:entry" nodeset="TEI:cit" origin="instance('i-template')//TEI:cit[@type='source']"/>
+                                </xf:trigger>
+                            </div>
+                        </div>
                         <xf:repeat ref="TEI:cit[@type='source']" id="r-cit-source">
                             <xf:label/>
                             <div class="row">
@@ -927,20 +937,21 @@
                                 </div>
                             </div>
                         </xf:repeat>
+                    </xf:group>
+                    <xf:group>
                         <div class="row">
-                            <div class="col-xs-11"/>
+                            <div class="col-xs-11">
+                                <xf:label>
+                                    <h3>References in modern Lexicology and Linguistics</h3>
+                                </xf:label>
+                            </div>
                             <div class="col-xs-1">
                                 <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
                                     <xf:label/>
-                                    <xf:insert context="//TEI:entry" nodeset="TEI:cit" origin="instance('i-template')//TEI:cit[@type='source']"/>
+                                    <xf:insert context="//TEI:entry" nodeset="TEI:cit" origin="instance('i-template')//TEI:cit[@type='auxiliary']"/>
                                 </xf:trigger>
                             </div>
                         </div>
-                    </xf:group>
-                    <xf:group>
-                        <xf:label>
-                            <h3>Lexicographic references</h3>
-                        </xf:label>
                         <xf:repeat ref="TEI:cit[@type='auxiliary']" id="r-cit-auxiliary">
                             <xf:label/>
                             <div class="row">
@@ -979,21 +990,22 @@
                                 </div>
                             </div>
                         </xf:repeat>
-                        <div class="row">
-                            <div class="col-xs-11"/>
-                            <div class="col-xs-1">
-                                <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
-                                    <xf:label/>
-                                    <xf:insert context="//TEI:entry" nodeset="TEI:cit" origin="instance('i-template')//TEI:cit[@type='auxiliary']"/>
-                                </xf:trigger>
-                            </div>
-                        </div>
                     </xf:group>
                 </xf:group>
                     <xf:group>
-                        <xf:label>
-                        <h3>Onomastic &amp; linguistic bibliography</h3>
-                        </xf:label>
+                        <div class="row">
+                            <div class="col-xs-11">
+                                <xf:label>
+                                    <h3>Onomastics</h3>
+                                </xf:label>
+                            </div>
+                            <div class="col-xs-1">
+                                <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
+                                    <xf:label/>
+                                    <xf:insert context="//TEI:entry" nodeset="TEI:cit" origin="instance('i-template')//TEI:cit[@type='linguistic']"/>
+                                </xf:trigger>
+                            </div>
+                        </div>
                         <xf:repeat ref="TEI:cit[@type='linguistic']" id="r-cit-linguistic">
                             <xf:label/>
                             <div class="row">
@@ -1032,15 +1044,6 @@
                                 </div>
                             </div>
                         </xf:repeat>
-                        <div class="row">
-                            <div class="col-xs-11"/>
-                            <div class="col-xs-1">
-                                <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
-                                    <xf:label/>
-                                    <xf:insert context="//TEI:entry" nodeset="TEI:cit" origin="instance('i-template')//TEI:cit[@type='linguistic']"/>
-                                </xf:trigger>
-                            </div>
-                        </div>
                     </xf:group>
             </xf:group>
             <br/>
