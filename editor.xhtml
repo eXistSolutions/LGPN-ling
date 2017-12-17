@@ -43,39 +43,41 @@
                                         <m baseForm="" type="suffix" n="2"/>
                                         <m baseForm="" type="suffix" n="3"/>
                                         <m baseForm="" type="suffix" n="4"/>
+                                        <listBibl>
+                                            <cit type="source">
+                                                <quote/>
+                                                <bibl>
+                                                    <author/>
+                                                </bibl>
+                                                <ref target=""/>
+                                                <span/>
+                                            </cit>
+                                            <cit type="auxiliary">
+                                                <quote/>
+                                                <bibl>
+                                                    <author/>
+                                                </bibl>
+                                                <ref target=""/>
+                                                <span/>
+                                            </cit>
+                                            <cit type="linguistic">
+                                                <quote/>
+                                                <bibl>
+                                                    <author/>
+                                                </bibl>
+                                                <ref target=""/>
+                                                <span/>
+                                            </cit>
+                                            <cit type="modern">
+                                                <quote/>
+                                                <bibl>
+                                                    <author/>
+                                                </bibl>
+                                                <ref target=""/>
+                                                <span/>
+                                            </cit>
+                                        </listBibl>
                                     </gramGrp>
-                                    <cit type="source">
-                                        <quote/>
-                                        <bibl>
-                                            <author/>
-                                        </bibl>
-                                        <ref target=""/>
-                                        <span/>
-                                    </cit>
-                                    <cit type="auxiliary">
-                                        <quote/>
-                                        <bibl>
-                                            <author/>
-                                        </bibl>
-                                        <ref target=""/>
-                                        <span/>
-                                    </cit>
-                                    <cit type="linguistic">
-                                        <quote/>
-                                        <bibl>
-                                            <author/>
-                                        </bibl>
-                                        <ref target=""/>
-                                        <span/>
-                                    </cit>
-                                    <cit type="modern">
-                                        <quote/>
-                                        <bibl>
-                                            <author/>
-                                        </bibl>
-                                        <ref target=""/>
-                                        <span/>
-                                    </cit>
                                 </entry>
                             </body>
                         </text>
@@ -92,6 +94,40 @@
                             <m baseForm="" type="suffix" n="2"/>
                             <m baseForm="" type="suffix" n="3"/>
                             <m baseForm="" type="suffix" n="4"/>
+                            <listBibl>
+                                <cit type="source">
+                                    <quote/>
+                                    <bibl>
+                                        <author/>
+                                    </bibl>
+                                    <ref target=""/>
+                                    <span/>
+                                </cit>
+                                <cit type="auxiliary">
+                                    <quote/>
+                                    <bibl>
+                                        <author/>
+                                    </bibl>
+                                    <ref target=""/>
+                                    <span/>
+                                </cit>
+                                <cit type="linguistic">
+                                    <quote/>
+                                    <bibl>
+                                        <author/>
+                                    </bibl>
+                                    <ref target=""/>
+                                    <span/>
+                                </cit>
+                                <cit type="modern">
+                                    <quote/>
+                                    <bibl>
+                                        <author/>
+                                    </bibl>
+                                    <ref target=""/>
+                                    <span/>
+                                </cit>
+                            </listBibl>
                         </gramGrp>
                         <usg type="lang"/>
                         <re>
@@ -386,7 +422,6 @@
                                 -->
             </div>
             <xf:group ref="//TEI:entry">
-            <!-- GRAMGRP -->
                 <xf:group class="fieldset">
                     <div class="row">
                         <div class="col-xs-11">
@@ -504,10 +539,12 @@
                             </xf:trigger>
                         </div>
                     </div>
+                    
+                    <!-- SEGMENTATION -->
                     <xf:repeat ref="TEI:gramGrp[@type='segmentation']" id="r-gramGrp">
                         <xf:label/>
                         <xf:group ref=".">
-                            <xf:label/>
+
                             <div class="row">
                                 <div class="col-xs-3">
                                     <xf:input class="input-group -form-control" ref="@cert">
@@ -924,9 +961,235 @@
                                     </xf:select1>
                                 </div>
                             </div>
+                            <!-- Bibliography -->
                             <div class="row">
-                                <div class="col-xs-11"/>
-                                <div class="col-xs-1">
+                                <xf:label>
+                                    <h3>Lexical connections</h3>
+                                </xf:label>
+                            </div>
+                            <xf:group>
+                                <div class="row">
+                                    <div class="col-xs-11">
+                                        <xf:label>
+                                            <h4>Lexical or lexicographic significant sources</h4>
+                                        </xf:label>
+                                    </div>
+                                    <div class="col-xs-1">
+                                        <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
+                                            <xf:label/>
+                                            <xf:insert context="TEI:listBibl" nodeset="TEI:cit" origin="instance('i-template')//TEI:cit[@type='source']"/>
+                                        </xf:trigger>
+                                    </div>
+                                </div>
+                                <xf:repeat ref="TEI:listBibl/TEI:cit[@type='source']" id="r-cit-source">
+                                    <xf:label/>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <xf:input class="input-group -form-control" ref="TEI:quote">
+                                                <xf:label class="input-group-addon">quote</xf:label>
+                                            </xf:input>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <xf:input class="input-group -form-control" ref="TEI:ref">
+                                                <xf:label class="input-group-addon">reference</xf:label>
+                                            </xf:input>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <xf:input class="input-group -form-control" ref="TEI:bibl/TEI:author">
+                                                <xf:label class="input-group-addon">author</xf:label>
+                                            </xf:input>
+                                        </div>
+                                        <div class="col-xs-2">
+                                            <xf:input class="input-group -form-control" ref="TEI:span">
+                                                <xf:label class="input-group-addon">details</xf:label>
+                                            </xf:input>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <xf:input class="input-group -form-control" ref="TEI:ref/@target">
+                                                <xf:label class="input-group-addon">link</xf:label>
+                                            </xf:input>
+                                        </div>
+                                        <div class="col-xs-1">
+                                            <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-trash">
+                                                <xf:label/>
+                                                <xf:delete nodeset="//TEI:gramGrp[@type='segmentation'][index('r-gramGrp')]/TEI:listBibl/TEI:cit[@type='source'][index('r-cit-source')]"/>
+                                            </xf:trigger>
+                                        </div>
+                                    </div>
+                                </xf:repeat>
+                            </xf:group>
+                            <xf:group>
+                                <div class="row">
+                                    <div class="col-xs-11">
+                                        <xf:label>
+                                            <h4>References in modern Lexicology and Linguistics</h4>
+                                        </xf:label>
+                                    </div>
+                                    <div class="col-xs-1">
+                                        <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
+                                            <xf:label/>
+                                            <xf:insert context="TEI:listBibl" nodeset="TEI:cit" origin="instance('i-template')//TEI:cit[@type='auxiliary']"/>
+                                        </xf:trigger>
+                                    </div>
+                                </div>
+                                <xf:repeat ref="TEI:listBibl/TEI:cit[@type='auxiliary']" id="r-cit-auxiliary">
+                                    <xf:label/>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <xf:input class="input-group -form-control" ref="TEI:quote">
+                                                <xf:label class="input-group-addon">quote</xf:label>
+                                            </xf:input>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <xf:input class="input-group -form-control" ref="TEI:ref">
+                                                <xf:label class="input-group-addon">reference</xf:label>
+                                            </xf:input>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <xf:input class="input-group -form-control" ref="TEI:bibl/TEI:author">
+                                                <xf:label class="input-group-addon">author</xf:label>
+                                            </xf:input>
+                                        </div>
+                                        <div class="col-xs-2">
+                                            <xf:input class="input-group -form-control" ref="TEI:span">
+                                                <xf:label class="input-group-addon">details</xf:label>
+                                            </xf:input>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <xf:input class="input-group -form-control" ref="TEI:ref/@target">
+                                                <xf:label class="input-group-addon">link</xf:label>
+                                            </xf:input>
+                                        </div>
+                                        <div class="col-xs-1">
+                                            <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-trash">
+                                                <xf:label/>
+                                                <xf:delete nodeset="//TEI:gramGrp[@type='segmentation'][index('r-gramGrp')]/TEI:listBibl/TEI:cit[@type='auxiliary'][index('r-cit-auxiliary')]"/>
+                                            </xf:trigger>
+                                        </div>
+                                    </div>
+                                </xf:repeat>
+                            </xf:group>
+        
+                            <div class="row">
+                                <xf:label>
+                                    <h3>Onomastics</h3>
+                                </xf:label>
+                            </div>
+                            <xf:group>
+                                <div class="row">
+                                    <div class="col-xs-11">
+                                        <xf:label>
+                                            <h4>Linked sources</h4>
+                                        </xf:label>
+                                    </div>
+                                    <div class="col-xs-1">
+                                        <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
+                                            <xf:label/>
+                                            <xf:insert context="TEI:listBibl" nodeset="TEI:cit" origin="instance('i-template')//TEI:cit[@type='linguistic']"/>
+                                        </xf:trigger>
+                                    </div>
+                                </div>
+                                <xf:repeat ref="TEI:listBibl/TEI:cit[@type='linguistic']" id="r-cit-linguistic">
+                                    <xf:label/>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <xf:input class="input-group -form-control" ref="TEI:quote">
+                                                <xf:label class="input-group-addon">quote</xf:label>
+                                            </xf:input>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <xf:input class="input-group -form-control" ref="TEI:ref">
+                                                <xf:label class="input-group-addon">reference</xf:label>
+                                            </xf:input>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <xf:input class="input-group -form-control" ref="TEI:bibl/TEI:author">
+                                                <xf:label class="input-group-addon">author</xf:label>
+                                            </xf:input>
+                                        </div>
+                                        <div class="col-xs-2">
+                                            <xf:input class="input-group -form-control" ref="TEI:span">
+                                                <xf:label class="input-group-addon">details</xf:label>
+                                            </xf:input>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <xf:input class="input-group -form-control" ref="TEI:ref/@target">
+                                                <xf:label class="input-group-addon">link</xf:label>
+                                            </xf:input>
+                                        </div>
+                                        <div class="col-xs-1">
+                                            <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-trash">
+                                                <xf:label/>
+                                                <xf:delete nodeset="//TEI:gramGrp[@type='segmentation'][index('r-gramGrp')]/TEI:listBibl/TEI:cit[@type='linguistic'][index('r-cit-linguistic')]"/>
+                                            </xf:trigger>
+                                        </div>
+                                    </div>
+                                </xf:repeat>
+                            </xf:group>
+                            <xf:group>
+                                <div class="row">
+                                    <div class="col-xs-11">
+                                        <xf:label>
+                                            <h4>Modern references</h4>
+                                        </xf:label>
+                                    </div>
+                                    <div class="col-xs-1">
+                                        <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
+                                            <xf:label/>
+                                            <xf:insert context="TEI:listBibl" nodeset="TEI:cit" origin="instance('i-template')//TEI:cit[@type='modern']"/>
+                                        </xf:trigger>
+                                    </div>
+                                </div>
+                                <xf:repeat ref="TEI:listBibl/TEI:cit[@type='modern']" id="r-cit-modern">
+                                    <xf:label/>
+                                    <div class="row">
+                                        <div class="col-xs-12">
+                                            <xf:input class="input-group -form-control" ref="TEI:quote">
+                                                <xf:label class="input-group-addon">quote</xf:label>
+                                            </xf:input>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-xs-3">
+                                            <xf:input class="input-group -form-control" ref="TEI:ref">
+                                                <xf:label class="input-group-addon">reference</xf:label>
+                                            </xf:input>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <xf:input class="input-group -form-control" ref="TEI:bibl/TEI:author">
+                                                <xf:label class="input-group-addon">author</xf:label>
+                                            </xf:input>
+                                        </div>
+                                        <div class="col-xs-2">
+                                            <xf:input class="input-group -form-control" ref="TEI:span">
+                                                <xf:label class="input-group-addon">details</xf:label>
+                                            </xf:input>
+                                        </div>
+                                        <div class="col-xs-3">
+                                            <xf:input class="input-group -form-control" ref="TEI:ref/@target">
+                                                <xf:label class="input-group-addon">link</xf:label>
+                                            </xf:input>
+                                        </div>
+                                        <div class="col-xs-1">
+                                            <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-trash">
+                                                <xf:label/>
+                                                <xf:delete nodeset="//TEI:gramGrp[@type='segmentation'][index('r-gramGrp')]/TEI:listBibl/TEI:cit[@type='modern'][index('r-cit-modern')]"/>
+                                            </xf:trigger>
+                                        </div>
+                                    </div>
+                                </xf:repeat>
+                            </xf:group>
+                            <!--- /Bibliography -->
+                            
+                            <!-- delete segmentation -->
+                            <div class="row">
+                                <div class="col-xs-2">Delete hypothesis
                                     <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-trash">
                                         <xf:label/>
                                         <xf:delete nodeset="//TEI:gramGrp[@type='segmentation'][index('r-gramGrp')]"/>
@@ -939,230 +1202,6 @@
                         </xf:group>
                     </xf:repeat>
                 </xf:group>
-                <xf:group class="meanings">
-                    <div class="row">
-                        <xf:label>
-                            <h3>Lexical connections</h3>
-                        </xf:label>
-                    </div>
-                    <xf:group>
-                        <div class="row">
-                            <div class="col-xs-11">
-                                <xf:label>
-                                    <h4>Lexical or lexicographic significant sources</h4>
-                                </xf:label>
-                            </div>
-                            <div class="col-xs-1">
-                                <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
-                                    <xf:label/>
-                                    <xf:insert context="//TEI:entry" nodeset="TEI:cit" origin="instance('i-template')//TEI:cit[@type='source']"/>
-                                </xf:trigger>
-                            </div>
-                        </div>
-                        <xf:repeat ref="TEI:cit[@type='source']" id="r-cit-source">
-                            <xf:label/>
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <xf:input class="input-group -form-control" ref="TEI:quote">
-                                        <xf:label class="input-group-addon">quote</xf:label>
-                                    </xf:input>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <xf:input class="input-group -form-control" ref="TEI:ref">
-                                        <xf:label class="input-group-addon">reference</xf:label>
-                                    </xf:input>
-                                </div>
-                                <div class="col-xs-3">
-                                    <xf:input class="input-group -form-control" ref="TEI:bibl/TEI:author">
-                                        <xf:label class="input-group-addon">author</xf:label>
-                                    </xf:input>
-                                </div>
-                                <div class="col-xs-2">
-                                    <xf:input class="input-group -form-control" ref="TEI:span">
-                                        <xf:label class="input-group-addon">details</xf:label>
-                                    </xf:input>
-                                </div>
-                                <div class="col-xs-3">
-                                    <xf:input class="input-group -form-control" ref="TEI:ref/@target">
-                                        <xf:label class="input-group-addon">link</xf:label>
-                                    </xf:input>
-                                </div>
-                                <div class="col-xs-1">
-                                    <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-trash">
-                                        <xf:label/>
-                                        <xf:delete nodeset="//TEI:cit[@type='source'][index('r-cit-source')]"/>
-                                    </xf:trigger>
-                                </div>
-                            </div>
-                        </xf:repeat>
-                    </xf:group>
-                    <xf:group>
-                        <div class="row">
-                            <div class="col-xs-11">
-                                <xf:label>
-                                    <h4>References in modern Lexicology and Linguistics</h4>
-                                </xf:label>
-                            </div>
-                            <div class="col-xs-1">
-                                <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
-                                    <xf:label/>
-                                    <xf:insert context="//TEI:entry" nodeset="TEI:cit" origin="instance('i-template')//TEI:cit[@type='auxiliary']"/>
-                                </xf:trigger>
-                            </div>
-                        </div>
-                        <xf:repeat ref="TEI:cit[@type='auxiliary']" id="r-cit-auxiliary">
-                            <xf:label/>
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <xf:input class="input-group -form-control" ref="TEI:quote">
-                                        <xf:label class="input-group-addon">quote</xf:label>
-                                    </xf:input>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <xf:input class="input-group -form-control" ref="TEI:ref">
-                                        <xf:label class="input-group-addon">reference</xf:label>
-                                    </xf:input>
-                                </div>
-                                <div class="col-xs-3">
-                                    <xf:input class="input-group -form-control" ref="TEI:bibl/TEI:author">
-                                        <xf:label class="input-group-addon">author</xf:label>
-                                    </xf:input>
-                                </div>
-                                <div class="col-xs-2">
-                                    <xf:input class="input-group -form-control" ref="TEI:span">
-                                        <xf:label class="input-group-addon">details</xf:label>
-                                    </xf:input>
-                                </div>
-                                <div class="col-xs-3">
-                                    <xf:input class="input-group -form-control" ref="TEI:ref/@target">
-                                        <xf:label class="input-group-addon">link</xf:label>
-                                    </xf:input>
-                                </div>
-                                <div class="col-xs-1">
-                                    <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-trash">
-                                        <xf:label/>
-                                        <xf:delete nodeset="//TEI:cit[@type='auxiliary'][index('r-cit-auxiliary')]"/>
-                                    </xf:trigger>
-                                </div>
-                            </div>
-                        </xf:repeat>
-                    </xf:group>
-                </xf:group>
-                    <div class="row">
-                        <xf:label>
-                            <h3>Onomastics</h3>
-                        </xf:label>
-                    </div>
-                    <xf:group>
-                        <div class="row">
-                            <div class="col-xs-11">
-                                <xf:label>
-                                    <h4>Linked sources</h4>
-                                </xf:label>
-                            </div>
-                            <div class="col-xs-1">
-                                <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
-                                    <xf:label/>
-                                    <xf:insert context="//TEI:entry" nodeset="TEI:cit" origin="instance('i-template')//TEI:cit[@type='linguistic']"/>
-                                </xf:trigger>
-                            </div>
-                        </div>
-                        <xf:repeat ref="TEI:cit[@type='linguistic']" id="r-cit-linguistic">
-                            <xf:label/>
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <xf:input class="input-group -form-control" ref="TEI:quote">
-                                        <xf:label class="input-group-addon">quote</xf:label>
-                                    </xf:input>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <xf:input class="input-group -form-control" ref="TEI:ref">
-                                        <xf:label class="input-group-addon">reference</xf:label>
-                                    </xf:input>
-                                </div>
-                                <div class="col-xs-3">
-                                    <xf:input class="input-group -form-control" ref="TEI:bibl/TEI:author">
-                                        <xf:label class="input-group-addon">author</xf:label>
-                                    </xf:input>
-                                </div>
-                                <div class="col-xs-2">
-                                    <xf:input class="input-group -form-control" ref="TEI:span">
-                                        <xf:label class="input-group-addon">details</xf:label>
-                                    </xf:input>
-                                </div>
-                                <div class="col-xs-3">
-                                    <xf:input class="input-group -form-control" ref="TEI:ref/@target">
-                                        <xf:label class="input-group-addon">link</xf:label>
-                                    </xf:input>
-                                </div>
-                                <div class="col-xs-1">
-                                    <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-trash">
-                                        <xf:label/>
-                                        <xf:delete nodeset="//TEI:cit[@type='linguistic'][index('r-cit-linguistic')]"/>
-                                    </xf:trigger>
-                                </div>
-                            </div>
-                        </xf:repeat>
-                    </xf:group>
-                    <xf:group>
-                        <div class="row">
-                            <div class="col-xs-11">
-                                <xf:label>
-                                    <h4>Modern references</h4>
-                                </xf:label>
-                            </div>
-                            <div class="col-xs-1">
-                                <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
-                                    <xf:label/>
-                                    <xf:insert context="//TEI:entry" nodeset="TEI:cit" origin="instance('i-template')//TEI:cit[@type='modern']"/>
-                                </xf:trigger>
-                            </div>
-                        </div>
-                        <xf:repeat ref="TEI:cit[@type='modern']" id="r-cit-modern">
-                            <xf:label/>
-                            <div class="row">
-                                <div class="col-xs-12">
-                                    <xf:input class="input-group -form-control" ref="TEI:quote">
-                                        <xf:label class="input-group-addon">quote</xf:label>
-                                    </xf:input>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-xs-3">
-                                    <xf:input class="input-group -form-control" ref="TEI:ref">
-                                        <xf:label class="input-group-addon">reference</xf:label>
-                                    </xf:input>
-                                </div>
-                                <div class="col-xs-3">
-                                    <xf:input class="input-group -form-control" ref="TEI:bibl/TEI:author">
-                                        <xf:label class="input-group-addon">author</xf:label>
-                                    </xf:input>
-                                </div>
-                                <div class="col-xs-2">
-                                    <xf:input class="input-group -form-control" ref="TEI:span">
-                                        <xf:label class="input-group-addon">details</xf:label>
-                                    </xf:input>
-                                </div>
-                                <div class="col-xs-3">
-                                    <xf:input class="input-group -form-control" ref="TEI:ref/@target">
-                                        <xf:label class="input-group-addon">link</xf:label>
-                                    </xf:input>
-                                </div>
-                                <div class="col-xs-1">
-                                    <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-trash">
-                                        <xf:label/>
-                                        <xf:delete nodeset="//TEI:cit[@type='modern'][index('r-cit-modern')]"/>
-                                    </xf:trigger>
-                                </div>
-                            </div>
-                        </xf:repeat>
-                    </xf:group>
             </xf:group>
             <br/>
             <xf:submit class="-btn -btn-success -glyphicon -glyphicon-save" submission="s-save-data">
