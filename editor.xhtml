@@ -422,6 +422,14 @@
                                     </div>
                                 </div>
                                 <div class="col-xs-1">
+                                    <xf:select class="input-group -form-control" ref="@cert" appearance="full" incremental="true">
+                                        <xf:item>
+                                            <xf:label>?</xf:label>
+                                            <xf:value>low</xf:value>
+                                        </xf:item>
+                                    </xf:select>
+                                </div>
+                                <div class="col-xs-1">
                                     <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-trash">
                                         <xf:label/>
                                         <xf:delete nodeset="//TEI:usg[@type='lang'][index('r-dialect')]"/>
