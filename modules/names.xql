@@ -31,7 +31,7 @@ function names:delete-entry($id as xs:string?) {
 
 declare function names:entries($node as node(), $model as map(*)) {
     let $entries :=
-    for $i in collection($config:names-root)//TEI:gramGrp
+    for $i in collection($config:names-root)//TEI:gramGrp[@type='segmentation']
     order by $i/parent::TEI:entry//TEI:orth[@type='greek'][1]
         return $i
     
@@ -54,7 +54,7 @@ function names:entry-updated($entry as node()) {
 
 declare
 function names:entry-form($entry as node(), $langId as xs:string) {
-    let $pos := count($entry/preceding-sibling::TEI:gramGrp)
+    let $pos := count($entry/preceding-sibling::TEI:gramGrp[@type='segmentation'])
     let $bold := if ($langId='greek') then 'font-weight: bold;' else ()
     let $first :=  if ($pos) then 'dimmed' else () 
 
@@ -80,7 +80,7 @@ function names:entry-form($entry as node(), $langId as xs:string) {
 
 declare
 function names:entry-dialect($entry as node(), $lang as xs:string?) {
-    let $pos := count($entry/preceding-sibling::TEI:gramGrp)
+    let $pos := count($entry/preceding-sibling::TEI:gramGrp[@type='segmentation'])
     let $labels := tokenize($entry/parent::TEI:entry//TEI:usg, '\s+')
     let $dialects :=
         for $e in doc($config:taxonomies-root || "/dialects.xml")//TEI:category[@xml:id=$labels]/TEI:catDesc
@@ -94,7 +94,7 @@ function names:entry-dialect($entry as node(), $lang as xs:string?) {
 
 declare
 function names:entry-attestations($entry as node()) {
-    let $pos := count($entry/preceding-sibling::TEI:gramGrp)
+    let $pos := count($entry/preceding-sibling::TEI:gramGrp[@type='segmentation'])
 
     let $name := $entry/parent::TEI:entry//TEI:orth[@type='greek']
     let $content := count(collection($config:data-root)//TEI:persName[@type="main"][.=$name])
@@ -105,7 +105,7 @@ function names:entry-attestations($entry as node()) {
 
 declare
 function names:entry-period($entry as node()) {
-    let $pos := count($entry/preceding-sibling::TEI:gramGrp)
+    let $pos := count($entry/preceding-sibling::TEI:gramGrp[@type='segmentation'])
 
     let $name := $entry/parent::TEI:entry//TEI:orth[@type='greek']/string()
     let $dates :=(
@@ -118,7 +118,7 @@ function names:entry-period($entry as node()) {
 
 declare
 function names:entry-gender($entry as node()) {
-    let $pos := count($entry/preceding-sibling::TEI:gramGrp)
+    let $pos := count($entry/preceding-sibling::TEI:gramGrp[@type='segmentation'])
     let $name := $entry/parent::TEI:entry//TEI:orth[@type='greek']
     let $genders :=
         for $g in distinct-values(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:sex/@value/string())
@@ -131,16 +131,17 @@ function names:entry-gender($entry as node()) {
 declare
 function names:entry-morpheme($entry as node(), $type as xs:string, $position as xs:integer?) {
         let $bold := if ($type='radical' or $position=1) then 'font-weight: bold;' else ()
-        let $class :=  if (count($entry/preceding-sibling::TEI:gramGrp)) then 'dimmed' else () 
+        let $class :=  if (count($entry/preceding-sibling::TEI:gramGrp[@type='segmentation'])) then 'dimmed' else () 
         let $baseForm := $entry//TEI:m[@type=$type][@n=$position]/@baseForm
 
     return <span>
         {attribute style {$bold}}
         {attribute class {$class}}
         {
-            if($type!="suffix") then 
+            if($type!=("suffix") and $entry//TEI:m[@type=$type][@n=$position] ne '') then 
                 data(doc($config:taxonomies-root || "/morphemes.xml")//TEI:category[@baseForm=$entry//TEI:m[@type=$type][@n=$position]/@baseForm]/TEI:catDesc) 
-            else data($entry//TEI:m[@type=$type][@n=$position])
+            else 
+                data($entry//TEI:m[@type=$type][@n=$position])
 
         }
         </span>
@@ -148,7 +149,7 @@ function names:entry-morpheme($entry as node(), $type as xs:string, $position as
 
 declare
 function names:entry-morpheme-functions($entry as node(), $type as xs:string) {
-    let $class :=  if (count($entry/preceding-sibling::TEI:gramGrp)) then 'dimmed' else () 
+    let $class :=  if (count($entry/preceding-sibling::TEI:gramGrp[@type='segmentation'])) then 'dimmed' else () 
 
 (:   combining following two lines into one results in false positives returned, see low hypothesis for Alketēs,
  : https://github.com/eXistSolutions/LGPN-ling/issues/300
@@ -178,7 +179,7 @@ function names:entry-morpheme-functions($entry as node(), $type as xs:string) {
 
 declare
 function names:entry-semantics($entry as node(), $lang as xs:string?) {
-    let $class :=  if (count($entry/preceding-sibling::TEI:gramGrp)) then 'dimmed' else () 
+    let $class :=  if (count($entry/preceding-sibling::TEI:gramGrp[@type='segmentation'])) then 'dimmed' else () 
 
     let $functions := 
             for $bf in $entry//TEI:m[@type=('radical', 'prefix')]/@baseForm[string(.)]
@@ -198,7 +199,7 @@ declare function names:reference-entry($entry, $type) {
         then <i style="margin-right: 0.5em;">{$entry/TEI:quote/string()}</i>
         else ()
 
-    let $author := if ($entry/TEI:author/string()) then $entry/TEI:author/string() || ' ' else ()
+    let $author := if ($entry//TEI:author/string()) then $entry//TEI:author/string() || ' ' else ()
     let $ref := <i style="margin-right: 0.5em;">{$entry/TEI:ref/string()}</i>
     let $rest := $entry/TEI:span/string()
     let $source := 
@@ -209,40 +210,22 @@ declare function names:reference-entry($entry, $type) {
 };
 
 declare
-function names:entry-bibl($entry as node()) {
-    let $pos := count($entry/preceding-sibling::TEI:gramGrp)
+function names:entry-bibl($entry as node(), $types as item()*) {
+    let $pos := count($entry/preceding-sibling::TEI:gramGrp[@type='segmentation'])
+    let $first :=  if ($pos) then 'dimmed' else () 
+
     let $content := 
-        for $e in $entry/parent::TEI:entry//TEI:bibl
-(:        [@type='linguistic']:)
-            let $source := names:reference-entry($e, 'bibl')
-        return if ($e/@type='linguistic') then <p>{$source}</p> else ()
-    return 
-        if($pos) then <span class="invisible">{$content}</span> else $content
-};
-
-declare
-function names:entry-sources($entry as node()) {
-    let $pos := count($entry/preceding-sibling::TEI:gramGrp)
-
-    (: sources :)
-    let $sources := 
-        for $e in $entry/parent::TEI:entry//TEI:cit[string(.)]
+        for $e in $entry//TEI:cit[@type=$types][string(.)]
         let $source := names:reference-entry($e, 'cit')
         return <p>{$source}</p>
 
-    (: lexicographic references :)
-    let $lexicographic := 
-        for $e in $entry/parent::TEI:entry//TEI:bibl[string(.)]
-(:        [@type='auxiliary']:)
-            let $source := names:reference-entry($e, 'bibl')
-        return if ($e/@type='auxiliary') then <p>{$source}</p> else ()
-(:      removing cf label, needs to be replaced with special form elements :)
-    let $cf := if(not(empty($sources))) then () else ()
-    let $content := ($sources, if(not(empty($lexicographic))) then  ($cf, $lexicographic) else ())
     return 
-        if($pos) then <span class="invisible">{$content}</span> else $content
+(:        if($pos) then <span class="invisible">{$content}</span> else :)
+    <span>
+            {attribute class {$first}}
+            {$content}
+    </span>
 };
-
 
 declare
 function names:entry-action($entry as node(), $action as xs:string?) {
@@ -250,7 +233,7 @@ function names:entry-action($entry as node(), $action as xs:string?) {
     return
         if ($user) then
     
-    let $pos := count($entry/preceding-sibling::TEI:gramGrp)
+    let $pos := count($entry/preceding-sibling::TEI:gramGrp[@type='segmentation'])
     let $action:=  if($action='delete') then 
         <div>
             <form method="POST" action="">

@@ -62,7 +62,7 @@ let $setuser :=  login:set-user("org.exist.lgpn-ling", (), false())
 (:let $search := request:get-parameter('search', ''):)
 let $search := if (request:get-parameter('search[value]', '')) then request:get-parameter('search[value]', '') else ''
 
-let $recordsTotal := count(collection($config:names-root)//tei:gramGrp)
+let $recordsTotal := count(collection($config:names-root)//tei:gramGrp[@type='segmentation'])
 
 let $start := number(request:get-parameter('start', ''))
 let $length := number(request:get-parameter('length', ''))
@@ -84,7 +84,7 @@ let $collection := 'collection($config:names-root)//tei:orth[
         contains(normalize-unicode(., "NFD"), "'|| $qs || '") 
             or 
         contains(replace(normalize-unicode(., "NFD"), "[\p{M}\p{Sk}]", ""), "'|| $qs || '")
-        ]/ancestor::tei:entry//tei:gramGrp'
+        ]/ancestor::tei:entry//tei:gramGrp[@type="segmentation"]'
 
 
 let $roff:=$offset+number($ordInd)
@@ -135,8 +135,8 @@ let $orderby := local:orderBy($offset+number($ordInd), $ordDir)
                 map:entry($offset+13, names:entry-morpheme($i, 'suffix', 1)),
                 map:entry($offset+14, names:entry-morpheme-functions($i, 'radical')),
                 map:entry($offset+15, names:entry-semantics($i, $lang)),
-                map:entry($offset+16, names:entry-sources($i)),
-                map:entry($offset+17, names:entry-bibl($i)),
+                map:entry($offset+16, names:entry-bibl($i, ('source', 'auxiliary'))),
+                map:entry($offset+17, names:entry-bibl($i, ('linguistic', 'modern'))),
                 map:entry($offset+18, names:entry-updated($i)),
                 if($offset=0) then map:entry($offset+19, names:entry-action($i, 'delete')) else ()
             )
