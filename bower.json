@@ -17,7 +17,6 @@
     "tests"
   ],
   "devDependencies": {
-    "jquery-tagit": "*",
     "bootstrap": "^3.3.7"
   }
 }
