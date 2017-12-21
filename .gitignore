@@ -1,0 +1,10 @@
+# IntelliJ project files
+.idea
+
+# Build files
+build
+
+# Dev Packages
+/bower_components/
+/node_modules/
+
