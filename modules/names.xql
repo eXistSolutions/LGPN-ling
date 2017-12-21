@@ -97,7 +97,7 @@ function names:entry-attestations($entry as node()) {
     let $pos := count($entry/preceding-sibling::TEI:gramGrp[@type='segmentation'])
 
     let $name := $entry/parent::TEI:entry//TEI:orth[@type='greek']
-    let $content := count(collection($config:data-root)//TEI:persName[@type="main"][.=$name])
+    let $content := if ($name ne '' ) then count(collection($config:data-root)//TEI:persName[@type="main"][.=$name]) else ''
 
     return 
         if($pos) then <span class="invisible">{$content}</span> else $content
@@ -138,8 +138,8 @@ function names:entry-morpheme($entry as node(), $type as xs:string, $position as
         {attribute style {$bold}}
         {attribute class {$class}}
         {
-            if($type!=("suffix") and $entry//TEI:m[@type=$type][@n=$position] ne '') then 
-                data(doc($config:taxonomies-root || "/morphemes.xml")//TEI:category[@baseForm=$entry//TEI:m[@type=$type][@n=$position]/@baseForm]/TEI:catDesc) 
+            if($type!=("suffix") and $entry//TEI:m[@type=$type][@n=$position][1] ne '') then 
+                data(doc($config:taxonomies-root || "/morphemes.xml")//TEI:category[@baseForm=$entry//TEI:m[@type=$type][@n=$position]/@baseForm][1]/TEI:catDesc) 
             else 
                 data($entry//TEI:m[@type=$type][@n=$position])
 
