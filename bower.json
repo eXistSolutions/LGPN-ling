@@ -1,12 +1,14 @@
 {
-  "name": "LGPN",
-  "version": "0.0.1",
+  "name": "lgpn",
+  "version": "0.1.0",
   "authors": [
-    "Tobi Krebs <tobias.krebs@betterform.de>"
+    "Tobi Krebs <tobias.krebs@betterform.de>",
+    "Alexandra v. Criegern <alexandra@existsolutions.com>"
   ],
-  "description": "LGPN",
-  "main": "index.html",
+  "description": "LGPN-Ling",
+  "main": "gulpfile.js",
   "license": "MIT",
+  "private": true,
   "ignore": [
     "**/.*",
     "node_modules",
@@ -15,6 +17,7 @@
     "tests"
   ],
   "devDependencies": {
-    "jquery-tagit": "*"
+    "jquery-tagit": "*",
+    "bootstrap": "^3.3.7"
   }
 }
