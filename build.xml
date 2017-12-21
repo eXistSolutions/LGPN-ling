@@ -41,6 +41,7 @@
         <copy todir="${build.dir}/${app.name}-${app.version}">
             <fileset dir="${basedir}" excludes="${build.dir}/**,build.properties.xml,bower.json,build.xml,README.md,.idea/,.editorconfig,.existdb.json,expath-pkg.xml.tmpl,repo.xml.tmpl,bower_components/**,node_modules/**,package.json,local.node-exist.json,gulpfile.js"/>
         </copy>
+
         <copy todir="${build.dir}/${app.name}-${app.version}" overwrite="true" verbose="true">
             <fileset file="expath-pkg.xml.tmpl"/>
             <fileset file="repo.xml.tmpl"/>
@@ -48,7 +49,9 @@
                 <filter token="name" value="${app.name}"/>
                 <filter token="description" value="${app.description}"/>
                 <filter token="version" value="${app.version}"/>
-                <filter token="website" value="${app.website}"/>
+                <filter token="website" value="${app.url}"/>
+                <filter token="status" value="${app.status}"/>
+                <filter token="permissions" value="${app.permissions}"/>
             </filterset>
             <filterchain>
                 <replacetokens>
@@ -68,7 +71,7 @@
         </exec>
         <echo message="${npm.output}"/>
         <echo message="Creating xar package..."/>
-        <zip basedir="${build.dir}/${app.name}-${app.version}" destfile="${build.dir}/${app.name}-${app.version}-${repository.version}.xar"></zip>
+        <zip basedir="${build.dir}/${app.name}-${app.version}" destfile="${build.dir}/${app.name}-${app.version}-${repository.version}.xar"/>
     </target>
 
     <!-- Update all packages and start gulp automation -->
