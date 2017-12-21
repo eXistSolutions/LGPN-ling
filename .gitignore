@@ -3,6 +3,7 @@
 
 # Build files
 build
+/resources/css/style.css
 
 # Dev Packages
 /bower_components/
