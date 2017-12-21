@@ -1,11 +1,11 @@
 # IntelliJ project files
 .idea
 
-# Build files
-build
+# Build artifacts
+/build/
 /resources/css/style.css
+/resources/fonts/
 
 # Dev Packages
 /bower_components/
 /node_modules/
-
