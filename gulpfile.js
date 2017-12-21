@@ -155,7 +155,7 @@ gulp.task('xml:deploy', function () {
 // Watch and deploy all changed files
 gulp.task('watch', ['watch:html', 'watch:styles', 'watch:scripts']);
 
-gulp.task('build', ['build:styles']);
+gulp.task('build', ['build:styles', 'fonts:copy']);
 
 // Deploy files to existDB
 gulp.task('deploy', ['build:styles', 'fonts:deploy', 'deploy:scripts', 'xml:deploy'], function () {
