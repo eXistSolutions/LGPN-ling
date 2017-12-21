@@ -19,7 +19,9 @@ var fs =                    require('fs'),
         'templates':         'templates/**/*.html',
         'css':               'resources/css/less/style.less',
         'scripts':           'resources/js/**/*',
-        'xml':               'resources/xml/*.xml'
+        'xml':               'resources/xml/*.xml',
+        'images':            'resources/img/**/*',
+        'fonts':             'bower_components/bootstrap/fonts/**/*'
     },
     output  = {
         'html':              '.',
@@ -27,7 +29,9 @@ var fs =                    require('fs'),
         'css':               'resources/css',
         'vendor_css':        'resources/css',
         'scripts':           'resources/js/**/*',
-        'xml':               'resources/xml'
+        'xml':               'resources/xml',
+        'images':            'resources/img',
+        'fonts':             'resources/fonts'
     }
     ;
 
@@ -84,17 +88,15 @@ gulp.task('watch:styles', function () {
     gulp.watch('resources/css/less/**/*.less', ['deploy:styles'])
 });
 
-// Fonts //
+// ****************  Fonts ****************** //
 
 gulp.task('fonts:copy', function () {
-    return gulp.src([
-            'bower_components/bootstrap/fonts/**/*'
-        ])
-        .pipe(gulp.dest('resources/fonts'))
+    return gulp.src(input.fonts)
+        .pipe(gulp.dest(output.fonts))
 });
 
 gulp.task('fonts:deploy', ['fonts:copy'], function () {
-    return gulp.src('resources/fonts/*', {base: '.'})
+    return gulp.src(output.fonts, {base: '.'})
         .pipe(exClient.newer(targetConfiguration))
         .pipe(exClient.dest(targetConfiguration))
 });
