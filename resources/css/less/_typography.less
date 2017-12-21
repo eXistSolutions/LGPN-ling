@@ -1,0 +1,76 @@
+// *********** Typography *********//
+
+body {
+  font-family: @font-family-default;
+  font-size: 1rem;  // 16px = 1rem
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1.625; // 26px
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-family: @font-family-sans;
+  font-weight: 700;
+  word-wrap: break-word;
+  line-height: 2.5rem;
+  @media only screen and (min-width: 767px) {
+    word-wrap: normal;
+  }
+}
+
+h1, .h1 {
+  font-size: 2rem;
+  @media only screen and (min-width: @small-screen-min) {
+    font-size: 2.4rem;
+  }
+  @media only screen and (min-width: @medium-screen-min) {
+    font-size: 2.8rem;
+    line-height: 3.5rem;
+  }
+}
+
+h2, .h2 {
+  font-size: 1.4rem;
+  @media only screen and (min-width: @small-screen-min) {
+    font-size: 1.8rem;
+  }
+  @media only screen and (min-width: @medium-screen-min) {
+    font-size: 2.0rem;
+  }
+}
+
+h3, .h3 {
+  font-size: 1.2rem;
+  @media only screen and (min-width: @small-screen-min) {
+    font-size: 1.4rem;
+  }
+  @media only screen and (min-width: @medium-screen-min) {
+    font-size: 1.625rem;
+  }
+}
+
+h4, .h4 {
+  font-size: 1.1rem;
+  @media only screen and (min-width: @small-screen-min) {
+    font-size: 1.3rem;
+  }
+  @media only screen and (min-width: @medium-screen-min) {
+    font-size: 1.325rem;
+  }
+}
+
+p {
+  font-size: inherit;
+}
+
+ul, ol, dl {
+  font-family: inherit;
+  line-height: 1.6;
+  list-style-position: outside;
+}
+
+ul, ol {
+  font-size: 1rem;
+}

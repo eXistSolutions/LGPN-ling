@@ -1,0 +1,426 @@
+footer .poweredby { float: right; margin: 33px 10px 0 0;}
+footer .poweredby img { width: 120px; }
+
+.tt-hint {
+  color: #999
+}
+
+.tt-menu {
+  min-height: 300px;
+  max-height: 400px;
+  overflow-y: auto;
+  width: 422px;
+  margin: 12px 0;
+  padding: 8px 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  -webkit-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  -moz-box-shadow: 0 5px 10px rgba(0,0,0,.2);
+  box-shadow: 0 5px 10px rgba(0,0,0,.2);
+}
+
+.tt-suggestion {
+  padding: 3px 20px;
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.tt-suggestion:hover {
+  cursor: pointer;
+  color: #fff;
+  background-color: #0097cf;
+}
+
+.tt-suggestion.tt-cursor {
+  color: #fff;
+  background-color: #0097cf;
+}
+
+// Icons next to inputs
+.input-group-addon {
+  i {
+    color: @colorGraduateNavyBlue;
+  }
+}
+
+.tp-section {
+  background-color: @color-body-bg;
+}
+
+.tp-width-main {
+  background-color: @color-form-bg;
+  padding-top: 2rem;
+  &:last-of-type {
+    @media (min-width: @screen-sm-min) {
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+.tp-section-save {
+  .tp-width-main {
+    padding-bottom: 2rem;
+  }
+}
+
+// Bootstrap overrides
+
+// Icon containers next to inputs
+.input-group-addon {
+  background-color: transparent;
+  border-color: transparent;
+  top: 0;
+}
+
+.input-group {
+  .form-control {
+    border-radius: 0 !important;
+  }
+}
+
+// Labels on the left of inputs
+.control-label {
+  line-height: 20px;
+  text-align: right;
+}
+
+.form-horizontal .form-group {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.col-sm-2.control-label,
+.input-group-addon {
+  padding-left: 0;
+  vertical-align: top;
+}
+
+.glyphicon {
+  margin-right: 4px;
+}
+
+.tp-button-row {
+  .glyphicon {
+    margin-right: 0;
+    top: 3px;
+  }
+}
+
+.tp-repeat-buttons {
+  .tp-button-row:not(:nth-of-type(2)) {
+    &:extend(.form-group);
+  }
+}
+
+.tp-repeat-buttons,
+.tp-repeat-add {
+  @media (min-width: @screen-sm-min) {
+    padding: 0 0 10px 0;
+    margin-top: 10px;
+  }
+  .control-label {
+    &:extend(.col-xs-12);
+    &:extend(.col-sm-9);
+    &:extend(.col-md-10);
+
+    @media (max-width: @screen-sm) {
+      padding-left: 0;
+      text-align: left;
+    }
+  }
+  label,
+  &> div {
+    position: relative;
+    min-height: 1px;
+  }
+  &> div {
+    width: 50%;
+    margin-left: auto;
+    margin-right: 0;
+  }
+  label {
+    height: @input-height;
+    line-height: @input-height;
+  }
+  h3, h4 {
+    margin: 0;
+    line-height: @input-height;
+    width: 50%;
+    position: relative;
+    float: left;
+    min-height: 1px;
+    padding-right: 0;
+    padding-left: 0;
+  }
+  .xfRepeatIndex h3,
+  .xfRepeatIndex h4 {
+    display: inline-block;
+  }
+}
+
+.tp-repeat-headline {
+  display: inline;
+}
+
+.tp-repeat-add {
+  max-width: 62.5rem;
+}
+
+#C226 > div.tp-row.tp-repeat-buttons,
+#C687 > div.tp-row.tp-repeat-buttons,
+#C951 > div.tp-row.tp-repeat-buttons {
+  padding-top: 30px;
+  padding-bottom: 15px;
+}
+
+// Bootstrap-style add/delete button
+.tp-repeat-button-left {
+  &> div {
+    margin-left: auto;
+    margin-right: 0;
+    @media (min-width: 992px) {
+      padding-top: 4px;
+    }
+  }
+}
+
+.tp-repeat-button-right {
+  &> div {
+    margin-left: auto;
+    margin-right: 0;
+  }
+  &> div > div {
+    padding-left: 15px;
+    @media (min-width: 768px) {
+      margin-left: 0;
+    }
+  }
+  label {
+    text-align: right;
+    @media (min-width: 768px) {
+      width: 68%;
+    }
+    @media (min-width: 992px) {
+      width: 81%;
+    }
+  }
+}
+
+.tp-delete,
+.tp-add {
+  display: table;
+  margin-left: auto;
+  margin-right: 0;
+
+  label {
+    display: table-cell;
+    text-align: right;
+    width: auto;
+  }
+  .xfControl {
+    display: table-cell;
+    padding-left: 15px;
+  }
+}
+
+.tp-delete {
+  .btn-default {
+    background-color: lighten(@colorRed, 20%);
+    color: @contrast-color;
+    &:hover {
+      background-color: @colorRed;
+    }
+    &:active {
+      background-color: darken(@colorRed, 20%);
+    }
+  }
+}
+
+// Special for add buttons and headline and margins in Status section
+.status-section {
+  .xfGroup {
+    margin-top: 20px;
+  }
+  .tp-repeat-buttons {
+    padding: 10px 0 0;
+  }
+}
+
+.tp-repeat-add h3.status-headline {
+  float: none;
+}
+.tp-repeat-add>div.status-button-container {
+  width: 100%;
+  .tp-repeat-button-left {
+    .make-xs-column(6);
+    .make-sm-column(4);
+    padding-bottom: 20px;
+    span {
+      @media (max-width: @screen-xs) {
+        display: none;
+      }
+    }
+  }
+}
+
+.tp-add {
+  .btn-default {
+    background-color: lighten(@colorGreen, 20%);
+    color: @contrast-color;
+    &:hover {
+      background-color: @colorGreen;
+    }
+    &:active {
+      background-color: darken(@colorGreen, 20%);
+    }
+  }
+}
+
+// secondary-sources
+.secondary-sources {
+  padding-top: 20px;
+}
+
+// Save/delete buttons in last section
+.tp-section-save {
+  .btn {
+    width: @button-size;
+    height: @button-size;
+    padding: 0;
+  }
+  .tp-button-cancel {
+    display: table;
+  }
+  // Text in cancel button
+  label {
+    span {
+      display: block;
+      &:nth-of-type(2) {
+        font-weight: normal;
+        line-height: 1rem;
+      }
+    }
+  }
+  .tp-repeat-buttons>div {
+    float: left !important;
+    @media (min-width: 768px) {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+  .tp-add {
+    margin-left: 13%;
+  }
+  @media (min-width: 992px) {
+    .tp-repeat-button-left label {
+      width: 50%;
+    }
+  }
+}
+
+// Headline in subform
+.tp-form-header {
+  h3, h4 {
+    .make-xs-column(4);
+    text-align: left;
+    padding-left: 0;
+    @media (min-width: @screen-md-min) {
+      text-align: right;
+    }
+  }
+}
+
+.tp-divider {
+  border-bottom: @default-border;
+  margin: 15px 0 30px;
+}
+
+.tp-section-divider {
+  height: 30px;
+  background-color: @color-body-bg;
+  margin: 0 -15px;
+}
+
+// Bootstrap red color override
+.btn-danger {
+  &:extend(.tp-delete);
+}
+
+// Place form
+#place {
+  section:nth-child(2) {
+    margin-bottom: 30px;
+  }
+}
+
+// Labels in form groups
+.tp-label {
+  .make-sm-column(2);
+  &:extend(.control-label);
+  padding-left: 0;
+  vertical-align: top;
+  @media (min-width: 768px) {
+    text-align: right;
+    margin-bottom: 0;
+    padding-top: 7px;
+  }
+  @media (min-width: 992px) {
+    width: 27%;
+  }
+}
+
+// Responsive 50% width form group columns
+.tp-form-group-col {
+  &:extend(.form-group);
+  .make-md-column(6);
+  min-height: @input-height;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+// Responsive input with search dropdown
+.tp-input {
+  &:extend(.input-group);
+  float: none;
+  padding-left: 0;
+  padding-right: 0;
+  @media (min-width: 768px) {
+    width: 83%;
+  }
+  @media (min-width: 992px) {
+    width: 72%;
+  }
+}
+
+// Label for full-width input in 2 column section
+.tp-label-1-row-2-col {
+  &:extend(.control-label);
+  .make-sm-column(2);
+  padding-left: 0;
+  vertical-align: top;
+  @media (min-width: 768px) {
+    text-align: right;
+    margin-bottom: 0;
+    padding-top: 7px;
+  }
+  @media (min-width: 992px) {
+    width: 13.666%;
+  }
+}
+
+// Full-width input in 2 column section
+.tp-input-1-row-2-col {
+  &:extend(.input-group);
+  min-height: 1px;
+  @media (min-width: 768px) {
+    float: left;
+    width: 83%;
+  }
+  @media (min-width: 992px) {
+    width: 85.7%;
+  }
+}

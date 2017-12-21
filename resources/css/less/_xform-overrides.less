@@ -1,0 +1,108 @@
+// xform overrides
+.widgetContainer {
+  display: block;
+  height: @input-height;
+  select {
+    height: @input-height;
+  }
+  input[type=checkbox] {
+    @checkboxmargin: (@input-height - 14px) / 2; // checkbox height = 14px
+    margin: @checkboxmargin 0;
+  }
+}
+
+.xfControl {
+  font-family: @font-family-default;
+}
+
+.bfCheckBoxGroup {
+  .xfSelectorItem {
+    margin: 0 2rem 0 0;
+  }
+}
+
+.xfRepeatItem {
+  padding: 0;
+  .xfControl {
+    clear: none;
+  }
+  .xfLabel {
+    &:extend(.input-group-addon);
+  }
+}
+
+span.xfControl {
+  display: none;
+}
+
+// Label for repeat groups
+.xfGroupLabel {
+  font-weight: bold;
+}
+
+// (Delete) Right buttons in repeat groups
+.tp-repeat-button-right {
+  span.xfTrigger {
+    margin-left: auto;
+  }
+}
+
+// checkbox groups
+.xfItemset {
+  display: inline-block;
+  .xfSelectorItem {
+    display: inline-block;
+  }
+}
+
+// tundra.css override:
+// prevent replicant contents from being clipped
+.dijitContentPane {
+  overflow: visible;
+}
+
+// Alert messages in "select2" inputs, hide xform css, show only its alertbox
+.tp-validation {
+  div.xfInvalid,
+  .r-auxiliary-1,
+  .r-auxiliary-2,
+  .r-auxiliary-3,
+  .r-auxiliary-4,
+  .r-auxiliary-5,
+  .r-auxiliary-6,
+  .r-auxiliary-7,
+  .r-auxiliary-8,
+  .r-name-1,
+  .r-name-2,
+  .r-name-3,
+  .r-name-4,
+  .r-name-5,
+  .r-name-6,
+  .r-name-7,
+  .r-name-8,
+  .r-primarySource-1,
+  .r-primarySource-2,
+  .r-primarySource-3,
+  .r-primarySource-4,
+  .r-primarySource-5,
+  .r-primarySource-6,
+  .r-primarySource-7,
+  .r-primarySource-8 {
+    position: absolute;
+    top: -31px;
+    left: 153px;
+    z-index: 15;
+
+    label.aDefault.xfEnabled {
+      display: none;
+    }
+    label.xfLabel {
+      display: none !important;
+    }
+  }
+
+  input.custom-alert {
+    opacity: 0;
+    width: 0;
+  }
+}
