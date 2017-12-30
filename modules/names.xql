@@ -172,7 +172,7 @@ function names:entry-morpheme-functions($entry as node(), $type as xs:string) {
     return 
         <span>
             {attribute class {$class}}
-            {string-join($functions, codepoints-to-string(8212))}
+            {if (count($functions)) then <span style="font-weight: bold;">{string-join($functions, codepoints-to-string(8212))}</span> else ()}
             {if($parens) then (<br/>, $parens) else ()}
             {if($compounds) 
                 then 
