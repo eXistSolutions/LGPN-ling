@@ -164,15 +164,20 @@ function names:entry-morpheme-functions($entry as node(), $type as xs:string) {
     
     let $labels := doc($config:dictionaries-root || '/classification.xml')
     let $morphemes := for $m in $typeMorphemes return 
-        ($m/@subtype, if(string($m/@ana)) then $m/@ana else ())
+        ($m/@subtype, if (string($m/@ana)) then $m/@ana else ())
     let $headedness := string-join(($morphemes , $labels//id($entry/@type)), '')
     let $other := $entry/@ana
-    let $parens := if(string($headedness) or string($other)) then '(' || string-join(($headedness, if(string($other)) then $other else ()), ' ') || ')' else ()
+    let $parens := if(string($headedness) or string($other)) then string-join(($headedness, if(string($other)) then $other else ()), ' ') else ()
+    let $compounds := for $m in $typeMorphemes/descendant-or-self::TEI:m[@corresp ne ''] return $m/@cert || $m/@corresp
     return 
         <span>
             {attribute class {$class}}
             {string-join($functions, codepoints-to-string(8212))}
             {if($parens) then (<br/>, $parens) else ()}
+            {if($compounds) 
+                then 
+                    <span style="font-size: 0.8em;"><br/>e.g. {string-join($compounds, ', ')}</span>
+                else ()}
         </span>
 };
 
