@@ -73,6 +73,29 @@ function names:entry-form($entry as node(), $langId as xs:string) {
         </span>
 };
 
+declare
+function names:entry-nameVariants($entry as node()) {
+    let $pos := count($entry/preceding-sibling::TEI:gramGrp[@type='segmentation'])
+    let $bold := 'font-weight: bold;'
+
+    let $content := data($entry/parent::TEI:entry//TEI:orth[@type='greek'][1])
+    let $variants := for $v in $entry/parent::TEI:entry//TEI:form[@type='variant']
+        return $v/TEI:orth/string() || '(' || $v/TEI:gen/string() || ')'
+    
+    let $nV := if (count($variants))    then 
+            (<hr/>, $variants)
+        else 
+            ()
+
+
+
+    return 
+        <span>
+            {attribute style {$bold}}
+            {$content}
+        </span>
+};
+
 (:declare:)
 (:function names:entry-stripped($entry as node(), $lang as xs:string) {:)
 (:    replace(normalize-unicode($entry/parent::TEI:entry//TEI:orth[@type=$lang]/string(), 'NFD'), '[\p{M}\p{Sk}]', ''):)
@@ -81,14 +104,29 @@ function names:entry-form($entry as node(), $langId as xs:string) {
 declare
 function names:entry-dialect($entry as node(), $lang as xs:string?) {
     let $pos := count($entry/preceding-sibling::TEI:gramGrp[@type='segmentation'])
-    let $labels := tokenize($entry/parent::TEI:entry//TEI:usg, '\s+')
+    let $labels := $entry/parent::TEI:entry//TEI:gramGrp[@type='classification']/TEI:usg
     let $dialects :=
         for $e in doc($config:taxonomies-root || "/dialects.xml")//TEI:category[@xml:id=$labels]/TEI:catDesc
         (: filtering moved to output because otherwise an error occurs :)
         return $e[@ana="full"][@xml:lang='en']
     
     let $content:= string-join($dialects, ', ')
-    return $content
+    
+        let $variants := for $v in $entry/parent::TEI:entry//TEI:form[@type='variant']
+        return (
+            <br/> ,
+            $v/TEI:orth/string() || ' (' || 
+            string-join(($v/TEI:gen,  doc($config:taxonomies-root || "/dialects.xml")//TEI:category[@xml:id=$v/TEI:usg]/TEI:catDesc[@ana="full"][@xml:lang='en']), ', ') 
+            || ')'
+            )
+    
+        let $nV := if (count($variants))    then 
+            $variants
+        else 
+            ()
+
+
+    return <div>{$content} <span class='dimmed'> {$nV} </span> </div>
 (:        if($pos) then <span class="invisible">{$content}</span> else $content:)
 };
 

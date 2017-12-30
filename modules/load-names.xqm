@@ -111,7 +111,7 @@ let $orderby := local:orderBy($offset+number($ordInd), $ordDir)
             (
                 if($offset=0) then map:entry(0, names:entry-action($i, '')) else (),
                 map:entry($offset+1, names:entry-form($i, 'h-variant')),
-                map:entry($offset+2, names:entry-form($i, 'greek')),
+                map:entry($offset+2, names:entry-nameVariants($i)),
                 map:entry($offset+3, names:entry-attestations($i)),
                 map:entry($offset+4, names:entry-gender($i)),
                 map:entry($offset+5, names:entry-dialect($i, $lang)),
