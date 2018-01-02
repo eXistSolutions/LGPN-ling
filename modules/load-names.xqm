@@ -13,20 +13,9 @@ import module namespace console="http://exist-db.org/xquery/console" at "java:or
 declare option output:method "json";
 declare option output:media-type "text/javascript";
 
-(:draw=37:)
-(:columns%5B0%5D%5Bdata%5D=0:)
-(:columns%5B0%5D%5Bname%5D=:)
-(:columns%5B0%5D%5Bsearchable%5D=true:)
-(:columns%5B0%5D%5Borderable%5D=true:)
-(:columns%5B0%5D%5Bsearch%5D%5Bvalue%5D=:)
-(:columns%5B0%5D%5Bsearch%5D%5Bregex%5D=false:)
-(:order%5B0%5D%5Bcolumn%5D=2:)
-(:order%5B0%5D%5Bdir%5D=asc:)
-(:start=0:)
-(:length=50:)
 declare function local:orderBy($index, $dir) {
     let $direction := if ($dir='desc') then ' descending' else ()
-let $c:= console:log($index)
+    (:let $c:= console:log($index):)
 
     let $orderBy :=
     switch($index)
@@ -40,7 +29,7 @@ let $c:= console:log($index)
         return "root($i)//tei:change[last()]/@when"
 (:        return 'replace($i/parent::tei:entry//tei:orth[@type="greek"][1],  "[\p{M}\p{Sk}]", "")' :)
 
-let $c:= console:log($orderBy)
+    (:let $c:= console:log($orderBy):)
 
     let $collation:= 
         switch($index)
@@ -57,9 +46,7 @@ let $c:= console:log($orderBy)
 };
 
 let $setuser :=  login:set-user("org.exist.lgpn-ling", (), false())
-(:let $setuser := 'edouard':)
 
-(:let $search := request:get-parameter('search', ''):)
 let $search := if (request:get-parameter('search[value]', '')) then request:get-parameter('search[value]', '') else ''
 
 let $recordsTotal := count(collection($config:names-root)//tei:gramGrp[@type='segmentation'])
@@ -88,18 +75,15 @@ let $collection := 'collection($config:names-root)//tei:orth[
 
 
 let $roff:=$offset+number($ordInd)
-let $c:=console:log($roff)
+(:let $c:=console:log($roff):)
 let $orderby := local:orderBy($offset+number($ordInd), $ordDir)
-
-(:  let $c:= console:log($ordInd || ' ' || $ordDir):)
-
 
     let $query :=
     'for $i in ' || $collection ||
     ' order by ' || $orderby ||
     ' return $i'
   
-  let $c:= console:log($query)
+(:  let $c:= console:log($query):)
     
     let $selection := util:eval($query)
     let $lang:=request:get-parameter('lang', 'fr')
@@ -107,42 +91,9 @@ let $orderby := local:orderBy($offset+number($ordInd), $ordDir)
     let $results :=
     for $i in subsequence($selection, $start, $end)
         return 
-    map:new( 
-            (
-                if($offset=0) then map:entry(0, names:entry-action($i, '')) else (),
-                map:entry($offset+1, names:entry-form($i, 'h-variant')),
-                map:entry($offset+2, names:entry-nameVariants($i)),
-                map:entry($offset+3, names:entry-attestations($i)),
-                map:entry($offset+4, names:entry-gender($i)),
-                map:entry($offset+5, names:entry-dialect($i, $lang)),
-                map:entry($offset+6, names:entry-period($i)),
+            names:entry($offset, $i)
 
-(:                map:entry($offset+7, names:entry-period($i)),:)
-(:                map:entry($offset+8, names:entry-period($i)),:)
-(:                map:entry($offset+9, names:entry-period($i)),:)
-(:                map:entry($offset+10, names:entry-period($i)),:)
-(:                map:entry($offset+11, names:entry-period($i)),:)
-(:                map:entry($offset+12, names:entry-period($i)),:)
-(:                map:entry($offset+13, names:entry-period($i)),:)
-
-                
-                map:entry($offset+7, names:entry-morpheme($i, 'prefix', 1)),
-                map:entry($offset+8, names:entry-morpheme($i, 'radical', 1)),
-                map:entry($offset+9, names:entry-morpheme($i, 'radical', 2)),
-                map:entry($offset+10, names:entry-morpheme($i, 'suffix', 4)),
-                map:entry($offset+11, names:entry-morpheme($i, 'suffix', 3)),
-                map:entry($offset+12, names:entry-morpheme($i, 'suffix', 2)),
-                map:entry($offset+13, names:entry-morpheme($i, 'suffix', 1)),
-                map:entry($offset+14, names:entry-morpheme-functions($i, 'radical')),
-                map:entry($offset+15, names:entry-semantics($i, $lang)),
-                map:entry($offset+16, names:entry-bibl($i, ('source', 'auxiliary'))),
-                map:entry($offset+17, names:entry-bibl($i, ('linguistic', 'modern'))),
-                map:entry($offset+18, names:entry-updated($i)),
-                if($offset=0) then map:entry($offset+19, names:entry-action($i, 'delete')) else ()
-            )
-    )
-
-let $recordsFiltered := count($selection)
+    let $recordsFiltered := count($selection)
 
 		return map {
 			"draw" := $draw,

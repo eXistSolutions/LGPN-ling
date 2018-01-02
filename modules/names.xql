@@ -59,11 +59,6 @@ function names:entry-form($entry as node(), $langId as xs:string) {
     let $first :=  if ($pos) then 'dimmed' else () 
 
     let $content := data($entry/parent::TEI:entry//TEI:orth[@type=$langId][1])
-    let $h-variant := if($langId='h-variant') 
-        then 
-            <span class="invisible">{replace($entry/parent::TEI:entry//TEI:orth[@type='h-variant'][1], "(\(\w*\))", "")}</span> 
-        else 
-            ()
 
     return 
         <span>
@@ -79,20 +74,17 @@ function names:entry-nameVariants($entry as node()) {
     let $bold := 'font-weight: bold;'
 
     let $content := data($entry/parent::TEI:entry//TEI:orth[@type='greek'][1])
-    let $variants := for $v in $entry/parent::TEI:entry//TEI:form[@type='variant']
-        return $v/TEI:orth/string() || '(' || $v/TEI:gen/string() || ')'
-    
-    let $nV := if (count($variants))    then 
-            (<hr/>, $variants)
+    let $lgpn :=  if ($entry/parent::TEI:entry//TEI:orth[@type='lgpn'][string(.)])
+        then 
+            <span class="dimmed"><br/>{'{' || replace($entry/parent::TEI:entry//TEI:orth[@type='lgpn'], "(\(\w*\))", "") || '}' }</span> 
         else 
             ()
-
-
 
     return 
         <span>
             {attribute style {$bold}}
             {$content}
+            {$lgpn}
         </span>
 };
 
@@ -103,30 +95,14 @@ function names:entry-nameVariants($entry as node()) {
 
 declare
 function names:entry-dialect($entry as node(), $lang as xs:string?) {
-    let $pos := count($entry/preceding-sibling::TEI:gramGrp[@type='segmentation'])
+(:    let $pos := count($entry/preceding-sibling::TEI:gramGrp[@type='segmentation']):)
     let $labels := $entry/parent::TEI:entry//TEI:gramGrp[@type='classification']/TEI:usg
     let $dialects :=
         for $e in doc($config:taxonomies-root || "/dialects.xml")//TEI:category[@xml:id=$labels]/TEI:catDesc
         (: filtering moved to output because otherwise an error occurs :)
         return $e[@ana="full"][@xml:lang='en']
     
-    let $content:= string-join($dialects, ', ')
-    
-        let $variants := for $v in $entry/parent::TEI:entry//TEI:form[@type='variant']
-        return (
-            <br/> ,
-            $v/TEI:orth/string() || ' (' || 
-            string-join(($v/TEI:gen,  doc($config:taxonomies-root || "/dialects.xml")//TEI:category[@xml:id=$v/TEI:usg]/TEI:catDesc[@ana="full"][@xml:lang='en']), ', ') 
-            || ')'
-            )
-    
-        let $nV := if (count($variants))    then 
-            $variants
-        else 
-            ()
-
-
-    return <div>{$content} <span class='dimmed'> {$nV} </span> </div>
+    return string-join($dialects, ', ')
 (:        if($pos) then <span class="invisible">{$content}</span> else $content:)
 };
 
@@ -139,6 +115,77 @@ function names:entry-attestations($entry as node()) {
 
     return 
         if($pos) then <span class="invisible">{$content}</span> else $content
+};
+
+declare 
+function names:entry($offset, $i as node()) {
+    let $lang:=request:get-parameter('lang', 'fr')
+    return
+        map:new( 
+            (
+                if($offset=0) then map:entry(0, names:entry-action($i, '')) else (),
+                map:entry($offset+1, names:entry-form($i, 'h-variant')),
+                map:entry($offset+2, names:entry-nameVariants($i)),
+                map:entry($offset+3, names:entry-attestations($i)),
+                map:entry($offset+4, names:entry-gender($i)),
+                map:entry($offset+5, names:entry-dialect($i, $lang)),
+                map:entry($offset+6, names:entry-period($i)),
+
+
+                map:entry($offset+7, names:entry-morpheme($i, 'prefix', 1)),
+                map:entry($offset+8, names:entry-morpheme($i, 'radical', 1)),
+                map:entry($offset+9, names:entry-morpheme($i, 'radical', 2)),
+                map:entry($offset+10, names:entry-morpheme($i, 'suffix', 4)),
+                map:entry($offset+11, names:entry-morpheme($i, 'suffix', 3)),
+                map:entry($offset+12, names:entry-morpheme($i, 'suffix', 2)),
+                map:entry($offset+13, names:entry-morpheme($i, 'suffix', 1)),
+                map:entry($offset+14, names:entry-morpheme-functions($i, 'radical')),
+                map:entry($offset+15, names:entry-semantics($i, $lang)),
+                map:entry($offset+16, names:entry-bibl($i, ('source', 'auxiliary'))),
+                map:entry($offset+17, names:entry-bibl($i, ('linguistic', 'modern'))),
+                map:entry($offset+18, names:entry-updated($i)),
+                if($offset=0) then map:entry($offset+19, names:entry-action($i, 'delete')) else ()
+            )
+    ),
+    for $v in $i/parent::TEI:entry//TEI:form[@type='variant']
+        return names:variantEntry($offset, $v)
+
+};
+
+declare 
+function names:variantEntry($offset, $i as node()) {
+    let $lang:=request:get-parameter('lang', 'fr')
+    return
+        map:new( 
+            (
+                if($offset=0) then map:entry(0, '') else (),
+                map:entry($offset+1, ''),
+                map:entry($offset+2, <span class='dimmed'>{$i/TEI:orth/string()}</span>),
+                map:entry($offset+3, ''),
+                map:entry($offset+4, <span class='dimmed'>{$i/TEI:gen/string()}</span>),
+                map:entry($offset+5, <span class='dimmed'>{
+                string-join(
+                    doc($config:taxonomies-root || "/dialects.xml")//TEI:category[@xml:id=$i/TEI:usg]/TEI:catDesc[@ana="full"][@xml:lang='en']
+                    , ', ')}</span>),
+                map:entry($offset+6, ''),
+
+
+                map:entry($offset+7, ''),
+                map:entry($offset+8, ''),
+                map:entry($offset+9, ''),
+                map:entry($offset+10, ''),
+                map:entry($offset+11, ''),
+                map:entry($offset+12, ''),
+                map:entry($offset+13, ''),
+                map:entry($offset+14, ''),
+                map:entry($offset+15, ''),
+                map:entry($offset+16, ''),
+                map:entry($offset+17, ''),
+                map:entry($offset+18, ''),
+                if($offset=0) then map:entry($offset+19, '') else ()
+            )
+    )
+
 };
 
 declare
