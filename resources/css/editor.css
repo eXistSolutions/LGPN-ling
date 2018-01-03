@@ -1,10 +1,21 @@
+/**
+ * THIS IS A GENERATED FILE
+ * to make changes edit
+ * /exist/apps/lgpn-ling/resources/css/editor.less
+ */
+
 body {
   background: #FFF;
   font-family: "Arial Unicode MS", Helvetica, Arial, sans-serif;
   /* FIX bootstrap for betterform */
 }
-body input {
-  font-family: "Arial Unicode MS", Helvetica, Arial, sans-serif;
+body .dimmed {
+  color: #aaa;
+  font-size: 0.9em;
+}
+body .relative {
+  color: #aaa;
+  font-size: 0.9em;
 }
 body fieldset {
   border: 1px solid #EEE;
@@ -77,11 +88,4 @@ body .input-group .tagit li {
 }
 body .xfRequired > .xfLabel::after {
   content: "" !important;
-}
-body .invisible {
-  display: none;
-}
-body .dimmed {
-  color: #aaa;
-  font-size: 0.9em;
 }

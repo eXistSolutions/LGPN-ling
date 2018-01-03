@@ -53,18 +53,32 @@ function names:entry-updated($entry as node()) {
 };
 
 declare
-function names:entry-form($entry as node(), $langId as xs:string) {
+function names:entry-transliterated($entry as node()) {
     let $pos := count($entry/preceding-sibling::TEI:gramGrp[@type='segmentation'])
-    let $bold := if ($langId='greek') then 'font-weight: bold;' else ()
     let $first :=  if ($pos) then 'dimmed' else () 
 
-    let $content := data($entry/parent::TEI:entry//TEI:orth[@type=$langId][1])
+    let $content := data($entry/parent::TEI:entry//TEI:orth[@type='h-variant'][1])
+    let $gpr := if ($entry/parent::TEI:entry//TEI:gramGrp[@type='classification']/TEI:gram[@type='GPR'][.='GPR']) 
+                then
+                    <span class="dimmed">GPR</span>
+                else
+                    ()
+    let $fictitious := if ($entry/parent::TEI:entry//TEI:gramGrp[@type='classification']/TEI:gram[@type='fictitious'][.='fictitious']) 
+                then
+                    <span class="dimmed">fict.</span>
+                else
+                    ()
+    let $relative := 
+        for $re in $entry/parent::TEI:entry/TEI:re[string(.)]
+        return <span class="relative"><br/>{$re/TEI:form} {$re/TEI:orth}</span>
 
     return 
         <span>
-            {attribute style {$bold}}
             {attribute class {$first}}
+            {$gpr}
             {$content}
+            {$fictitious}
+            {$relative}
         </span>
 };
 
@@ -124,7 +138,7 @@ function names:entry($offset, $i as node()) {
         map:new( 
             (
                 if($offset=0) then map:entry(0, names:entry-action($i, '')) else (),
-                map:entry($offset+1, names:entry-form($i, 'h-variant')),
+                map:entry($offset+1, names:entry-transliterated($i)),
                 map:entry($offset+2, names:entry-nameVariants($i)),
                 map:entry($offset+3, names:entry-attestations($i)),
                 map:entry($offset+4, names:entry-gender($i)),
@@ -251,7 +265,7 @@ function names:entry-morpheme-functions($entry as node(), $type as xs:string) {
     let $morphemes := for $m in $typeMorphemes return 
         ($m/@subtype, if (string($m/@ana)) then $m/@ana else ())
     let $headedness := string-join(($morphemes , $labels//id($entry/@type)), '')
-    let $other := $entry/@ana
+    let $other :=  doc("/db/apps/lgpn-ling/resources/xml/classification.xml")//id($entry/@subtype)/string()
     let $parens := if(string($headedness) or string($other)) then string-join(($headedness, if(string($other)) then $other else ()), ' ') else ()
     let $compounds := for $m in $typeMorphemes/descendant-or-self::TEI:m[@corresp ne ''] return $m/@cert || $m/@corresp
     return 
@@ -308,6 +322,7 @@ function names:entry-bibl($entry as node(), $types as item()*) {
         for $e in $entry//TEI:cit[@type=$types][string(.)]
         let $source := names:reference-entry($e, 'cit')
         return <p>{$source}</p>
+
 
     return 
 (:        if($pos) then <span class="invisible">{$content}</span> else :)
