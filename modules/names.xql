@@ -179,7 +179,7 @@ function names:variantEntry($offset, $i as node()) {
                 map:entry($offset+4, <span class='dimmed'>{$i/TEI:gen/string()}</span>),
                 map:entry($offset+5, <span class='dimmed'>{
                 string-join(
-                    doc($config:taxonomies-root || "/dialects.xml")//TEI:category[@xml:id=$i/TEI:usg]/TEI:catDesc[@ana="full"][@xml:lang='en']
+                    concat(doc($config:taxonomies-root || "/dialects.xml")//TEI:category[@xml:id=$i/TEI:usg]/TEI:catDesc[@ana="full"][@xml:lang='en'], if($i/TEI:usg/@cert = 'low') then '?' else '')
                     , ', ')}</span>),
                 map:entry($offset+6, ''),
 
