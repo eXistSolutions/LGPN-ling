@@ -1,0 +1,40 @@
+#bibl,
+.bibl {
+  .tp-section:not(.tp-section-save) {
+    .tp-width-main {
+      padding-bottom: .5rem;
+    }
+  }
+  .form-group {
+    margin-bottom: 2.4rem;
+  }
+  .form-horizontal {
+    .tp-row:last-child {
+      &> div.tp-form-group-col {
+        margin-bottom: 2.4rem;
+      }
+    }
+  }
+  // xform override only for columns attribute in bibl form
+  .xfItemset, .xfItemset .xfSelectorItem {
+    display: table;
+  }
+}
+
+// Multiple column layout for checkboxes
+.tp-checkbox-cols {
+  .widgetContainer {
+    display: table-cell;
+    @media (min-width: @screen-xs-min) {
+      -webkit-columns: 200px 2;
+      -moz-columns: 200px 2;
+      columns: 200px 2;
+    }
+    @media (min-width: @screen-sm-min) {
+      -webkit-columns: 200px 3;
+      -moz-columns: 200px 3;
+      columns: 200px 3;
+    }
+  }
+}
+

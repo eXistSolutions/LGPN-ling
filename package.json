@@ -1,0 +1,33 @@
+{
+  "name": "lgpn-ling",
+  "version": "1.0.0",
+  "description": "Lexicon of Greek personal names - Editor interface for linguistic part",
+  "main": "gulpfile.js",
+  "dependencies": {},
+  "devDependencies": {
+    "del": "^3.0.0",
+    "gulp-exist": "^1.4.2",
+    "gulp-less": "^3.3.2",
+    "gulp-newer": "^1.3.0",
+    "gulp-sourcemaps": "^2.6.1",
+    "less-plugin-autoprefix": "^1.5.1",
+    "less-plugin-clean-css": "^1.5.1",
+    "path": "^0.12.7"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "update": "npm update && bower update && gulp build",
+    "start": "npm install --quiet && bower install --quiet && gulp",
+    "gulp": "gulp default"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eXistSolutions/LGPN-ling.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/eXistSolutions/LGPN-ling/issues"
+  },
+  "homepage": "https://github.com/eXistSolutions/LGPN-ling#readme"
+}

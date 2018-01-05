@@ -1,0 +1,77 @@
+//******** Base ********//
+
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 100%; // 16px = 1rem
+}
+
+body {
+  background: @color-body-bg;
+  color: @text-color;
+  padding: 0;
+  margin: 0;
+  position: relative;
+  cursor: auto;
+}
+
+// Hack for clearfixes
+.lt-ie9 {
+  * {
+    filter: none !important;
+  }
+}
+
+[aria-hidden=true] {
+  display: none !important;
+}
+
+
+ul, ol, dl {
+  margin-bottom: 1.25rem;
+  list-style-position: outside;
+}
+
+ul, ol {
+  margin-left: 20px;
+  padding: 0;
+}
+
+ul {
+  list-style-type: none;
+}
+
+li {
+  margin-left: 0;
+}
+
+.left {
+  float: left !important;
+}
+
+.list-plain {
+  list-style-type: none;
+}
+
+a {
+  color: inherit;
+  &:hover,
+  &:active {
+    color: @link-hover-color;
+  }
+}
+
+hr {
+  border-color: @colorGraduateNavyBlue;
+}
+
+* {
+  &:focus,
+  &:active {
+    outline: none !important;
+  }
+}

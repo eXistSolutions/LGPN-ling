@@ -1,0 +1,13 @@
+# IntelliJ project files
+.idea
+
+# Build artifacts
+/build/
+/resources/css/style.css
+/resources/fonts/
+/resources/js/vendor/bootstrap.min.js
+/resources/js/vendor/jquery.min.js
+
+# Dev Packages
+/bower_components/
+/node_modules/

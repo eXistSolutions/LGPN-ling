@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <app>
+        <name>LGPN-Ling</name>
+        <description>List of Greek Personal Names - Editor interface for linguistic part</description>
+        <version>1.1.0</version>
+        <url>http://exist-db.org/apps/lgpn-ling</url>
+        <status>alpha</status>
+        <permissions>rwxrwxrwx</permissions>
+    </app>
+    <user>
+        <name>lgpn</name>
+        <group>lgpn</group>
+    </user>
+    <!-- Path to executables: Don't directly modify this file. Instead, edit local.build.properties-->
+    <npm>/usr/local/bin/npm</npm>
+    <gulp>/usr/local/bin/gulp</gulp>
+</root>
