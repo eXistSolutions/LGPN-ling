@@ -17,7 +17,7 @@ After node is installed just run
     `git clone https://github.com/eXistSolutions/LGPN-ling.git` 
 
 1. Install dependencies for the front-end and automation tasks (`npm` & `bower`),
-    Build and copy javascripts, fonts, css and images into the *resources* folder (`gulp`) and
+    Build and copy javascripts, fonts and css into the *resources* folder (`gulp`) and
     generate the *.xar-package* inside the *build* directory
 
     `ant`
@@ -40,8 +40,16 @@ After node is installed just run
 
 ## Build
 
-`ant` builds XAR file after running npm install bower install and gulp (build)
+`ant` builds a XAR file after running `npm install`, `bower install` and `gulp (build)
 
+To check & install new packages where required and start gulp automation with:
 
-    
+`ant start`
 
+Update all packages and start gulp automation with command:
+
+`ant update`
+
+To start only a gulp build automation, run command:
+
+`ant gulp`
