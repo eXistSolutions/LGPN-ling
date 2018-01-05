@@ -40,7 +40,7 @@ After node is installed just run
 
 ## Build
 
-`ant` builds a XAR file after running `npm install`, `bower install` and `gulp (build)
+`ant` builds a XAR file after running `npm install`, `bower install` and `gulp` (build)
 
 To check & install new packages where required and start gulp automation with:
 
