@@ -25,7 +25,6 @@
                                         <orth type="latin"/>
                                         <orth type="h-variant"/>
                                         <orth type="lgpn"/>
-                                        <!--                                        <gen/> -->
                                         <date notBefore="" notAfter=""/>
                                     </form>
                                     <gramGrp type="classification">
@@ -82,7 +81,7 @@
                         </text>
                     </TEI>
                 </xf:instance>
-                <xf:bind nodeset="//TEI:orth[@type ='latin']" required="true()" type="xs:string"/><!--<xf:bind nodeset="TEI:m[@type = 'radical' and @n = 1]" ref="normalize-space(.)"/>-->
+                <xf:bind nodeset="//TEI:orth[@type ='latin']" required="true()" type="xs:string"/>
                 <xf:instance id="i-template">
                     <data xmlns="http://www.tei-c.org/ns/1.0">
                         <gramGrp cert="" ana="" type="segmentation" subtype="">
@@ -209,12 +208,7 @@
                     <xf:message ev:event="xforms-submit-done" level="ephemeral">Data have been saved.</xf:message>
                     <xf:message ev:event="xforms-submit-error">Failed to save data</xf:message>
                 </xf:submission>
-                <xf:submission id="s-reload-meanings" method="post" replace="instance" validate="false" resource="modules/reload-meanings.xql" ref="instance('i-default')//TEI:entry/TEI:gramGrp[@type='segmentation'][instance('i-meanings')/being-reloaded/@grp/number()]/TEI:m[@type = 'radical' and @n = instance('i-meanings')/being-reloaded/@n]" targetref="instance('i-meanings')/target/TEI:taxonomy"><!--
-                    <xf:header>
-                        <xf:name>userid</xf:name>
-                        <xf:value>admin</xf:value>
-                    </xf:header>
--->
+                <xf:submission id="s-reload-meanings" method="post" replace="instance" validate="false" resource="modules/reload-meanings.xql" ref="instance('i-default')//TEI:entry/TEI:gramGrp[@type='segmentation'][instance('i-meanings')/being-reloaded/@grp/number()]/TEI:m[@type = 'radical' and @n = instance('i-meanings')/being-reloaded/@n]" targetref="instance('i-meanings')/target/TEI:taxonomy">
                     <xf:action ev:event="xforms-submit-done">
                         <xf:action if="not(instance('i-meanings')/meaning[@grp=instance('i-meanings')/being-reloaded/@grp and @n=instance('i-meanings')/being-reloaded/@n])">
                             <xf:insert context="instance('i-meanings')" nodeset="*[last()]" origin="instance('i-meanings')/template/meaning"/>
