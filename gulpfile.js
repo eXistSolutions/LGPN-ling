@@ -155,22 +155,27 @@ gulp.task('watch:html', function () {
 
 // *************  XML Pages *************** //
 
-gulp.task('xml:deploy', function () {
+gulp.task('deploy:xml', function () {
     return gulp.src(input.xml, {base: './'})
         .pipe(exClient.newer(targetConfiguration))
         .pipe(exClient.dest(targetConfiguration))
+});
+
+// Watch xml files
+gulp.task('watch:xml', function () {
+   gulp.watch(input.xml, ['deploy:xml'])
 });
 
 // *************  General Tasks *************** //
 
 
 // Watch and deploy all changed files
-gulp.task('watch', ['watch:html', 'watch:styles', 'watch:scripts']);
+gulp.task('watch', ['watch:html', 'watch:styles', 'watch:scripts', 'watch:xml']);
 
 gulp.task('build', ['build:styles', 'fonts:copy', 'vendor_scripts:copy']);
 
 // Deploy files to existDB
-gulp.task('deploy', ['build:styles', 'fonts:deploy', 'deploy:scripts', 'xml:deploy'], function () {
+gulp.task('deploy', ['build:styles', 'fonts:deploy', 'deploy:scripts', 'deploy:xml'], function () {
     console.log('deploying files to local existdb');
     return gulp.src([
             'resources/css/style.css',
