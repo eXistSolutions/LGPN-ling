@@ -1,5 +1,5 @@
 /* Keep track of semantic tag controls */
-/*
+
  
  
 var controls = {};
@@ -23,8 +23,7 @@ $(document).ready(function () {
     $("#h-sem-on-4").change(function() {
         //alert( "Handler for .change() called." );
     });
-    
-    / *
+
     $.ajax({
         url: 'resources/json/dialects.json',
         datatype: 'json'
@@ -48,7 +47,7 @@ $(document).ready(function () {
     .fail(function() {
         alert("Could not load dialect tags.")
     });
-    * /
+
     $.ajax({
         url: 'modules/semantic.xql',
         dataType: 'json'
@@ -116,4 +115,3 @@ function clearAndInitSemantics() {
     destroySemantics();
     initSemantics();
 }
-*/
