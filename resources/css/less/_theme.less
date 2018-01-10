@@ -360,17 +360,22 @@ footer .poweredby img { width: 120px; }
 // Labels in form groups
 .tp-label {
   .make-sm-column(2);
-  &:extend(.control-label);
   padding-left: 0;
   vertical-align: top;
+  display: block;
+  width: auto;
+  float: none !important;
   @media (min-width: 768px) {
-    text-align: right;
+    width: auto;
     margin-bottom: 0;
-    padding-top: 7px;
   }
   @media (min-width: 992px) {
-    width: 27%;
+    width: auto;
   }
+}
+
+.input-group-addon {
+  display: none !important;
 }
 
 // Light help text next to inputs
@@ -386,14 +391,25 @@ footer .poweredby img { width: 120px; }
   min-height: @input-height;
   padding-left: 0;
   padding-right: 0;
+
+  // Inline input groups like checkboxes in one row
+  &.tp-inline {
+    label,
+    .widgetContainer {
+      display: inline;
+    }
+    label {
+      min-height: @input-height;
+    }
+  }
 }
 
 // Responsive input with search dropdown
 .tp-input {
-  &:extend(.input-group);
   float: none;
   padding-left: 0;
   padding-right: 0;
+  display: block;
   @media (min-width: 768px) {
     width: 83%;
   }
@@ -420,7 +436,6 @@ footer .poweredby img { width: 120px; }
 
 // Full-width input in 2 column section
 .tp-input-1-row-2-col {
-  &:extend(.input-group);
   min-height: 1px;
   @media (min-width: 768px) {
     float: left;

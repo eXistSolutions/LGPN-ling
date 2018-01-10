@@ -1,13 +1,19 @@
 // xform overrides
 .widgetContainer {
   display: block;
-  height: @input-height;
+  min-height: @input-height;
   select {
     height: @input-height;
   }
   input[type=checkbox] {
     @checkboxmargin: (@input-height - 14px) / 2; // checkbox height = 14px
-    margin: @checkboxmargin 0;
+  }
+}
+
+// Hide generated labels except for label-text after checkboxes
+.tp-input {
+  label:not(.xfCheckBoxLabel) {
+    display: none;
   }
 }
 
@@ -52,6 +58,15 @@ span.xfControl {
   display: inline-block;
   .xfSelectorItem {
     display: inline-block;
+  }
+}
+
+.tp-inline {
+  .xfItemset {
+    display: inline;
+    .xfSelectorItem {
+      display: inline;
+    }
   }
 }
 
