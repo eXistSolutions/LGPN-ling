@@ -264,7 +264,7 @@
             <!-- begin section general -->
             <section class="tp-section">
                 <div class="tp-row">
-                    <h2 class="tp-width-sidebar">General</h2>
+                    <h2 class="tp-width-sidebar">Name in Context</h2>
                     <div class="tp-width-main">
                         <fieldset class="form-horizontal" id="general">
                             <div class="tp-form-group-col">
@@ -508,18 +508,31 @@
 
                                     <xf:label/>
                                     <xf:group ref=".">
-                                        <xf:label/>
                                         <div class="tp-row">
-                                            <div class="tp-form">
-                                                <label class="tp-label">Gender</label>
-                                                <xf:select1 class="tp-input -form-control" ref="TEI:gen">
-                                                    <xf:label class="input-group-addon"/>
-                                                    <xf:itemset nodeset="instance('i-genders')//TEI:category">
-                                                        <xf:label ref="TEI:catDesc[@xml:lang='en'][@ana='short']"/>
-                                                        <xf:value ref="@xml:id"/>
-                                                    </xf:itemset>
-                                                </xf:select1>
-                                            </div>
+                                            <div class="tp-form-group-col">
+                                            <label class="tp-label">Gender</label>
+                                            <xf:select1 class="tp-input -form-control" ref="TEI:gen">
+                                                <xf:label class="input-group-addon"/>
+                                                <xf:itemset nodeset="instance('i-genders')//TEI:category">
+                                                    <xf:label ref="TEI:catDesc[@xml:lang='en'][@ana='short']"/>
+                                                    <xf:value ref="@xml:id"/>
+                                                </xf:itemset>
+                                            </xf:select1>
+                                        </div>
+                                        </div>
+                                        <div class="tp-row">
+                                            <div class="tp-divider"></div>
+                                            <div class="tp-form-group-col">
+                                            <label class="tp-label tp-invisible">Reading of the form is uncertain</label>
+                                            <xf:select class="tp-input" ref="TEI:usg/@cert" appearance="full" incremental="true">
+                                                <xf:item>
+                                                    <xf:label>?</xf:label>
+                                                    <xf:value>low</xf:value>
+                                                </xf:item>
+                                            </xf:select>
+                                        </div>
+                                        </div>
+                                        <div class="tp-row">
                                             <div class="tp-form-group-col">
                                                 <label class="tp-label">Form</label>
                                                 <xf:input class="tp-input -form-control" ref="TEI:orth">
@@ -527,7 +540,7 @@
                                                 </xf:input>
                                             </div>
                                             <div class="tp-form-group-col">
-                                                <label class="tp-label">Form: Uncertain</label>
+                                                <label class="tp-label">Linking of form is uncertain</label>
                                                 <xf:select class="tp-input" ref="TEI:usg/@cert" appearance="full" incremental="true">
                                                     <xf:item>
                                                         <xf:label>?</xf:label>
@@ -535,7 +548,9 @@
                                                     </xf:item>
                                                 </xf:select>
                                             </div>
-
+                                        </div>
+                                        <div class="tp-row">
+                                            <div class="tp-divider"></div>
                                             <div class="tp-form-group-col">
                                                 <label class="tp-label">Dialect</label>
                                                 <xf:select1 class="tp-input -form-control" ref="TEI:usg">
@@ -547,7 +562,7 @@
                                                 </xf:select1>
                                             </div>
                                             <div class="tp-form-group-col">
-                                                <label class="tp-label">Dialect: Uncertain</label>
+                                                <label class="tp-label">Dialect is uncertain</label>
                                                 <xf:select class="tp-input" ref="TEI:usg/@cert" appearance="full" incremental="true">
                                                     <xf:item>
                                                         <xf:label>?</xf:label>
@@ -555,22 +570,25 @@
                                                     </xf:item>
                                                 </xf:select>
                                             </div>
-                                            <div class="tp-row tp-repeat-buttons">
-                                                <div class="tp-repeat-button-right">
-                                                    <div class="tp-button-row tp-delete">
-                                                        <label>Delete name variant</label>
-                                                        <xf:trigger class="-btn -btn-default">
-                                                            <xf:label class="input-group-addon">
-                                                                <i class="glyphicon glyphicon-trash"/>
-                                                            </xf:label>
-                                                            <xf:delete nodeset="//TEI:form[@type='variant'][index('r-nameVariant')]"/>
-                                                        </xf:trigger>
-                                                    </div>
+                                        </div>
+                                        <xf:label/>
+                                        <div class="tp-row tp-repeat-buttons">
+                                            <div class="tp-repeat-button-right">
+                                                <div class="tp-button-row tp-delete">
+                                                    <label>Delete name variant</label>
+                                                    <xf:trigger class="-btn -btn-default">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-trash"/>
+                                                        </xf:label>
+                                                        <xf:delete nodeset="//TEI:form[@type='variant'][index('r-nameVariant')]"/>
+                                                    </xf:trigger>
                                                 </div>
                                             </div>
                                         </div>
                                     </xf:group>
+
                                     <div class="tp-section-divider"/>
+
                                 </xf:repeat>
                             </xf:group>
                         </xf:group>
@@ -633,23 +651,13 @@
                                                         </xf:itemset>
                                                     </xf:select1>
                                                 </div>
-                                                <div class="tp-form-group-col">
-                                                    <label class="tp-label">Irrational</label>
-                                                    <xf:select class="tp-input" ref="@ana" appearance="full">
-                                                        <xf:label class="input-group-addon"/>
-                                                        <xf:itemset nodeset="instance('i-name-characteristic')//option">
-                                                            <xf:label ref="."/>
-                                                            <xf:value ref="."/>
-                                                        </xf:itemset>
-                                                    </xf:select>
-                                                </div>
                                             </div>
                                             <div class="tp-divider"></div>
 
                                             <div class="tp-row">
                                                 <div class="tp-form-group-col tp-validation">
                                                     <label class="tp-label">Preconstituent 1</label>
-                                                    <xf:input class="-custom-alert" ref="TEI:m[@type = 'prefix' and @n = 1]">
+                                                    <xf:input class="hidden" ref="TEI:m[@type = 'prefix' and @n = 1]">
                                                         <xf:action ev:event="constituent_autocomplete-callback">
                                                             <xf:setvalue ref="." value="event('termValue')"/>
                                                         </xf:action>
@@ -763,10 +771,7 @@
                                                 <div class="tp-form-group-col">
                                                     <label class="tp-label">TBD</label>
                                                     <xf:input class="tp-input -form-control" ref="TEI:m[@type = 'prefix' and @n = 1]/@corresp">
-                                                        <xf:label class="input-group-addon">
-                                                            <span class="glyphicon glyphicon-tag"/>
-                                                        </xf:label>
-                                                        <xf:hint>linked compound</xf:hint>
+                                                        <xf:hint>e.g. linked compound</xf:hint>
                                                     </xf:input>
                                                 </div>
                                             </div>
@@ -774,19 +779,33 @@
                                             <div class="tp-divider"/>
 
                                             <div class="tp-row">
+                                                <h4>Root</h4>
+
                                                 <div class="tp-form-group-col">
-                                                    <label class="tp-label">???</label>
-                                                    <xf:input class="tp-input -form-control" ref="TEI:m[@type = 'radical' and @n = 1]">
+                                                    <label class="tp-label">Constituent 1</label>
+                                                    <xf:input class="hidden" ref="TEI:m[@type = 'radical' and @n = 1]">
                                                         <xf:action ev:event="constituent_autocomplete-callback">
                                                             <xf:setvalue ref="." value="event('termValue')"/>
                                                         </xf:action>
                                                         <xf:label class="input-group-addon">constituent 1</xf:label>
                                                         <xf:alert>no whitespace allowed</xf:alert>
                                                     </xf:input>
-                                                    <input type="hidden" data-function="constituent_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
+                                                    <input type="hidden" class="tp-input" data-function="constituent_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
+
+                                                    <!-- TODO: Edit correct ref + value in <xf:setvalue/> and name + targetID in <xf:dispatch/> if necessary -->
+                                                    <xf:trigger class="hidden constituent_autocomplete-callback">
+                                                        <xf:label/>
+                                                        <xf:action ev:event="DOMActivate">
+                                                            <xf:setvalue ref="" value=""/>
+                                                            <xf:dispatch name="" targetid=""/>
+                                                        </xf:action>
+                                                    </xf:trigger>
+
                                                 </div>
+
                                                 <div class="tp-form-group-col">
-                                                    <xf:input class="tp-input -form-control" ref="TEI:m[@type = 'radical' and @n = 1]/@baseForm">
+                                                    <label class="tp-label">Root 1</label>
+                                                    <xf:input class="hidden" ref="TEI:m[@type = 'radical' and @n = 1]/@baseForm">
                                                         <xf:action ev:event="autocomplete-callback">
                                                             <xf:setvalue ref="." value="event('termValue')"/>
                                                         </xf:action>
@@ -797,29 +816,41 @@
                                                             <xf:send submission="s-reload-meanings"/>
                                                         </xf:action>
                                                     </xf:input>
-                                                    <input type="hidden" data-function="autocomplete" placeholder="Type to search ..." autocomplete="off"/>
-                                                    <xf:trigger class="-btn -btn-default">
-                                                        <xf:label class="input-group-addon">
-                                                            <i class="glyphicon glyphicon-plus"/>
-                                                        </xf:label>
-                                                        <xf:action ev:event="DOMActivate">
-                                                            <xf:setvalue ref="instance('i-controller')/morpheme" value="instance('i-default')//TEI:gramGrp[@type='segmentation'][index('r-gramGrp')]/TEI:m[@type = 'radical' and @n = 1]/@baseForm"/>
-                                                            <xf:dispatch name="load-subform-event" targetid="load-subform-group"/>
-                                                        </xf:action>
-                                                    </xf:trigger>
+                                                    <input type="hidden" class="tp-input" data-function="autocomplete" placeholder="Type to search ..." autocomplete="off"/>
+
+                                                    <div class="tp-row tp-repeat-buttons">
+                                                        <div class="tp-repeat-button-right">
+                                                            <div class="tp-button-row tp-add">
+                                                                <label>Add meaning</label>
+                                                                <xf:trigger class="-btn -btn-default">
+                                                                    <xf:label class="input-group-addon">
+                                                                        <i class="glyphicon glyphicon-plus"/>
+                                                                    </xf:label>
+                                                                    <xf:action ev:event="DOMActivate">
+                                                                        <xf:setvalue ref="instance('i-controller')/morpheme" value="instance('i-default')//TEI:gramGrp[@type='segmentation'][index('r-gramGrp')]/TEI:m[@type = 'radical' and @n = 1]/@baseForm"/>
+                                                                        <xf:dispatch name="load-subform-event" targetid="load-subform-group"/>
+                                                                    </xf:action>
+                                                                </xf:trigger>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
+
                                                 <div class="tp-form-group-col">
-                                                    <xf:input class="tp-input -form-control" ref="TEI:m[@type = 'radical' and @n = 2]">
+                                                    <label class="tp-label">Constituent 2</label>
+                                                    <xf:input class="hidden" ref="TEI:m[@type = 'radical' and @n = 2]">
                                                         <xf:action ev:event="constituent_autocomplete-callback">
                                                             <xf:setvalue ref="." value="event('termValue')"/>
                                                         </xf:action>
                                                         <xf:label class="input-group-addon">constituent 2</xf:label>
                                                         <xf:alert>no whitespace allowed</xf:alert>
                                                     </xf:input>
-                                                    <input type="hidden" data-function="constituent_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
+                                                    <input type="hidden" class="tp-input" data-function="constituent_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
                                                 </div>
+
                                                 <div class="tp-form-group-col">
-                                                    <xf:input class="tp-input -form-control" ref="TEI:m[@type = 'radical' and @n = 2]/@baseForm">
+                                                    <label class="tp-label">Root 2</label>
+                                                    <xf:input class="hidden" ref="TEI:m[@type = 'radical' and @n = 2]/@baseForm">
                                                         <xf:action ev:event="autocomplete-callback">
                                                             <xf:setvalue ref="." value="event('termValue')"/>
                                                         </xf:action>
@@ -830,18 +861,30 @@
                                                             <xf:send submission="s-reload-meanings"/>
                                                         </xf:action>
                                                     </xf:input>
-                                                    <input type="hidden" data-function="autocomplete" placeholder="Type to search ..." autocomplete="off"/>
-                                                    <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
-                                                        <xf:label/>
-                                                        <xf:action ev:event="DOMActivate">
-                                                            <xf:setvalue ref="instance('i-controller')/morpheme" value="instance('i-default')//TEI:gramGrp[@type='segmentation'][index('r-gramGrp')]/TEI:m[@type = 'radical' and @n = 2]/@baseForm"/>
-                                                            <xf:dispatch name="load-subform-event" targetid="load-subform-group"/>
-                                                        </xf:action>
-                                                    </xf:trigger>
+                                                    <input type="hidden" class="tp-input" data-function="autocomplete" placeholder="Type to search ..." autocomplete="off"/>
+
+                                                    <div class="tp-row tp-repeat-buttons">
+                                                        <div class="tp-repeat-button-right">
+                                                            <div class="tp-button-row tp-add">
+                                                                <label>Add meaning</label>
+                                                                <xf:trigger class="-btn -btn-default">
+                                                                    <xf:label class="input-group-addon">
+                                                                        <i class="glyphicon glyphicon-plus"/>
+                                                                    </xf:label>
+                                                                    <xf:action ev:event="DOMActivate">
+                                                                        <xf:setvalue ref="instance('i-controller')/morpheme" value="instance('i-default')//TEI:gramGrp[@type='segmentation'][index('r-gramGrp')]/TEI:m[@type = 'radical' and @n = 2]/@baseForm"/>
+                                                                        <xf:dispatch name="load-subform-event" targetid="load-subform-group"/>
+                                                                    </xf:action>
+                                                                </xf:trigger>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
+
                                             <div class="tp-row">
                                                 <div class="tp-form-group-col">
+                                                    <label class="tp-label">Function 1</label>
                                                     <xf:select ref="TEI:m[@type = 'radical' and @n = 1]/@function" appearance="full" incremental="true">
                                                         <xf:label/>
                                                         <xf:item>
@@ -867,6 +910,7 @@
                                                     </xf:select>
                                                 </div>
                                                 <div class="tp-form-group-col">
+                                                    <label class="tp-label">Function 2</label>
                                                     <xf:select ref="TEI:m[@type = 'radical' and @n = 2]/@function" appearance="full" incremental="true">
                                                         <xf:label/>
                                                         <xf:item>
@@ -894,7 +938,8 @@
                                             </div>
                                             <div class="tp-row">
                                                 <div class="tp-form-group-col">
-                                                    <xf:select class="tp-input -form-control" ref="TEI:m[@type = 'radical' and @n = 1]/@subtype" appearance="full">
+                                                    <label class="tp-label">Headedness classification 1</label>
+                                                    <xf:select class="tp-input" ref="TEI:m[@type = 'radical' and @n = 1]/@subtype" appearance="full">
                                                         <xf:label class="input-group-addon">head.</xf:label>
                                                         <xf:itemset nodeset="instance('i-headedness')//option">
                                                             <xf:label ref="."/>
@@ -903,7 +948,8 @@
                                                     </xf:select>
                                                 </div>
                                                 <div class="tp-form-group-col">
-                                                    <xf:select class="tp-input -form-control" ref="TEI:m[@type = 'radical' and @n = 1]/@ana" appearance="full" incremental="true">
+                                                    <label class="tp-label">Abbreviation marker 1</label>
+                                                    <xf:select class="tp-input" ref="TEI:m[@type = 'radical' and @n = 1]/@ana" appearance="full" incremental="true">
                                                         <xf:item>
                                                             <xf:label>Abbr</xf:label>
                                                             <xf:value>AbbrC</xf:value>
@@ -911,7 +957,8 @@
                                                     </xf:select>
                                                 </div>
                                                 <div class="tp-form-group-col">
-                                                    <xf:select class="tp-input -form-control" ref="TEI:m[@type = 'radical' and @n = 1]/@cert" appearance="full" incremental="true">
+                                                    <label class="tp-label">Class marker 1</label>
+                                                    <xf:select class="tp-input" ref="TEI:m[@type = 'radical' and @n = 1]/@cert" appearance="full" incremental="true">
                                                         <xf:item>
                                                             <xf:label>*</xf:label>
                                                             <xf:value>unattested</xf:value>
@@ -919,16 +966,16 @@
                                                     </xf:select>
                                                 </div>
                                                 <div class="tp-form-group-col">
-                                                    <div class="input-group">
-                                                        <xf:input class="tp-input -form-control" ref="TEI:m[@type = 'radical' and @n = 1]/@corresp">
-                                                            <xf:label class="input-group-addon">
-                                                                <span class="glyphicon glyphicon-tag"/>
-                                                            </xf:label>
-                                                            <xf:hint>linked compound</xf:hint>
-                                                        </xf:input>
-                                                    </div>
+                                                    <label class="tp-label">Linked Compound 1</label>
+                                                    <xf:input class="tp-input -form-control" ref="TEI:m[@type = 'radical' and @n = 1]/@corresp">
+                                                        <xf:label class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-tag"/>
+                                                        </xf:label>
+                                                        <xf:hint>e.g. linked compound</xf:hint>
+                                                    </xf:input>
                                                 </div>
                                                 <div class="tp-form-group-col">
+                                                    <label class="tp-label">Headedness classification 2</label>
                                                     <div class="input-group">
                                                         <xf:select class="tp-input -form-control" ref="TEI:m[@type = 'radical' and @n = 2]/@subtype" appearance="full">
                                                             <xf:label class="input-group-addon">head.</xf:label>
@@ -940,6 +987,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="tp-form-group-col">
+                                                    <label class="tp-label">Abbreviation marker 2</label>
                                                     <xf:select class="tp-input -form-control" ref="TEI:m[@type = 'radical' and @n = 2]/@ana" appearance="full" incremental="true">
                                                         <xf:item>
                                                             <xf:label>Abbr</xf:label>
@@ -948,6 +996,7 @@
                                                     </xf:select>
                                                 </div>
                                                 <div class="tp-form-group-col">
+                                                    <label class="tp-label">Class marker 2</label>
                                                     <xf:select class="tp-input -form-control" ref="TEI:m[@type = 'radical' and @n = 2]/@cert" appearance="full" incremental="true">
                                                         <xf:item>
                                                             <xf:label>*</xf:label>
@@ -956,18 +1005,18 @@
                                                     </xf:select>
                                                 </div>
                                                 <div class="tp-form-group-col">
-                                                    <div class="input-group">
-                                                        <xf:input class="tp-input -form-control" ref="TEI:m[@type = 'radical' and @n = 2]/@corresp">
-                                                            <xf:label class="input-group-addon">
-                                                                <span class="glyphicon glyphicon-tag"/>
-                                                            </xf:label>
-                                                            <xf:hint>linked compound</xf:hint>
-                                                        </xf:input>
-                                                    </div>
+                                                    <label class="tp-label">Linked compound 2</label>
+                                                    <xf:input class="tp-input -form-control" ref="TEI:m[@type = 'radical' and @n = 2]/@corresp">
+                                                        <xf:label class="input-group-addon">
+                                                            <span class="glyphicon glyphicon-tag"/>
+                                                        </xf:label>
+                                                        <xf:hint>e.g. linked compound</xf:hint>
+                                                    </xf:input>
                                                 </div>
                                             </div>
                                             <div class="tp-row">
                                                 <div class="tp-form-group-col">
+                                                    <label class="tp-label">???</label>
                                                     <span class="semantic_tags"><!--
                                                         <span style="display:none">
                                                             <xf:input ref="TEI:m[@type != 'suffix' and @n = 1]/@ana" incremental="true">
@@ -992,6 +1041,7 @@
                                                     </span>
                                                 </div>
                                                 <div class="tp-form-group-col">
+                                                    <label class="tp-label">???</label>
                                                     <span class="semantic_tags"><!--
                                                         <span style="display:none">
                                                             <xf:input id="sem-ont-3" ref="TEI:m[@type != 'suffix' and @n = 2]/@ana">
@@ -1018,6 +1068,7 @@
                                             </div>
                                             <div class="tp-row">
                                                 <div class="tp-form-group-col">
+                                                    <label class="tp-label">TBD</label>
                                                     <xf:select1 class="tp-input -form-control" ref="TEI:m[@type = 'suffix' and @n = '4']">
                                                         <xf:label class="input-group-addon">suffix 4</xf:label>
                                                         <xf:itemset nodeset="instance('i-suffix-4')/option">
@@ -1027,6 +1078,7 @@
                                                     </xf:select1>
                                                 </div>
                                                 <div class="tp-form-group-col">
+                                                    <label class="tp-label">TBD</label>
                                                     <xf:select1 class="tp-input -form-control" ref="TEI:m[@type = 'suffix' and @n = '3']">
                                                         <xf:label class="input-group-addon">suffix 3</xf:label>
                                                         <xf:itemset nodeset="instance('i-suffix-3')/option">
@@ -1036,6 +1088,7 @@
                                                     </xf:select1>
                                                 </div>
                                                 <div class="tp-form-group-col">
+                                                    <label class="tp-label">TBD</label>
                                                     <xf:select1 class="tp-input -form-control" ref="TEI:m[@type = 'suffix' and @n = '2']">
                                                         <xf:label class="input-group-addon">suffix 2</xf:label>
                                                         <xf:itemset nodeset="instance('i-suffix-2')/option">
@@ -1045,6 +1098,7 @@
                                                     </xf:select1>
                                                 </div>
                                                 <div class="tp-form-group-col">
+                                                    <label class="tp-label">TBD</label>
                                                     <xf:select1 class="tp-input -form-control" ref="TEI:m[@type = 'suffix' and @n = '1']">
                                                         <xf:label class="input-group-addon">suffix 1</xf:label>
                                                         <xf:itemset nodeset="instance('i-suffix-1')/option">
