@@ -71,7 +71,7 @@
             <div>
                 <fieldset id="segment">
                     <legend>
-                        LGPN-Ling morpheme sub-form
+                        LGPN-Ling Morpheme Sub-Form
                     </legend>
                     <div class="row">
                         <div class="col-xs-4">
@@ -115,11 +115,12 @@
                         </div>
                     </div>
                     -->
-                    <hr/>
+                    <div class="tp-divider"/>
+
                     <div class="row">
                         <div class="col-xs-2">
                             <div class="input-group input-group-sm">
-                                <xf:input class="input-group -form-control" ref="TEI:meaning[1]/@label">
+                                <xf:input class="hidden" ref="TEI:meaning[1]/@label">
                                     <xf:label class="input-group-addon">
                                         <span class="glyphicon glyphicon-tag"/> label</xf:label>
                                     <xf:hint>meaning</xf:hint>
@@ -131,7 +132,7 @@
                                         <xf:send submission="s-load-trans"/>
                                     </xf:action>
                                 </xf:input>
-                                <input type="hidden" data-function="ontology_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
+                                <input type="hidden" class="tp-input" data-function="ontology_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
                             </div>
                         </div>
                         <div class="col-xs-1"/><!--
@@ -167,7 +168,7 @@
                     <div class="row">
                         <div class="col-xs-2">
                             <div class="input-group input-group-sm">
-                                <xf:input class="input-group -form-control" ref="TEI:meaning[2]/@label">
+                                <xf:input class="hidden" ref="TEI:meaning[2]/@label">
                                     <xf:label class="input-group-addon">
                                         <span class="glyphicon glyphicon-tag"/> label</xf:label>
                                     <xf:hint>meaning</xf:hint>
@@ -179,7 +180,7 @@
                                         <xf:send submission="s-load-trans"/>
                                     </xf:action>
                                 </xf:input>
-                                <input type="hidden" data-function="ontology_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
+                                <input type="hidden" class="tp-input" data-function="ontology_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
                             </div>
                         </div>
                         <div class="col-xs-1"/><!--
@@ -215,7 +216,7 @@
                     <div class="row">
                         <div class="col-xs-2">
                             <div class="input-group input-group-sm">
-                                <xf:input class="input-group -form-control" ref="TEI:meaning[3]/@label">
+                                <xf:input class="hidden" ref="TEI:meaning[3]/@label">
                                     <xf:label class="input-group-addon">
                                         <span class="glyphicon glyphicon-tag"/> label</xf:label>
                                     <xf:hint>meaning</xf:hint>
@@ -227,7 +228,7 @@
                                         <xf:send submission="s-load-trans"/>
                                     </xf:action>
                                 </xf:input>
-                                <input type="hidden" data-function="ontology_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
+                                <input type="hidden" class="tp-input" data-function="ontology_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
                             </div>
                         </div>
                         <div class="col-xs-1"/><!--
@@ -259,21 +260,46 @@
                             </div>
                         </div>
                     </div>
-                    <br/>
-                    <br/>
-                    <div class="row">
-                        <div class="form-group">
-                            <div class="col-sm-offset-4">
-                                <xf:submit class="-btn -btn-primary -glyphicon -glyphicon-save" submission="s-save-morpheme">
-                                    <xf:label>Save</xf:label>
-                                </xf:submit>
-                                <xf:trigger class="-bigbtn -btn-primary -glyphicon -glyphicon-trash">
-                                    <xf:label>Cancel</xf:label>
-                                    <script ev:event="DOMActivate" type="text/javascript">dijit.byId("meanings").hide()</script>
-                                </xf:trigger>
+
+                    <section class="tp-section tp-section-save">
+                        <div class="tp-row">
+                            <h4>Save Form</h4>
+                            <div class="tp-width-main">
+                                <fieldset class="form-horizontal">
+
+                                    <div class="tp-row tp-repeat-buttons">
+                                        <div class="tp-repeat-button-left">
+                                            <div class="tp-button-row tp-add">
+                                                <label>Save form</label>
+                                                <xf:submit class="-btn -btn-default" submission="s-save-morpheme">
+                                                    <xf:label class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-save"/>
+                                                    </xf:label>
+                                                </xf:submit>
+                                            </div>
+                                        </div>
+
+                                        <div class="tp-repeat-button-right">
+                                            <div class="tp-button-row tp-delete">
+                                                <label>
+                                                    <span>Cancel form</span>
+                                                </label>
+                                                <div class="tp-button-cancel">
+                                                    <xf:trigger class="-btn -btn-default">
+                                                        <xf:label class="input-group-addon">
+                                                            <i class="glyphicon glyphicon-trash"/>
+                                                        </xf:label>
+                                                        <script ev:event="DOMActivate" type="text/javascript">dijit.byId("meanings").hide()</script>
+                                                    </xf:trigger>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </fieldset>
                             </div>
                         </div>
-                    </div>
+                    </section>
                 </fieldset>
             </div>
         </div>
