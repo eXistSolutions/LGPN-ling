@@ -114,13 +114,13 @@ footer .poweredby img { width: 120px; }
   .tp-button-row:not(:nth-of-type(2)) {
     &:extend(.form-group);
   }
+  clear: both;
 }
 
 .tp-repeat-buttons,
 .tp-repeat-add {
+  clear: both;
   @media (min-width: @screen-sm-min) {
-    padding: 0 0 10px 0;
-    margin-top: 10px;
   }
   .control-label {
     &:extend(.col-xs-12);
@@ -403,6 +403,11 @@ footer .poweredby img { width: 120px; }
       min-height: @input-height;
     }
   }
+}
+
+// container for checkbox groups spanning over one row
+.tp-row-input-group {
+  margin: 0 0 1rem 0;
 }
 
 // Responsive input with search dropdown

@@ -697,7 +697,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="tp-row">
+                                            <div class="tp-row tp-row-input-group">
                                                 <label class="tp-label">Preroot (prefix)</label>
                                                 <xf:select class="tp-input-1-row-2-col" ref="TEI:m[@type = 'prefix' and @n = 1]/@function" appearance="full" incremental="true">
                                                     <xf:label/>
@@ -723,7 +723,7 @@
                                                     </xf:item>
                                                 </xf:select>
                                             </div>
-                                            <div class="tp-row">
+                                            <div class="tp-row tp-row-input-group">
                                                 <div class="tp-form-group-col">
                                                     <label class="tp-label">Abbreviation marker</label>
                                                     <xf:select class="tp-input" ref="TEI:m[@type = 'prefix' and @n = 1]/@ana" appearance="full" incremental="true">
@@ -752,111 +752,110 @@
 
                                             <div class="tp-divider"/>
 
-                                            <div class="tp-row">
-                                                <h4>Root</h4>
+                                            <h4>Root</h4>
 
-                                                <div class="tp-form-group-col">
-                                                    <label class="tp-label">Constituent 1</label>
-                                                    <xf:input class="hidden" ref="TEI:m[@type = 'radical' and @n = 1]">
-                                                        <xf:action ev:event="constituent_autocomplete-callback">
-                                                            <xf:setvalue ref="." value="event('termValue')"/>
-                                                        </xf:action>
-                                                        <xf:label class="input-group-addon">constituent 1</xf:label>
-                                                        <xf:alert>no whitespace allowed</xf:alert>
-                                                    </xf:input>
-                                                    <input type="hidden" class="tp-input" data-function="constituent_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
+                                            <div class="tp-form-group-col">
+                                                <label class="tp-label">Constituent 1</label>
+                                                <xf:input class="hidden" ref="TEI:m[@type = 'radical' and @n = 1]">
+                                                    <xf:action ev:event="constituent_autocomplete-callback">
+                                                        <xf:setvalue ref="." value="event('termValue')"/>
+                                                    </xf:action>
+                                                    <xf:label class="input-group-addon">constituent 1</xf:label>
+                                                    <xf:alert>no whitespace allowed</xf:alert>
+                                                </xf:input>
+                                                <input type="hidden" class="tp-input" data-function="constituent_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
 
-                                                    <!-- TODO: Edit correct ref + value in <xf:setvalue/> and name + targetID in <xf:dispatch/> if necessary -->
-                                                    <xf:trigger class="hidden constituent_autocomplete-callback">
-                                                        <xf:label/>
-                                                        <xf:action ev:event="DOMActivate">
-                                                            <xf:setvalue ref="" value=""/>
-                                                            <xf:dispatch name="" targetid=""/>
-                                                        </xf:action>
-                                                    </xf:trigger>
+                                                <!-- TODO: Edit correct ref + value in <xf:setvalue/> and name + targetID in <xf:dispatch/> if necessary -->
+                                                <xf:trigger class="hidden constituent_autocomplete-callback">
+                                                    <xf:label/>
+                                                    <xf:action ev:event="DOMActivate">
+                                                        <xf:setvalue ref="" value=""/>
+                                                        <xf:dispatch name="" targetid=""/>
+                                                    </xf:action>
+                                                </xf:trigger>
+                                            </div>
 
-                                                </div>
+                                            <div class="tp-form-group-col">
+                                                <label class="tp-label">Root 1</label>
+                                                <xf:input class="hidden" ref="TEI:m[@type = 'radical' and @n = 1]/@baseForm">
+                                                    <xf:action ev:event="autocomplete-callback">
+                                                        <xf:setvalue ref="." value="event('termValue')"/>
+                                                    </xf:action>
+                                                    <xf:label class="input-group-addon">root</xf:label>
+                                                    <xf:action ev:event="xforms-value-changed">
+                                                        <xf:setvalue ref="instance('i-meanings')/being-reloaded/@grp" value="count(context()/preceding::TEI:gramGrp[@type='segmentation'])+1"/>
+                                                        <xf:setvalue ref="instance('i-meanings')/being-reloaded/@n" value="1"/>
+                                                        <xf:send submission="s-reload-meanings"/>
+                                                    </xf:action>
+                                                </xf:input>
+                                                <input type="hidden" class="tp-input" data-function="autocomplete" placeholder="Type to search ..." autocomplete="off"/>
 
-                                                <div class="tp-form-group-col">
-                                                    <label class="tp-label">Root 1</label>
-                                                    <xf:input class="hidden" ref="TEI:m[@type = 'radical' and @n = 1]/@baseForm">
-                                                        <xf:action ev:event="autocomplete-callback">
-                                                            <xf:setvalue ref="." value="event('termValue')"/>
-                                                        </xf:action>
-                                                        <xf:label class="input-group-addon">root</xf:label>
-                                                        <xf:action ev:event="xforms-value-changed">
-                                                            <xf:setvalue ref="instance('i-meanings')/being-reloaded/@grp" value="count(context()/preceding::TEI:gramGrp[@type='segmentation'])+1"/>
-                                                            <xf:setvalue ref="instance('i-meanings')/being-reloaded/@n" value="1"/>
-                                                            <xf:send submission="s-reload-meanings"/>
-                                                        </xf:action>
-                                                    </xf:input>
-                                                    <input type="hidden" class="tp-input" data-function="autocomplete" placeholder="Type to search ..." autocomplete="off"/>
+                                            </div>
 
-                                                    <div class="tp-row tp-repeat-buttons">
-                                                        <div class="tp-repeat-button-right">
-                                                            <div class="tp-button-row tp-add">
-                                                                <label>Add meaning</label>
-                                                                <xf:trigger class="-btn -btn-default">
-                                                                    <xf:label class="input-group-addon">
-                                                                        <i class="glyphicon glyphicon-plus"/>
-                                                                    </xf:label>
-                                                                    <xf:action ev:event="DOMActivate">
-                                                                        <xf:setvalue ref="instance('i-controller')/morpheme" value="instance('i-default')//TEI:gramGrp[@type='segmentation'][index('r-gramGrp')]/TEI:m[@type = 'radical' and @n = 1]/@baseForm"/>
-                                                                        <xf:dispatch name="load-subform-event" targetid="load-subform-group"/>
-                                                                    </xf:action>
-                                                                </xf:trigger>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="tp-form-group-col">
-                                                    <label class="tp-label">Constituent 2</label>
-                                                    <xf:input class="hidden" ref="TEI:m[@type = 'radical' and @n = 2]">
-                                                        <xf:action ev:event="constituent_autocomplete-callback">
-                                                            <xf:setvalue ref="." value="event('termValue')"/>
-                                                        </xf:action>
-                                                        <xf:label class="input-group-addon">constituent 2</xf:label>
-                                                        <xf:alert>no whitespace allowed</xf:alert>
-                                                    </xf:input>
-                                                    <input type="hidden" class="tp-input" data-function="constituent_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
-                                                </div>
-
-                                                <div class="tp-form-group-col">
-                                                    <label class="tp-label">Root 2</label>
-                                                    <xf:input class="hidden" ref="TEI:m[@type = 'radical' and @n = 2]/@baseForm">
-                                                        <xf:action ev:event="autocomplete-callback">
-                                                            <xf:setvalue ref="." value="event('termValue')"/>
-                                                        </xf:action>
-                                                        <xf:label class="input-group-addon">root</xf:label>
-                                                        <xf:action ev:event="xforms-value-changed">
-                                                            <xf:setvalue ref="instance('i-meanings')/being-reloaded/@grp" value="count(context()/preceding::TEI:gramGrp[@type='segmentation'])+1"/>
-                                                            <xf:setvalue ref="instance('i-meanings')/being-reloaded/@n" value="2"/>
-                                                            <xf:send submission="s-reload-meanings"/>
-                                                        </xf:action>
-                                                    </xf:input>
-                                                    <input type="hidden" class="tp-input" data-function="autocomplete" placeholder="Type to search ..." autocomplete="off"/>
-
-                                                    <div class="tp-row tp-repeat-buttons">
-                                                        <div class="tp-repeat-button-right">
-                                                            <div class="tp-button-row tp-add">
-                                                                <label>Add meaning</label>
-                                                                <xf:trigger class="-btn -btn-default">
-                                                                    <xf:label class="input-group-addon">
-                                                                        <i class="glyphicon glyphicon-plus"/>
-                                                                    </xf:label>
-                                                                    <xf:action ev:event="DOMActivate">
-                                                                        <xf:setvalue ref="instance('i-controller')/morpheme" value="instance('i-default')//TEI:gramGrp[@type='segmentation'][index('r-gramGrp')]/TEI:m[@type = 'radical' and @n = 2]/@baseForm"/>
-                                                                        <xf:dispatch name="load-subform-event" targetid="load-subform-group"/>
-                                                                    </xf:action>
-                                                                </xf:trigger>
-                                                            </div>
-                                                        </div>
+                                            <div class="tp-row tp-repeat-buttons">
+                                                <div class="tp-repeat-button-right">
+                                                    <div class="tp-button-row tp-add">
+                                                        <label>Add meaning</label>
+                                                        <xf:trigger class="-btn -btn-default">
+                                                            <xf:label class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-plus"/>
+                                                            </xf:label>
+                                                            <xf:action ev:event="DOMActivate">
+                                                                <xf:setvalue ref="instance('i-controller')/morpheme" value="instance('i-default')//TEI:gramGrp[@type='segmentation'][index('r-gramGrp')]/TEI:m[@type = 'radical' and @n = 1]/@baseForm"/>
+                                                                <xf:dispatch name="load-subform-event" targetid="load-subform-group"/>
+                                                            </xf:action>
+                                                        </xf:trigger>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div class="tp-row">
+                                            <div class="tp-form-group-col">
+                                                <label class="tp-label">Constituent 2</label>
+                                                <xf:input class="hidden" ref="TEI:m[@type = 'radical' and @n = 2]">
+                                                    <xf:action ev:event="constituent_autocomplete-callback">
+                                                        <xf:setvalue ref="." value="event('termValue')"/>
+                                                    </xf:action>
+                                                    <xf:label class="input-group-addon">constituent 2</xf:label>
+                                                    <xf:alert>no whitespace allowed</xf:alert>
+                                                </xf:input>
+                                                <input type="hidden" class="tp-input" data-function="constituent_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
+                                            </div>
+
+                                            <div class="tp-form-group-col">
+                                                <label class="tp-label">Root 2</label>
+                                                <xf:input class="hidden" ref="TEI:m[@type = 'radical' and @n = 2]/@baseForm">
+                                                    <xf:action ev:event="autocomplete-callback">
+                                                        <xf:setvalue ref="." value="event('termValue')"/>
+                                                    </xf:action>
+                                                    <xf:label class="input-group-addon">root</xf:label>
+                                                    <xf:action ev:event="xforms-value-changed">
+                                                        <xf:setvalue ref="instance('i-meanings')/being-reloaded/@grp" value="count(context()/preceding::TEI:gramGrp[@type='segmentation'])+1"/>
+                                                        <xf:setvalue ref="instance('i-meanings')/being-reloaded/@n" value="2"/>
+                                                        <xf:send submission="s-reload-meanings"/>
+                                                    </xf:action>
+                                                </xf:input>
+                                                <input type="hidden" class="tp-input" data-function="autocomplete" placeholder="Type to search ..." autocomplete="off"/>
+
+                                            </div>
+
+                                            <div class="tp-row tp-repeat-buttons">
+                                                <div class="tp-repeat-button-right">
+                                                    <div class="tp-button-row tp-add">
+                                                        <label>Add meaning</label>
+                                                        <xf:trigger class="-btn -btn-default">
+                                                            <xf:label class="input-group-addon">
+                                                                <i class="glyphicon glyphicon-plus"/>
+                                                            </xf:label>
+                                                            <xf:action ev:event="DOMActivate">
+                                                                <xf:setvalue ref="instance('i-controller')/morpheme" value="instance('i-default')//TEI:gramGrp[@type='segmentation'][index('r-gramGrp')]/TEI:m[@type = 'radical' and @n = 2]/@baseForm"/>
+                                                                <xf:dispatch name="load-subform-event" targetid="load-subform-group"/>
+                                                            </xf:action>
+                                                        </xf:trigger>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="tp-row tp-row-input-group">
                                                 <label class="tp-label">Function 1</label>
                                                 <xf:select ref="TEI:m[@type = 'radical' and @n = 1]/@function" appearance="full" incremental="true">
                                                     <xf:label/>
@@ -883,7 +882,7 @@
                                                 </xf:select>
                                             </div>
 
-                                            <div class="tp-row">
+                                            <div class="tp-row tp-row-input-group">
                                                 <label class="tp-label">Function 2</label>
                                                 <xf:select ref="TEI:m[@type = 'radical' and @n = 2]/@function" appearance="full" incremental="true">
                                                     <xf:label/>
