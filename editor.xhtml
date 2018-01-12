@@ -605,13 +605,13 @@
                             <xf:group ref="//TEI:entry">
 
                                 <xf:group>
-                                    <div class="tp-row tp-repeat-add">
+                                    <section class="tp-row tp-repeat-add">
                                         <xf:label class="tp-form-header">
                                             <h3>Segmentation Hypothesis</h3>
                                         </xf:label>
                                         <div class="tp-repeat-button-left">
                                             <div class="tp-button-row tp-add">
-                                                <label>Add hypothesis</label>
+                                                <label>Add segmentation hypothesis</label>
                                                 <xf:trigger class="-btn -btn-default ">
                                                     <xf:label class="input-group-addon">
                                                         <i class="glyphicon glyphicon-plus"/>
@@ -623,7 +623,7 @@
                                                 </xf:trigger>
                                             </div>
                                         </div>
-                                    </div>
+                                    </section>
 
                                     <xf:repeat ref="TEI:gramGrp[@type='segmentation']" id="r-gramGrp">
                                         <div class="tp-row tp-repeat-headline">
@@ -633,7 +633,7 @@
                                         </div>
                                         <xf:label/>
                                         <xf:group ref=".">
-                                            <div class="tp-row">
+                                            <section class="tp-row">
                                                 <div class="tp-form-group-col">
                                                     <label class="tp-label">Certainty</label>
                                                     <xf:input class="tp-input -form-control" ref="@cert">
@@ -650,8 +650,8 @@
                                                         </xf:itemset>
                                                     </xf:select1>
                                                 </div>
-                                            </div>
-                                            <div class="tp-row">
+                                            </section>
+                                            <section class="tp-row">
                                                 <div class="tp-form-group-col">
                                                     <label class="tp-label">Structuration: uncertain</label>
                                                     <xf:select class="tp-input" ref="@ana" appearance="full">
@@ -662,7 +662,7 @@
                                                         </xf:itemset>
                                                     </xf:select>
                                                 </div>
-                                            </div>
+                                            </section>
 
                                             <div class="tp-divider"/>
 
@@ -697,7 +697,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class="tp-row tp-row-input-group">
+                                            <section class="tp-row tp-row-input-group">
                                                 <label class="tp-label">Preroot (prefix)</label>
                                                 <xf:select class="tp-input-1-row-2-col" ref="TEI:m[@type = 'prefix' and @n = 1]/@function" appearance="full" incremental="true">
                                                     <xf:label/>
@@ -722,8 +722,8 @@
                                                         <xf:value>Adv</xf:value>
                                                     </xf:item>
                                                 </xf:select>
-                                            </div>
-                                            <div class="tp-row tp-row-input-group">
+                                            </section>
+                                            <section class="tp-row tp-row-input-group">
                                                 <div class="tp-form-group-col">
                                                     <label class="tp-label">Abbreviation marker</label>
                                                     <xf:select class="tp-input" ref="TEI:m[@type = 'prefix' and @n = 1]/@ana" appearance="full" incremental="true">
@@ -748,13 +748,13 @@
                                                         <xf:hint>e.g. linked compound</xf:hint>
                                                     </xf:input>
                                                 </div>
-                                            </div>
+                                            </section>
 
                                             <div class="tp-divider"/>
 
                                             <h4>Root</h4>
 
-                                            <div class="tp-form-group-col">
+                                            <section class="tp-form-group-col">
                                                 <label class="tp-label">Constituent 1</label>
                                                 <xf:input class="hidden" ref="TEI:m[@type = 'radical' and @n = 1]">
                                                     <xf:action ev:event="constituent_autocomplete-callback">
@@ -773,9 +773,9 @@
                                                         <xf:dispatch name="" targetid=""/>
                                                     </xf:action>
                                                 </xf:trigger>
-                                            </div>
+                                            </section>
 
-                                            <div class="tp-form-group-col">
+                                            <section class="tp-form-group-col">
                                                 <label class="tp-label">Root 1</label>
                                                 <xf:input class="hidden" ref="TEI:m[@type = 'radical' and @n = 1]/@baseForm">
                                                     <xf:action ev:event="autocomplete-callback">
@@ -790,9 +790,9 @@
                                                 </xf:input>
                                                 <input type="hidden" class="tp-input" data-function="autocomplete" placeholder="Type to search ..." autocomplete="off"/>
 
-                                            </div>
+                                            </section>
 
-                                            <div class="tp-row tp-repeat-buttons">
+                                            <section class="tp-row tp-repeat-buttons">
                                                 <div class="tp-repeat-button-right">
                                                     <div class="tp-button-row tp-add">
                                                         <label>Add meaning</label>
@@ -807,9 +807,9 @@
                                                         </xf:trigger>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </section>
 
-                                            <div class="tp-form-group-col">
+                                            <section class="tp-form-group-col">
                                                 <label class="tp-label">Constituent 2</label>
                                                 <xf:input class="hidden" ref="TEI:m[@type = 'radical' and @n = 2]">
                                                     <xf:action ev:event="constituent_autocomplete-callback">
@@ -819,9 +819,9 @@
                                                     <xf:alert>no whitespace allowed</xf:alert>
                                                 </xf:input>
                                                 <input type="hidden" class="tp-input" data-function="constituent_autocomplete" placeholder="Type to search ..." autocomplete="off"/>
-                                            </div>
+                                            </section>
 
-                                            <div class="tp-form-group-col">
+                                            <section class="tp-form-group-col">
                                                 <label class="tp-label">Root 2</label>
                                                 <xf:input class="hidden" ref="TEI:m[@type = 'radical' and @n = 2]/@baseForm">
                                                     <xf:action ev:event="autocomplete-callback">
@@ -836,9 +836,9 @@
                                                 </xf:input>
                                                 <input type="hidden" class="tp-input" data-function="autocomplete" placeholder="Type to search ..." autocomplete="off"/>
 
-                                            </div>
+                                            </section>
 
-                                            <div class="tp-row tp-repeat-buttons">
+                                            <section class="tp-row tp-repeat-buttons">
                                                 <div class="tp-repeat-button-right">
                                                     <div class="tp-button-row tp-add">
                                                         <label>Add meaning</label>
@@ -853,9 +853,9 @@
                                                         </xf:trigger>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            </section>
 
-                                            <div class="tp-row tp-row-input-group">
+                                            <section class="tp-row tp-row-input-group">
                                                 <label class="tp-label">Function 1</label>
                                                 <xf:select ref="TEI:m[@type = 'radical' and @n = 1]/@function" appearance="full" incremental="true">
                                                     <xf:label/>
@@ -880,9 +880,9 @@
                                                         <xf:value>Adv</xf:value>
                                                     </xf:item>
                                                 </xf:select>
-                                            </div>
+                                            </section>
 
-                                            <div class="tp-row tp-row-input-group">
+                                            <section class="tp-row tp-row-input-group">
                                                 <label class="tp-label">Function 2</label>
                                                 <xf:select ref="TEI:m[@type = 'radical' and @n = 2]/@function" appearance="full" incremental="true">
                                                     <xf:label/>
@@ -907,9 +907,9 @@
                                                         <xf:value>Adv</xf:value>
                                                     </xf:item>
                                                 </xf:select>
-                                            </div>
+                                            </section>
 
-                                            <div class="tp-row">
+                                            <section class="tp-row">
                                                 <div class="tp-form-group-col">
                                                     <label class="tp-label">Headedness classification 1</label>
                                                     <xf:select class="tp-input" ref="TEI:m[@type = 'radical' and @n = 1]/@subtype" appearance="full">
@@ -939,7 +939,7 @@
                                                     </xf:select>
                                                 </div>
                                                 <div class="tp-form-group-col">
-                                                    <label class="tp-label">Linked Compound 1</label>
+                                                    <label class="tp-label">Linked compound 1</label>
                                                     <xf:input class="tp-input -form-control" ref="TEI:m[@type = 'radical' and @n = 1]/@corresp">
                                                         <xf:label class="input-group-addon">
                                                             <span class="glyphicon glyphicon-tag"/>
@@ -984,8 +984,8 @@
                                                         <xf:hint>e.g. linked compound</xf:hint>
                                                     </xf:input>
                                                 </div>
-                                            </div>
-                                            <div class="tp-row">
+                                            </section>
+                                            <section class="tp-row">
                                                 <div class="tp-form-group-col">
                                                     <label class="tp-label">Suffix 4</label>
                                                     <xf:select1 class="tp-input -form-control" ref="TEI:m[@type = 'suffix' and @n = '4']">
@@ -1026,34 +1026,44 @@
                                                         </xf:itemset>
                                                     </xf:select1>
                                                 </div>
-                                            </div>
+                                            </section>
 
                                             <div class="tp-section-divider"/>
 
-                                            <!-- Bibliography -->
-                                            <div class="tp-row">
-                                                <xf:label>
-                                                    <h4>Lexical connections</h4>
-                                                </xf:label>
-                                            </div>
+                                            <!-- Subsection Lexical Connections -->
+                                            <section class="tp-row tp-repeat-headline">
+                                                <h4 class="h3">Lexical Connections</h4>
+                                            </section>
                                             <xf:group>
-                                                <div class="tp-row">
-                                                    <div class="tp-form-group-col">
-                                                        <xf:label>
-                                                            <h5>Lexical or lexicographic significant sources</h5>
-                                                        </xf:label>
+                                                <xf:label/>
+                                                <section class="tp-row tp-repeat-add">
+                                                    <h5 class="h4 tp-repeat-headline">Lexical or Lexicographic Significant Sources</h5>
+                                                    <div class="tp-repeat-button-left">
+                                                        <div class="tp-button-row tp-add">
+                                                            <label>Add significant source</label>
+                                                            <xf:trigger class="-btn -btn-default ">
+                                                                <xf:label class="input-group-addon">
+                                                                    <i class="glyphicon glyphicon-plus"/>
+                                                                </xf:label>
+                                                                <xf:insert context="TEI:listBibl" nodeset="TEI:cit" origin="instance('i-template')//TEI:cit[@type='source']"/>
+                                                                <script>
+                                                                    clearAndInitAutocompletes();
+                                                                </script>
+                                                            </xf:trigger>
+                                                        </div>
                                                     </div>
-                                                    <div class="tp-form-group-col">
-                                                        <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
-                                                            <xf:label/>
-                                                            <xf:insert context="TEI:listBibl" nodeset="TEI:cit" origin="instance('i-template')//TEI:cit[@type='source']"/>
-                                                        </xf:trigger>
-                                                    </div>
-                                                </div>
+                                                </section>
+
                                                 <xf:repeat ref="TEI:listBibl/TEI:cit[@type='source']" id="r-cit-source">
                                                     <xf:label/>
+                                                    <div class="tp-row tp-repeat-headline">
+                                                        <xf:label class="tp-form-header">
+                                                            <h6 class="h5">Source</h6>
+                                                        </xf:label>
+                                                    </div>
                                                     <div class="tp-row">
                                                         <div class="tp-form-group-col">
+                                                            <label class="tp-label">Quote</label>
                                                             <xf:input class="tp-input -form-control" ref="TEI:quote">
                                                                 <xf:label class="input-group-addon">quote</xf:label>
                                                             </xf:input>
@@ -1061,52 +1071,78 @@
                                                     </div>
                                                     <div class="tp-row">
                                                         <div class="tp-form-group-col">
+                                                            <label class="tp-label">Reference</label>
                                                             <xf:input class="tp-input -form-control" ref="TEI:ref">
                                                                 <xf:label class="input-group-addon">reference</xf:label>
                                                             </xf:input>
                                                         </div>
                                                         <div class="tp-form-group-col">
+                                                            <label class="tp-label">Author</label>
                                                             <xf:input class="tp-input -form-control" ref="TEI:bibl/TEI:author">
                                                                 <xf:label class="input-group-addon">author</xf:label>
                                                             </xf:input>
                                                         </div>
                                                         <div class="tp-form-group-col">
+                                                            <label class="tp-label">Details</label>
                                                             <xf:input class="tp-input -form-control" ref="TEI:span">
                                                                 <xf:label class="input-group-addon">details</xf:label>
                                                             </xf:input>
                                                         </div>
                                                         <div class="tp-form-group-col">
+                                                            <label class="tp-label">Link</label>
                                                             <xf:input class="tp-input -form-control" ref="TEI:ref/@target">
                                                                 <xf:label class="input-group-addon">link</xf:label>
                                                             </xf:input>
                                                         </div>
-                                                        <div class="tp-form-group-col">
-                                                            <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-trash">
-                                                                <xf:label/>
-                                                                <xf:delete nodeset="//TEI:gramGrp[@type='segmentation'][index('r-gramGrp')]/TEI:listBibl/TEI:cit[@type='source'][index('r-cit-source')]"/>
-                                                            </xf:trigger>
+                                                    </div>
+                                                    <div class="tp-row tp-repeat-buttons">
+                                                        <div class="tp-repeat-button-right">
+                                                            <div class="tp-button-row tp-delete">
+                                                                <label>Delete significant source</label>
+                                                                <xf:trigger class="-btn -btn-default">
+                                                                    <xf:label class="input-group-addon">
+                                                                        <i class="glyphicon glyphicon-trash"/>
+                                                                    </xf:label>
+                                                                    <xf:delete nodeset="//TEI:gramGrp[@type='segmentation'][index('r-gramGrp')]/TEI:listBibl/TEI:cit[@type='source'][index('r-cit-source')]"/>
+                                                                </xf:trigger>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </xf:repeat>
                                             </xf:group>
+
                                             <xf:group>
-                                                <div class="tp-row">
-                                                    <div class="tp-form-group-col">
-                                                        <xf:label>
-                                                            <h5>References in modern Lexicology and Linguistics</h5>
-                                                        </xf:label>
+                                                <section class="tp-row tp-repeat-add">
+                                                    <h5 class="h4 tp-repeat-headline">
+                                                        References in Modern Lexicology and Linguistics
+                                                    </h5>
+                                                    <div class="tp-repeat-button-left">
+                                                        <div class="tp-button-row tp-add">
+                                                            <label>Add reference</label>
+                                                            <xf:trigger class="-btn -btn-default ">
+                                                                <xf:label class="input-group-addon">
+                                                                    <i class="glyphicon glyphicon-plus"/>
+                                                                </xf:label>
+                                                                <xf:insert context="TEI:listBibl" nodeset="TEI:cit" origin="instance('i-template')//TEI:cit[@type='auxiliary']"/>
+                                                                <script>
+                                                                    clearAndInitAutocompletes();
+                                                                </script>
+                                                            </xf:trigger>
+                                                        </div>
                                                     </div>
-                                                    <div class="tp-form-group-col">
-                                                        <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
-                                                            <xf:label/>
-                                                            <xf:insert context="TEI:listBibl" nodeset="TEI:cit" origin="instance('i-template')//TEI:cit[@type='auxiliary']"/>
-                                                        </xf:trigger>
-                                                    </div>
-                                                </div>
+                                                </section>
+
                                                 <xf:repeat ref="TEI:listBibl/TEI:cit[@type='auxiliary']" id="r-cit-auxiliary">
                                                     <xf:label/>
+                                                    <div class="tp-row tp-repeat-headline">
+                                                        <xf:label class="tp-form-header">
+                                                            <h6 class="h5">Reference</h6>
+                                                        </xf:label>
+                                                    </div>
+
                                                     <div class="tp-row">
                                                         <div class="tp-form-group-col">
+                                                            <label class="tp-label">Quote</label>
                                                             <xf:input class="tp-input -form-control" ref="TEI:quote">
                                                                 <xf:label class="input-group-addon">quote</xf:label>
                                                             </xf:input>
@@ -1114,30 +1150,41 @@
                                                     </div>
                                                     <div class="tp-row">
                                                         <div class="tp-form-group-col">
+                                                            <label class="tp-label">Reference</label>
                                                             <xf:input class="tp-input -form-control" ref="TEI:ref">
                                                                 <xf:label class="input-group-addon">reference</xf:label>
                                                             </xf:input>
                                                         </div>
                                                         <div class="tp-form-group-col">
+                                                            <label class="tp-label">Author</label>
                                                             <xf:input class="tp-input -form-control" ref="TEI:bibl/TEI:author">
                                                                 <xf:label class="input-group-addon">author</xf:label>
                                                             </xf:input>
                                                         </div>
                                                         <div class="tp-form-group-col">
+                                                            <label class="tp-label">Details</label>
                                                             <xf:input class="tp-input -form-control" ref="TEI:span">
                                                                 <xf:label class="input-group-addon">details</xf:label>
                                                             </xf:input>
                                                         </div>
                                                         <div class="tp-form-group-col">
+                                                            <label class="tp-label">Link</label>
                                                             <xf:input class="tp-input -form-control" ref="TEI:ref/@target">
                                                                 <xf:label class="input-group-addon">link</xf:label>
                                                             </xf:input>
                                                         </div>
-                                                        <div class="tp-form-group-col">
-                                                            <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-trash">
-                                                                <xf:label/>
-                                                                <xf:delete nodeset="//TEI:gramGrp[@type='segmentation'][index('r-gramGrp')]/TEI:listBibl/TEI:cit[@type='auxiliary'][index('r-cit-auxiliary')]"/>
-                                                            </xf:trigger>
+                                                    </div>
+                                                    <div class="tp-row tp-repeat-buttons">
+                                                        <div class="tp-repeat-button-right">
+                                                            <div class="tp-button-row tp-delete">
+                                                                <label>Delete reference</label>
+                                                                <xf:trigger class="-btn -btn-default">
+                                                                    <xf:label class="input-group-addon">
+                                                                        <i class="glyphicon glyphicon-trash"/>
+                                                                    </xf:label>
+                                                                    <xf:delete nodeset="//TEI:gramGrp[@type='segmentation'][index('r-gramGrp')]/TEI:listBibl/TEI:cit[@type='auxiliary'][index('r-cit-auxiliary')]"/>
+                                                                </xf:trigger>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </xf:repeat>
@@ -1145,29 +1192,42 @@
 
                                             <div class="tp-section-divider"/>
 
-                                            <div class="tp-row">
-                                                <xf:label>
-                                                    <h4>Onomastics</h4>
-                                                </xf:label>
-                                            </div>
+                                            <section class="tp-row tp-repeat-headline">
+                                                <h4 class="h3">
+                                                    Onomastics
+                                                </h4>
+                                            </section>
+
                                             <xf:group>
-                                                <div class="tp-row">
-                                                    <div class="tp-form-group-col">
-                                                        <xf:label>
-                                                            <h5>Linked sources</h5>
-                                                        </xf:label>
+                                                <section class="tp-row tp-repeat-add">
+                                                    <h5 class="h4 tp-repeat-headline">Linked Sources</h5>
+                                                    <div class="tp-repeat-button-left">
+                                                        <div class="tp-button-row tp-add">
+                                                            <label>Add linked source</label>
+                                                            <xf:trigger class="-btn -btn-default ">
+                                                                <xf:label class="input-group-addon">
+                                                                    <i class="glyphicon glyphicon-plus"/>
+                                                                </xf:label>
+                                                                <xf:insert context="TEI:listBibl" nodeset="TEI:cit" origin="instance('i-template')//TEI:cit[@type='linguistic']"/>
+                                                                <script>
+                                                                    clearAndInitAutocompletes();
+                                                                </script>
+                                                            </xf:trigger>
+                                                        </div>
                                                     </div>
-                                                    <div class="tp-form-group-col">
-                                                        <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
-                                                            <xf:label/>
-                                                            <xf:insert context="TEI:listBibl" nodeset="TEI:cit" origin="instance('i-template')//TEI:cit[@type='linguistic']"/>
-                                                        </xf:trigger>
-                                                    </div>
-                                                </div>
+                                                </section>
+
                                                 <xf:repeat ref="TEI:listBibl/TEI:cit[@type='linguistic']" id="r-cit-linguistic">
                                                     <xf:label/>
+                                                    <div class="tp-row tp-repeat-headline">
+                                                        <xf:label class="tp-form-header">
+                                                            <h6 class="h5">Linked Source</h6>
+                                                        </xf:label>
+                                                    </div>
+
                                                     <div class="tp-row">
                                                         <div class="tp-form-group-col">
+                                                            <label class="tp-label">Quote</label>
                                                             <xf:input class="tp-input -form-control" ref="TEI:quote">
                                                                 <xf:label class="input-group-addon">quote</xf:label>
                                                             </xf:input>
@@ -1175,87 +1235,123 @@
                                                     </div>
                                                     <div class="tp-row">
                                                         <div class="tp-form-group-col">
+                                                            <label class="tp-label">Reference</label>
                                                             <xf:input class="tp-input -form-control" ref="TEI:ref">
                                                                 <xf:label class="input-group-addon">reference</xf:label>
                                                             </xf:input>
                                                         </div>
                                                         <div class="tp-form-group-col">
+                                                            <label class="tp-label">Author</label>
                                                             <xf:input class="tp-input -form-control" ref="TEI:bibl/TEI:author">
                                                                 <xf:label class="input-group-addon">author</xf:label>
                                                             </xf:input>
                                                         </div>
                                                         <div class="tp-form-group-col">
+                                                            <label class="tp-label">Details</label>
                                                             <xf:input class="tp-input -form-control" ref="TEI:span">
                                                                 <xf:label class="input-group-addon">details</xf:label>
                                                             </xf:input>
                                                         </div>
                                                         <div class="tp-form-group-col">
+                                                            <label class="tp-label">Link</label>
                                                             <xf:input class="tp-input -form-control" ref="TEI:ref/@target">
                                                                 <xf:label class="input-group-addon">link</xf:label>
                                                             </xf:input>
                                                         </div>
-                                                        <div class="tp-form-group-col">
-                                                            <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-trash">
-                                                                <xf:label/>
-                                                                <xf:delete nodeset="//TEI:gramGrp[@type='segmentation'][index('r-gramGrp')]/TEI:listBibl/TEI:cit[@type='linguistic'][index('r-cit-linguistic')]"/>
-                                                            </xf:trigger>
+                                                    </div>
+                                                    <div class="tp-row tp-repeat-buttons">
+                                                        <div class="tp-repeat-button-right">
+                                                            <div class="tp-button-row tp-delete">
+                                                                <label>Delete linked source</label>
+                                                                <xf:trigger class="-btn -btn-default">
+                                                                    <xf:label class="input-group-addon">
+                                                                        <i class="glyphicon glyphicon-trash"/>
+                                                                    </xf:label>
+                                                                    <xf:delete nodeset="//TEI:gramGrp[@type='segmentation'][index('r-gramGrp')]/TEI:listBibl/TEI:cit[@type='linguistic'][index('r-cit-linguistic')]"/>
+                                                                </xf:trigger>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </xf:repeat>
                                             </xf:group>
+
                                             <xf:group>
-                                                <div class="tp-row">
-                                                    <div class="tp-form-group-col">
-                                                        <xf:label>
-                                                            <h5>Modern references</h5>
-                                                        </xf:label>
+                                                <section class="tp-row tp-repeat-add">
+                                                    <h5 class="h4 tp-repeat-headline">Modern References</h5>
+                                                    <div class="tp-repeat-button-left">
+                                                        <div class="tp-button-row tp-add">
+                                                            <label>Add modern reference</label>
+                                                            <xf:trigger class="-btn -btn-default ">
+                                                                <xf:label class="input-group-addon">
+                                                                    <i class="glyphicon glyphicon-plus"/>
+                                                                </xf:label>
+                                                                <xf:insert context="TEI:listBibl" nodeset="TEI:cit" origin="instance('i-template')//TEI:cit[@type='modern']"/>
+                                                                <script>
+                                                                    clearAndInitAutocompletes();
+                                                                </script>
+                                                            </xf:trigger>
+                                                        </div>
                                                     </div>
-                                                    <div class="tp-form-group-col">
-                                                        <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
-                                                            <xf:label/>
-                                                            <xf:insert context="TEI:listBibl" nodeset="TEI:cit" origin="instance('i-template')//TEI:cit[@type='modern']"/>
-                                                        </xf:trigger>
-                                                    </div>
-                                                </div>
+                                                </section>
+
                                                 <xf:repeat ref="TEI:listBibl/TEI:cit[@type='modern']" id="r-cit-modern">
                                                     <xf:label/>
+                                                    <div class="tp-row tp-repeat-headline">
+                                                        <xf:label class="tp-form-header">
+                                                            <h6 class="h5">Modern Reference</h6>
+                                                        </xf:label>
+                                                    </div>
+
                                                     <div class="tp-row">
                                                         <div class="tp-form-group-col">
+                                                            <label class="tp-label">Reference</label>
                                                             <xf:input class="tp-input -form-control" ref="TEI:ref">
                                                                 <xf:label class="input-group-addon">reference</xf:label>
                                                             </xf:input>
                                                         </div>
                                                         <div class="tp-form-group-col">
+                                                            <label class="tp-label">Author</label>
                                                             <xf:input class="tp-input -form-control" ref="TEI:bibl/TEI:author">
                                                                 <xf:label class="input-group-addon">author</xf:label>
                                                             </xf:input>
                                                         </div>
                                                         <div class="tp-form-group-col">
+                                                            <label class="tp-label">Details</label>
                                                             <xf:input class="tp-input -form-control" ref="TEI:span">
                                                                 <xf:label class="input-group-addon">details</xf:label>
                                                             </xf:input>
                                                         </div>
                                                         <div class="tp-form-group-col">
+                                                            <label class="tp-label">Link</label>
                                                             <xf:input class="tp-input -form-control" ref="TEI:ref/@target">
                                                                 <xf:label class="input-group-addon">link</xf:label>
                                                             </xf:input>
                                                         </div>
-                                                        <div class="tp-form-group-col">
-                                                            <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-trash">
-                                                                <xf:label/>
-                                                                <xf:delete nodeset="//TEI:gramGrp[@type='segmentation'][index('r-gramGrp')]/TEI:listBibl/TEI:cit[@type='modern'][index('r-cit-modern')]"/>
-                                                            </xf:trigger>
+                                                    </div>
+                                                    <div class="tp-row tp-repeat-buttons">
+                                                        <div class="tp-repeat-button-right">
+                                                            <div class="tp-button-row tp-delete">
+                                                                <label>Delete modern reference</label>
+                                                                <xf:trigger class="-btn -btn-default">
+                                                                    <xf:label class="input-group-addon">
+                                                                        <i class="glyphicon glyphicon-trash"/>
+                                                                    </xf:label>
+                                                                    <xf:delete nodeset="//TEI:gramGrp[@type='segmentation'][index('r-gramGrp')]/TEI:listBibl/TEI:cit[@type='modern'][index('r-cit-modern')]"/>
+                                                                </xf:trigger>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </xf:repeat>
                                             </xf:group>
                                             <!--- /Bibliography -->
 
+                                            <div class="tp-divider"/>
+
                                             <!-- delete segmentation -->
                                             <div class="tp-row tp-repeat-buttons">
                                                 <div class="tp-repeat-button-right">
                                                     <div class="tp-button-row tp-delete">
-                                                        <label>Delete hypothesis</label>
+                                                        <label><b>Delete segmentation hypothesis</b></label>
                                                         <xf:trigger class="-btn -btn-default">
                                                             <xf:label class="input-group-addon">
                                                                 <i class="glyphicon glyphicon-trash"/>
@@ -1314,6 +1410,7 @@
                     </div>
                 </div>
             </section>
+
         </main>
 
         <bfc:dialog id="meanings" src="meanings.html">
