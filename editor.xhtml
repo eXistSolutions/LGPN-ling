@@ -535,7 +535,19 @@
                                                     </xf:item>
                                                 </xf:select>
                                             </div>
+                                        </div>
 
+                                        <div class="tp-row">
+                                            <div class="tp-form-group-col">
+                                                <label class="tp-label">Gender</label>
+                                                <xf:select1 class="tp-input -form-control" ref="TEI:gen">
+                                                    <xf:label class="input-group-addon"/>
+                                                    <xf:itemset nodeset="instance('i-genders')//TEI:category">
+                                                        <xf:label ref="TEI:catDesc[@xml:lang='en'][@ana='short']"/>
+                                                        <xf:value ref="@xml:id"/>
+                                                    </xf:itemset>
+                                                </xf:select1>
+                                            </div>
                                         </div>
                                         <div class="tp-row">
                                             <div class="tp-form-group-col">
@@ -686,32 +698,30 @@
                                             </div>
 
                                             <div class="tp-row">
-                                                <div class="">
-                                                    <label class="tp-label">Preroot (prefix)</label>
-                                                    <xf:select class="tp-input-1-row-2-col" ref="TEI:m[@type = 'prefix' and @n = 1]/@function" appearance="full" incremental="true">
-                                                        <xf:label/>
-                                                        <xf:item>
-                                                            <xf:label>Verb</xf:label>
-                                                            <xf:value>V</xf:value>
-                                                        </xf:item>
-                                                        <xf:item>
-                                                            <xf:label>Noun</xf:label>
-                                                            <xf:value>N</xf:value>
-                                                        </xf:item>
-                                                        <xf:item>
-                                                            <xf:label>Adjective</xf:label>
-                                                            <xf:value>Adj</xf:value>
-                                                        </xf:item>
-                                                        <xf:item>
-                                                            <xf:label>Pronoun</xf:label>
-                                                            <xf:value>Pro</xf:value>
-                                                        </xf:item>
-                                                        <xf:item>
-                                                            <xf:label>Adverb</xf:label>
-                                                            <xf:value>Adv</xf:value>
-                                                        </xf:item>
-                                                    </xf:select>
-                                                </div>
+                                                <label class="tp-label">Preroot (prefix)</label>
+                                                <xf:select class="tp-input-1-row-2-col" ref="TEI:m[@type = 'prefix' and @n = 1]/@function" appearance="full" incremental="true">
+                                                    <xf:label/>
+                                                    <xf:item>
+                                                        <xf:label>Verb</xf:label>
+                                                        <xf:value>V</xf:value>
+                                                    </xf:item>
+                                                    <xf:item>
+                                                        <xf:label>Noun</xf:label>
+                                                        <xf:value>N</xf:value>
+                                                    </xf:item>
+                                                    <xf:item>
+                                                        <xf:label>Adjective</xf:label>
+                                                        <xf:value>Adj</xf:value>
+                                                    </xf:item>
+                                                    <xf:item>
+                                                        <xf:label>Pronoun</xf:label>
+                                                        <xf:value>Pro</xf:value>
+                                                    </xf:item>
+                                                    <xf:item>
+                                                        <xf:label>Adverb</xf:label>
+                                                        <xf:value>Adv</xf:value>
+                                                    </xf:item>
+                                                </xf:select>
                                             </div>
                                             <div class="tp-row">
                                                 <div class="tp-form-group-col">
@@ -847,59 +857,59 @@
                                             </div>
 
                                             <div class="tp-row">
-                                                <div class="tp-form-group-col">
-                                                    <label class="tp-label">Function 1</label>
-                                                    <xf:select ref="TEI:m[@type = 'radical' and @n = 1]/@function" appearance="full" incremental="true">
-                                                        <xf:label/>
-                                                        <xf:item>
-                                                            <xf:label>Verb</xf:label>
-                                                            <xf:value>V</xf:value>
-                                                        </xf:item>
-                                                        <xf:item>
-                                                            <xf:label>Noun</xf:label>
-                                                            <xf:value>N</xf:value>
-                                                        </xf:item>
-                                                        <xf:item>
-                                                            <xf:label>Adjective</xf:label>
-                                                            <xf:value>Adj</xf:value>
-                                                        </xf:item>
-                                                        <xf:item>
-                                                            <xf:label>Pronoun</xf:label>
-                                                            <xf:value>Pro</xf:value>
-                                                        </xf:item>
-                                                        <xf:item>
-                                                            <xf:label>Adverb</xf:label>
-                                                            <xf:value>Adv</xf:value>
-                                                        </xf:item>
-                                                    </xf:select>
-                                                </div>
-                                                <div class="tp-form-group-col">
-                                                    <label class="tp-label">Function 2</label>
-                                                    <xf:select ref="TEI:m[@type = 'radical' and @n = 2]/@function" appearance="full" incremental="true">
-                                                        <xf:label/>
-                                                        <xf:item>
-                                                            <xf:label>Verb</xf:label>
-                                                            <xf:value>V</xf:value>
-                                                        </xf:item>
-                                                        <xf:item>
-                                                            <xf:label>Noun</xf:label>
-                                                            <xf:value>N</xf:value>
-                                                        </xf:item>
-                                                        <xf:item>
-                                                            <xf:label>Adjective</xf:label>
-                                                            <xf:value>Adj</xf:value>
-                                                        </xf:item>
-                                                        <xf:item>
-                                                            <xf:label>Pronoun</xf:label>
-                                                            <xf:value>Pro</xf:value>
-                                                        </xf:item>
-                                                        <xf:item>
-                                                            <xf:label>Adverb</xf:label>
-                                                            <xf:value>Adv</xf:value>
-                                                        </xf:item>
-                                                    </xf:select>
-                                                </div>
+                                                <label class="tp-label">Function 1</label>
+                                                <xf:select ref="TEI:m[@type = 'radical' and @n = 1]/@function" appearance="full" incremental="true">
+                                                    <xf:label/>
+                                                    <xf:item>
+                                                        <xf:label>Verb</xf:label>
+                                                        <xf:value>V</xf:value>
+                                                    </xf:item>
+                                                    <xf:item>
+                                                        <xf:label>Noun</xf:label>
+                                                        <xf:value>N</xf:value>
+                                                    </xf:item>
+                                                    <xf:item>
+                                                        <xf:label>Adjective</xf:label>
+                                                        <xf:value>Adj</xf:value>
+                                                    </xf:item>
+                                                    <xf:item>
+                                                        <xf:label>Pronoun</xf:label>
+                                                        <xf:value>Pro</xf:value>
+                                                    </xf:item>
+                                                    <xf:item>
+                                                        <xf:label>Adverb</xf:label>
+                                                        <xf:value>Adv</xf:value>
+                                                    </xf:item>
+                                                </xf:select>
                                             </div>
+
+                                            <div class="tp-row">
+                                                <label class="tp-label">Function 2</label>
+                                                <xf:select ref="TEI:m[@type = 'radical' and @n = 2]/@function" appearance="full" incremental="true">
+                                                    <xf:label/>
+                                                    <xf:item>
+                                                        <xf:label>Verb</xf:label>
+                                                        <xf:value>V</xf:value>
+                                                    </xf:item>
+                                                    <xf:item>
+                                                        <xf:label>Noun</xf:label>
+                                                        <xf:value>N</xf:value>
+                                                    </xf:item>
+                                                    <xf:item>
+                                                        <xf:label>Adjective</xf:label>
+                                                        <xf:value>Adj</xf:value>
+                                                    </xf:item>
+                                                    <xf:item>
+                                                        <xf:label>Pronoun</xf:label>
+                                                        <xf:value>Pro</xf:value>
+                                                    </xf:item>
+                                                    <xf:item>
+                                                        <xf:label>Adverb</xf:label>
+                                                        <xf:value>Adv</xf:value>
+                                                    </xf:item>
+                                                </xf:select>
+                                            </div>
+
                                             <div class="tp-row">
                                                 <div class="tp-form-group-col">
                                                     <label class="tp-label">Headedness classification 1</label>
@@ -940,19 +950,17 @@
                                                 </div>
                                                 <div class="tp-form-group-col">
                                                     <label class="tp-label">Headedness classification 2</label>
-                                                    <div class="input-group">
-                                                        <xf:select class="tp-input -form-control" ref="TEI:m[@type = 'radical' and @n = 2]/@subtype" appearance="full">
-                                                            <xf:label class="input-group-addon">head.</xf:label>
-                                                            <xf:itemset nodeset="instance('i-headedness')//option">
-                                                                <xf:label ref="."/>
-                                                                <xf:value ref="@xml:id"/>
-                                                            </xf:itemset>
-                                                        </xf:select>
-                                                    </div>
+                                                    <xf:select class="tp-input" ref="TEI:m[@type = 'radical' and @n = 2]/@subtype" appearance="full">
+                                                        <xf:label class="input-group-addon">head.</xf:label>
+                                                        <xf:itemset nodeset="instance('i-headedness')//option">
+                                                            <xf:label ref="."/>
+                                                            <xf:value ref="@xml:id"/>
+                                                        </xf:itemset>
+                                                    </xf:select>
                                                 </div>
                                                 <div class="tp-form-group-col">
                                                     <label class="tp-label">Abbreviation marker 2</label>
-                                                    <xf:select class="tp-input -form-control" ref="TEI:m[@type = 'radical' and @n = 2]/@ana" appearance="full" incremental="true">
+                                                    <xf:select class="tp-input" ref="TEI:m[@type = 'radical' and @n = 2]/@ana" appearance="full" incremental="true">
                                                         <xf:item>
                                                             <xf:label>Abbr</xf:label>
                                                             <xf:value>AbbrC</xf:value>
@@ -961,7 +969,7 @@
                                                 </div>
                                                 <div class="tp-form-group-col">
                                                     <label class="tp-label">Class marker 2</label>
-                                                    <xf:select class="tp-input -form-control" ref="TEI:m[@type = 'radical' and @n = 2]/@cert" appearance="full" incremental="true">
+                                                    <xf:select class="tp-input" ref="TEI:m[@type = 'radical' and @n = 2]/@cert" appearance="full" incremental="true">
                                                         <xf:item>
                                                             <xf:label>*</xf:label>
                                                             <xf:value>unattested</xf:value>
