@@ -639,8 +639,20 @@
                                                     </xf:select1>
                                                 </div>
                                             </div>
+                                            <div class="tp-row">
+                                                <div class="tp-form-group-col">
+                                                    <label class="tp-label">Structuration: uncertain</label>
+                                                    <xf:select class="tp-input" ref="@ana" appearance="full">
+                                                        <xf:label class="input-group-addon"/>
+                                                        <xf:itemset nodeset="instance('i-name-characteristic')//option">
+                                                            <xf:label ref="."/>
+                                                            <xf:value ref="."/>
+                                                        </xf:itemset>
+                                                    </xf:select>
+                                                </div>
+                                            </div>
 
-                                            <div class="tp-divider"></div>
+                                            <div class="tp-divider"/>
 
                                             <div class="tp-row">
                                                 <div class="tp-form-group-col tp-validation">
