@@ -521,24 +521,7 @@
                                         </div>
                                         </div>
                                         <div class="tp-row">
-                                            <div class="tp-divider"></div>
-                                            <div class="tp-form-group-col">
-                                            <label class="tp-label tp-invisible">Reading of the form is uncertain</label>
-                                            <xf:select class="tp-input" ref="TEI:usg/@cert" appearance="full" incremental="true">
-                                                <xf:item>
-                                                    <xf:label>?</xf:label>
-                                                    <xf:value>low</xf:value>
-                                                </xf:item>
-                                            </xf:select>
-                                        </div>
-                                        </div>
-                                        <div class="tp-row">
-                                            <div class="tp-form-group-col">
-                                                <label class="tp-label">Form</label>
-                                                <xf:input class="tp-input -form-control" ref="TEI:orth">
-                                                    <xf:label class="input-group-addon"/>
-                                                </xf:input>
-                                            </div>
+                                            <div class="tp-divider"/>
                                             <div class="tp-form-group-col">
                                                 <label class="tp-label">Linking of form is uncertain</label>
                                                 <xf:select class="tp-input" ref="TEI:usg/@cert" appearance="full" incremental="true">
@@ -550,7 +533,25 @@
                                             </div>
                                         </div>
                                         <div class="tp-row">
-                                            <div class="tp-divider"></div>
+                                            <div class="tp-form-group-col">
+                                                <label class="tp-label">Form</label>
+                                                <xf:input class="tp-input -form-control" ref="TEI:orth">
+                                                    <xf:label class="input-group-addon"/>
+                                                </xf:input>
+                                            </div>
+                                            <div class="tp-form-group-col">
+                                                <label class="tp-label tp-invisible">Reading of the form is uncertain</label>
+                                                <xf:select class="tp-input" ref="TEI:usg/@cert" appearance="full" incremental="true">
+                                                    <xf:item>
+                                                        <xf:label>?</xf:label>
+                                                        <xf:value>low</xf:value>
+                                                    </xf:item>
+                                                </xf:select>
+                                            </div>
+
+                                        </div>
+                                        <div class="tp-row">
+                                            <div class="tp-divider"/>
                                             <div class="tp-form-group-col">
                                                 <label class="tp-label">Dialect</label>
                                                 <xf:select1 class="tp-input -form-control" ref="TEI:usg">
@@ -652,6 +653,7 @@
                                                     </xf:select1>
                                                 </div>
                                             </div>
+
                                             <div class="tp-divider"></div>
 
                                             <div class="tp-row">
