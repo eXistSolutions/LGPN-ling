@@ -81,9 +81,13 @@
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 0;
-  margin-bottom: 0;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   max-width: 62.5rem;
+  @media only screen and (min-width: @medium-screen-min) {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
 }
 
 .tp-row:before, .tp-row:after {

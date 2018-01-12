@@ -365,6 +365,7 @@ footer .poweredby img { width: 120px; }
   display: block;
   width: auto;
   float: none !important;
+  font-weight: 700;
   @media (min-width: 768px) {
     width: auto;
     margin-bottom: 0;
@@ -591,4 +592,8 @@ body > .header .logo {
 legend {
   &:extend(.h3);
   border-bottom: none;
+}
+
+label:not(label.tp-label) {
+  font-weight: 300;
 }

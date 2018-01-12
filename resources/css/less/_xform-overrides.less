@@ -24,6 +24,10 @@
 .bfCheckBoxGroup {
   .xfSelectorItem {
     margin: 0 2rem 0 0;
+    display: block;
+    @media only screen and (min-width: @medium-screen-min) {
+      display: inline-block;
+    }
   }
 }
 
@@ -55,9 +59,15 @@ span.xfControl {
 
 // checkbox groups
 .xfItemset {
-  display: inline-block;
-  .xfSelectorItem {
+  display: block;
+  @media only screen and (min-width: @medium-screen-min) {
     display: inline-block;
+  }
+  .xfSelectorItem {
+    display: block;
+    @media only screen and (min-width: @medium-screen-min) {
+      display: inline-block;
+    }
   }
 }
 
