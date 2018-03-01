@@ -90,7 +90,7 @@ function names:entry-nameVariants($entry as node()) {
     let $content := data($entry/parent::TEI:entry//TEI:orth[@type='greek'][1])
     let $lgpn :=  if ($entry/parent::TEI:entry//TEI:orth[@type='lgpn'][string(.)])
         then 
-            <span class="dimmed"><br/>{'{' || replace($entry/parent::TEI:entry//TEI:orth[@type='lgpn'][1], "(\(\w*\))", "") || '}' }</span> 
+            <span class="dimmed"><br/>{'{' || replace($entry/parent::TEI:entry//TEI:orth[@type='lgpn'], "(\(\w*\))", "") || '}' }</span> 
         else 
             ()
 
@@ -128,7 +128,7 @@ function names:entry-attestations($entry as node()) {
     let $content := if ($name ne '' ) then count(collection($config:data-root)//TEI:persName[@type="main"][.=$name]) else ''
 
     return 
-        if($pos) then <span class="invisible">{$content}</span> else $content[1]
+        if($pos) then <span class="invisible">{$content}</span> else $content
 };
 
 declare 
@@ -212,7 +212,7 @@ function names:entry-period($entry as node()) {
         max(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:birth/@notAfter[string(.)]))
     let $content := string-join($dates, '/')
     return 
-        if($pos) then <span class="invisible">{$content}</span> else $content[1]
+        if($pos) then <span class="invisible">{$content}</span> else $content
 };
 
 declare
@@ -224,7 +224,7 @@ function names:entry-gender($entry as node()) {
         return if (number($g)=2) then "f." else "m."
     let $content:= string-join($genders, '|')
     return 
-        if($pos) then <span class="invisible">{$content}</span> else $content[1]
+        if($pos) then <span class="invisible">{$content}</span> else $content
 };
 
 declare
