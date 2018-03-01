@@ -1,14 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:TEI="http://www.tei-c.org/ns/1.0" xmlns:bfc="http://betterform.sourceforge.net/xforms/controls" xmlns:xf="http://www.w3.org/2002/xforms" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
     <head>
         <title>LGPN</title><!--
         ~ Copyright (c) 2015. existsolutions - http://www.exsitsolutions.com
         -->
-        <link rel="stylesheet" type="text/css" href="$shared/resources/css/bootstrap-3.0.3.min.css"/>
         <link href="resources/js/vendor/select2/select2.css" rel="stylesheet"/>
-        <link rel="stylesheet" type="text/css" href="resources/css/editor.css"/>
+        <link rel="stylesheet" type="text/css" href="resources/css/style.css"/>
     </head>
     <body>
-        <div style="display:none">
+        <div class="hidden">
             <xf:model id="model-1">
                 <xf:instance id="i-default">
                     <TEI xmlns="http://www.tei-c.org/ns/1.0">
@@ -25,7 +25,6 @@
                                         <orth type="latin"/>
                                         <orth type="h-variant"/>
                                         <orth type="lgpn"/>
-                                        <!--                                        <gen/> -->
                                         <date notBefore="" notAfter=""/>
                                     </form>
                                     <gramGrp type="classification">
@@ -82,7 +81,7 @@
                         </text>
                     </TEI>
                 </xf:instance>
-                <xf:bind nodeset="//TEI:orth[@type ='latin']" required="true()" type="xs:string"/><!--<xf:bind nodeset="TEI:m[@type = 'radical' and @n = 1]" ref="normalize-space(.)"/>-->
+                <xf:bind nodeset="//TEI:orth[@type ='latin']" required="true()" type="xs:string"/>
                 <xf:instance id="i-template">
                     <data xmlns="http://www.tei-c.org/ns/1.0">
                         <gramGrp cert="" ana="" type="segmentation" subtype="">
@@ -209,12 +208,7 @@
                     <xf:message ev:event="xforms-submit-done" level="ephemeral">Data have been saved.</xf:message>
                     <xf:message ev:event="xforms-submit-error">Failed to save data</xf:message>
                 </xf:submission>
-                <xf:submission id="s-reload-meanings" method="post" replace="instance" validate="false" resource="modules/reload-meanings.xql" ref="instance('i-default')//TEI:entry/TEI:gramGrp[@type='segmentation'][instance('i-meanings')/being-reloaded/@grp/number()]/TEI:m[@type = 'radical' and @n = instance('i-meanings')/being-reloaded/@n]" targetref="instance('i-meanings')/target/TEI:taxonomy"><!--
-                    <xf:header>
-                        <xf:name>userid</xf:name>
-                        <xf:value>admin</xf:value>
-                    </xf:header>
--->
+                <xf:submission id="s-reload-meanings" method="post" replace="instance" validate="false" resource="modules/reload-meanings.xql" ref="instance('i-default')//TEI:entry/TEI:gramGrp[@type='segmentation'][instance('i-meanings')/being-reloaded/@grp/number()]/TEI:m[@type = 'radical' and @n = instance('i-meanings')/being-reloaded/@n]" targetref="instance('i-meanings')/target/TEI:taxonomy">
                     <xf:action ev:event="xforms-submit-done">
                         <xf:action if="not(instance('i-meanings')/meaning[@grp=instance('i-meanings')/being-reloaded/@grp and @n=instance('i-meanings')/being-reloaded/@n])">
                             <xf:insert context="instance('i-meanings')" nodeset="*[last()]" origin="instance('i-meanings')/template/meaning"/>
@@ -259,135 +253,169 @@
                 </xf:action>
             </xf:group>
         </div>
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-8">
-                    <h2>LGPN-Ling</h2>
-                </div><!--div class="col-xs-2">
-                    <h3><a href="#confirmDelete" data-toggle="modal"><span class="glyphicon glyphicon-trash"/> Delete</a></h3>
-                </div-->
+
+        <header>
+            <div class="tp-row">
+                <h1 class="tp-column-fullwidth tp-headline">LGPN-Ling Editor</h1>
             </div>
-            <div class="row">
-                <div class="col-xs-3">
-                    <xf:input class="input-group input-group-lg -form-control" ref="//TEI:form[@type='lemma']/TEI:orth[@type='greek']">
-                        <xf:label class="input-group-addon">α</xf:label>
-                        <xf:hint>greek</xf:hint>
-                    </xf:input>
-                </div>
-                <div class="col-xs-3">
-                    <xf:input class="input-group input-group-lg -form-control" ref="//TEI:form[@type='lemma']/TEI:orth[@type='latin']">
-                        <xf:label class="input-group-addon glyphicon glyphicon-font"/>
-                        <xf:hint>latin</xf:hint>
-                    </xf:input>
-                </div>
-                <div class="col-xs-3">
-                    <xf:input class="input-group input-group-lg -form-control" ref="//TEI:form[@type='lemma']/TEI:orth[@type='h-variant']">
-                        <xf:label class="input-group-addon">(H)</xf:label>
-                        <xf:hint>latin variant (with parentheses)</xf:hint>
-                    </xf:input>
-                </div>
-                <div class="col-xs-3">
-                    <xf:input class="input-group input-group-lg -form-control" ref="//TEI:form[@type='lemma']/TEI:orth[@type='lgpn']">
-                        <xf:label class="input-group-addon">LGPN</xf:label>
-                        <xf:hint>LGPN variant (if differs)</xf:hint>
-                    </xf:input>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-2">
-                    <div class="input-group">
-                        <xf:select class="input-group -form-control" ref="//TEI:gramGrp[@type='classification']/TEI:gram[@type='fictitious']" appearance="full">
-                            <xf:label class="input-group-addon"/>
-                            <xf:itemset nodeset="instance('i-fictitious')//option">
-                                <xf:label ref="."/>
-                                <xf:value ref="."/>
-                            </xf:itemset>
-                        </xf:select>
-                    </div>
-                </div>
-                <div class="col-xs-2">
-                    <div class="input-group">
-                        <xf:select class="input-group -form-control" ref="//TEI:gramGrp[@type='classification']/TEI:gram[@type='GPR']" appearance="full">
-                            <xf:label class="input-group-addon"/>
-                            <xf:itemset nodeset="instance('i-gpr')//option">
-                                <xf:label ref="."/>
-                                <xf:value ref="."/>
-                            </xf:itemset>
-                        </xf:select>
-                    </div>
-                </div>
-                <div class="col-xs-3">
-                    Significant relative name
-                    <xf:trigger class="-btn -btn-default -glyphicon -glyphicon-plus">
-                        <xf:label/>
-                        <xf:insert context="//TEI:entry" nodeset="TEI:re" origin="instance('i-template')//TEI:re"/>
-                    </xf:trigger>
-                </div>
-                <div class="col-xs-2">
-                    <div class="input-group">
-                        <xf:select1 class="input-group -form-control" ref="//TEI:re//TEI:lbl">
-                                        <xf:label class="input-group-addon">relation</xf:label>
-                                        <xf:itemset nodeset="instance('i-relations')//option">
-                                            <xf:label ref="."/>
-                                            <xf:value ref="@xml:id"/>
-                                        </xf:itemset>
-                        </xf:select1>
-                    </div>
-                </div>
-                <div class="col-xs-3">
-                    <div class="input-group">
-                        <xf:input class="input-group -form-control" ref="//TEI:re//TEI:orth">
-                            <xf:label class="input-group-addon">name</xf:label>
-                            <xf:hint>relative name</xf:hint>
-                        </xf:input>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xs-3">
-                    <div class="input-group">
-                        <xf:select1 class="input-group -form-control" ref="//TEI:gramGrp[@type='classification']/TEI:gram[@type='sublemma']">
-                                        <xf:label class="input-group-addon">Sublemma</xf:label>
+        </header>
+
+        <main>
+            <!-- begin section general -->
+            <section class="tp-section">
+                <div class="tp-row">
+                    <h2 class="tp-width-sidebar">General</h2>
+                    <div class="tp-width-main">
+                        <fieldset class="form-horizontal" id="general">
+                            <div class="tp-form-group-col">
+                                <label class="tp-label">Greek</label>
+                                <xf:input class="tp-input -form-control" ref="//TEI:form[@type='lemma']/TEI:orth[@type='greek']">
+                                    <xf:label class="input-group-addon">
+                                        <i class="glyphicon">α</i>
+                                    </xf:label>
+                                    <xf:hint>Greek</xf:hint>
+                                </xf:input>
+                            </div>
+                            <div class="tp-form-group-col">
+                                <label class="tp-label">Latin</label>
+                                <xf:input class="tp-input -form-control" ref="//TEI:form[@type='lemma']/TEI:orth[@type='latin']">
+                                    <xf:label class="input-group-addon">
+                                        <i class="glyphicon glyphicon-font"/>
+                                    </xf:label>
+                                    <xf:hint>Latin</xf:hint>
+                                </xf:input>
+                            </div>
+                            <div class="tp-form-group-col">
+                                <label class="tp-label">H-Variant</label>
+                                <xf:input class="tp-input -form-control" ref="//TEI:form[@type='lemma']/TEI:orth[@type='h-variant']">
+                                    <xf:label class="input-group-addon">
+                                        <i class="glyphicon glyphicon-header"/>
+                                    </xf:label>
+                                    <xf:hint>Latin variant (with parentheses)</xf:hint>
+                                </xf:input>
+                            </div>
+                            <div class="tp-form-group-col">
+                                <label class="tp-label">LGPN</label>
+                                <xf:input class="tp-input -form-control" ref="//TEI:form[@type='lemma']/TEI:orth[@type='lgpn']">
+                                    <xf:label class="input-group-addon">
+                                        <i class="glyphicon glyphicon-italic"/>
+                                    </xf:label>
+                                    <xf:hint>LGPN variant (if differs)</xf:hint>
+                                </xf:input>
+                            </div>
+                            <div class="tp-form-group-col">
+                                <label class="tp-label">Classification</label>
+                                <xf:select class="tp-input" ref="//TEI:gramGrp[@type='classification']/TEI:gram[@type='fictitious']" appearance="full">
+                                    <xf:label class="input-group-addon">
+                                        <i class="glyphicon glyphicon-check"/>
+                                    </xf:label>
+                                    <xf:itemset nodeset="instance('i-fictitious')//option">
+                                        <xf:label ref="."/>
+                                        <xf:value ref="@value"/>
+                                    </xf:itemset>
+                                </xf:select>
+                            </div>
+                            <div class="tp-form-group-col">
+                                <label class="tp-label">Classification</label>
+                                <xf:select class="tp-input" ref="//TEI:gramGrp[@type='classification']/TEI:gram[@type='GPR']" appearance="full">
+                                    <xf:label class="input-group-addon">
+                                        <i class="glyphicon glyphicon-check"/>
+                                    </xf:label>
+                                    <xf:itemset nodeset="instance('i-gpr')//option">
+                                        <xf:label ref="."/>
+                                        <xf:value ref="@value"/>
+                                    </xf:itemset>
+                                </xf:select>
+                            </div>
+                        </fieldset>
+
+                        <div class="tp-row">
+                            <div class="tp-row tp-repeat-add">
+                                <xf:label class="tp-form-header">
+                                    <h3 class="tp-row tp-repeat-headline">Significant relative name</h3>
+                                </xf:label>
+                                <div class="tp-repeat-button-left">
+                                    <div class="tp-button-row tp-add">
+                                        <label>Add name</label>
+                                        <xf:trigger class="-btn -btn-default">
+                                            <xf:label class="input-group-addon">
+                                                <i class="glyphicon glyphicon-plus"/>
+                                            </xf:label>
+                                            <xf:insert context="//TEI:entry" nodeset="TEI:re" origin="instance('i-template')//TEI:re"/>
+                                            <script>
+                                                clearAndInitAutocompletes();
+                                            </script>
+                                        </xf:trigger>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tp-form-group-col">
+                                <xf:select1 class="input-group -form-control" ref="//TEI:re//TEI:lbl">
+                                    <xf:label class="input-group-addon">Relation</xf:label>
+                                    <xf:itemset nodeset="instance('i-relations')//option">
+                                        <xf:label ref="."/>
+                                        <xf:value ref="@xml:id"/>
+                                    </xf:itemset>
+                                </xf:select1>
+                            </div>
+
+                            <div class="tp-form-group-col">
+                                <xf:input class="input-group -form-control" ref="//TEI:re//TEI:orth">
+                                    <xf:label class="input-group-addon">Name</xf:label>
+                                    <xf:hint>Relative name</xf:hint>
+                                </xf:input>
+                            </div>
+
+                            <div class="tp-row tp-repeat-buttons">
+                                <div class="tp-repeat-button-right">
+                                    <div class="tp-button-row tp-delete">
+                                        <label>Delete name</label>
+                                        <xf:trigger class="-btn -btn-default">
+                                            <xf:label class="input-group-addon">
+                                                <i class="glyphicon glyphicon-trash"/>
+                                            </xf:label>
+                                            <xf:delete nodeset="//TEI:entry//TEI:re//TEI:lbl"/>
+                                            <xf:delete nodeset="//TEI:entry//TEI:re//TEI:orth"/>
+                                        </xf:trigger>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tp-row">
+                                <div class="tp-form-group-col">
+                                    <label class="tp-label">Sublemma</label>
+                                    <xf:select1 class="tp-input -form-control" ref="//TEI:gramGrp[@type='classification']/TEI:gram[@type='sublemma']">
+                                        <xf:label class="input-group-addon">
+                                            <i class="glyphicon glyphicon-asterisk"/>
+                                        </xf:label>
                                         <xf:itemset nodeset="instance('i-sublemma')//option">
                                             <xf:label ref="."/>
                                             <xf:value ref="@xml:id"/>
                                         </xf:itemset>
-                        </xf:select1>
+                                    </xf:select1>
+                                </div>
+
+                                <div class="tp-form-group-col">
+                                    <label class="tp-label">Polysemic</label>
+                                    <xf:select class="input-group" ref="//TEI:gramGrp[@type='classification']/TEI:gram[@ana]" appearance="full">
+                                    <xf:label class="input-group-addon">
+                                        <i class="glyphicon glyphicon-check"/>
+                                    </xf:label>
+                                        <xf:itemset nodeset="instance('i-polysemic')//option">
+                                            <xf:label ref="."/>
+                                            <xf:value ref="."/>
+                                        </xf:itemset>
+                                    </xf:select>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="col-xs-2">
-                    <div class="input-group">
-                        <xf:select class="input-group -form-control" ref="//TEI:gramGrp[@type='classification']/TEI:gram[@ana]" appearance="full">
-                        <xf:label class="input-group-addon">Polysemic</xf:label>
-                            <xf:itemset nodeset="instance('i-polysemic')//option">
-                                <xf:label ref="."/>
-                                <xf:value ref="."/>
-                            </xf:itemset>
-                        </xf:select>
-                    </div>
-                </div>
-            </div>
-            <div class="row"><!--
-                <div class="col-xs-2">
-                    <xf:input class="input-group -form-control" ref="//TEI:form[@type='lemma']/TEI:date/@notBefore" disabled="disabled">
-                        <xf:label class="input-group-addon">not before</xf:label>
-                        <xf:hint>not before</xf:hint>
-                    </xf:input>
-                </div>
-                <div class="col-xs-2">
-                    <xf:input class="input-group -form-control" ref="//TEI:form[@type='lemma']/TEI:date/@notAfter" disabled="disabled">
-                        <xf:label class="input-group-addon">not after</xf:label>
-                        <xf:hint>not after</xf:hint>
-                    </xf:input>
-                </div>
-                <div class="col-xs-2">
-                    <xf:input class="input-group -form-control" ref="//TEI:form[@type='lemma']/TEI:gen" disabled="disabled">
-                        <xf:label class="input-group-addon">gender</xf:label>
-                        <xf:hint>gender</xf:hint>
-                    </xf:input>
-                </div>
-                                -->
-            </div>
+
+            </section>
+            <!-- // end section general -->
+
             <xf:group ref="//TEI:entry">
                 <xf:group class="fieldset">
                     <div class="row">
@@ -600,23 +628,11 @@
                                             <xf:value>V</xf:value>
                                         </xf:item>
                                         <xf:item>
-                                            <xf:label>Participle</xf:label>
-                                            <xf:value>Part</xf:value>
-                                        </xf:item>
-                                        <xf:item>
-                                            <xf:label>Agt Noun</xf:label>
-                                            <xf:value>AgtN</xf:value>
-                                        </xf:item>
-                                        <xf:item>
-                                            <xf:label>Act Noun</xf:label>
-                                            <xf:value>ActN</xf:value>
-                                        </xf:item>
-                                        <xf:item>
                                             <xf:label>Noun</xf:label>
                                             <xf:value>N</xf:value>
                                         </xf:item>
                                         <xf:item>
-                                            <xf:label>Adj</xf:label>
+                                            <xf:label>Adjective</xf:label>
                                             <xf:value>Adj</xf:value>
                                         </xf:item>
                                         <xf:item>
@@ -624,7 +640,7 @@
                                             <xf:value>Pro</xf:value>
                                         </xf:item>
                                         <xf:item>
-                                            <xf:label>Adv</xf:label>
+                                            <xf:label>Adverb</xf:label>
                                             <xf:value>Adv</xf:value>
                                         </xf:item>
                                     </xf:select>
@@ -746,23 +762,11 @@
                                             <xf:value>V</xf:value>
                                         </xf:item>
                                         <xf:item>
-                                            <xf:label>Participle</xf:label>
-                                            <xf:value>Part</xf:value>
-                                        </xf:item>
-                                        <xf:item>
-                                            <xf:label>Agt Noun</xf:label>
-                                            <xf:value>AgtN</xf:value>
-                                        </xf:item>
-                                        <xf:item>
-                                            <xf:label>Act Noun</xf:label>
-                                            <xf:value>ActN</xf:value>
-                                        </xf:item>
-                                        <xf:item>
                                             <xf:label>Noun</xf:label>
                                             <xf:value>N</xf:value>
                                         </xf:item>
                                         <xf:item>
-                                            <xf:label>Adj</xf:label>
+                                            <xf:label>Adjective</xf:label>
                                             <xf:value>Adj</xf:value>
                                         </xf:item>
                                         <xf:item>
@@ -770,7 +774,7 @@
                                             <xf:value>Pro</xf:value>
                                         </xf:item>
                                         <xf:item>
-                                            <xf:label>Adv</xf:label>
+                                            <xf:label>Adverb</xf:label>
                                             <xf:value>Adv</xf:value>
                                         </xf:item>
                                     </xf:select>
@@ -783,23 +787,11 @@
                                             <xf:value>V</xf:value>
                                         </xf:item>
                                         <xf:item>
-                                            <xf:label>Participle</xf:label>
-                                            <xf:value>Part</xf:value>
-                                        </xf:item>
-                                        <xf:item>
-                                            <xf:label>Agt Noun</xf:label>
-                                            <xf:value>AgtN</xf:value>
-                                        </xf:item>
-                                        <xf:item>
-                                            <xf:label>Act Noun</xf:label>
-                                            <xf:value>ActN</xf:value>
-                                        </xf:item>
-                                        <xf:item>
                                             <xf:label>Noun</xf:label>
                                             <xf:value>N</xf:value>
                                         </xf:item>
                                         <xf:item>
-                                            <xf:label>Adj</xf:label>
+                                            <xf:label>Adjective</xf:label>
                                             <xf:value>Adj</xf:value>
                                         </xf:item>
                                         <xf:item>
@@ -807,7 +799,7 @@
                                             <xf:value>Pro</xf:value>
                                         </xf:item>
                                         <xf:item>
-                                            <xf:label>Adv</xf:label>
+                                            <xf:label>Adverb</xf:label>
                                             <xf:value>Adv</xf:value>
                                         </xf:item>
                                     </xf:select>
@@ -1227,7 +1219,8 @@
                 <xf:label>Save</xf:label>
             </xf:submit>
             <a href="index.html" class="btn btn-default glyphicon glyphicon-out">Return to the list of names without saving</a>
-        </div>
+        </main>
+
         <bfc:dialog id="meanings" src="meanings.html">
             <xf:label>Add meaning</xf:label>
             <div id="mountpoint"/>
@@ -1253,9 +1246,9 @@
                 </div>
             </div>
         </div><!-- Modal Dialog -->
-        <script type="text/javascript" src="$shared/resources/scripts/jquery/jquery-1.7.1.min.js"/>
+        <script type="text/javascript" src="resources/js/vendor/jquery.min.js"/>
         <script type="text/javascript" src="$shared/resources/scripts/loadsource.js"/>
-        <script type="text/javascript" src="$shared/resources/scripts/bootstrap-3.0.3.min.js"/>
+        <script type="text/javascript" src="resources/js/vendor/bootstrap.min.js"/>
         <script src="$shared/resources/scripts/jquery/jquery-ui.min.js" type="text/javascript" charset="utf-8"/>
         <script type="text/javascript" src="resources/js/editor.js"/>
         <script type="text/javascript" src="resources/js/vendor/select2/select2.js"/>
