@@ -246,6 +246,10 @@ function names:entry-morpheme($entry as node(), $type as xs:string, $position as
         </span>
 };
 
+declare function names:prettyPrint-unattested($param) {
+    if ($param = 'unattested') then '*' else ''
+};
+
 declare
 function names:entry-morpheme-functions($entry as node(), $type as xs:string) {
     let $class :=  if (count($entry/preceding-sibling::TEI:gramGrp[@type='segmentation'])) then 'dimmed' else () 
@@ -267,13 +271,13 @@ function names:entry-morpheme-functions($entry as node(), $type as xs:string) {
     let $headedness := string-join(($morphemes , $labels//id($entry/@type)), '')
     let $other :=  doc("/db/apps/lgpn-ling/resources/xml/classification.xml")//id($entry/@subtype)/string()
     let $parens := if(string($headedness) or string($other)) then string-join(($headedness, if(string($other)) then $other else ()), ' ') else ()
-    let $compounds := for $m in $typeMorphemes/descendant-or-self::TEI:m[@corresp ne ''] return $m/@cert || $m/@corresp
+    let $compounds := for $m in $typeMorphemes/descendant-or-self::TEI:m[@corresp ne ''] return names:prettyPrint-unattested($m/@cert/string()) || $m/@corresp
     return 
         <span>
             {attribute class {$class}}
             {if (count($functions)) then <span style="font-weight: bold;">{string-join($functions, codepoints-to-string(8212))}</span> else ()}
             {if($parens) then (<br/>, $parens) else ()}
-            {if($compounds) 
+            {if(exists($compounds)) 
                 then 
                     <span style="font-size: 0.8em;"><br/>e.g. {string-join($compounds, ', ')}</span>
                 else ()}
