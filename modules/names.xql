@@ -90,7 +90,7 @@ function names:entry-nameVariants($entry as node()) {
     let $content := data($entry/parent::TEI:entry//TEI:orth[@type='greek'][1])
     let $lgpn :=  if ($entry/parent::TEI:entry//TEI:orth[@type='lgpn'][string(.)])
         then 
-            <span class="dimmed"><br/>{'{' || replace($entry/parent::TEI:entry//TEI:orth[@type='lgpn'], "(\(\w*\))", "") || '}' }</span> 
+            <span class="dimmed"><br/>{'{' || replace($entry/parent::TEI:entry//TEI:orth[@type='lgpn'][1], "(\(\w*\))", "") || '}' }</span> 
         else 
             ()
 
@@ -128,7 +128,7 @@ function names:entry-attestations($entry as node()) {
     let $content := if ($name ne '' ) then count(collection($config:data-root)//TEI:persName[@type="main"][.=$name]) else ''
 
     return 
-        if($pos) then <span class="invisible">{$content}</span> else $content
+        if($pos) then <span class="invisible">{$content}</span> else $content[1]
 };
 
 declare 
@@ -212,7 +212,7 @@ function names:entry-period($entry as node()) {
         max(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:birth/@notAfter[string(.)]))
     let $content := string-join($dates, '/')
     return 
-        if($pos) then <span class="invisible">{$content}</span> else $content
+        if($pos) then <span class="invisible">{$content}</span> else $content[1]
 };
 
 declare
@@ -224,7 +224,7 @@ function names:entry-gender($entry as node()) {
         return if (number($g)=2) then "f." else "m."
     let $content:= string-join($genders, '|')
     return 
-        if($pos) then <span class="invisible">{$content}</span> else $content
+        if($pos) then <span class="invisible">{$content}</span> else $content[1]
 };
 
 declare
@@ -244,6 +244,10 @@ function names:entry-morpheme($entry as node(), $type as xs:string, $position as
 
         }
         </span>
+};
+
+declare function names:prettyPrint-unattested($param) {
+    if ($param = 'unattested') then '*' else ''
 };
 
 declare
@@ -267,13 +271,13 @@ function names:entry-morpheme-functions($entry as node(), $type as xs:string) {
     let $headedness := string-join(($morphemes , $labels//id($entry/@type)), '')
     let $other :=  doc("/db/apps/lgpn-ling/resources/xml/classification.xml")//id($entry/@subtype)/string()
     let $parens := if(string($headedness) or string($other)) then string-join(($headedness, if(string($other)) then $other else ()), ' ') else ()
-    let $compounds := for $m in $typeMorphemes/descendant-or-self::TEI:m[@corresp ne ''] return $m/@cert || $m/@corresp
+    let $compounds := for $m in $typeMorphemes/descendant-or-self::TEI:m[@corresp ne ''] return names:prettyPrint-unattested($m/@cert/string()) || $m/@corresp
     return 
         <span>
             {attribute class {$class}}
             {if (count($functions)) then <span style="font-weight: bold;">{string-join($functions, codepoints-to-string(8212))}</span> else ()}
             {if($parens) then (<br/>, $parens) else ()}
-            {if($compounds) 
+            {if(exists($compounds)) 
                 then 
                     <span style="font-size: 0.8em;"><br/>e.g. {string-join($compounds, ', ')}</span>
                 else ()}
