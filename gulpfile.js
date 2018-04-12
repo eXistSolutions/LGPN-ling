@@ -168,6 +168,16 @@ gulp.task('watch:xml', function () {
 
 // *************  General Tasks *************** //
 
+var pathsToWatchAndDeploy = [
+    'templates/**/*.html',
+    'resources/**/*',
+    'transform/*',
+    '*.html',
+    '*{.xpr,.xqr,.xql,.xml,.xconf}',
+    'modules/**/*',
+    'transform/*',
+    '!build.*'
+];
 
 // Watch and deploy all changed files
 gulp.task('watch', ['watch:html', 'watch:styles', 'watch:scripts', 'watch:xml']);
@@ -175,17 +185,13 @@ gulp.task('watch', ['watch:html', 'watch:styles', 'watch:scripts', 'watch:xml'])
 gulp.task('build', ['build:styles', 'fonts:copy', 'vendor_scripts:copy']);
 
 // Deploy files to existDB
-gulp.task('deploy', ['build:styles', 'fonts:deploy', 'deploy:scripts', 'deploy:xml'], function () {
+gulp.task('deploy', ['build'], function () {
     console.log('deploying files to local existdb');
-    return gulp.src([
-            'resources/css/style.css',
-            'templates/**/*.html',
-            '*.html',
-            '*.xhtml'
-        ], {base: './'})
+    return gulp.src(pathsToWatchAndDeploy, {base: './'})
         .pipe(exClient.newer(targetConfiguration))
         .pipe(exClient.dest(targetConfiguration))
 });
 
 // Default task (which is called by 'npm start' task)
 gulp.task('default', ['build']);
+
