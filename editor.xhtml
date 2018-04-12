@@ -146,8 +146,8 @@
                         <morpheme/>
                     </data>
                 </xf:instance><!-- PREFIXES -->
-                <xf:instance xmlns="" id="i-dialects" src="../lgpn-ling-data/data/taxonomies/dialects.xml"/><!-- PREFIXES -->
-                <xf:instance xmlns="" id="i-genders" src="../lgpn-ling-data/data/taxonomies/genders.xml"/><!-- PREFIXES -->
+                <!--<xf:instance xmlns="" id="i-dialects" src="../lgpn-ling-data/data/taxonomies/dialects.xml"/>--><!-- PREFIXES -->
+                <!--<xf:instance xmlns="" id="i-genders" src="../lgpn-ling-data/data/taxonomies/genders.xml"/>--><!-- PREFIXES -->
                 <xf:instance xmlns="" id="i-prefix-1" src="resources/xml/prefixes/prefix-1.xml"/><!-- SUFFIXES -->
                 <xf:instance xmlns="" id="i-suffix-1" src="resources/xml/suffixes/suffix-1.xml"/>
                 <xf:instance xmlns="" id="i-suffix-2" src="resources/xml/suffixes/suffix-2.xml"/>
@@ -416,6 +416,7 @@
                                         </div>
                                     </div>
                                 </div>
+                            </xf:group>
 
                             <div class="row">
                                 <div class="col-xs-3">
@@ -795,7 +796,7 @@
                             </div>
                             <div class="row">
                                 <div class="col-xs-6">
-                                    <span class="semantic_tags"><!--
+                                    <div class="semantic_tags"><!--
                                         <span style="display:none">
                                             <xf:input ref="TEI:m[@type != 'suffix' and @n = 1]/@ana" incremental="true">
                                                 <xf:label>hidden control!!</xf:label>
@@ -816,10 +817,10 @@
                                                 </xf:repeat>
                                             </span>
                                         </div>
-                                    </span>
+                                    </div>
                                 </div>
                                 <div class="col-xs-6">
-                                    <span class="semantic_tags"><!--
+                                    <div class="semantic_tags"><!--
                                         <span style="display:none">
                                             <xf:input id="sem-ont-3" ref="TEI:m[@type != 'suffix' and @n = 2]/@ana">
                                                 <xf:label>hidden controll</xf:label>
@@ -840,7 +841,7 @@
                                                 </xf:repeat>
                                             </span>
                                         </div>
-                                    </span>
+                                    </div>
                                 </div>
                             </div>
                             <div class="row">
@@ -887,7 +888,7 @@
                                     <h3>Lexical connections</h3>
                                 </xf:label>
                             </div>
-                            <xf:group>
+                            <div>
                                 <div class="row">
                                     <div class="col-xs-11">
                                         <xf:label>
@@ -902,10 +903,10 @@
                                                 <label class="tp-label">Dialect</label>
                                                 <xf:select1 class="tp-input -form-control" ref=".">
                                                     <xf:label class="input-group-addon"/>
-                                                    <xf:itemset nodeset="instance('i-dialects')//TEI:category">
-                                                        <xf:label ref="TEI:catDesc[@xml:lang='en'][@ana='short']"/>
-                                                        <xf:value ref="@xml:id"/>
-                                                    </xf:itemset>
+                                                    <!--<xf:itemset nodeset="instance('i-dialects')//TEI:category">-->
+                                                        <!--<xf:label ref="TEI:catDesc[@xml:lang='en'][@ana='short']"/>-->
+                                                        <!--<xf:value ref="@xml:id"/>-->
+                                                    <!--</xf:itemset>-->
                                                 </xf:select1>
                                             </div>
 
@@ -920,24 +921,26 @@
                                                 </xf:select>
                                             </div>
                                         </div>
+                                    </xf:group>
 
-                                        <div class="tp-row tp-repeat-buttons">
-                                            <div class="tp-repeat-button-right">
-                                                <div class="tp-button-row tp-delete">
-                                                    <label>Delete dialect</label>
-                                                    <xf:trigger class="-btn -btn-default">
-                                                        <xf:label class="input-group-addon">
-                                                            <i class="glyphicon glyphicon-trash"/>
-                                                        </xf:label>
-                                                        <xf:delete nodeset="//TEI:usg[@type='lang'][index('r-dialect')]"/>
-                                                    </xf:trigger>
-                                                </div>
+                                    <div class="tp-row tp-repeat-buttons">
+                                        <div class="tp-repeat-button-right">
+                                            <div class="tp-button-row tp-delete">
+                                                <label>Delete dialect</label>
+                                                <xf:trigger class="-btn -btn-default">
+                                                    <xf:label class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-trash"/>
+                                                    </xf:label>
+                                                    <xf:delete nodeset="//TEI:usg[@type='lang'][index('r-dialect')]"/>
+                                                </xf:trigger>
                                             </div>
                                         </div>
-                                    </xf:group>
+                                    </div>
+
                                     <div class="tp-section-divider"/>
-                                </xf:repeat>
-                            </xf:group>
+
+                                </div>
+                            </div>
                         </xf:group>
                     </div>
                 </div>
@@ -1013,10 +1016,10 @@
                                                 <label class="tp-label">Gender</label>
                                                 <xf:select1 class="tp-input -form-control" ref="TEI:gen">
                                                     <xf:label class="input-group-addon"/>
-                                                    <xf:itemset nodeset="instance('i-genders')//TEI:category">
-                                                        <xf:label ref="TEI:catDesc[@xml:lang='en'][@ana='short']"/>
-                                                        <xf:value ref="@xml:id"/>
-                                                    </xf:itemset>
+                                                    <!--<xf:itemset nodeset="instance('i-genders')//TEI:category">-->
+                                                        <!--<xf:label ref="TEI:catDesc[@xml:lang='en'][@ana='short']"/>-->
+                                                        <!--<xf:value ref="@xml:id"/>-->
+                                                    <!--</xf:itemset>-->
                                                 </xf:select1>
                                             </div>
                                         </div>
