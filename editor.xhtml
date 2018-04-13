@@ -415,51 +415,54 @@
                                             </xf:trigger>
                                         </div>
                                     </div>
-                                    
-                                    <xf:repeat ref="TEI:usg[@type='lang']" id="r-dialect">
-                                        <xf:label/>
-                                        <xf:group ref=".">
-                                            <xf:label/>
-                                        <div class="tp-row">
-                                            <div class="tp-form-group-col">
-                                                <label class="tp-label">Dialect</label>
-                                                <xf:select1 class="tp-input -form-control" ref=".">
-                                                    <xf:label class="input-group-addon"/>
-                                                    <xf:itemset nodeset="instance('i-dialects')//TEI:category">
-                                                        <xf:label ref="TEI:catDesc[@xml:lang='en'][@ana='short']"/>
-                                                        <xf:value ref="@xml:id"/>
-                                                    </xf:itemset>
-                                                </xf:select1>
-                                            </div>
-                                            <div class="tp-form-group-col">
-                                                <label class="tp-label">Uncertain</label>
-                                                <xf:select class="tp-input" ref="@cert" appearance="full" incremental="true">
-                                                    <xf:label class="input-group-addon"/>
-                                                    <xf:item>
-                                                        <xf:label>
-                                                            <i class="tp-info">(Check if uncertain)</i>
-                                                        </xf:label>
-                                                        <xf:value>low</xf:value>
-                                                    </xf:item>
-                                                </xf:select>
-                                            </div>
-                                        </div>
-                                        <div class="tp-repeat-button-right">
-                                            <div class="tp-button-row tp-delete">
-                                                <label>Delete dialect</label>
-                                                <xf:trigger class="-btn -btn-default">
-                                                    <xf:label class="input-group-addon">
-                                                        <i class="glyphicon glyphicon-trash"/>
-                                                    </xf:label>
-                                                    <xf:delete nodeset="//TEI:usg[@type='lang'][index('r-dialect')]"/>
-                                                </xf:trigger>
-                                            </div>
-                                        </div>
-                                        </xf:group>
-                                    </xf:repeat>
+
                                 </div>
+                                    
+                                <xf:repeat ref="TEI:usg[@type='lang']" id="r-dialect">
+                                    <xf:label/>
+                                    <xf:group ref=".">
+                                        <xf:label/>
+                                    <div class="tp-row">
+                                        <div class="tp-form-group-col">
+                                            <label class="tp-label">Dialect</label>
+                                            <xf:select1 class="tp-input -form-control" ref=".">
+                                                <xf:label class="input-group-addon"/>
+                                                <xf:itemset nodeset="instance('i-dialects')//TEI:category">
+                                                    <xf:label ref="TEI:catDesc[@xml:lang='en'][@ana='short']"/>
+                                                    <xf:value ref="@xml:id"/>
+                                                </xf:itemset>
+                                            </xf:select1>
+                                        </div>
+                                        <div class="tp-form-group-col">
+                                            <label class="tp-label">Uncertain</label>
+                                            <xf:select class="tp-input" ref="@cert" appearance="full" incremental="true">
+                                                <xf:label class="input-group-addon"/>
+                                                <xf:item>
+                                                    <xf:label>
+                                                        <i class="tp-info">(Check if uncertain)</i>
+                                                    </xf:label>
+                                                    <xf:value>low</xf:value>
+                                                </xf:item>
+                                            </xf:select>
+                                        </div>
+                                    </div>
+                                    <div class="tp-repeat-button-right">
+                                        <div class="tp-button-row tp-delete">
+                                            <label>Delete dialect</label>
+                                            <xf:trigger class="-btn -btn-default">
+                                                <xf:label class="input-group-addon">
+                                                    <i class="glyphicon glyphicon-trash"/>
+                                                </xf:label>
+                                                <xf:delete nodeset="//TEI:usg[@type='lang'][index('r-dialect')]"/>
+                                            </xf:trigger>
+                                        </div>
+                                    </div>
+                                    </xf:group>
+                                </xf:repeat>
                             </xf:group>
+
                             <div class="tp-section-divider"/>
+                            
                         </xf:group>
                     </div>
                 </div>
