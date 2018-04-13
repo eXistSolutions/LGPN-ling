@@ -173,9 +173,9 @@ var pathsToWatchAndDeploy = [
     'resources/**/*',
     'transform/*',
     '*.html',
+    '*.xhtml',
     '*{.xpr,.xqr,.xql,.xml,.xconf}',
     'modules/**/*',
-    'transform/*',
     '!build.*'
 ];
 
