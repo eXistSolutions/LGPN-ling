@@ -47,8 +47,9 @@
             <fileset file="repo.xml.tmpl"/>
             <filterset>
                 <filter token="name" value="${app.name}"/>
-                <filter token="description" value="${app.description}"/>
                 <filter token="version" value="${app.version}"/>
+                <filter token="url" value="${app.url}"/>
+                <filter token="description" value="${app.description}"/>
                 <filter token="website" value="${app.url}"/>
                 <filter token="status" value="${app.status}"/>
                 <filter token="permissions" value="${app.permissions}"/>
