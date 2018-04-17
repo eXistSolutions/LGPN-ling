@@ -713,43 +713,35 @@
                                                 <label class="tp-label">Preroot (prefix)</label>
                                                 <xf:select class="tp-input-1-row-2-col" ref="TEI:m[@type = 'prefix' and @n = 1]/@function" appearance="full" incremental="true">
                                                     <xf:label/>
-                                        <xf:label/>
-                                        <xf:item>
-                                            <xf:label>Verb</xf:label>
-                                            <xf:value>V</xf:value>
-                                        </xf:item>
-                                        <xf:item>
-                                            <xf:label>VAdj</xf:label>
-                                            <xf:value>VAdj</xf:value>
-                                        </xf:item>
-                                        <xf:item>
-                                            <xf:label>Part</xf:label>
-                                            <xf:value>Part</xf:value>
-                                        </xf:item>
-                                        <xf:item>
-                                            <xf:label>Agt Noun</xf:label>
-                                            <xf:value>AgtN</xf:value>
-                                        </xf:item>
-                                        <xf:item>
-                                            <xf:label>Act Noun</xf:label>
-                                            <xf:value>ActN</xf:value>
-                                        </xf:item>
-                                        <xf:item>
-                                            <xf:label>Noun</xf:label>
-                                            <xf:value>N</xf:value>
-                                        </xf:item>
-                                        <xf:item>
-                                            <xf:label>Adj</xf:label>
-                                            <xf:value>Adj</xf:value>
-                                        </xf:item>
-                                        <xf:item>
-                                            <xf:label>Pron</xf:label>
-                                            <xf:value>Pro</xf:value>
-                                        </xf:item>
-                                        <xf:item>
-                                            <xf:label>Adv</xf:label>
-                                            <xf:value>Adv</xf:value>
-                                        </xf:item>
+                                                    <xf:item>
+                                                        <xf:label>Verb</xf:label>
+                                                        <xf:value>V</xf:value>
+                                                    </xf:item>
+                                                    <xf:item>
+                                                        <xf:label>VAdj</xf:label>
+                                                        <xf:value>VAdj</xf:value>
+                                                    </xf:item>
+                                                    <xf:item>
+                                                        <xf:label>Part</xf:label>
+                                                        <xf:value>Part</xf:value>
+                                                    </xf:item>
+                                                    <xf:item>
+                                                        <xf:label>Agt Noun</xf:label>
+                                                        <xf:value>AgtN</xf:value>
+                                                    </xf:item>
+                                                    <xf:item>
+                                                        <xf:label>Act Noun</xf:label>
+                                                        <xf:value>ActN</xf:value>
+                                                    </xf:item>
+                                                    <xf:item>
+                                                        <xf:label>Noun</xf:label>
+                                                        <xf:value>N</xf:value>
+                                                    </xf:item>
+                                                    <xf:item>
+                                                        <xf:label>Adj</xf:label>
+                                                        <xf:value>Adj</xf:value>
+                                                    </xf:item>
+                                                    <xf:item>
                                                         <xf:label>Pron</xf:label>
                                                         <xf:value>Pro</xf:value>
                                                     </xf:item>
@@ -762,8 +754,8 @@
 
                                             <!-- Preroot rest -->
                                             <section class="tp-row">
-                                                <div class="tp-form-group-col">
-                                                    <label class="tp-label">Headedness classification 1</label>
+                                                <div class="tp-column-3">
+                                                    <label class="tp-label">Headedness classification</label>
                                                     <xf:select class="tp-input" ref="TEI:m[@type = 'prefix' and @n = 1]/@subtype" appearance="full">
                                                         <xf:label class="input-group-addon">head.</xf:label>
                                                         <xf:itemset nodeset="instance('i-headedness')//option">
@@ -772,34 +764,35 @@
                                                         </xf:itemset>
                                                     </xf:select>
                                                 </div>
-                                                <div class="tp-form-group-col">
-                                                    <div class="col-xs-2">
+
+                                                <div class="tp-column-3">
+                                                    <label class="tp-label">Abbreviation marker</label>
                                                     <xf:select class="tp-input" ref="TEI:m[@type = 'prefix' and @n = 1]/@ana" appearance="full" incremental="true">
                                                         <xf:item>
                                                             <xf:label>Abbr</xf:label>
                                                             <xf:value>AbbrC</xf:value>
                                                         </xf:item>
                                                     </xf:select>
-                                                    </div>
-                                                    <div class="col-xs-4">
-                                                    <label class="tp-label">Linked compound</label>
-                                                    </div>
-                                                    <div class="col-xs-1">
+                                                </div>
+
+                                                <div class="tp-column-3">
+                                                    <label class="tp-label">Class marker</label>
                                                     <xf:select class="tp-input" ref="TEI:m[@type = 'prefix' and @n = 1]/@cert" appearance="full" incremental="true">
                                                         <xf:item>
                                                             <xf:label>*</xf:label>
                                                             <xf:value>unattested</xf:value>
                                                         </xf:item>
                                                     </xf:select>
-                                                    </div>
-                                                    <div class="col-xs-5">
+                                                </div>
+
+                                                <div class="tp-column-3">
+                                                    <label class="tp-label">Linked compound</label>
                                                     <xf:input class="tp-input -form-control" ref="TEI:m[@type = 'prefix' and @n = 1]/@corresp">
                                                         <xf:label class="input-group-addon">
                                                             <span class="glyphicon glyphicon-tag"/>
                                                         </xf:label>
                                                         <xf:hint>e.g. linked compound</xf:hint>
                                                     </xf:input>
-                                                    </div>
                                                 </div>
                                             </section>
 
@@ -928,7 +921,7 @@
 
                                             <!-- Root 1 rest -->
                                             <section class="tp-row">
-                                                <div class="tp-form-group-col">
+                                                <div class="tp-column-3">
                                                     <label class="tp-label">Headedness classification 1</label>
                                                     <xf:select class="tp-input" ref="TEI:m[@type = 'radical' and @n = 1]/@subtype" appearance="full">
                                                         <xf:label class="input-group-addon">head.</xf:label>
@@ -938,34 +931,34 @@
                                                         </xf:itemset>
                                                     </xf:select>
                                                 </div>
-                                                <div class="tp-form-group-col">
-                                                    <div class="col-xs-2">
+
+                                                <div class="tp-column-3">
+                                                    <label class="tp-label">Abbreviation marker</label>
                                                     <xf:select class="tp-input" ref="TEI:m[@type = 'radical' and @n = 1]/@ana" appearance="full" incremental="true">
                                                         <xf:item>
                                                             <xf:label>Abbr</xf:label>
                                                             <xf:value>AbbrC</xf:value>
                                                         </xf:item>
                                                     </xf:select>
-                                                    </div>
-                                                    <div class="col-xs-4">
-                                                    <label class="tp-label">Linked compound</label>
-                                                    </div>
-                                                    <div class="col-xs-1">
+                                                </div>
+
+                                                <div class="tp-column-3">
+                                                    <label class="tp-label">Class marker</label>
                                                     <xf:select class="tp-input" ref="TEI:m[@type = 'radical' and @n = 1]/@cert" appearance="full" incremental="true">
-                                                        <xf:item>
-                                                            <xf:label>*</xf:label>
-                                                            <xf:value>unattested</xf:value>
-                                                        </xf:item>
-                                                    </xf:select>
-                                                    </div>
-                                                    <div class="col-xs-5">
+                                                    <xf:item>
+                                                        <xf:label>*</xf:label>
+                                                        <xf:value>unattested</xf:value>
+                                                    </xf:item>
+                                                </xf:select>
+                                                </div>
+                                                <div class="tp-column-3">
+                                                    <label class="tp-label">Linked compound</label>
                                                     <xf:input class="tp-input -form-control" ref="TEI:m[@type = 'radical' and @n = 1]/@corresp">
                                                         <xf:label class="input-group-addon">
                                                             <span class="glyphicon glyphicon-tag"/>
                                                         </xf:label>
                                                         <xf:hint>e.g. linked compound</xf:hint>
                                                     </xf:input>
-                                                    </div>
                                                 </div>
                                             </section>
 
@@ -1086,7 +1079,7 @@
 
                                             <!-- Root 2 rest -->
                                             <section class="tp-row">
-                                                <div class="tp-form-group-col">
+                                                <div class="tp-column-3">
                                                     <label class="tp-label">Headedness classification 2</label>
                                                     <xf:select class="tp-input" ref="TEI:m[@type = 'radical' and @n = 2]/@subtype" appearance="full">
                                                         <xf:label class="input-group-addon">head.</xf:label>
@@ -1096,27 +1089,29 @@
                                                         </xf:itemset>
                                                     </xf:select>
                                                 </div>
-                                                <div class="tp-form-group-col">
-                                                    <div class="col-xs-2">
+
+                                                <div class="tp-column-3">
+                                                    <label class="tp-label">Abbreviation marker</label>
                                                     <xf:select class="tp-input" ref="TEI:m[@type = 'radical' and @n = 2]/@ana" appearance="full" incremental="true">
                                                         <xf:item>
                                                             <xf:label>Abbr</xf:label>
                                                             <xf:value>AbbrC</xf:value>
                                                         </xf:item>
                                                     </xf:select>
-                                                    </div>
-                                                    <div class="col-xs-4">
-                                                    <label class="tp-label">Linked compound</label>
-                                                    </div>
-                                                    <div class="col-xs-1">
+                                                </div>
+
+                                                <div class="tp-column-3">
+                                                    <label class="tp-label">Class marker</label>
                                                     <xf:select class="tp-input" ref="TEI:m[@type = 'radical' and @n = 2]/@cert" appearance="full" incremental="true">
                                                         <xf:item>
                                                             <xf:label>*</xf:label>
                                                             <xf:value>unattested</xf:value>
                                                         </xf:item>
                                                     </xf:select>
-                                                    </div>
-                                                    <div class="col-xs-5">
+                                                </div>
+
+                                                <div class="tp-column-3">
+                                                    <label class="tp-label">Linked compound</label>
                                                     <xf:input class="tp-input -form-control" ref="TEI:m[@type = 'radical' and @n = 2]/@corresp">
                                                         <xf:label class="input-group-addon">
                                                             <span class="glyphicon glyphicon-tag"/>

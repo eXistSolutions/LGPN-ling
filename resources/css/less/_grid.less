@@ -57,6 +57,17 @@
   width: 100%;
 }
 
+// For elements/columns in a 12-column grid,
+// each column consumes a fourth (25%) of the available width beginning with medium sized screens
+// 50% of the width beginning with small screens, so elements will group in 2 rows
+// below that width simply full width
+// Important: Columns with class "tp-column-3" need to be wrapped in class "tp-row" to get the side margins, as they are removed in this class!
+.tp-column-3 {
+  .make-xs-column(6);
+  .make-md-column(3);
+  padding: 0;
+}
+
 .tp-column-4 {
   &:extend(.large-4);
   &:extend(.medium-6);
