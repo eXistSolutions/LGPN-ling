@@ -61,6 +61,11 @@ footer .poweredby img { width: 120px; }
   }
 }
 
+.tp-width-secondary {
+  background-color: @color-form-bg;
+  padding-top: 0;
+}
+
 .tp-section-save {
   .tp-width-main {
     padding-bottom: 2rem;
@@ -114,13 +119,13 @@ footer .poweredby img { width: 120px; }
   .tp-button-row:not(:nth-of-type(2)) {
     &:extend(.form-group);
   }
+  clear: both;
 }
 
 .tp-repeat-buttons,
 .tp-repeat-add {
+  clear: both;
   @media (min-width: @screen-sm-min) {
-    padding: 0 0 10px 0;
-    margin-top: 10px;
   }
   .control-label {
     &:extend(.col-xs-12);
@@ -146,7 +151,7 @@ footer .poweredby img { width: 120px; }
     height: @input-height;
     line-height: @input-height;
   }
-  h3, h4 {
+  h3, h4, h5, h6 {
     margin: 0;
     line-height: @input-height;
     width: 50%;
@@ -250,8 +255,11 @@ footer .poweredby img { width: 120px; }
   }
 }
 
-.tp-repeat-add h3.status-headline {
-  float: none;
+.tp-repeat-add {
+  padding: .8rem 0;
+    h3.status-headline {
+    float: none;
+  }
 }
 .tp-repeat-add>div.status-button-container {
   width: 100%;
@@ -360,17 +368,29 @@ footer .poweredby img { width: 120px; }
 // Labels in form groups
 .tp-label {
   .make-sm-column(2);
-  &:extend(.control-label);
   padding-left: 0;
   vertical-align: top;
+  display: block;
+  width: auto;
+  float: none !important;
+  font-weight: 700;
   @media (min-width: 768px) {
-    text-align: right;
+    width: auto;
     margin-bottom: 0;
-    padding-top: 7px;
   }
   @media (min-width: 992px) {
-    width: 27%;
+    width: auto;
   }
+}
+
+.input-group-addon {
+  display: none !important;
+}
+
+// Light help text next to inputs
+.tp-info {
+  font-style: italic;
+  color: @colorSecondary;
 }
 
 // Responsive 50% width form group columns
@@ -380,19 +400,36 @@ footer .poweredby img { width: 120px; }
   min-height: @input-height;
   padding-left: 0;
   padding-right: 0;
+
+  // Inline input groups like checkboxes in one row
+  &.tp-inline {
+    label,
+    .widgetContainer {
+      display: inline;
+    }
+    label {
+      min-height: @input-height;
+    }
+  }
+}
+
+// container for checkbox groups spanning over one row
+.tp-row-input-group {
+  margin: 0 0 1rem 0;
 }
 
 // Responsive input with search dropdown
 .tp-input {
-  &:extend(.input-group);
   float: none;
   padding-left: 0;
   padding-right: 0;
+  display: block;
+  width: 100%;
   @media (min-width: 768px) {
-    width: 83%;
+    width: 96%;
   }
   @media (min-width: 992px) {
-    width: 72%;
+    width: 96%;
   }
 }
 
@@ -414,7 +451,6 @@ footer .poweredby img { width: 120px; }
 
 // Full-width input in 2 column section
 .tp-input-1-row-2-col {
-  &:extend(.input-group);
   min-height: 1px;
   @media (min-width: 768px) {
     float: left;
@@ -564,4 +600,13 @@ body > .header .logo {
 .scrollable {
   max-height: 400px;
   overflow-y: auto;
+}
+
+legend {
+  &:extend(.h3);
+  border-bottom: none;
+}
+
+label:not(label.tp-label) {
+  font-weight: 300;
 }

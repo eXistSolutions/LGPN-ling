@@ -1,13 +1,19 @@
 // xform overrides
 .widgetContainer {
   display: block;
-  height: @input-height;
+  min-height: @input-height;
   select {
     height: @input-height;
   }
   input[type=checkbox] {
     @checkboxmargin: (@input-height - 14px) / 2; // checkbox height = 14px
-    margin: @checkboxmargin 0;
+  }
+}
+
+// Hide generated labels except for label-text after checkboxes
+.tp-input {
+  label:not(.xfCheckBoxLabel) {
+    display: none;
   }
 }
 
@@ -18,6 +24,10 @@
 .bfCheckBoxGroup {
   .xfSelectorItem {
     margin: 0 2rem 0 0;
+    display: block;
+    @media only screen and (min-width: @medium-screen-min) {
+      display: inline-block;
+    }
   }
 }
 
@@ -49,9 +59,24 @@ span.xfControl {
 
 // checkbox groups
 .xfItemset {
-  display: inline-block;
-  .xfSelectorItem {
+  display: block;
+  @media only screen and (min-width: @medium-screen-min) {
     display: inline-block;
+  }
+  .xfSelectorItem {
+    display: block;
+    @media only screen and (min-width: @medium-screen-min) {
+      display: inline-block;
+    }
+  }
+}
+
+.tp-inline {
+  .xfItemset {
+    display: inline;
+    .xfSelectorItem {
+      display: inline;
+    }
   }
 }
 

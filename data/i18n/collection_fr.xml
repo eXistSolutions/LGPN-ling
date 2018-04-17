@@ -64,4 +64,5 @@
     <msg key="edit">modifier</msg>
     <msg key="newEntry">Saisie des données</msg>
     <msg key="meanings">Sens</msg>
+    <msg key="morphemes">Lexèmes</msg>
 </catalogue>

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <data>
-    <option xml:id="son">son</option>
-    <option xml:id="daugter">daughter</option>
-    <option xml:id="father">father</option>
-    <option xml:id="mother">mother</option>
-    <option xml:id="woman">woman</option>
+    <option xml:id="son">Son</option>
+    <option xml:id="daugter">Daughter</option>
+    <option xml:id="father">Father</option>
+    <option xml:id="mother">Mother</option>
+    <option xml:id="woman">Woman</option>
 </data>
