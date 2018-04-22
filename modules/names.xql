@@ -111,12 +111,16 @@ declare
 function names:entry-dialect($entry as node(), $lang as xs:string?) {
 (:    let $pos := count($entry/preceding-sibling::TEI:gramGrp[@type='segmentation']):)
     let $labels := $entry/parent::TEI:entry//TEI:gramGrp[@type='classification']/TEI:usg
-    let $dialects :=
-        for $e in doc($config:taxonomies-root || "/dialects.xml")//TEI:category[@xml:id=$labels]/TEI:catDesc
-        (: filtering moved to output because otherwise an error occurs :)
-        return $e[@ana="full"][@xml:lang='en']
+    let $dialects_document_order := 
+    for $l in $labels 
+        return doc($config:taxonomies-root || "/dialects.xml")//TEI:category[@xml:id=$l]/TEI:catDesc[@ana="full"][@xml:lang='en']
     
-    return string-join($dialects, ', ')
+(:    let $dialects :=:)
+(:        for $e in doc($config:taxonomies-root || "/dialects.xml")//TEI:category[@xml:id=$labels]/TEI:catDesc:)
+(:        (: filtering moved to output because otherwise an error occurs :):)
+(:        return $e[@ana="full"][@xml:lang='en']:)
+    
+    return string-join($dialects_document_order, ', ')
 (:        if($pos) then <span class="invisible">{$content}</span> else $content:)
 };
 
