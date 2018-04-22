@@ -162,8 +162,8 @@ function names:entry($offset, $i as node()) {
                 map:entry($offset+13, names:entry-morpheme($i, 'suffix', 1)),
                 map:entry($offset+14, names:entry-morpheme-functions($i, 'radical')),
                 map:entry($offset+15, names:entry-semantics($i, $lang)),
-                map:entry($offset+16, names:entry-bibl($i, ('source', 'auxiliary'))),
-                map:entry($offset+17, names:entry-bibl($i, ('linguistic', 'modern'))),
+                map:entry($offset+16, (names:entry-bibl($i, ('source')), names:entry-bibl($i, ('auxiliary')))),
+                map:entry($offset+17, (names:entry-bibl($i, ('linguistic')), names:entry-bibl($i, ('modern')))),
                 map:entry($offset+18, names:entry-updated($i)),
                 if($offset=0) then map:entry($offset+19, names:entry-action($i, 'delete')) else ()
             )
