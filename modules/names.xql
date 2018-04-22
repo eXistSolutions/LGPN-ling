@@ -113,7 +113,10 @@ function names:entry-dialect($entry as node(), $lang as xs:string?) {
     let $labels := $entry/parent::TEI:entry//TEI:gramGrp[@type='classification']/TEI:usg
     let $dialects_document_order := 
     for $l in $labels 
-        return doc($config:taxonomies-root || "/dialects.xml")//TEI:category[@xml:id=$l]/TEI:catDesc[@ana="full"][@xml:lang='en']
+        return string-join(
+                (doc($config:taxonomies-root || "/dialects.xml")//TEI:category[@xml:id=$l]/TEI:catDesc[@ana="full"][@xml:lang='en'],
+                if ($l/@cert="low") then '?' else ())
+                , '')
     
 (:    let $dialects :=:)
 (:        for $e in doc($config:taxonomies-root || "/dialects.xml")//TEI:category[@xml:id=$labels]/TEI:catDesc:)
