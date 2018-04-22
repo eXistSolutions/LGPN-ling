@@ -166,8 +166,13 @@ function names:entry($offset, $i as node()) {
             )
     ),
     for $v in $i/parent::TEI:entry//TEI:form[@type='variant']
-        return names:variantEntry($offset, $v)
-
+        let $pos := count($i/preceding-sibling::TEI:gramGrp[@type='segmentation'])
+        return 
+            if ($pos) then 
+                (: skip variants for secondary hypotheses :)
+                ()
+            else
+                names:variantEntry($offset, $v)
 };
 
 declare 
