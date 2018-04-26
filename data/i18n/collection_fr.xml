@@ -55,6 +55,7 @@
     <msg key="prefix">Préfixe</msg>
     <msg key="suffix">Suffixe</msg>
     <msg key="suff">Suff.</msg>
+    <msg key="flex">Flex.</msg>
     <msg key="radicals">Structure du nom</msg>
     <msg key="root">Base/Radical</msg>
     <msg key="roots">Radicaux</msg>
