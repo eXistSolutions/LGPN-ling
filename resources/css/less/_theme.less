@@ -611,11 +611,28 @@ label:not(label.tp-label) {
   font-weight: 300;
 }
 
+// left indent container to clearly indicate a subchapter
+.subchapter-indent {
+  padding-left: 20px;
+  > .subchapter-indent {
+    padding-left: 20px;
+  }
+}
 
+/* LISTS */
 // unordered lists with prefixed bullets on list items
 // default theme is no bullets on ul ("list-unstyled")
-.list-styled-disc {
+.list-style-disc {
   list-style-type: disc;
+}
+
+.list-style-lower-alpha {
+  list-style-type: lower-alpha;
+}
+
+// indent sublists within block text a litle bit like in the word original
+.sublist-indent {
+  padding-left: 1rem;
 }
 
 /* Images before headings */
@@ -660,4 +677,32 @@ label:not(label.tp-label) {
     background-size: 100% 100%;
     background-image: url(../../resources/img/ostracism-them.jpg);
   }
+}
+
+// page "about"
+.about {
+  section {
+    &:extend(.tp-section);
+    padding: 2rem 0 3rem 0;
+    border-top: 1px solid @colorTertiary;
+  }
+  h3 {
+    font-style: italic;
+    font-size: 1.4rem;
+  }
+  p {
+    text-align: justify;
+  }
+  table td {
+    width: 50%;
+  }
+}
+
+// utility classes
+.tp-center {
+  text-align: center;
+}
+
+.tp-italic {
+  font-style: italic;
 }
