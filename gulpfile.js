@@ -25,7 +25,9 @@ var fs =                    require('fs'),
                              ],
         'xml':               'resources/xml/*.xml',
         'images':            'resources/img/**/*',
-        'fonts':             'bower_components/bootstrap/fonts/**/*'
+        'fonts':             'bower_components/bootstrap/fonts/**/*',
+        'articles':          'data/articles/*.html',
+        'i18n':              'data/i18n/*.xml'
     },
     output  = {
         'html':              '.',
@@ -36,7 +38,9 @@ var fs =                    require('fs'),
         'vendor_scripts':    'resources/js/vendor',
         'xml':               'resources/xml',
         'images':            'resources/img',
-        'fonts':             'resources/fonts'
+        'fonts':             'resources/fonts',
+        'articles':          'data/articles',
+        'i18n':              'data/i18n'
     }
     ;
 
@@ -138,7 +142,6 @@ gulp.task('watch:templates', function () {
     gulp.watch(input.templates, ['deploy:templates'])
 });
 
-
 // *************  HTML Pages *************** //
 
 // Deploy HTML pages
@@ -166,6 +169,30 @@ gulp.task('watch:xml', function () {
    gulp.watch(input.xml, ['deploy:xml'])
 });
 
+// *************  Articles, i18n keys *************** //
+
+gulp.task('deploy:articles', function () {
+    return gulp.src(input.articles, {base: './'})
+        .pipe(exClient.newer(targetConfiguration))
+        .pipe(exClient.dest(targetConfiguration))
+});
+
+// Watch articles
+gulp.task('watch:articles', function () {
+   gulp.watch(input.articles, ['deploy:articles'])
+});
+
+gulp.task('deploy:i18n', function () {
+    return gulp.src(input.i18n, {base: './'})
+        .pipe(exClient.newer(targetConfiguration))
+        .pipe(exClient.dest(targetConfiguration))
+});
+
+// Watch i18n
+gulp.task('watch:i18n', function () {
+   gulp.watch(input.i18n, ['deploy:i18n'])
+});
+
 // *************  General Tasks *************** //
 
 var pathsToWatchAndDeploy = [
@@ -176,11 +203,12 @@ var pathsToWatchAndDeploy = [
     '*.xhtml',
     '*{.xpr,.xqr,.xql,.xml,.xconf}',
     'modules/**/*',
-    '!build.*'
+    '!build.*',
+    'data/**/*'
 ];
 
 // Watch and deploy all changed files
-gulp.task('watch', ['watch:html', 'watch:styles', 'watch:scripts', 'watch:xml']);
+gulp.task('watch', ['watch:html', 'watch:styles', 'watch:scripts', 'watch:xml', 'watch:i18n', 'watch:articles']);
 
 gulp.task('build', ['build:styles', 'fonts:copy', 'vendor_scripts:copy']);
 
