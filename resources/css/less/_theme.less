@@ -610,3 +610,47 @@ legend {
 label:not(label.tp-label) {
   font-weight: 300;
 }
+
+/* Images before headings */
+
+// Big image next to h2
+.image-headline-wrapper-1 {
+  height: 80px;
+}
+
+.image-headline-1 {
+  position: relative;
+  padding-left: 90px;
+
+  &:before {
+    width: 80px;
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: -14px;
+    height: 80px;
+    background-size: 100% 100%;
+    background-image: url(../../resources/img/pheidiascup.jpg);
+  }
+}
+
+// Smaller image next to h3
+.image-headline-wrapper-2 {
+  height: 60px;
+}
+
+.image-headline-2 {
+  position: relative;
+  padding-left: 70px;
+
+  &:before {
+    width: 60px;
+    content: " ";
+    position: absolute;
+    left: 0;
+    top: -6px;
+    height: 60px;
+    background-size: 100% 100%;
+    background-image: url(../../resources/img/ostracism-them.jpg);
+  }
+}
