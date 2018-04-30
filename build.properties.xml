@@ -3,7 +3,7 @@
     <app>
         <name>LGPN-Ling</name>
         <description>List of Greek Personal Names - Editor interface for linguistic part</description>
-        <version>1.3.6</version>
+        <version>1.3.7</version>
         <url>http://exist-db.org/apps/lgpn-ling</url>
         <status>alpha</status>
         <permissions>rwxrwxrwx</permissions>
