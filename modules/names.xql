@@ -86,20 +86,23 @@ function names:entry-transliterated($entry as node()) {
 declare
 function names:entry-nameVariants($entry as node()) {
     let $pos := count($entry/preceding-sibling::TEI:gramGrp[@type='segmentation'])
+    let $first :=  if ($pos) then 'dimmed' else () 
+
     let $bold := 'font-weight: bold;'
 
     let $content := data($entry/parent::TEI:entry//TEI:orth[@type='greek'][1])
     let $lgpn :=  if ($entry/parent::TEI:entry//TEI:orth[@type='lgpn'][string(.)])
         then 
-            <span class="dimmed"><br/>{'{' || replace($entry/parent::TEI:entry//TEI:orth[@type='lgpn'], "(\(\w*\))", "") || '}' }</span> 
+            <span class="dimmed"><br/>{'{' || replace($entry/parent::TEI:entry//TEI:orth[@type='lgpn'][1], "(\(\w*\))", "") || '}' }</span> 
         else 
             ()
 
     return 
         <span>
+            {attribute class {$first}}
             {attribute style {$bold}}
-            {$content}
-            {$lgpn}
+            {if ($pos <1) then $content else ()}
+            {if ($pos <1) then $lgpn else ()}
         </span>
 };
 
@@ -140,7 +143,7 @@ function names:entry-attestations($entry as node()) {
     let $content := if ($name ne '' ) then count(collection($config:data-root)//TEI:persName[@type="main"][.=$name]) else ''
 
     return 
-        if($pos) then <span class="invisible">{$content}</span> else $content
+        if($pos) then <span class="invisible">{$content}</span> else $content[1]
 };
 
 declare 
@@ -167,8 +170,8 @@ function names:entry($offset, $i as node()) {
                 map:entry($offset+13, names:entry-morpheme($i, 'suffix', 1)),
                 map:entry($offset+14, names:entry-morpheme-functions($i, 'radical')),
                 map:entry($offset+15, names:entry-semantics($i, $lang)),
-                map:entry($offset+16, (names:entry-bibl($i, ('source')), names:entry-bibl($i, ('auxiliary')))),
-                map:entry($offset+17, (names:entry-bibl($i, ('linguistic')), names:entry-bibl($i, ('modern')))),
+                map:entry($offset+16, names:entry-bibl($i, ('source', 'auxiliary'))),
+                map:entry($offset+17, names:entry-bibl($i, ('linguistic', 'modern'))),
                 map:entry($offset+18, names:entry-updated($i)),
                 if($offset=0) then map:entry($offset+19, names:entry-action($i, 'delete')) else ()
             )
@@ -181,6 +184,7 @@ function names:entry($offset, $i as node()) {
                 ()
             else
                 names:variantEntry($offset, $v)
+
 };
 
 declare 
@@ -229,7 +233,7 @@ function names:entry-period($entry as node()) {
         max(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:birth/@notAfter[string(.)]))
     let $content := string-join($dates, '/')
     return 
-        if($pos) then <span class="invisible">{$content}</span> else $content
+        if($pos) then <span class="invisible">{$content}</span> else $content[1]
 };
 
 declare
@@ -241,7 +245,7 @@ function names:entry-gender($entry as node()) {
         return if (number($g)=2) then "f." else "m."
     let $content:= string-join($genders, '|')
     return 
-        if($pos) then <span class="invisible">{$content}</span> else $content
+        if($pos) then <span class="invisible">{$content}</span> else $content[1]
 };
 
 declare
@@ -319,39 +323,38 @@ function names:entry-semantics($entry as node(), $lang as xs:string?) {
         </span>
 };
 
-declare function names:reference-entry($entry, $type) {
-    let $q := if($type='cit')
-        then <i style="margin-right: 0.5em;">{$entry/TEI:quote/string()}</i>
-        else ()
+declare function names:reference-entry($entry) {
+    let $quote := $entry/TEI:quote
+    let $author := if (string-length($entry//TEI:author)) then $entry//TEI:author else ()
+    let $ref := $entry/TEI:ref
+    let $rest := $entry/TEI:span
 
-    let $author := if ($entry//TEI:author/string()) then $entry//TEI:author/string() || ' ' else ()
-    let $ref := <i style="margin-right: 0.5em;">{$entry/TEI:ref/string()}</i>
-    let $rest := $entry/TEI:span/string()
     let $source := 
         if ($entry/TEI:ref/string(@target)) 
-            then <a href="{$entry/TEI:ref/@target}">{$author}{$ref} {$rest}</a> 
-            else ($author, $ref, $rest)
-    return ($q, $source)    
+            then <a href="{$entry/TEI:ref/@target}">{$author}<i>{$ref}</i> {$rest}</a> 
+            else ($author, <i>{$ref}</i>, $rest)
+
+    return <p>{$quote} {$source}</p>
 };
 
-declare
+declare 
 function names:entry-bibl($entry as node(), $types as item()*) {
     let $pos := count($entry/preceding-sibling::TEI:gramGrp[@type='segmentation'])
     let $first :=  if ($pos) then 'dimmed' else () 
 
-    let $content := 
-        for $e in $entry//TEI:cit[@type=$types][string(.)]
-        let $source := names:reference-entry($e, 'cit')
-        return <p>{$source}</p>
+    let $refs := 
+        for $t in $types
+            return $entry//TEI:cit[@type=$t][string(.)]
 
-
-    return 
-(:        if($pos) then <span class="invisible">{$content}</span> else :)
+    return
     <span>
-            {attribute class {$first}}
-            {$content}
+        {attribute class {$first}}
+        {
+            for $e in $refs return names:reference-entry($e)
+        }
     </span>
 };
+
 
 declare
 function names:entry-action($entry as node(), $action as xs:string?) {
