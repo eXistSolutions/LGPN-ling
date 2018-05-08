@@ -24,7 +24,7 @@ function names:delete-name($node as node(), $model as map(*), $delete as xs:stri
 
 declare
 function names:delete-entry($id as xs:string?) {
-    let $entry := collection($config:names-root)//TEI:entry/id($id)[1]
+    let $entry := collection($config:names-root)//TEI:entry/id($id)
     let $del := if($entry) then xmldb:remove(util:collection-name($entry), util:document-name($entry)) else ('fail')
     return if($del='fail') then ('Failed to delete ', <strong>{$id}</strong>) else (<strong>{$id}</strong>, ' deleted')
 };
@@ -32,7 +32,7 @@ function names:delete-entry($id as xs:string?) {
 declare function names:entries($node as node(), $model as map(*)) {
     let $entries :=
     for $i in collection($config:names-root)//TEI:gramGrp[@type='segmentation']
-    order by $i/parent::TEI:entry//TEI:orth[@type='greek'][1]
+    order by $i/parent::TEI:entry//TEI:orth[@type='greek']
         return $i
     
     return
@@ -57,7 +57,7 @@ function names:entry-transliterated($entry as node()) {
     let $pos := count($entry/preceding-sibling::TEI:gramGrp[@type='segmentation'])
     let $first :=  if ($pos) then 'dimmed' else () 
 
-    let $content := data($entry/parent::TEI:entry//TEI:orth[@type='h-variant'][1])
+    let $content := data($entry/parent::TEI:entry//TEI:orth[@type='h-variant'])
     let $gpr := if ($entry/parent::TEI:entry//TEI:gramGrp[@type='classification']/TEI:gram[@type='GPR'][.='GPR']) 
                 then
                     <span class="dimmed">GPR </span>
@@ -90,10 +90,10 @@ function names:entry-nameVariants($entry as node()) {
 
     let $bold := 'font-weight: bold;'
 
-    let $content := data($entry/parent::TEI:entry//TEI:orth[@type='greek'][1])
+    let $content := data($entry/parent::TEI:entry//TEI:orth[@type='greek'])
     let $lgpn :=  if ($entry/parent::TEI:entry//TEI:orth[@type='lgpn'][string(.)])
         then 
-            <span class="dimmed"><br/>{'{' || replace($entry/parent::TEI:entry//TEI:orth[@type='lgpn'][1], "(\(\w*\))", "") || '}' }</span> 
+            <span class="dimmed"><br/>{'{' || replace($entry/parent::TEI:entry//TEI:orth[@type='lgpn'], "(\(\w*\))", "") || '}' }</span> 
         else 
             ()
 
@@ -143,7 +143,7 @@ function names:entry-attestations($entry as node()) {
     let $content := if ($name ne '' ) then count(collection($config:data-root)//TEI:persName[@type="main"][.=$name]) else ''
 
     return 
-        if($pos) then <span class="invisible">{$content}</span> else $content[1]
+        if($pos) then <span class="invisible">{$content}</span> else $content
 };
 
 declare 
@@ -233,7 +233,7 @@ function names:entry-period($entry as node()) {
         max(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:birth/@notAfter[string(.)]))
     let $content := string-join($dates, '/')
     return 
-        if($pos) then <span class="invisible">{$content}</span> else $content[1]
+        if($pos) then <span class="invisible">{$content}</span> else $content
 };
 
 declare
@@ -245,7 +245,7 @@ function names:entry-gender($entry as node()) {
         return if (number($g)=2) then "f." else "m."
     let $content:= string-join($genders, '|')
     return 
-        if($pos) then <span class="invisible">{$content}</span> else $content[1]
+        if($pos) then <span class="invisible">{$content}</span> else $content
 };
 
 declare
@@ -258,8 +258,8 @@ function names:entry-morpheme($entry as node(), $type as xs:string, $position as
         {attribute style {$bold}}
         {attribute class {$class}}
         {
-            if($type!=("suffix") and $entry//TEI:m[@type=$type][@n=$position][1] ne '') then 
-                data(doc($config:taxonomies-root || "/morphemes.xml")//TEI:category[@baseForm=$entry//TEI:m[@type=$type][@n=$position]/@baseForm][1]/TEI:catDesc) 
+            if($type!=("suffix") and $entry//TEI:m[@type=$type][@n=$position] ne '') then 
+                data(doc($config:taxonomies-root || "/morphemes.xml")//TEI:category[@baseForm=$entry//TEI:m[@type=$type][@n=$position]/@baseForm]/TEI:catDesc) 
             else 
                 data($entry//TEI:m[@type=$type][@n=$position])
 
