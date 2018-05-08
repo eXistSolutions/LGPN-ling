@@ -70,7 +70,8 @@ function names:entry-transliterated($entry as node()) {
                     ()
     let $relative := 
         for $re in $entry/parent::TEI:entry/TEI:re[string(.)]
-        return <span class="relative"><br/>{$re/TEI:form} {$re/TEI:orth}</span>
+            let $relation := $re//TEI:lbl/string() || ' of ' || $re//TEI:orth/string() 
+            return <span class="relative"><br/>{$relation}</span>
 
     return 
         <span>
