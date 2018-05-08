@@ -1,54 +1,274 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <data>
-    <option/>
-    <option>ᾰ</option>
-    <option>ᾰ(τ)</option>
-    <option>ᾱ/η</option>
-    <option> ά̄/ή</option>
-    <option>α(ν)ς, αν</option>
-    <option>ᾱ/ης</option>
-    <option>ᾶς</option>
-    <option>έᾱς/είᾱς/έης/ῆς</option>
-    <option>είς</option>
-    <option>ε̄/ει/η(ς)</option>
-    <option>ε(ι)ᾰ/είη</option>
-    <option>έον</option>
-    <option>εύς</option>
-    <option>ην</option>
-    <option>ήν</option>
-    <option>η/(ε)ις, τος</option>
-    <option>ήρ</option>
-    <option>ης</option>
-    <option>ής</option>
-    <option>(V)ίᾱ/η</option>
-    <option>(ι)άς</option>
-    <option>(V)ίᾱ/ης</option>
-    <option>ιον</option>
-    <option>(V)ιος</option>
-    <option>ις</option>
-    <option>ίς</option>
-    <option>ιώ(ι)</option>
-    <option>(ι)ώ(ι)</option>
-    <option>ίων</option>
-    <option>ον</option>
-    <option>όν</option>
-    <option>ος</option>
-    <option>ός</option>
-    <option>οῦς</option>
-    <option>ς</option>
-    <option>τᾱ/η</option>
-    <option>τᾱ/ης</option>
-    <option>τήρ</option>
-    <option>τις</option>
-    <option>τος</option>
-    <option>τωρ</option>
-    <option>υς</option>
-    <option>ῦς</option>
-    <option>ων</option>
-    <option>ά̄(ϝ)ων</option>
-    <option>ώ(ι)</option>
-    <option>ωρ</option>
-    <option>ω(*ϝ)ς</option>
-    <option>ως</option>
-    <option>ῶς</option>
+    <option>
+        <base>ᾰ</base>
+        <add/>
+        <gen>-ᾱ/ης</gen>
+    </option>
+    <option>
+        <former>ᾰ(τ)</former>
+        <base>(μ)ᾰ</base>
+        <add/>
+        <gen>-(μ)ατος</gen>
+    </option>
+    <option>
+        <base>ᾱ/η</base>
+        <add/>
+        <gen>-ᾱ/ης</gen>
+    </option>
+    <option>
+        <base>ά̄/ή</base>
+        <add/>
+        <gen>-ᾶ/ῆς</gen>
+    </option>
+    <option>
+        <base>α(ν)ς/αν</base>
+        <add/>
+        <gen>-αντος</gen>
+    </option>
+    <option>
+        <base>ᾱ/ης</base>
+        <add/>
+        <gen>Att. -ου, Ion., A.M. -εω etc., Beot. -ᾱο, Dor. -ᾱ</gen>
+    </option>
+    <option>
+        <base>ᾶς</base>
+        <add/>
+        <gen>Early -ᾶ, late Ion. -ᾶδος</gen>
+    </option>
+    <option>
+        <base>έᾱς/είᾱς/έης/ῆς</base>
+        <add/>
+        <gen>Att. -έου, Ion., A.M. -εω etc., non Ion.-Att. -έᾱ</gen>
+    </option>
+    <option>
+        <former>είς</former>
+        <base>εΐς</base>
+        <add/>
+        <gen>-εΐδος</gen>
+    </option>
+    <option>
+        <base>έον</base>
+        <add/>
+        <gen>W. Arg. -έου</gen>
+    </option>
+    <option>
+        <base>ε̄/ει/η(ς)</base>
+        <add/>
+        <gen>Beot. -ιος, Meg., Thr. -ειος</gen>
+    </option>
+    <option>
+        <base>ε(ι)ᾰ/είη</base>
+        <add/>
+        <gen>-ε(ί)ᾱ/ης </gen>
+    </option>
+    <option>
+        <former>εύς</former>
+        <base>εύς</base>
+        <add>late έους (Egypt)</add>
+        <gen>Att., early Ion. -έως, A.M. -έος, late Ion. -εῦς </gen>
+    </option>
+    <option>
+        <base>(ϝ)εσσᾰ/εις</base>
+        <add>f. -(ϝ)εσσᾰ, m. Ion.-Att. εις </add>
+        <gen>f. -(ϝ)έσσᾱ/ης , m. -εντος</gen>
+    </option>
+    <option>
+        <base>ην</base>
+        <add/>
+        <gen>-ενος</gen>
+    </option>
+    <option>
+        <base>ήν</base>
+        <add/>
+        <gen>-ῆνος</gen>
+    </option>
+    <option>
+        <base>ήρ</base>
+        <add/>
+        <gen>-ῆρος</gen>
+    </option>
+    <option>
+        <former>η/(ε)ις, τος</former>
+        <base>η/(ε)ις</base>
+        <add/>
+        <gen>-ητος, Beot. -ειτος, Pamph. -(ε)ιτ(ο)υς, Mac. -ηδος, -ηνος</gen>
+    </option>
+    <option>
+        <base>ης</base>
+        <add/>
+        <gen>Early -εος, Att. -ους, Α.Μ. -ευς, puis -ε(ί)ου(ς)</gen>
+    </option>
+    <option>
+        <former>ής</former>
+        <base>ής</base>
+        <add>f. ής (imp.)</add>
+        <gen>-ῆδος</gen>
+    </option>
+    <option>
+        <base>(V)ίᾱ/η</base>
+        <add/>
+        <gen>-(V)ίᾱ/ης</gen>
+    </option>
+    <option>
+        <base>(V)ίᾱ/ης</base>
+        <add/>
+        <gen>Att. -ίου, Ion., A.M. -εω etc., Dor. -ίᾱ, Arcad. -ίᾱυ</gen>
+    </option>
+    <option>
+        <base>(ι)άς</base>
+        <add/>
+        <gen>-(ι)άδος</gen>
+    </option>
+    <option>
+        <base>ιον</base>
+        <add/>
+        <gen>ίου, -ίω</gen>
+    </option>
+    <option>
+        <base>(V)ιος</base>
+        <add/>
+        <gen>-(V)ίου, -(V)ίω, Thess. (Pelasgiotis) -ίοι(ο)</gen>
+    </option>
+    <option>
+        <base>ις</base>
+        <add/>
+        <gen>-ιος, -ιτος, or even -ιδος, Cypr. -ιϝος, rare -ίου</gen>
+    </option>
+    <option>
+        <base>ίς</base>
+        <add/>
+        <gen>-ίδος</gen>
+    </option>
+    <option>
+        <base>ιώ(ι)</base>
+        <add/>
+        <gen>-ιοῦς</gen>
+    </option>
+    <option>
+        <former>ιώ(ι)</former>
+        <base>(ι)ώ(ι)</base>
+        <add/>
+        <gen/>
+    </option>
+    <option>
+        <former>(ι)ώ(ι)</former>
+        <base>ιώ(ι)</base>
+    </option>
+    <option>
+        <former>ίων</former>
+        <base>ίων</base>
+        <add>Thess. ίουν</add>
+        <gen>-ίωνος or even -ίονος, Thess. -ίουνος</gen>
+    </option>
+    <option>
+        <former>ᾰ(τ)</former>
+        <base>(μ)ᾰ</base>
+        <add/>
+        <gen>-(μ)ατος</gen>
+    </option>
+    <option>
+        <base>ον</base>
+        <add/>
+        <gen>-ου, -ω</gen>
+    </option>
+    <option>
+        <base>όν</base>
+        <add/>
+        <gen>-οῦ, -ῶ</gen>
+    </option>
+    <option>
+        <base>ος</base>
+        <add/>
+        <gen>-ου, -ω</gen>
+    </option>
+    <option>
+        <base>ός</base>
+        <add/>
+        <gen>-οῦ, -ῶ</gen>
+    </option>
+    <option>
+        <base>οῦς</base>
+        <add/>
+        <gen>-οῦτος, Pamph. -οῦτους, Mac. -οῦνος, -οῦδος etc.</gen>
+    </option>
+    <option>
+        <base>ς</base>
+        <add/>
+        <gen>-(τ)ος</gen>
+    </option>
+    <option>
+        <former>τᾱ/η</former>
+        <base>(V)τᾱ/η</base>
+        <add/>
+        <gen>(V)τᾱ/ης</gen>
+    </option>
+    <option>
+        <former>τᾱ/ης</former>
+        <base>(V)τᾱ/ης</base>
+        <add/>
+        <gen>Att. -(V)του, Ion., A.M. -τεω etc., Beot. -τᾱο, Dor. -τᾱ</gen>
+    </option>
+    <option>
+        <base>τήρ</base>
+        <add/>
+        <gen>-τῆρος</gen>
+    </option>
+    <option>
+        <base>τηρος</base>
+        <add>later thematized, Beot. -τειρος</add>
+        <gen>-τήρου, Beot. -τείρω</gen>
+    </option>
+    <option>
+        <former>τις</former>
+        <base>τις/τίς</base>
+        <add/>
+        <gen>-τιδος, -τίδος</gen>
+    </option>
+    <option>
+        <base>τος</base>
+        <add/>
+        <gen>-του, -τω</gen>
+    </option>
+    <option>
+        <base>τωρ</base>
+        <add/>
+        <gen>-τορος</gen>
+    </option>
+    <option>
+        <base>υς</base>
+        <add/>
+        <gen>-υος, Cypr. -υϝος, Mysia -υδος, Egypt -υτος</gen>
+    </option>
+    <option>
+        <base>ῦς</base>
+        <add/>
+        <gen>-ῦδος, -ῦος or -ῦ</gen>
+    </option>
+    <option>
+        <former>ων</former>
+        <base>ων</base>
+        <add>Thess. ουν, Pamph. ω</add>
+        <gen>-ωνος or even -ονος, Thess. -ουνος</gen>
+    </option>
+    <option>
+        <base>ων</base>
+        <add/>
+        <gen>-οντος, hence -ωντος</gen>
+    </option>
+    <option>
+        <former>-(ϝ)ων</former>
+        <base>-(ϝ)ων</base>
+        <add>Dor. -ν, Ion.-Att. -έων</add>
+        <gen>-ονος, -ᾶνος, -έωνος</gen>
+    </option>
+    <option>
+        <base>ώ(ι)</base>
+        <add/>
+        <gen>-οῦς, Mac.-ως</gen>
+    </option>
+    <option>
+        <base>ωρ</base>
+        <add/>
+        <gen>-ορος</gen>
+    </option>
 </data>
