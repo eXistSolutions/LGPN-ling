@@ -24,7 +24,7 @@ function names:delete-name($node as node(), $model as map(*), $delete as xs:stri
 
 declare
 function names:delete-entry($id as xs:string?) {
-    let $entry := collection($config:names-root)//TEI:entry/id($id)[1]
+    let $entry := collection($config:names-root)//TEI:entry/id($id)
     let $del := if($entry) then xmldb:remove(util:collection-name($entry), util:document-name($entry)) else ('fail')
     return if($del='fail') then ('Failed to delete ', <strong>{$id}</strong>) else (<strong>{$id}</strong>, ' deleted')
 };
@@ -32,7 +32,7 @@ function names:delete-entry($id as xs:string?) {
 declare function names:entries($node as node(), $model as map(*)) {
     let $entries :=
     for $i in collection($config:names-root)//TEI:gramGrp[@type='segmentation']
-    order by $i/parent::TEI:entry//TEI:orth[@type='greek'][1]
+    order by $i/parent::TEI:entry//TEI:orth[@type='greek']
         return $i
     
     return
@@ -57,7 +57,7 @@ function names:entry-transliterated($entry as node()) {
     let $pos := count($entry/preceding-sibling::TEI:gramGrp[@type='segmentation'])
     let $first :=  if ($pos) then 'dimmed' else () 
 
-    let $content := data($entry/parent::TEI:entry//TEI:orth[@type='h-variant'][1])
+    let $content := data($entry/parent::TEI:entry//TEI:orth[@type='h-variant'])
     let $gpr := if ($entry/parent::TEI:entry//TEI:gramGrp[@type='classification']/TEI:gram[@type='GPR'][.='GPR']) 
                 then
                     <span class="dimmed">GPR </span>
@@ -86,9 +86,11 @@ function names:entry-transliterated($entry as node()) {
 declare
 function names:entry-nameVariants($entry as node()) {
     let $pos := count($entry/preceding-sibling::TEI:gramGrp[@type='segmentation'])
+    let $first :=  if ($pos) then 'dimmed' else () 
+
     let $bold := 'font-weight: bold;'
 
-    let $content := data($entry/parent::TEI:entry//TEI:orth[@type='greek'][1])
+    let $content := data($entry/parent::TEI:entry//TEI:orth[@type='greek'])
     let $lgpn :=  if ($entry/parent::TEI:entry//TEI:orth[@type='lgpn'][string(.)])
         then 
             <span class="dimmed"><br/>{'{' || replace($entry/parent::TEI:entry//TEI:orth[@type='lgpn'], "(\(\w*\))", "") || '}' }</span> 
@@ -97,9 +99,10 @@ function names:entry-nameVariants($entry as node()) {
 
     return 
         <span>
+            {attribute class {$first}}
             {attribute style {$bold}}
-            {$content}
-            {$lgpn}
+            {if ($pos <1) then $content else ()}
+            {if ($pos <1) then $lgpn else ()}
         </span>
 };
 
@@ -167,8 +170,8 @@ function names:entry($offset, $i as node()) {
                 map:entry($offset+13, names:entry-morpheme($i, 'suffix', 1)),
                 map:entry($offset+14, names:entry-morpheme-functions($i, 'radical')),
                 map:entry($offset+15, names:entry-semantics($i, $lang)),
-                map:entry($offset+16, (names:entry-bibl($i, ('source')), names:entry-bibl($i, ('auxiliary')))),
-                map:entry($offset+17, (names:entry-bibl($i, ('linguistic')), names:entry-bibl($i, ('modern')))),
+                map:entry($offset+16, names:entry-bibl($i, ('source', 'auxiliary'))),
+                map:entry($offset+17, names:entry-bibl($i, ('linguistic', 'modern'))),
                 map:entry($offset+18, names:entry-updated($i)),
                 if($offset=0) then map:entry($offset+19, names:entry-action($i, 'delete')) else ()
             )
@@ -181,6 +184,7 @@ function names:entry($offset, $i as node()) {
                 ()
             else
                 names:variantEntry($offset, $v)
+
 };
 
 declare 
@@ -254,8 +258,8 @@ function names:entry-morpheme($entry as node(), $type as xs:string, $position as
         {attribute style {$bold}}
         {attribute class {$class}}
         {
-            if($type!=("suffix") and $entry//TEI:m[@type=$type][@n=$position][1] ne '') then 
-                data(doc($config:taxonomies-root || "/morphemes.xml")//TEI:category[@baseForm=$entry//TEI:m[@type=$type][@n=$position]/@baseForm][1]/TEI:catDesc) 
+            if($type!=("suffix") and $entry//TEI:m[@type=$type][@n=$position] ne '') then 
+                data(doc($config:taxonomies-root || "/morphemes.xml")//TEI:category[@baseForm=$entry//TEI:m[@type=$type][@n=$position]/@baseForm]/TEI:catDesc) 
             else 
                 data($entry//TEI:m[@type=$type][@n=$position])
 
@@ -319,39 +323,38 @@ function names:entry-semantics($entry as node(), $lang as xs:string?) {
         </span>
 };
 
-declare function names:reference-entry($entry, $type) {
-    let $q := if($type='cit')
-        then <i style="margin-right: 0.5em;">{$entry/TEI:quote/string()}</i>
-        else ()
+declare function names:reference-entry($entry) {
+    let $quote := $entry/TEI:quote
+    let $author := if (string-length($entry//TEI:author)) then $entry//TEI:author else ()
+    let $ref := $entry/TEI:ref
+    let $rest := $entry/TEI:span
 
-    let $author := if ($entry//TEI:author/string()) then $entry//TEI:author/string() || ' ' else ()
-    let $ref := <i style="margin-right: 0.5em;">{$entry/TEI:ref/string()}</i>
-    let $rest := $entry/TEI:span/string()
     let $source := 
         if ($entry/TEI:ref/string(@target)) 
-            then <a href="{$entry/TEI:ref/@target}">{$author}{$ref} {$rest}</a> 
-            else ($author, $ref, $rest)
-    return ($q, $source)    
+            then <a href="{$entry/TEI:ref/@target}">{$author}<i>{$ref}</i> {$rest}</a> 
+            else ($author, <i>{$ref}</i>, $rest)
+
+    return <p>{$quote} {$source}</p>
 };
 
-declare
+declare 
 function names:entry-bibl($entry as node(), $types as item()*) {
     let $pos := count($entry/preceding-sibling::TEI:gramGrp[@type='segmentation'])
     let $first :=  if ($pos) then 'dimmed' else () 
 
-    let $content := 
-        for $e in $entry//TEI:cit[@type=$types][string(.)]
-        let $source := names:reference-entry($e, 'cit')
-        return <p>{$source}</p>
+    let $refs := 
+        for $t in $types
+            return $entry//TEI:cit[@type=$t][string(.)]
 
-
-    return 
-(:        if($pos) then <span class="invisible">{$content}</span> else :)
+    return
     <span>
-            {attribute class {$first}}
-            {$content}
+        {attribute class {$first}}
+        {
+            for $e in $refs return names:reference-entry($e)
+        }
     </span>
 };
+
 
 declare
 function names:entry-action($entry as node(), $action as xs:string?) {
