@@ -60,12 +60,12 @@ function names:entry-transliterated($entry as node()) {
     let $content := data($entry/parent::TEI:entry//TEI:orth[@type='h-variant'][1])
     let $gpr := if ($entry/parent::TEI:entry//TEI:gramGrp[@type='classification']/TEI:gram[@type='GPR'][.='GPR']) 
                 then
-                    <span class="dimmed">GPR</span>
+                    <span class="dimmed">GPR </span>
                 else
                     ()
     let $fictitious := if ($entry/parent::TEI:entry//TEI:gramGrp[@type='classification']/TEI:gram[@type='fictitious'][.='fictitious']) 
                 then
-                    <span class="dimmed">fict.</span>
+                    <span class="dimmed">fict. </span>
                 else
                     ()
     let $relative := 
