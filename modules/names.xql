@@ -256,7 +256,13 @@ function names:entry-morpheme($entry as node(), $type as xs:string, $position as
         let $baseForm := $morpheme/@baseForm
         let $inflect := if ($type eq 'suffix' and $position eq 1) then
             let $dict := doc($config:dictionaries-root || '/suffixes/suffix-1.xml')//option[base=$morpheme/string()]
-            return <span><b><i>{$dict/base}</i></b> <span>{$dict/add}</span><br/> <span style="font-size: 0.8em;">{$dict/gen}</span></span>
+            return 
+                <span>
+                    <b><i>{$dict/base}</i></b> <span>{$dict/add}</span>
+                    <br/>
+                    <br/>
+                    <span style="font-size: 0.8em;">{$dict/gen}</span>
+                </span>
             else <span>{data($morpheme)}</span>
 
     return <span>
