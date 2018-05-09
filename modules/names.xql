@@ -252,7 +252,12 @@ declare
 function names:entry-morpheme($entry as node(), $type as xs:string, $position as xs:integer?) {
         let $bold := if ($type='radical' or $position=1) then 'font-weight: bold;' else ()
         let $class :=  if (count($entry/preceding-sibling::TEI:gramGrp[@type='segmentation'])) then 'dimmed' else () 
-        let $baseForm := $entry//TEI:m[@type=$type][@n=$position]/@baseForm
+        let $morpheme := $entry//TEI:m[@type=$type][@n=$position]
+        let $baseForm := $morpheme/@baseForm
+        let $inflect := if ($type eq 'suffix' and $position eq 1) then
+            let $dict := doc($config:dictionaries-root || '/suffixes/suffix-1.xml')//option[base=$morpheme/string()]
+            return <span><b><i>{$dict/base}</i></b> <span>{$dict/add}</span><br/> <span style="font-size: 0.8em;">{$dict/gen}</span></span>
+            else <span>{data($morpheme)}</span>
 
     return <span>
         {attribute style {$bold}}
@@ -260,8 +265,10 @@ function names:entry-morpheme($entry as node(), $type as xs:string, $position as
         {
             if($type!=("suffix") and $entry//TEI:m[@type=$type][@n=$position] ne '') then 
                 data(doc($config:taxonomies-root || "/morphemes.xml")//TEI:category[@baseForm=$entry//TEI:m[@type=$type][@n=$position]/@baseForm]/TEI:catDesc) 
+            else if ($type eq "suffix" and $position eq 1) then
+                $inflect
             else 
-                data($entry//TEI:m[@type=$type][@n=$position])
+                data($morpheme)
 
         }
         </span>
