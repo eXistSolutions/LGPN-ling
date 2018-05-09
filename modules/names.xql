@@ -259,9 +259,7 @@ function names:entry-morpheme($entry as node(), $type as xs:string, $position as
             return 
                 <span>
                     <b><i>{$dict/base}</i></b> <span>{$dict/add}</span>
-                    <br/>
-                    <br/>
-                    <span style="font-size: 0.8em;">{$dict/gen}</span>
+                    <span style="font-size: 0.8em; margin-top: 0.7em; display: block;">{$dict/gen}</span>
                 </span>
             else <span>{data($morpheme)}</span>
 
