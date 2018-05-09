@@ -250,7 +250,7 @@ function names:entry-gender($entry as node()) {
 
 declare
 function names:entry-morpheme($entry as node(), $type as xs:string, $position as xs:integer?) {
-        let $bold := if ($type='radical' or $position=1) then 'font-weight: bold;' else ()
+        let $bold := if ($type='radical') then 'font-weight: bold;' else ()
         let $class :=  if (count($entry/preceding-sibling::TEI:gramGrp[@type='segmentation'])) then 'dimmed' else () 
         let $morpheme := $entry//TEI:m[@type=$type][@n=$position]
         let $baseForm := $morpheme/@baseForm
