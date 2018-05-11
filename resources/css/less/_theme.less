@@ -614,8 +614,10 @@ label:not(label.tp-label) {
 // left indent container to clearly indicate a subchapter
 .subchapter-indent {
   padding-left: 20px;
+  margin-top: 1rem;
   > .subchapter-indent {
     padding-left: 20px;
+    margin-top: 1rem;
   }
 }
 
@@ -633,6 +635,19 @@ label:not(label.tp-label) {
 // indent sublists within block text a litle bit like in the word original
 .sublist-indent {
   padding-left: 1rem;
+}
+
+// Special list-style-type used in the original document:
+// dashes to indicate list items
+.list-style-dash {
+  li {
+    text-indent: -21px;
+    margin-bottom: 0.6rem;
+
+    &:before {
+      content: "\2014\a0";
+    }
+  }
 }
 
 /* Images before headings */
@@ -686,15 +701,49 @@ label:not(label.tp-label) {
     padding: 2rem 0 3rem 0;
     border-top: 1px solid @colorTertiary;
   }
+
   h3 {
     font-style: italic;
     font-size: 1.4rem;
   }
-  p {
-    text-align: justify;
+
+  // keep inline headline at same height with body text
+  h5, .h5,
+  h6, .h6 {
+    line-height: 1.5rem;
+    display: inline;
+
+    // display following paragraphs inline like in original
+    + p {
+      display: inline;
+    }
   }
+
+  // Exception only for table headline
+  .table-heading {
+    line-height: 2rem;
+  }
+
+  .sub-headline {
+    font-weight: 400;
+    margin-bottom: .7rem;
+  }
+
+  p {
+    text-align: justify; // classical printing typography
+  }
+
   table td {
     width: 50%;
+  }
+
+  dt,dd {
+    display: inline;
+  }
+
+  // Underline links in about page for easier visibility
+  a {
+    text-decoration: underline;
   }
 }
 
@@ -707,13 +756,57 @@ label:not(label.tp-label) {
   font-style: italic;
 }
 
+.tp-list-divider {
+  display: block;
+  margin-bottom: 1rem
+}
+
 .greek {
   font-family: @font-family-greek-serif;
   font-size: 1.125rem;
   line-height: 1rem;
 }
 
+// Images fully expand and adapt to screen width
+.img-responsive img {
+  width: 100%;
+  -moz-box-shadow:    1px 1px 5px 0px @colorSecondary;
+  -webkit-box-shadow: 1px 1px 5px 0px @colorSecondary;
+  box-shadow:         1px 1px 5px 0px @colorSecondary;
+}
+
+figure {
+  margin-bottom: 2.8rem;
+  &:last-of-type {
+    margin-bottom: 1rem;
+  }
+  &:first-of-type {
+    margin-top: 1.2rem;
+  }
+}
+
+figcaption {
+  padding-top: .8rem;
+}
+
 // more narrow reading width for default TP class, used in "about" page to look like the book original
 .tp-row {
   max-width: 50rem;
+}
+
+sup, sub {
+  padding-left: 0.2rem;
+}
+
+.table-wrapper {
+  margin-top: 2rem;
+}
+
+.table-heading span.h5,
+.table-heading span {
+  display: block;
+}
+
+footer {
+  margin-bottom: 3rem !important;
 }
