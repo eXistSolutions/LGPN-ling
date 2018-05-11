@@ -193,6 +193,19 @@ gulp.task('watch:i18n', function () {
    gulp.watch(input.i18n, ['deploy:i18n'])
 });
 
+// *************  Images *************** //
+
+gulp.task('deploy:images', function () {
+    return gulp.src(input.articles, {base: './'})
+        .pipe(exClient.newer(targetConfiguration))
+        .pipe(exClient.dest(targetConfiguration))
+});
+
+// Watch articles
+gulp.task('watch:images', function () {
+   gulp.watch(input.images, ['deploy:images'])
+});
+
 // *************  General Tasks *************** //
 
 var pathsToWatchAndDeploy = [
@@ -204,11 +217,12 @@ var pathsToWatchAndDeploy = [
     '*{.xpr,.xqr,.xql,.xml,.xconf}',
     'modules/**/*',
     '!build.*',
-    'data/**/*'
+    'data/**/*',
+    'img/*'
 ];
 
 // Watch and deploy all changed files
-gulp.task('watch', ['watch:html', 'watch:styles', 'watch:scripts', 'watch:xml', 'watch:i18n', 'watch:articles']);
+gulp.task('watch', ['watch:html', 'watch:styles', 'watch:scripts', 'watch:xml', 'watch:i18n', 'watch:articles', 'watch:images', 'watch:templates']);
 
 gulp.task('build', ['build:styles', 'fonts:copy', 'vendor_scripts:copy']);
 
