@@ -1,5 +1,9 @@
 # LGPN-ling
 
+## Dev server
+
+http://admin.existsolutions.com:55221/exist/apps/lgpn-ling
+
 ## Prerequisites
 
 You need to have *ant*, *git* and *nodeJS* installed.
