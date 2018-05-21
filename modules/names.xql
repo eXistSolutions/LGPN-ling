@@ -76,10 +76,10 @@ function names:entry-transliterated($entry as node()) {
     return 
         <span>
             {attribute class {$first}}
-            {$gpr}
+            {if ($pos) then () else $gpr}
             {$content}
-            {$fictitious}
-            {$relative}
+            {if ($pos) then () else $fictitious}
+            {if ($pos) then () else $relative}
         </span>
 };
 
