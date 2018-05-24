@@ -711,11 +711,11 @@ label:not(label.tp-label) {
   h5, .h5,
   h6, .h6 {
     line-height: 1.5rem;
-    display: inline;
+    //display: inline;
 
     // display following paragraphs inline like in original
     + p {
-      display: inline;
+      //display: inline;
     }
   }
 
@@ -733,8 +733,9 @@ label:not(label.tp-label) {
     margin-bottom: .7rem;
   }
 
-  p {
+  p, p *, dt, dd, li, figcaption  {
     text-align: justify; // classical printing typography
+    line-height: 1.6;
   }
 
   table td {
