@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:ev="http://www.w3.org/2001/xml-events" xmlns:TEI="http://www.tei-c.org/ns/1.0" xmlns:xf="http://www.w3.org/2002/xforms" xmlns:bfc="http://betterform.sourceforge.net/xforms/controls" data-template="templates:surround" data-template-with="templates/page.html" data-template-at="content">
     <head>
         <title>LGPN-Ling</title><!--
@@ -117,10 +118,10 @@
                                 <orth/>
                             </form>
                         </re>
-                        <form type="variant">
+                        <form type="variant" cert="">
                             <gen/>
                             <usg cert=""/>
-                            <orth/>
+                            <orth cert=""/>
                         </form>
                     </data>
                 </xf:instance>
@@ -486,13 +487,12 @@
                                             <h4>Name Variant</h4>
                                         </xf:label>
                                     </div>
-
                                     <xf:label/>
                                     <xf:group ref=".">
                                         <div class="tp-row">
                                             <div class="tp-form-group-col">
-                                                <label class="tp-label">Linking of form is uncertain</label>
-                                                <xf:select class="tp-input" ref="TEI:usg/@cert" appearance="full" incremental="true">
+                                                <label class="tp-label">Linking of the form is uncertain</label>
+                                                <xf:select class="tp-input" ref="@cert" appearance="full" incremental="true">
                                                     <xf:item>
                                                         <xf:label>?</xf:label>
                                                         <xf:value>low</xf:value>
@@ -509,7 +509,7 @@
                                             </div>
                                             <div class="tp-form-group-col">
                                                 <label class="tp-label tp-invisible">Reading of the form is uncertain</label>
-                                                <xf:select class="tp-input" ref="TEI:usg/@cert" appearance="full" incremental="true">
+                                                <xf:select class="tp-input" ref="TEI:orth/@cert" appearance="full" incremental="true">
                                                     <xf:item>
                                                         <xf:label>?</xf:label>
                                                         <xf:value>low</xf:value>
