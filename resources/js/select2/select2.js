@@ -60,9 +60,15 @@ function initAutoComp(acLabel, phLabel, source, callbackLabel, ac) {
     $(scope).each(function () {
         var autocomplete = $(this);
         var xformsID = autocomplete.prev('.xfInput').attr('id');
+        var xformsInput = autocomplete.prev('.xfInput');
 
         
+        
         if(xformsID !== undefined) {
+            var xformsValue = xformsInput.find(".widgetContainer .xfValue").val();
+            console.log("XFORMS-VALUE: " + xformsValue);
+            autocomplete.val(xformsValue);
+
             autocomplete.select2({
                 handler: undefined,
                 name: meanings,
@@ -73,6 +79,10 @@ function initAutoComp(acLabel, phLabel, source, callbackLabel, ac) {
                 formatNoMatches: "<div>No matches</div>",
                 dropdownCssClass: "bigdrop",
                 allowClear: true,
+                initSelection: function (element, callback) {
+                    var term = $(element).val();
+                    callback({value: term});
+                },
                 createSearchChoice: function (term) {
                     return {"id": "-1", "value": "Add new entry."};
                 },
