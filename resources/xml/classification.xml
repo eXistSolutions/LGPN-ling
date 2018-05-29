@@ -5,5 +5,7 @@
     <option xml:id="gtXY">&gt;XY</option>
     <option xml:id="gtYX">&gt;YX</option>
     <option xml:id="slashYX">/YX</option>
-    <option xml:id="dev">Dev</option>
+    <option xml:id="deadj">Deadj.</option>
+    <option xml:id="denom">Denom.</option>
+    <option xml:id="dev">Deverb.</option>
 </data>
