@@ -84,7 +84,7 @@ function initAutoComp(acLabel, phLabel, source, callbackLabel, ac) {
                     callback({value: term});
                 },
                 createSearchChoice: function (term) {
-                    return {"id": "-1", "value": "Add new entry."};
+                    return {"id": "Create new entry ", "value": term};
                 },
                 id: function (object) {
                     return object.id;

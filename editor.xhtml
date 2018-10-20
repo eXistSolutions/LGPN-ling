@@ -129,10 +129,8 @@
                     <data xmlns="">
                         <morpheme/>
                     </data>
-                </xf:instance><!-- PREFIXES -->
-                <xf:instance xmlns="" id="i-dialects" src="../lgpn-ling-data/data/taxonomies/dialects.xml"/>--&gt;<!-- PREFIXES -->
-                <xf:instance xmlns="" id="i-genders" src="../lgpn-ling-data/data/taxonomies/genders.xml"/><!-- PREFIXES -->
-                <xf:instance xmlns="" id="i-prefix-1" src="resources/xml/prefixes/prefix-1.xml"/><!-- SUFFIXES -->
+                </xf:instance>
+                <xf:instance xmlns="" id="i-prefix-1" src="resources/xml/prefixes/prefix-1.xml"/>
                 <xf:instance xmlns="" id="i-suffix-1" src="resources/xml/suffixes/suffix-1.xml"/>
                 <xf:instance xmlns="" id="i-suffix-2" src="resources/xml/suffixes/suffix-2.xml"/>
                 <xf:instance xmlns="" id="i-suffix-3" src="resources/xml/suffixes/suffix-3.xml"/>
@@ -148,6 +146,9 @@
                 <xf:instance xmlns="" id="i-name-characteristic" src="resources/xml/name-characteristic.xml"/>
                 <xf:instance xmlns="" id="i-fictitious" src="resources/xml/fictitious.xml"/>
                 <xf:instance xmlns="" id="i-gpr" src="resources/xml/gpr.xml"/>
+                <xf:instance xmlns="" id="i-dialects" src="../lgpn-ling-data/data/taxonomies/dialects.xml"/>
+                <xf:instance xmlns="" id="i-genders" src="../lgpn-ling-data/data/taxonomies/genders.xml"/>
+
                 <xf:instance id="i-meanings">
                     <meanings xmlns="">
                         <being-reloaded grp="0" n=""/>
@@ -596,6 +597,7 @@
                                                     <xf:label class="input-group-addon">
                                                         <i class="glyphicon glyphicon-plus"/>
                                                     </xf:label>
+                                        
                                                     <xf:insert context="//TEI:entry" nodeset="TEI:gramGrp" origin="instance('i-template')//TEI:gramGrp[@type='segmentation']"/>
                                                     <script>
                                                         clearAndInitAutocompletes();
