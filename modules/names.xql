@@ -254,15 +254,15 @@ function names:entry-morpheme($entry as node(), $type as xs:string, $position as
         let $class :=  if (count($entry/preceding-sibling::TEI:gramGrp[@type='segmentation'])) then 'dimmed' else () 
         let $morpheme := $entry//TEI:m[@type=$type][@n=$position]
         let $baseForm := $morpheme/@baseForm
-        let $inflect := if ($type eq 'suffix' and $position eq 1) then
-            let $dict := doc($config:dictionaries-root || '/suffixes/suffix-1.xml')//option[base=$morpheme/string()]
-            return 
-                <span>
-                    <b><i>{$dict/base}</i></b> <span>{$dict/add}</span>
-                    <span style="font-size: 0.8em; margin-top: 0.7em; display: block;">{$dict/gen}</span>
-                </span>
+        let $inflect := 
+            if ($type eq 'suffix' and $position eq 1) then
+                let $dict := doc($config:dictionaries-root || '/suffixes/suffix-1.xml')//*:option[*:base=$morpheme/string()]
+                return 
+                    <span>
+                        <b><i>{$morpheme/string()} </i></b> <span>{$dict/*:add}</span>
+                        <span style="font-size: 0.8em; margin-top: 0.7em; display: block;">{$dict/*:gen}</span>
+                    </span>
             else <span>{data($morpheme)}</span>
-
     return <span>
         {attribute style {$bold}}
         {attribute class {$class}}
