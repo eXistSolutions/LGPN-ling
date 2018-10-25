@@ -5,4 +5,6 @@
     <option xml:id="father">Father of</option>
     <option xml:id="mother">Mother of</option>
     <option xml:id="woman">Woman of</option>
+    <option xml:id="sister">Sister of</option>
+    <option xml:id="brother">Brother of</option>
 </data>
