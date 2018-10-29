@@ -265,4 +265,9 @@
         <add/>
         <gen><i>-ορος</i></gen>
     </option>
+    <option>
+        <base>?</base>
+        <add/>
+        <gen/>
+    </option>
 </data>
