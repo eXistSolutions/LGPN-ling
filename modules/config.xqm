@@ -11,7 +11,7 @@ declare namespace templates="http://exist-db.org/xquery/templates";
 declare namespace repo="http://exist-db.org/xquery/repo";
 declare namespace expath="http://expath.org/ns/pkg";
 
-declare variable $config:dba-credentials := ("admin", "$impl3");
+declare variable $config:dba-credentials := ("admin", "");
 (: 
     Determine the application root collection from the current module load path.
 :)
@@ -39,6 +39,7 @@ declare variable $config:taxonomies-root := $config:ling-data-root || "/taxonomi
 declare variable $config:dictionaries-root := $config:app-root || "/resources/xml";
 
  (:prosopographical database data:)
+declare variable $config:persons := $config:data-root || "/persons";
 declare variable $config:lgpn-places := $config:data-root || "/volume0.places.xml";
 declare variable $config:lgpn-names := $config:data-root || "/volume0.names.xml";
 declare variable $config:lgpn-volumes := $config:data-root || "/volume0.xml";

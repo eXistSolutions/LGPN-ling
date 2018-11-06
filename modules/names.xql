@@ -53,8 +53,7 @@ function names:entry-updated($entry as node()) {
 };
 
 declare
-function names:entry-transliterated($entry as node()) {
-    let $pos := count($entry/preceding-sibling::TEI:gramGrp[@type='segmentation'])
+function names:entry-transliterated($entry as node(), $pos) {
     let $first :=  if ($pos) then 'dimmed' else () 
 
     let $content := data($entry/parent::TEI:entry//TEI:orth[@type='h-variant'])
@@ -84,8 +83,7 @@ function names:entry-transliterated($entry as node()) {
 };
 
 declare
-function names:entry-nameVariants($entry as node()) {
-    let $pos := count($entry/preceding-sibling::TEI:gramGrp[@type='segmentation'])
+function names:entry-nameVariants($entry as node(), $pos) {
     let $first :=  if ($pos) then 'dimmed' else () 
 
     let $bold := 'font-weight: bold;'
@@ -112,8 +110,7 @@ function names:entry-nameVariants($entry as node()) {
 (:};:)
 
 declare
-function names:entry-dialect($entry as node(), $lang as xs:string?) {
-    let $pos := count($entry/preceding-sibling::TEI:gramGrp[@type='segmentation'])
+function names:entry-dialect($entry as node(), $lang as xs:string?, $pos) {
     let $first :=  if ($pos) then 'dimmed' else () 
     let $labels := $entry/parent::TEI:entry//TEI:gramGrp[@type='classification']/TEI:usg
     let $dialects_document_order := 
@@ -136,29 +133,30 @@ function names:entry-dialect($entry as node(), $lang as xs:string?) {
 };
 
 declare
-function names:entry-attestations($entry as node()) {
-    let $pos := count($entry/preceding-sibling::TEI:gramGrp[@type='segmentation'])
+function names:entry-attestations($entry as node(), $pos) {
+(:    let $pos := if ($pos > 1) then count($entry/preceding-sibling::TEI:gramGrp[@type='segmentation']) else 0:)
 
     let $name := $entry/parent::TEI:entry//TEI:orth[@type='greek']
-    let $content := if ($name ne '' ) then count(collection($config:data-root)//TEI:persName[@type="main"][.=$name]) else ''
+    let $content := if ($name ne '' ) then count(collection($config:persons)//TEI:nym[@nymRef=$name]) else ''
 
     return 
-        if($pos) then <span class="invisible">{$content}</span> else $content
+        if($pos) then () else $content
 };
 
 declare 
 function names:entry($offset, $i as node()) {
     let $lang:=request:get-parameter('lang', 'fr')
+    let $pos := count($i/../TEI:gramGrp[@type='segmentation'][. << $i])
     return
         map:new( 
             (
-                if($offset=0) then map:entry(0, names:entry-action($i, '')) else (),
-                map:entry($offset+1, names:entry-transliterated($i)),
-                map:entry($offset+2, names:entry-nameVariants($i)),
-                map:entry($offset+3, names:entry-attestations($i)),
-                map:entry($offset+4, names:entry-gender($i)),
-                map:entry($offset+5, names:entry-dialect($i, $lang)),
-                map:entry($offset+6, names:entry-period($i)),
+                if($offset=0) then map:entry(0, names:entry-action($i, '', $pos)) else (),
+                map:entry($offset+1, names:entry-transliterated($i, $pos)),
+                map:entry($offset+2, names:entry-nameVariants($i, $pos)),
+                map:entry($offset+3, names:entry-attestations($i, $pos)),
+                map:entry($offset+4, names:entry-gender($i, $pos)),
+                map:entry($offset+5, names:entry-dialect($i, $lang, $pos)),
+                map:entry($offset+6, names:entry-period($i, $pos)),
 
 
                 map:entry($offset+7, names:entry-morpheme($i, 'prefix', 1)),
@@ -173,11 +171,13 @@ function names:entry($offset, $i as node()) {
                 map:entry($offset+16, names:entry-bibl($i, ('source', 'auxiliary'))),
                 map:entry($offset+17, names:entry-bibl($i, ('linguistic', 'modern'))),
                 map:entry($offset+18, names:entry-updated($i)),
-                if($offset=0) then map:entry($offset+19, names:entry-action($i, 'delete')) else ()
+                if($offset=0) then map:entry($offset+19, names:entry-action($i, 'delete', $pos)) else ()
             )
     ),
     for $v in $i/parent::TEI:entry//TEI:form[@type='variant']
-        let $pos := count($i/following-sibling::TEI:gramGrp[@type='segmentation'])
+            let $pos := count($i/../TEI:gramGrp[@type='segmentation'][. >> $i])
+
+
         return 
             if ($pos) then 
                 (: skip variants for all but last hypothesis :)
@@ -224,21 +224,18 @@ function names:variantEntry($offset, $i as node()) {
 };
 
 declare
-function names:entry-period($entry as node()) {
-    let $pos := count($entry/preceding-sibling::TEI:gramGrp[@type='segmentation'])
-
+function names:entry-period($entry as node(), $pos) {
     let $name := $entry/parent::TEI:entry//TEI:orth[@type='greek']/string()
     let $dates :=(
         min(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:birth/@notBefore[string(.)]),
         max(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:birth/@notAfter[string(.)]))
     let $content := string-join($dates, '/')
     return 
-        if($pos) then <span class="invisible">{$content}</span> else $content
+        if($pos) then () else $content
 };
 
 declare
-function names:entry-gender($entry as node()) {
-    let $pos := count($entry/preceding-sibling::TEI:gramGrp[@type='segmentation'])
+function names:entry-gender($entry as node(), $pos) {
     let $name := $entry/parent::TEI:entry//TEI:orth[@type='greek']
     let $genders :=
         for $g in distinct-values(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:sex/@value/string())
@@ -368,12 +365,11 @@ function names:entry-bibl($entry as node(), $types as item()*) {
 
 
 declare
-function names:entry-action($entry as node(), $action as xs:string?) {
+function names:entry-action($entry as node(), $action as xs:string?, $pos) {
     let $user := request:get-attribute("org.exist.lgpn-ling.user")
     return
         if ($user) then
     
-    let $pos := count($entry/preceding-sibling::TEI:gramGrp[@type='segmentation'])
     let $action:=  if($action='delete') then 
         <div>
             <form method="POST" action="">
@@ -388,9 +384,9 @@ function names:entry-action($entry as node(), $action as xs:string?) {
     return 
         <td>
         {
-            if(not($pos)) then
-                $action
-            else ()
+            if($pos) then
+                ()
+            else $action
         }
         </td>
     else
