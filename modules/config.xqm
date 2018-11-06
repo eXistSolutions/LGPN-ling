@@ -39,7 +39,10 @@ declare variable $config:taxonomies-root := $config:ling-data-root || "/taxonomi
 declare variable $config:dictionaries-root := $config:app-root || "/resources/xml";
 
  (:prosopographical database data:)
-declare variable $config:persons := $config:data-root || "/persons";
+declare variable $config:persons-root := $config:data-root || "/persons";
+declare variable $config:persons := collection($config:data-root || "/persons");
+
+
 declare variable $config:lgpn-places := $config:data-root || "/volume0.places.xml";
 declare variable $config:lgpn-names := $config:data-root || "/volume0.names.xml";
 declare variable $config:lgpn-volumes := $config:data-root || "/volume0.xml";
