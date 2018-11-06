@@ -117,18 +117,12 @@ function names:entry-dialect($entry as node(), $lang as xs:string?, $pos) {
     for $l in $labels 
         return string-join((doc($config:taxonomies-root || "/dialects.xml")//TEI:category[@xml:id=$l]/TEI:catDesc[@ana="full"][@xml:lang='en'], if ($l/@cert="low") then '?' else ()), '')
     
-(:    let $dialects :=:)
-(:        for $e in doc($config:taxonomies-root || "/dialects.xml")//TEI:category[@xml:id=$labels]/TEI:catDesc:)
-(:        (: filtering moved to output because otherwise an error occurs :):)
-(:        return $e[@ana="full"][@xml:lang='en']:)
-    
     return 
         if ($pos < 1) then
         <span>
             {attribute class {$first}}
             {string-join($dialects_document_order, ', ')}
         </span>
-(:        if($pos) then <span class="invisible">{$content}</span> else $content:)
         else ()
 };
 
@@ -242,7 +236,7 @@ function names:entry-gender($entry as node(), $pos) {
         return if (number($g)=2) then "f." else "m."
     let $content:= string-join($genders, '|')
     return 
-        if($pos) then <span class="invisible">{$content}</span> else $content
+        if($pos) then () else $content
 };
 
 declare
@@ -332,10 +326,10 @@ function names:entry-semantics($entry as node(), $lang as xs:string?) {
 };
 
 declare function names:reference-entry($entry) {
-    let $quote := $entry/TEI:quote
-    let $author := if (string-length($entry//TEI:author)) then $entry//TEI:author else ()
-    let $ref := $entry/TEI:ref
-    let $rest := $entry/TEI:span
+    let $quote := $entry/TEI:quote/string()
+    let $author := if (string-length($entry//TEI:author)) then $entry//TEI:author/string() else ()
+    let $ref := $entry/TEI:ref/string()
+    let $rest := $entry/TEI:span/string()
 
     let $source := 
         if ($entry/TEI:ref/string(@target)) 
