@@ -47,14 +47,14 @@ declare function local:orderBy($index, $dir) {
 
 let $setuser :=  login:set-user("org.exist.lgpn-ling", (), false())
 
-let $search := request:get-parameter('search[value]', 'a')
+let $search := request:get-parameter('search[value]', '')
 
 let $search := if ($search ne '') then $search else ''
 
 let $recordsTotal := count(collection($config:names-root)//tei:gramGrp[@type='segmentation'])
 
-let $start := number(request:get-parameter('start', ''))
-let $length := number(request:get-parameter('length', ''))
+let $start := number(request:get-parameter('start', 1))
+let $length := number(request:get-parameter('length', 50))
 
 let $end := if($length>0) then ($start + $length) else $recordsTotal
 
@@ -63,20 +63,18 @@ let $ordDir := request:get-parameter('order[0][dir]', 'asc')
 
 let $draw := request:get-parameter('draw', '1')
 
-(:let $offset :=     if (request:get-attribute("org.exist.lgpn-ling.user")) then 0 else -1:)
 let $offset := 0
-
-let $c:=console:log('offset ' || $offset)
 
 let $qs := replace(normalize-unicode($search, 'NFD'), "[\p{M}\p{Sk}]", "")
 
+let $q :='<query><bool><wildcard>' || $qs || '*</wildcard></bool></query>'
+
 let $collection := if (string($qs)) then 
-                        'collection($config:names-root)//tei:orth[ft:query(., "' || $qs || '*' || '")]/ancestor::tei:entry//tei:gramGrp[@type="segmentation"]'
+                        'collection($config:names-root)//tei:orth[ft:query(., ' || $q || ')]/ancestor::tei:entry//tei:gramGrp[@type="segmentation"]'
                     else 
                         'collection($config:names-root)//tei:gramGrp[@type="segmentation"]'
 
 let $roff:=$offset+number($ordInd)
-(:let $c:=console:log($roff):)
 let $orderby := local:orderBy($offset+number($ordInd), $ordDir)
 
     let $query :=
