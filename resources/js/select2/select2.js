@@ -10,8 +10,8 @@ function _formatResult(term, container, query) {
 
     markup += "<table>";
     markup += "<tr>";
-    markup += "<td>" + term.id + "</td>";
-    markup += "<td>" + term.value + "</td>";
+    markup += "<td>" + term.id + " </td>";
+    markup += '<td style="padding-left: 10px;"> ' + term.value + "</td>";
     markup += "<tr>";
     markup += "</table>";
 
