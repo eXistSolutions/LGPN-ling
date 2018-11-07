@@ -67,10 +67,8 @@ let $offset := 0
 
 let $qs := replace(normalize-unicode($search, 'NFD'), "[\p{M}\p{Sk}]", "")
 
-let $q :='<query><bool><wildcard>' || $qs || '*</wildcard></bool></query>'
-
 let $collection := if (string($qs)) then 
-                        'collection($config:names-root)//tei:orth[ft:query(., ' || $q || ')]/ancestor::tei:entry//tei:gramGrp[@type="segmentation"]'
+                        'collection($config:names-root)//tei:orth[ft:query(., "' || $qs || '*")]/ancestor::tei:entry//tei:gramGrp[@type="segmentation"]'
                     else 
                         'collection($config:names-root)//tei:gramGrp[@type="segmentation"]'
 
