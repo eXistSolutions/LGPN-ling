@@ -50,7 +50,7 @@ let $setuser :=  login:set-user("org.exist.lgpn-ling", (), false())
 let $search := request:get-parameter('search[value]', '')
 
 let $search := if ($search ne '') then $search else ''
-
+let $searchOptions := '<options><leading-wildcard>yes</leading-wildcard></options>'
 let $recordsTotal := count(collection($config:names-root)//tei:gramGrp[@type='segmentation'])
 
 let $start := number(request:get-parameter('start', 1))
@@ -65,10 +65,11 @@ let $draw := request:get-parameter('draw', '1')
 
 let $offset := 0
 
-let $qs := replace(normalize-unicode($search, 'NFD'), "[\p{M}\p{Sk}]", "")
+let $qs := $search
+(:replace(normalize-unicode($search, 'NFD'), "[\p{M}\p{Sk}]", ""):)
 
 let $collection := if (string($qs)) then 
-                        'collection($config:names-root)//tei:orth[ft:query(., "' || $qs || '*")]/ancestor::tei:entry//tei:gramGrp[@type="segmentation"]'
+                        'collection($config:names-root)//tei:orth[ft:query(., "' || $qs || '*", ' || $searchOptions || ')]/ancestor::tei:entry//tei:gramGrp[@type="segmentation"]'
                     else 
                         'collection($config:names-root)//tei:gramGrp[@type="segmentation"]'
 
