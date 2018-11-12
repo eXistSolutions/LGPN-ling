@@ -49,7 +49,7 @@ let $setuser :=  login:set-user("org.exist.lgpn-ling", (), false())
 
 let $search := request:get-parameter('search[value]', '')
 
-let $search := if ($search ne '') then $search else ''
+let $search := if ($search ne '' and $search ne '*') then $search else ''
 let $searchOptions := '<options><leading-wildcard>yes</leading-wildcard></options>'
 let $recordsTotal := count(collection($config:names-root)//tei:gramGrp[@type='segmentation'])
 
