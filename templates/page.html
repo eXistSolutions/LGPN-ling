@@ -42,16 +42,30 @@ $(document).ready(function() {
         "ordering": true,
         "info":     true
     } );
-    $('#servertable').DataTable( {
+    var table =$('#servertable').DataTable( {
         "processing": true,
         "serverSide": true,
         "ajax": "modules/load-names.xqm",
         "lengthMenu": [ [50, 100, 500, -1], [50, 100, 500, "All"] ],
         "order": [[ firstSort, "desc" ],[ 1, "asc" ]],
         "paging":   true,
-        "info":     true
+        "info":     true,
+        
+        "initComplete": function(settings, json) {
+            //change the default search input behaviour, not sending all requests but only after hitting enter (or empty string)
+            $("#servertable_filter input")
+            .unbind()
+            .bind("keyup change", function(e) {
+                if (e.keyCode == 13 || this.value == "") {
+                    table
+                        .search(this.value)
+                        .draw();
+                }
+            });
+            
+        }
+          
     } );
-    
 } );
 
 
