@@ -37,7 +37,7 @@
                                         <m baseForm="" type="prefix" n="1" function="" ana="" subtype="" cert="" corresp=""/>
                                         <m baseForm="" type="radical" n="1" function="" ana="" subtype="" cert="" corresp=""/>
                                         <m baseForm="" type="radical" n="2" function="" ana="" subtype="" cert="" corresp=""/>
-                                        <m baseForm="" type="suffix" subtype="flexional" n="1"/>
+                                        <m baseForm="" type="suffix" subtype="" n="1"/>
                                         <m baseForm="" type="suffix" n="2"/>
                                         <m baseForm="" type="suffix" n="3"/>
                                         <m baseForm="" type="suffix" n="4"/>
@@ -72,7 +72,7 @@
                             <m baseForm="" type="prefix" n="1" function="" ana="" subtype="" cert="" corresp=""/>
                             <m baseForm="" type="radical" n="1" function="" ana="" subtype="" cert="" corresp=""/>
                             <m baseForm="" type="radical" n="2" function="" ana="" subtype="" cert="" corresp=""/>
-                            <m baseForm="" type="suffix" subtype="flexional" n="1"/>
+                            <m baseForm="" type="suffix" subtype="" n="1"/>
                             <m baseForm="" type="suffix" n="2"/>
                             <m baseForm="" type="suffix" n="3"/>
                             <m baseForm="" type="suffix" n="4"/>
@@ -1140,14 +1140,27 @@
                                                     </xf:select1>
                                                 </div>
                                                 <div class="tp-form-group-col">
-                                                    <label class="tp-label">Inflexional morpheme 1</label>
-                                                    <xf:select1 class="tp-input -form-control" ref="TEI:m[@type = 'suffix' and @n = '1']">
-                                                        <xf:label class="input-group-addon">inflex 1</xf:label>
-                                                        <xf:itemset nodeset="instance('i-suffix-1')/option">
-                                                            <xf:label ref="base"/>
-                                                            <xf:value ref="base"/>
-                                                        </xf:itemset>
-                                                    </xf:select1>
+                                                    <div class="tp-row">
+                                                        <div class="tp-form-group-col">
+                                                            <label class="tp-label">Inflect</label>
+                                                            <xf:select1 class="tp-input -form-control" ref="TEI:m[@type = 'suffix' and @n = '1']">
+                                                                <xf:label class="input-group-addon">inflex 1</xf:label>
+                                                                <xf:itemset nodeset="instance('i-suffix-1')/option">
+                                                                    <xf:label ref="base"/>
+                                                                    <xf:value ref="base"/>
+                                                                </xf:itemset>
+                                                            </xf:select1>
+                                                        </div>
+                                                        <div class="tp-form-group-col">
+                                                            <label class="tp-label">Suffix 1</label>
+                                                            <xf:select class="tp-input" ref="TEI:m[@type = 'suffix' and @n = 1]/@subtype" appearance="full" incremental="true">                                                       
+                                                                <xf:item>
+                                                                    <xf:label>Suffix 1</xf:label>
+                                                                    <xf:value>suff</xf:value>
+                                                                </xf:item>
+                                                            </xf:select>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </section>
 

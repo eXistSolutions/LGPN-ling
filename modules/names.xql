@@ -94,14 +94,30 @@ function names:entry-nameVariants($entry as node(), $pos) {
             <span class="dimmed"><br/>{'{' || replace($entry/parent::TEI:entry//TEI:orth[@type='lgpn'], "(\(\w*\))", "") || '}' }</span> 
         else 
             ()
+            
+    let $morpheme := $entry//TEI:m[@type='suffix'][@n='1'][not(@subtype='suff')]
+    let $baseForm := $morpheme/@baseForm
+    let $inflect := 
+        if ($morpheme) then
+                let $dict := doc($config:dictionaries-root || '/suffixes/suffix-1.xml')//*:option[*:base=$morpheme/string()]
+                return 
+                    <div style="margin-top: 0.8em;">
+                        <b><i>{$morpheme/string()} </i></b> <span>{$dict/*:add}</span>
+                        <span style="font-size: 0.8em; margin-top: 0.7em; display: block;">{$dict/*:gen}</span>
+                    </div>
+        else
+            ()
 
     return 
-        <span>
-            {attribute class {$first}}
-            {attribute style {$bold}}
-            {if ($pos <1) then $content else ()}
+        <div>
+            <span>
+                {attribute class {$first}}
+                {attribute style {$bold}}
+                {if ($pos <1) then $content else ()}
+            </span>
+            {if ($pos <1) then $inflect else ()}
             {if ($pos <1) then $lgpn else ()}
-        </span>
+        </div>
 };
 
 (:declare:)
@@ -253,12 +269,15 @@ function names:entry-morpheme($entry as node(), $type as xs:string, $position as
         let $baseForm := $morpheme/@baseForm
         let $inflect := 
             if ($type eq 'suffix' and $position eq 1) then
-                let $dict := doc($config:dictionaries-root || '/suffixes/suffix-1.xml')//*:option[*:base=$morpheme/string()]
-                return 
-                    <span>
-                        <b><i>{$morpheme/string()} </i></b> <span>{$dict/*:add}</span>
-                        <span style="font-size: 0.8em; margin-top: 0.7em; display: block;">{$dict/*:gen}</span>
-                    </span>
+                if ($morpheme/@subtype = 'suff') then 
+                    let $dict := doc($config:dictionaries-root || '/suffixes/suffix-1.xml')//*:option[*:base=$morpheme/string()]
+                    return 
+                        <span>
+                            <b><i>{$morpheme/string()} </i></b> <span>{$dict/*:add}</span>
+                            <span style="font-size: 0.8em; margin-top: 0.7em; display: block;">{$dict/*:gen}</span>
+                        </span>
+                else 
+                    ()
             else <span>{data($morpheme)}</span>
     return <span>
         {attribute style {$bold}}
