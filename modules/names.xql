@@ -95,15 +95,15 @@ function names:entry-nameVariants($entry as node(), $pos) {
         else 
             ()
             
-    let $morpheme := $entry//TEI:m[@type='suffix'][@n='1'][not(@subtype='suff')]
+    let $morpheme := $entry//TEI:m[@type='suffix'][@n='1']
     let $baseForm := $morpheme/@baseForm
     let $inflect := 
         if ($morpheme) then
                 let $dict := doc($config:dictionaries-root || '/suffixes/suffix-1.xml')//*:option[*:base=$morpheme/string()]
                 return 
-                    <div style="margin-top: 0.8em;">
+                    <div style="margin-top: 0.8em; font-size: 0.8em;" >
                         <b><i>{$morpheme/string()} </i></b> <span>{$dict/*:add}</span>
-                        <span style="font-size: 0.8em; margin-top: 0.7em; display: block;">{$dict/*:gen}</span>
+                        <span style="margin-top: 0.7em; display: block;">{$dict/*:gen}</span>
                     </div>
         else
             ()
@@ -273,12 +273,12 @@ function names:entry-morpheme($entry as node(), $type as xs:string, $position as
                     let $dict := doc($config:dictionaries-root || '/suffixes/suffix-1.xml')//*:option[*:base=$morpheme/string()]
                     return 
                         <span>
-                            <b><i>{$morpheme/string()} </i></b> <span>{$dict/*:add}</span>
-                            <span style="font-size: 0.8em; margin-top: 0.7em; display: block;">{$dict/*:gen}</span>
+                            <b><i>{$morpheme/string()} </i></b> <span style="font-size: 0.8em;">{$dict/*:add}</span>
                         </span>
                 else 
                     ()
-            else <span>{data($morpheme)}</span>
+            else 
+                ()
     return <span>
         {attribute style {$bold}}
         {attribute class {$class}}
@@ -289,7 +289,6 @@ function names:entry-morpheme($entry as node(), $type as xs:string, $position as
                 $inflect
             else 
                 data($morpheme)
-
         }
         </span>
 };
