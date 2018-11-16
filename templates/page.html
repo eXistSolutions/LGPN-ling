@@ -24,6 +24,12 @@ legend {
     padding:0 10px;
     border-bottom:none;
 }
+
+.table th {
+    text-align: center;
+    border: 1px solid #eee;
+}
+
     </style>
         <script type="text/javascript" data-template="app:column-order">
         var firstSort=17;
@@ -34,7 +40,7 @@ legend {
 $(document).ready(function() {
     $('#datatable').DataTable( {
         "columnDefs": [
-    { "orderable": false, "targets": 0 }
+    { "orderable": false, "targets": [1, 2] }
   ],
         "lengthMenu": [ [50, 100, 500, -1], [50, 100, 500, "All"] ],
         "order": [[ firstSort, "desc" ],[ secondSort, "asc" ]],
@@ -43,11 +49,15 @@ $(document).ready(function() {
         "info":     true
     } );
     var table =$('#servertable').DataTable( {
+   "columnDefs": [
+    { "orderable": false, "targets": [1, 2]}
+  ] ,
         "processing": true,
         "serverSide": true,
         "ajax": "modules/load-names.xqm",
         "lengthMenu": [ [50, 100, 500, -1], [50, 100, 500, "All"] ],
         "order": [[ firstSort, "desc" ],[ 1, "asc" ]],
+        "ordering": true,
         "paging":   true,
         "info":     true,
         

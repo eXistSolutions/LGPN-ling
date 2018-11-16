@@ -90,7 +90,9 @@ function app:check-login($node as node(), $model as map(*)) {
 };
 
 
-declare function app:entries-header($node as node(), $model as map(*), $type as xs:string?) {
+declare
+    %templates:wrap
+function app:entries-header($node as node(), $model as map(*), $type as xs:string?) {
     let $user := request:get-attribute("org.exist.lgpn-ling.user")
     let $action := if($type='delete') then 
                     <span class="glyphicon glyphicon-trash"/>
@@ -98,9 +100,9 @@ declare function app:entries-header($node as node(), $model as map(*), $type as 
                     <span class="glyphicon glyphicon-edit"/>
     return
         if($user) then
-            <th>
-                {$action}
-            </th>
+           
+                $action
+            
                 else ()
 };
 declare
