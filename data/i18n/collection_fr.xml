@@ -24,7 +24,7 @@
     <msg key="constituent">constituant</msg>
     <msg key="matching">correspondant à</msg>
     <msg key="literalForm">forme littérale</msg>
-    <msg key="baseFrom">radical</msg>
+    <msg key="baseForm">radical</msg>
     <msg key="position">position</msg>
     <msg key="any">indifférente</msg>
     <msg key="verb">verbe</msg>
@@ -54,9 +54,9 @@
     <msg key="dialects">Dialectal/aréal, bilingue</msg>
     <msg key="prefix">Préfixe</msg>
     <msg key="suffix">Suffixe</msg>
-    <msg key="suff">Suff.</msg>
+    <msg key="suff">S.</msg>
     <msg key="flex">Inflex.</msg>
-    <msg key="radicals">Structure du nom</msg>
+    <msg key="structure">Structure morpho-syntaxique</msg>
     <msg key="root">Base/Radical</msg>
     <msg key="roots">Radicaux</msg>
     <msg key="semantics">Sens des préfixes et bases</msg>
@@ -66,4 +66,13 @@
     <msg key="newEntry">Saisie des données</msg>
     <msg key="meanings">Sens</msg>
     <msg key="morphemes">Lexèmes</msg>
+    <msg key="attestations">Att.</msg>
+    <msg key="geo-dialects">Aire(s) géo-dialect. interlinguistique(s)</msg>
+    <msg key="lex-onom">Lexique/onomastique</msg>
+    <msg key="anthr-suff">Suffixes anthroponymiques</msg>  
+    <msg key="update">Update</msg>  
+    <msg key="infl-type">Type flex.</msg>  
+    <msg key="interling-areas">interlinguistique(s)</msg>  
+    <msg key="lexis-ref">Sources et réf.</msg>]
+    <msg key="onomastics-ref">Sources connexes et réf.</msg>
 </catalogue>
