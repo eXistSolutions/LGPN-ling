@@ -51,9 +51,12 @@ $(document).ready(function() {
         "ordering": true,
         "info":     true
     } );
+    
+    
     var table =$('#servertable').DataTable( {
    "columnDefs": [
     { "orderable": false, "targets": [1, 2]}
+   
   ] ,
         "processing": true,
         "serverSide": true,

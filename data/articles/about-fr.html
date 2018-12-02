@@ -1,520 +1,1820 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<div>
-    <h1>Sur LGPN-Ling</h1>
-
-    <img class="figure feature-icon" src="resources/img/pheidiascup.jpg" alt="Ostracon" height="100px" align="left"/>
-    <h2>INTRODUCTION<sup>
-            <a href="#n1">1</a>
-        </sup>
-    </h2>
-    <p>Les 7 volumes du Lexicon of Greek Personal Names aujourd'hui parus enregistrent
-
-toutes les personnes connues en Grèce continentale et insulaire, en Asie Mineure et jusque
-
-dans les marges du monde grec, du début de l'époque alphabétique à la fin de l'Antiquité. Plus
-
-de 350 000 individus ont été à ce jour identifiés portant environ 35 000 noms différents,
-
-dont seule une faible proportion (estimée à environ 10%) n'est pas d'origine grecque. Pour
-
-chaque individu identifié, sont fournis — à la fois dans les volumes imprimés et en ligne —
-
-les informations suivantes : sexe, cité d'origine, date d'attestation et référence de la source.
-    </p>
-    <p>Dans ce cadre, le projet <i>LGPN-Ling, Analyse linguistique des noms de personne grecs
-
-antiques: dictionnaire numérique et imprimé</i>, lancé en octobre 2015, a pour objectif de doter
-
-le LGPN de sa contrepartie linguistique. Ce projet est double ::
-        <br/>
-        1. Procurer son indispensable complément étymologique et sémantique à la <a href="http://www.lgpn.ox.ac.uk/online/index.html">
-            <i>Database du
-
-LGPN</i>
-        </a>, restructurée pour permettre notamment une telle extension. 
-        <br/>
-        2. En extraire un dictionnaire imprimé, destiné à remplacer l'ouvrage centenaire de
-
-Friedrich Bechtel : <i>Die historischen Personennamen des Griechischen bis zur Kaiserzeit</i>
-
-(1917, ci-après <b>HPN</b>). Il s'agit en effet d'offrir l'explication du sens des anthroponymes grecs,
-
-qui n'a jamais été entreprise jusqu'à présent, sinon de façon sporadique et non argumentée
-
-dans l'ouvrage dépassé de W. Pape-G. E. Benseler, <i>Wörterbuch der griechischen Eigennamen</i>
-
-(1870, ci-après PB), et, pour les noms connus par les papyrus, sans argument non plus, dans
-
-la database en ligne <a href="http://www.trismegistos.org/nam/search.php">
-            <i>Trismegistos</i>
-        </a>.
-    </p>
-    <img class="figure feature-icon" src="resources/img/ostracism-them.jpg" alt="Ostracon" height="60px" width="60px" align="left"/>
-    <h3>AVERTISSEMENT</h3>
-    <p>
-        <b>a. Principe de sélection.</b>  Vu l'ampleur du corpus, comme Bechtel dans son ouvrage, nous
-
-n'analysons en principe qu'une fois la même structure composée ou le même nom simple, sous
-
-une forme dialectale donnée, la plus ancienne et/ou la plus colorée dialectalement. Sauf
-
-exception, c'est le cas pour tous les radicaux et suffixes à /a:/ susceptible d'être noté α ou η
-
-suivant les dialectes et les périodes : nous n'ouvrons pas deux entrées pour Dēmonikos/
-
-Δημόνικος et Dāmonikos/Δᾱμόνικος, ni pour Alexidas/Ἀλεξίδᾱς et Alexidēs/Ἀλεξίδης ; de
-
-même, pour les suffixés parallèles en masc. -ος vs fém. -ᾱ/η, comme Habryllos/Ἅβρυλλος vs
-
-Habrylla/Ἅβρυλλα, l'un des deux noms seulement est analysé ; de même, l'iotacisme n'est pris
-
-en compte que s'il est dialectal, comme pour béot. Agathoklidas/Ἀγαθοκλίδας, Ve s., vs dor.
-
-Agathokleidas/Ἀγαθοκλείδας, hell.</p>
-    <p>
-        <b>b. Traduction.</b> Le choix de ne donner dans l'actuelle interface de travail qu'occasionnellement
-            la traduction des noms, en restant le plus souvent au niveau des éléments de sens, s'explique
-            par le fait que nous nous centrons sur l'entité abstraite « nom » plutôt que sur ses occurrences
-            individuelles. Or, vu l'extension du cadre non seulement chronologique mais aussi
-            géographique de ses attestations, le nom est susceptible d'avoir connu des variations de sens et
-            de connotations remarquables, et ce d'autant que les valeurs sémantiques de l'élément ou des
-            éléments qui le constituaient pouvaient différer d'un dialecte à l'autre.
-    </p>
-    <p>
-        <b>c. Typologie des composés.</b> Vu la représentation massive des périodes hellénistique et
-            impériale, le système de classification adopté pour les composés est essentiellement
-            synchronique (critère sémantique et pragmatique de la « tête » syntagmatique ou
-            propositionnelle, label X), au lieu d'être fondé sur les catégories syntaxiques héritées
-            (possessifs, hypostatiques, à rection verbale, déterminatifs)<sup>
-            <a href="#n2">2</a>
-        </sup>.</p>
-    <p>
-        <b>d. Le traitement systématique de ce lexique de la personne que constitue l'onomastique
-            anthroponymique</b>, est rendu délicat par le fait qu'il s'y déploie encore plus d'inventivité que
-            dans le lexique au sens générique, notamment en matière de composition nominale et de 
-            dérivation des composés abrégés et des noms simples. Cela rend en particulier hypothétique la
-            labellisation de structures évolutives procédant de réfections analogiques à l'intérieur de séries
-            de composés (e.g. composés à adjectif verbal en -τος au 2nd élément, sans doute analogiques
-            de la structure inverse à 1er élément verbal actif en -σι, comme Lysippos/Λύσ-ιππος vs
-            Hippolytos/Ἱππό-λυτος, d'où YX&lt;XY, cf. infra, 8 et note 5) <sup>
-            <a href="#n3">3</a>
-        </sup>
-                , ou de noms souvent d'autant
-                plus opaques à nos yeux qu'ils sont isolés, comme éol. archaïque Abanthis/Ἀβανθίς (&lt;*αυσ-
-                ανθ-, avec οὖς «oreille » &lt;*aus<sup>
-            <a href="#n4">4</a>
-        </sup> et ἄνθος « fleur »).
-                
-        </p>
-
-    <img class="figure feature-icon" src="resources/img/pheidiascup.jpg" alt="Ostracon" height="100px" align="left"/>
-    
-    <h2>    PRESENTATION DE L'INTERFACE DE TRAVAIL 
-</h2>
-    <h6> (de gauche à droite)</h6>
-    <p>
-        <i>L'astérisque (*) indique les items qui seront munis d'un lien et pourront dans la future base de données
-            faire l'objet d'une recherche ciblée. Une interface d'interrogation avancée permettra de faire aussi des
-            recherches complexes, en associant par exemple 2 ou 3 radicaux, 2 suffixes ou plus, un radical et un
-            suffixe, un radical et un dialecte etc.
-        </i>
-    </p>
-    <img class="figure feature-icon" src="resources/img/ostracism-them.jpg" alt="Ostracon" height="60px" width="60px" align="left"/>
-    
-    <h3>Le nom dans son contexte</h3>
-    <p>
-        <b>1*.</b> Forme du nom translittérée en alphabet latin.
-        <br/>
-        <b>2*.</b> Forme du nom en alphabet grec, orthographié tel qu'il est attesté (c'est ce lien qui
-        <br/>
-        raccordera à terme le nom aux individus qui en sont porteurs dans la Database du LGPN).
-        <br/>
-        <b>3*.</b> Nombre d'occurrences (information extraite automatiquement de la Database du LGPN).
-        <br/>
-        <b>4*.</b> Genre : masculin, féminin, voire l'un ou l'autre (même extraction).
-        <br/>
-        <b>5*.</b> Labels dialectaux (y compris koinai) ou bilingues : les premiers, pour les noms d'usage
-        restreint à des aires géographiques et dialectales spécifiques, soit parce qu'ils sont dialectaux
-        ou plus largement aréaux soit en fonction du hasard des attestations, en face des
-        noms « pandialectaux » ; les seconds, pour les noms « bilingues », c'est-à-dire reflétant les
-        contacts entre le grec et une autre langue.
-        <br/>
-        <b>6*.</b> Fourchette chronologique des attestations (même extraction).
-        </p>
-    <img class="figure feature-icon" src="resources/img/ostracism-them.jpg" alt="Ostracon" height="60px" width="60px" align="left"/>
-    <h3>Analyse linguistique
-    </h3>
-    <p>
-        <b>7. Segmentation</b>
-        <br/>
-        <b>7.1. Préfixes*</b> largo sensu (incluant un élément nominal comme θε(ο), dans le composé
-        trithématique Theu-d-agoras/Θευ-δ-αγόρας, cf. 8) :	 éléments adverbiaux comme le α(ν)/ν-
-        négatif, le (h)α- copulatif, αµφ(ι), αν(α), αντ(ι)-, εὐ- etc.
-        <br/>
-        <b>7.2. Βases 1* et 2*</b> (incluant les radicaux stricto sensu). Ces morphèmes lexicaux sont
-        chacun présentés sous une forme prototypique, la plus générique possible (d'où le choix de ne
-        pas faire apparaître la voyelle de liaison à la fin, comme pour ᾱ̆γ, αρχ, et la notation par ᾱ de
-        la voyelle que l'ionien-attique puis la koinè ont fermée en /ε:/ et notée η). Des tirets de
-        segmentation rendent compte si possible de la formation, en distinguant le Radical stricto
-        sensu des élargissement et suffixe(s) propres qui le constituent, le cas échéant, en Base
-        (αγαλ-µα[τ]). Des parenthèses isolent les variables : a) à l'initiale et à l'intérieur de la base
-        (voyelles de timbre alternant, consonnes susceptibles de varier, d'être absentes ou de s'amuïr
-        suivant le dialecte ou la chronologie) ; b) à la jonction entre base et suffixe (voyelles
-        susceptibles d'appartenir à l'une et/ou à l'autre, et autres segments élidables).
-        <br/>
-        <b>7.3. Suffixes 4*, 3*, 2* et 1*</b>: stricto sensu. Ils sont constitutifs, non de la base du lexème
-        qui sous-tend l'anthroponyme (comme pour -µεν- dans ἀγαλ(λ)-ό-µεν-, base de
-        Agallomenē/Ἀγαλλοµεν-ή bâtie sur le participe ἀγαλλόµενος, -η, -ον), mais de
-        l'anthroponyme même (dans ce cas, le seul suffixe flexionnel -ή). Ordre de présentation
-        iconique, de gauche à droite, mais par ordre inverse de fréquence et d'importance : le suffixe
-        flexionnel ou tête (de la chaîne suffixale) occupe ainsi le rang 1, tandis que le rang 4 est très
-        rarement représenté (cf. Philonichidēs/Φιλ<sub>R</sub>-ων<sub>S4</sub>-ιχ<sub>S3</sub>-ίδ<sub>S2</sub>-ης<sub>S1</sub>).
-    </p>
-    <p>
-        <b>8. Structure du nom : analyse fonctionnelle et syntaxicosémantique
-        </b>
-        <br/>
-        <b>8.1.</b>
-        <i>Labels fonctionnels</i>: V*(erbe) N*(om) Adj*(ectif) Pro*(nom) Adv*(erbe), par ordre
-        dégressif d'importance<sup>
-            <a href="#n5">5</a>
-        </sup>.
-           Ils indiquent la fonction de l'élément radical ou des élément radicaux
-            dans le nom, qui ressort elle-même des catégories grammaticales que chacun était susceptible
-            de développer en tant que base dans le lexique, notamment par dérivation suffixale.
-            
-    <br/>
-        <b>8.1.1.</b>
-        <i>Double labellisation</i> de la même base d'un composé:
-    <br/>
-        <div style="margin-left: 20px;">
-            <b>V N*</b> = nom d'action, nom d'agent: e.g. ᾱ̆γορ- dans Pnyt-agoras/Πνυτ-αγόρας « qui profère en public
-            des paroles sages »;
-            <br/>
-            <b>V Adj*</b> = adjectif verbal<sup>
-                <a href="#n6">6</a>
-            </sup>
-            , participe: κρι-τ- dans Abaiokritos/Ἀβαιό-κριτος « choisi par (Apollon)
-            Abaios ».
-            <br/>
-            <b>N Adj*</b> = nom adjectif: τελ- dans Habrotelēs/Ἁβροτέλης « à l'accomplissement magnifique,
-            magnifiquement accompli »;
-            <br/>
-            <b>Adj Adv*</b> = adjectif adverbialisé: µεγ(α)- dans Meg-ainetos/Μεγ-αίνετος « grandement loué, digne
-            de grands éloges »;
-            <br/>
-            <b>V Adv* </b>= verbe adverbialisé : ἀρχ- dans Archi-anassa/Ἀρχι-άνασσα « Archi-reine », cf.
-            archiereus/ἀρχιερεύς « archiprêtre » vs. Arche-laos/Ἀρχέ-λαος « le premier parmi (ou celui qui
-            commande) les hommes en armes », où ἀρχ- fait fonction de V.
+<main class="about">
+    <h1>Sur <i>LGPN-Ling</i>
+    </h1>
+    <address class="author"> par Sophie Minon<br/> (EPHE, PSL/IUF, ANHIMA, Paris) </address>
+    <section>
+        <div class="image-headline-wrapper-1">
+            <h2 class="image-headline-1">INTRODUCTION<sup>
+                    <a href="#n1">1</a>
+                </sup>
+            </h2>
         </div>
-        <br/>
-        <b>8.1.2.</b>
-        <i>Labellisation des composés abrégés et des noms simples</i>. La suffixation, très
-            riche dans le cas de ces anthroponymes monothématiques, a fait prendre le parti, pour eux
-            seuls, à l'exclusion des composés, de labelliser la structure du radical en lui adjoignant,
-            lorsqu'elle est clairement identifiée, une catégorisation suffixale. On aura ainsi :
-    <br/>
-        <div style="margin-left: 20px;">
-            <b>-N</b> = tout anthroponyme à radical nominal muni d'un suffixe exclusivement nominal dans le
-            lexique, notamment l'exact homonyme d'un substantif du lexique, comme béot. Kapos/Κᾶπος
-            (ion.-att. κῆπος « jardin »), ou le dérivé d'une autre catégorie de nom propre (théonyme,
-            toponyme etc.), comme Athēnô/Ἀθηνώ.
-            <br/>
-            <b>-Adj</b> = l'exact homonyme d'un adjectif du lexique ou tout anthroponyme au radical adjectival
-            et muni d'un suffixe exclusivement adjectival dans le lexique (e. g. -ικός, -(V)ιος, fém. -
-            (ϝ)έσσα, comparatifs en -(ί)ων, -τερος) et/ou pouvant être considéré comme adjectival dans
-            l'anthroponymie (-ίδᾱ/ης, d'où -ιδεύς, -(ι)άδᾱ/ης, -ινάδᾱ/ης, -ων(ί)δᾱ/ης, -ῖνος, -ίνᾱ/ης, -ίων, -
-            ιανός etc.).
-            <br/>
-            <b>-Ν Adj</b> = radical nominal et suffixe adjectival ou l'inverse.
-            <br/>
-            <b>-Ν Adv*</b> = radical adverbial et suffixe nominal
-            <br/>
-            <b>-V N </b>= nom d'action en -σ/τις, -ίᾱ/η, -ώ etc. ou nom d'agent en -εύς (et dérivés -έᾱς, -ήν), -
-            (τ)ᾱ/ης, -ίᾱ/ης, -ᾶς, -τήρ/-τωρ etc., attestés dans le lexique ou non.
-            <br/>
-            <b>-V Adj</b> = adjectif verbal en -τος ; participes aux masc. en : -ων, -οντος ; -ᾱς, -αντος ; -µενός ;
-            et verbe adjectivé, cf. Alexiadēs/Αλεξιάδης.
-            <br/>
-            <b>-V N Adj*</b> = adjectif verbal ou nom d'agent suffixé en -ώ(ι), cf. Phantō/Φαντώ.
+        <div>
+            <p> Les 8 volumes du <i>Lexicon of Greek Personal Names</i> aujourd'hui parus
+                enregistrent toutes les personnes connues en Grèce continentale et insulaire, en
+                Asie Mineure et jusque dans les marges du monde grec, du début de l'époque
+                alphabétique à la fin de l'Antiquité. Plus de <b>350 000</b> individus ont été à ce
+                jour identifiés portant environ <b>35 000</b> noms différents, dont seule une faible
+                proportion (estimée à environ 10%) n'est pas d'origine grecque. Pour chaque individu
+                identifié, sont fournis — à la fois dans les volumes imprimés et en ligne — les
+                informations suivantes : sexe, cité d'origine, date d'attestation et référence de la
+                source. </p>
+
+            <p> Dans ce cadre, le projet <i>LGPN-Ling, Analyse linguistique des noms de personne
+                    grecs antiques: dictionnaire numérique et imprimé</i>, lancé en octobre 2015, a
+                pour objectif de doter le LGPN de sa contrepartie linguistique. Ce projet est double
+                : </p>
+            <ol>
+                <li> Procurer son indispensable complément sémantique à la <i>Database du LGPN</i>,
+                    restructurée pour permettre notamment une telle extension (cf. <a href="http://www.lgpn.ox.ac.uk/online/index.html">http://www.lgpn.ox.ac.uk/online/index.html</a>) ; </li>
+                <li> En extraire un dictionnaire imprimé, destiné à remplacer l'ouvrage centenaire
+                    de Friedrich Bechtel : <i>Die historischen Personennamen des Griechischen bis
+                        zur Kaiserzeit</i> (1917, ci-après <i>
+                        <b>HPN</b>
+                    </i>). </li>
+            </ol>
+
+            <p> Il s'agit en effet d'offrir l'explication du sens des anthroponymes grecs, qui n'a
+                jamais été entreprise jusqu'à présent, sinon de façon sporadique et non argumentée
+                dans l'ouvrage dépassé de W. Pape-G. E. Benseler, <i>Wörterbuch der griechischen
+                    Eigennamen</i> (1870, ci-après <b>
+                    <i>PB</i>
+                </b>), et, pour les noms connus par les papyrus, sans argument non plus, dans la
+                database en ligne <i>Trismegistos</i>
+                <a href="http://www.trismegistos.org/nam/search.php">http://www.trismegistos.org/nam/search.php</a>). </p>
         </div>
-        <br/>
-        <div style="margin-left: 20px;">
-            Exemples :
-            <br/>
-            Ἀγεύς, composé abrégé bâti sur R verbal αγ- + S nominal, comme Ἀγ-έας, Ἀγ-ήν = V N.
-            <br/>
-            Ἀγαπαῖος, sur R αγαπ(α) + S adjectival = V Adj vs Ἀγαπά-τις = V N (accent analogique de masc.
-            *Ἀγαπά-τᾱς).
-            <br/>
-            Ἀγασῖνος, sur V αγα-σ + S adjectival, comme Ἄγαστος, sur αγα-(σ)τ = V Adj.
-            <br/>
-            Ἀγχίας, sur Adv ἄνχ(ι) + S nominal = N Adv.
-            <br/>
-            Ἀγών-ιος (Adj ἀγών-ιος « de concours, compétitif »), sur N αγ-ο̄ν = Adj, vs Ἀγων-ίς = Ν.
-            <br/>
-            Ἀδραν-ίων, sur théon. Adranos = Ν Adj.
-            <br/>
-            Ἀθήναιος, ethnique d'Athènes = Adj. vs Ἀθηνώ, sur théon. Athéna = Ν.
-            <br/>
-            Αἴνησις (cf. N αἴνεσις « éloge »), Αἰνησ-(ι)ώ, Αἰνήσ-ων, sur V αιν-ε̄̆-σ = V N.
-            <br/>
-            Αἰσχινάδης, sur N αἶσχος + SS adjectivaux = N Adj.
-            <br/>
-            Ἀλεξιάδης, sur V αλεκ-σ- + : verbe adjectivé = V Adj.
-            <br/>
-            Ἀλκε-ίδης, sur αλκ-εσ- (cf. Adj -άλκης, HPN 36) + S adjectival = Adj.
-            <br/>
-            Βλάξ, adj. βλά̄ξ, -κός (même radical que µαλακός) = Adj.
-            <br/>
-            Καλλιστ-ώ, sur Adj κάλλιστος + S nominal = cas inverse de Αἰσχινάδης, mais un seul et même label :
-            N Adj.
-            <br/>
-            Μυρτ-ώ, sur N µύρτος + S nominal = N.
-            <br/>
-            Πείσ-ων, sur V πεισ- + S nominal -ων, -ωνος, et non -ων, -οντος = V N.
-            <br/>
-            Φαντ-ώ, sur V Adj φαντός ou V N -φάντης, φάντωρ + S nominal = V N Adj.
+    </section>
+
+    <section>
+        <div class="image-headline-wrapper-1">
+            <h2 class="image-headline-1">AVERTISSEMENT</h2>
         </div>
-        <br/>
-        <b>8.2.</b>
-        <i>Labels syntaxico-sémantiques</i> : X* (= tête) Y* (queue de XY* ou YX*) Z* (queue de
-        ZXY* ou ZYX*)<sup>
-            <a href="#n7">7</a>
-        </sup>
-    <br/>
-        <b>8.2.1.</b> Ils concernent les composés di- voire tri-thématiques et leurs formes abrégées
-                (AbbrC*), parfois réduites à un seul de leurs radicaux. Ce dernier label n'exclut pas
-                que le nom ait pu être donné aussi comme simple : il permet d'indiquer que le ou les
-                éléments de sens portés par le radical étaient régulièrement combinés à d'autres pour former
-                des syntagmes ou des propositions à motivation générique (dénomination valorisante,
-                propitiatoire ou apotropaïque) ou spécifique (nom ou surnom en relation avec un événement).
-                
-        <br/>
-        <div style="margin-left: 20px;">
-            Ex.: Eu-arch-ippos/ΕὐZ-άρχ X-ιπποςY, trithématique syntaxico-sémantique (ZXY) « qui commande X
-            bienZ son chevalY », voire dithématique suffixé en -ιππος<sup>
-                <a href="#n8">8</a>
-            </sup>
-            .
-            <br/>
-            Theu-d-agoras/Θευ-δ-αγόρας, trithématique formel ou syntaxico-sémantique<sup>
-                <a href="#n9">9</a>
-            </sup>
-            , au 2e élément
-            réduit à sa lettre initiale : AbbrC au sens strict.
-            <br/>
-            Kalli-k-ôn/Καλλί-κ-ων (patronyme Eu-kratēs/Εὐ-κράτης) (YXAbbrC), dithématique abrégé de
-            même, vs Kalli-kratēs/Καλλι-κράτης « d'une jolie force » ou bien Kallikydēs/Καλλι-κύδης « à la
-            belle gloire » (YX) : AbbrC au sens strict.
-            <br/>
-            Agathias/Ἀγαθίας « Le bon », nom simple susceptible d'avoir été donné comme AbbrC, vs.
-            <br/>
-            Agatho-klēs/Ἀγαθο-κλῆς « Bonne-gloire » (YX) ou Pant-agathos/Παντ-άγαθος « Tout-bon »
-            (YX) : AbbrC au sens large.
+
+        <div>
+            <h3>
+                <i>a. Alphabet réformé de la koinè ionienne-attique</i>
+            </h3>
+            <div class="subchapter-indent">
+                <p> Pour faciliter la recherche sur l'interface, le choix a été fait de noter
+                    systématiquement, quelle que soit la période, les /e:/ et les /o:/ hérités <span class="greek">η</span> et <span class="greek">ω</span>, et les /e: et /o:/
+                    secondaires issus de contractions et d'allongements compensatoires <span class="greek">ει</span> et ου, conformément à l'orthographe de la réforme
+                    euclidienne de 403 a. C. qui est celle de la <i>koinè</i>. Lorsqu'un nom est un
+                        <i>hapax</i> et qu'il est attesté en alphabet préeuclidien (E et O comme
+                    notations à la fois des longues et des brèves correspondantes) ou dans un
+                    dialecte comme le béotien ou le thessalien où la notation des longues de la
+                    série moyenne s'écarte de cette norme commune, l'orthographe est indiquée dans
+                    la forme du thème/constituant (actuellement édité, non visible mais destiné à
+                    être cherchable et accessible par menu déroulant).</p>
+            </div>
         </div>
-        <br/>
-        <b>8.2.2.</b>
-        <i>Structures complexes ou témoignant d'une évolution :</i>
-        <br/>
-        <b>8.2.2.1. </b>Structure inversée par rapport au modèle hérité attesté éventuellement en
-                dehors du grec : notamment XY&lt;YX?*.
-            
-    <div style="margin-left: 20px;">
-        
-        Ex.: Kyn-argos/Κύν-αργος (XY), structure inverse du modèle plus ancien de type véd. r̥jí-śvan- (YX)
-        «aux chiens<sub>X</sub> rapides<sub>Y</sub>»
-        <sup>
-                <a href="#n10">10</a>
-            </sup> ; de même Menes-andros/Μενέσ-ανδρος (XY) vs av. Nǝrǝmanah, gr. Andromenēs/Ἀνδρο-µένης
-        «qui a l’ardeur<sub>X</sub> d’un héros<sub>Y</sub>» (YX).
-        
-    </div>
-        <b>8.2.2.2.</b> Réinterprétation sémantique au cours de l'histoire du nom :
-        XY&gt;YX?* et YX&gt;XY?*.
-        <div style="margin-left: 20px;">
-            Ex.: Sy-agros/ΣύY-αγροςX «qui chasse<sub>X</sub> le sanglier<sub>Y</sub>», réinterprété
-            «sanglier<sub>X</sub> sauvage<sub>Y</sub>», syntagme synonyme de combativité (YX&gt;XY?), cf. ad loc. Et Eri-ōtos/Ἐρί-
-            ωτος «qui dresse<sub>X</sub> l'oreille<sub>Y</sub>» comme Ere-damos/ἘρέX-δαµος<sub>Y</sub> «qui excite<sub>X</sub> le peuple<sub>Y</sub>», 
-            réinterprété
-            «à l'oreille<sub>X</sub> dressée<sub>Y</sub>», avec ἐρι<sub>Y</sub>- spécialisé comme Adv (XY&gt;YX?)
+
+        <div>
+            <h3>
+                <i>b. Hiérarchisation et sélection des noms grecs et hybrides</i>
+            </h3>
+
+            <div class="subchapter-indent">
+                <h4>α) <b>Lemme <i>vs</i> variantes</b>
+                </h4>
+                <p> Dans l'esprit des <i>HPN</i> de Bechtel, nous n'ouvrons qu'une seule entrée pour
+                    les différentes variantes soit d'un même composé,soit d'un même nom simple.
+                    Cette entrée ou lemme consiste, arbitrairement, en <b>la variante
+                        dialectale/aréale, en principe, la plus anciennement attestée, dans son
+                        genre le plus anciennement attesté également</b>. Néanmoins, si plusieurs
+                    variantes appartenant à des aires dialectales différentes ont leurs attestations
+                    exactement contemporaines, sera choisie comme entrée soit la variante du
+                    dialecte le plus éloigné de l'attique, soit celle du genre le plus rarement
+                    attesté : le féminin ; le critère est alors la rareté. </p>
+
+                <ul class="list-style-disc">
+                    <li> Par conséquent, pour les couples de noms qu'opposent <i>les marques de
+                            genre les plus courantes</i> : <ol>
+                            <li> masculins en <span class="greek">-ᾱ/ης</span> ou <span class="greek">-ος</span> en face des féminins en <span class="greek">-ᾱ/η</span>, <span class="greek">-ᾰ</span> ou
+                                    <span class="greek"> -ον</span> comme Habragoras/<span class="greek">Ἁβραγόρας </span>
+                                <i>vs</i> Ηabragora/<span class="greek">Ἁβραγόρα</span>,
+                                    Kallinikos/<span class="greek">Καλλίνικος </span>
+                                <i>vs</i> Kallinike/<span class="greek">Καλλινίκη</span>,
+                                    Habryllos/<span class="greek">Ἅβρυλλος </span>
+                                <i>vs</i> Habrylla/<span class="greek">Ἅβρυλλα</span>̆ et
+                                    Onesiphoros/<span class="greek">Ὀνησίφορος </span>
+                                <i>vs</i> Onesiphoron/<span class="greek">Ὀνησίφορον</span>, ou
+                                encore le triplet Anchios/<span class="greek">Ἄγχιος </span>
+                                <i>vs</i> Anchias/<span class="greek">Ἀγχίας </span>
+                                <i>vs</i> Anchia/<span class="greek">Ἀγχία</span>; </li>
+                            <li> fém. en <span class="greek">-εια </span>en face des masc. en <span class="greek">-ύς</span>, comme Hēdeia<span class="greek">/Ἥδει</span>α<i> v</i>s Hēdu<span class="greek">s/Ἥδυς</span>
+                                , ou en face des masc. en <span class="greek">-ης</span>, comme
+                                    Eugeneia/<span class="greek">Εὐγένεια</span>
+                                <i>vs</i> Eugenes/<span class="greek">Εὐγένης</span> ; </li>
+                            <li> fém. en <span class="greek">-ίς</span> en face des masc. en <span class="greek">-ις</span>, comme Anaxis/f.<span class="greek">Ἀναξίς</span>
+                                <i>vs</i> m. <span class="greek">Ἄναξις</span> ; </li>
+                            <li> fém. en <span class="greek">-ώ</span> et <span class="greek">-οῦς</span> en face des masc. en <span class="greek">-ων</span>
+                                et <span class="greek">-οῦς</span>, comme Agathô/<span class="greek">Ἀγαθώ</span> et Agathous/<span class="greek">Ἀγαθοῦς</span>
+                                <i>vs</i> Agathôn/<span class="greek">Ἀγάθων</span> (cf. <span class="greek">Ἀριστώ</span>, fille d' <span class="greek">Ἀρίστων</span>, à Milet, Ier s., et voir L. Dubois, in
+                                Onomatologos, 402, 407 et 418) ; </li>
+                            <li> participes fém. en <span class="greek">-ουσα</span>
+                                <i>vs</i> masc. <span class="greek">-ων</span>, comme
+                                    Areskousa/<span class="greek">Ἀρέσκουσα</span>
+                                <i>vs</i> Areskôn/<span class="greek">Ἀρέσκων</span>, et en <span class="greek">-ασα</span>
+                                <i>vs</i> masc. <span class="greek">-ας</span>, comme Arkesasa/<span class="greek">Ἀρκέσασα</span>
+                                <i>vs</i> Arkesas/<span class="greek">Ἀρκέσας</span> ; </li>
+                            <li> composés à second élément masc. <span class="greek">-άναξ</span>
+                                <i>vs</i> fém. <span class="greek">-άνασσα</span>, comme
+                                    Archianax/<span class="greek">Ἀρχιάναξ</span>
+                                <i>vs</i> Archianassa/<span class="greek">Ἀρχιάνασσα</span>, </li>
+                        </ol>
+                    </li>
+                    <li>
+                        <b>Une seule entrée est chaque fois ouverte</b>, et la forme du couple ou
+                        les formes couplées le moins anciennement attestées figure(nt) comme
+                        variante(s). L'ordre de présentation des variantes privilégie, le cas
+                        échéant, le dialecte sur le genre. <b>Une seule aire dialectale</b> est
+                        indiquée <b>par variante</b> : derechef, en priorité celle de sa plus
+                        ancienne attestation, mais si celles-ci sont plusieurs à être exactement
+                        contemporaines, sera indiquée l'aire commune au plus grand nombre, sinon la
+                        plus excentrique. </li>
+                    <li> Il en va de même pour les <i>variantes dialectales</i>, notamment pour les
+                            <i>radicaux à /a:/</i> susceptible d'être noté <span class="greek">α</span> ou <span class="greek">η</span> suivant les dialectes et les
+                        périodes : nous ouvrons une seule entrée pour Dēmonikos/<span class="greek">Δημόνικος</span> et Dāmonikos/<span class="greek">Δᾱμόνικος</span>. </li>
+                    <li> De même, pour d'autres types de variantes phonétiques/orthographiques :
+                        ainsi béot. Abaeodōros<span class="greek">/Ἀβαεό-δωρο</span>ς et
+                            Abēodōr<span class="greek">os/Ἀβηό-δω</span>ρος ou thess.
+                            Eupolos/<span class="greek">Εὔπολος</span>, IVe s., ensuite relayé par
+                            Eukolos/<span class="greek">Εὔκολος</span>, IIe s. ; ainsi béot.
+                            Agathoklidas/<span class="greek">Ἀγαθοκλίδας</span>, Ve s., <i>vs</i>
+                        dor. Agathokleidas/<span class="greek">Ἀγαθοκλείδας</span>, hell. (de même
+                        pour les noms dont l'orthographe est affectée par l'iotacisme postclassique
+                        en face de ceux qui conservent l'orthographe étymologique) : la plus
+                        anciennement attestée des deux variantes sert d'entrée. </li>
+                    <li> De même encore pour les composés à second élément <span class="greek">-κλέᾱς</span> &gt;<span class="greek"> -κλᾶς</span>
+                        <i> vs</i> sigmatique <span class="greek">-κλέης</span> &gt; <span class="greek">-κλῆς</span> (de <span class="greek">-κλέης </span> Χ
+                            <span class="greek">-έᾱς</span> cf. Buck,<i> Greek Dialects</i>, 1955,
+                        § 166.1), comme Hēracleas<span class="greek">/Ἡρακλέας</span>
+                        <i> vs</i> Hēraclas/<span class="greek">Ἡρακλᾶς </span>
+                        <i>vs</i> Hēracléês/<span class="greek">Ἡρακλέης </span>
+                        <i>vs</i>  Hēraclês/<span class="greek">Ἡρακλῆς</span>. </li>
+                    <li> De même enfin pour les <i>alternances non nécessairement dialectales</i> :
+                            <span class="greek">o/ᾱ</span>, de la voyelle paradigmatique de l'un
+                        des éléments de composés comme Athenodōros<span class="greek">/Ἀθηνό-δωρος</span> (464x) <i>vs</i> Athenādōro<span class="greek">s/Ἀθηνά-δωρος</span> (1x: Thessalie, IIe s.)  ; ou pour <span class="greek">ο/ᾰ</span>, les deux produits possibles de la
+                        vocalisation d'une sonante dans un suffixe ou radical au degré zéro, comme
+                        dans Stratonike/<span class="greek">Στρατο-νίκη </span>(261x) vs.
+                            Strotonika/<span class="greek">Στροτο-νίκα </span> (2x: Béotie, IIIe
+                        s.)i. <sup>
+                            <a href="#n2">2</a>
+                        </sup>. </li>
+                </ul>
+            </div>
+
+            <div class="subchapter-indent">
+                <h4>β) Noms hybrides retenus: label mixte Gr.-...</h4>
+
+                <p>Ne sont analysés, parmi les hybrides, que ceux qui relèvent de l'un des 4 schémas
+                    suivants : </p>
+                <ol>
+                    <li>Radical grec + suffixe d'une autre langue (Gr.-Lat. Pant-auch-ianos/<span class="greek">Παντ-αυχ-ιανός</span>). </li>
+                    <li>Composé à radical grec + radical d'une autre langue ou vice versa
+                        (Gr.-Thrac. Bendi-dōros<span class="greek">/Βενδί-δωρος</span>). </li>
+                    <li> Nom à double lecture, par homophonie ou assonances interlinguistique(s)
+                        (Gr.-Iran. Habro-komas/<span class="greek">Ἁβρο-κόμᾱς</span>, cf. Iran.
+                        *abra ‘pluie, nuages’ et kāma ‘souhait, volonté’ « Wolken-Wunsch » [Hinz]?,
+                        voir R. Schmitt, Die Iranischen und Iranier-Namen in den Schriften
+                        Xenophons 2002, p. 41, interprété en grec comme : ‘à la chevelure
+                        magnifique’). </li>
+                    <li> Nom indigène hellénisé, et ensuite donné comme nom grec (<span class="greek">Ἄβυδος</span> de Troade, cité indigène hellénisée, donne
+                        lieu à l'anthroponyme grec Abydo-komēs<span class="greek">/Ἀβυδο-κόμης</span>). </li>
+                </ol>
+                <p> N'a pas été prise en compte la configuration inverse de 1. : les noms à radical
+                    non grec hellénisés par leur suffixe, sur lesquels nous renvoyons, pour le
+                    domaine thrace, à l'article de Dan Dana dans le volume <i>La suffixation des
+                        anthroponymes grecs antiques</i> (SAGA 2017), p. 201-223. Ont été laissés
+                    pour des recherches futures les calques sémantiques ou synonymes
+                    interlinguistiques. </p>
+            </div>
         </div>
-        <b>8.2.2.3.</b> Lecture dans les deux sens (simultanément ou successivement):
-        XY/YX?*.
-    <div style="margin-left: 20px;">
-        
-        Ex.: Kall-aischros/Κάλλ-αισχρος «Laidement<sub>y</sub>-joli<sub>x</sub>
-        <sup>
-                <a href="#n11">11</a>
-            </sup>, joliment<sub>Y</sub> laid<sub>X</sub>».
-        <br/>
-        Arch-agathos/Ἀρχ-άγαθος : le modèle ancien est le composé inverse Agath-archos/Ἀγάθ-αρχος
-        « Bon-chef » (YX). L'inversion des éléments a pu conserver le sens premier ou le faire évoluer vers
-        « qui commande les hommes de bien » (XY) ; ensuite, l'adverbialisation de ἀρχ(ι), au sens superlatif
-        proche de ἀρι-, ἀγα- etc., a pu faire interpréter le nom comme « Archi-bon » (YX), cf. 8.1.1.
-    </div>
-        <b>8.2.2.4.</b> Compositions de date grecque dites « irrationnelles » (O. Masson,
-        OGS 1, p. 88 [1966]) de radicaux qui paraissent fonctionnellement et/ou sémantiquement
-        incompatibles, au point que le sens de lecture nous échappe : XY/YX (label par défaut) Irr?*.
-        Ex.: Lysainetē/Λυσ-αινέτη : la composition syntaxique attendue XY (λυσ- « délier, délivrer » est
-        toujours tête (X) verbale) est incompatible avec le second élément V Adj « dont on parle, digne 
-        Sur LGPN-Ling
-        5
-        d'éloges », qui occupe en principe la tête aussi, cf. HPN 26 ; à moins de supposer une réinterprétation
-        secondaire du type « à la délivrance dont on parle, qui a fait du bruit », avec le 1er élément mis en
-        relation avec le nom d'action λύσις : ce pourrait être alors un dérivé féminin du surnom du père ou
-        d'un ancêtre « libérateur » de la cité.</p>
-    <p>
-        <b>9. Sens des radicaux ou bases</b>
-        <br/>
-        
-        Nous nous sommes expliqués dans l'Avertissement sur la difficulté de traduire l'entité
-        « nom ». Nous avons donc choisi de donner de 1 à 3 sens pour chaque radical, sens qui
-        correspondent en général à ceux des entrées de lemmes des dictionnaires étymologiques
-        DELG et EDG, cf. 10. Les 3 sens sont en principe donnés du plus générique au plus
-        spécifique. Lorsque le même radical est représenté dans le lexique par forme(s) verbale(s) et
-        nom(s) et s'illustre avec ces différentes valeurs dans les anthroponymes, les 3 sens tentent de
-        les embrasser toutes : ainsi αρχ « (être le) premier, chef, magistrature » ; αγορ « (parler en)
-        assemblée, discours », qui associe les valeurs du nom ἀγορά et du verbe dénominatif
-        ἀγορεύω ; αιθ « enflammer, flamboyer, (couleur de) feu », qui regroupe 2 diathèses verbales
-        et 2 acceptions nominales, générique et spécifique. La parenthèse permet de regrouper deux
-        acceptions sous un seul sens.
-    </p>
-    <p>
-        <i>Analyse structurelle et sémantique de 3 exemples commentés supra :</i>
-        <br/>
-        <b>Abaio-krit-os/Ἀβαιό-κριτ-ος</b>, N Adj-V Adj (YX) « Abaios (Apollon) - choix, choisi » : Abai- est le
-        radical d'une épiclèse qui désigne Apollon, d'où N Adj, et le radical du 2nd élément est l'adj. verbal à
-        sens passif du verbe κρίνω, d'où V Adj. La tête X du syntagme est cet adjectif, d'où une structure YX.
-        Ce sens de lecture invite à comprendre : « choisi par/choix d' (Apollon) Abaios ».
-        <br/>
-        <b>Ab-anthis/Ἀβ-ανθίς</b> N-N (XY/YX) « oreille- fleur, floraison, florissant » : l'analyse peut hésiter entre
-        un syntagme à nom régissant (YX « fleur d'oreille » ou boucle d'oreille) et un prédicat nominal
-        (« oreille-fleur » ou oreille en forme de fleur XY). La double lecture possible est rendue par XY/YX.
-        <br/>
-        <b>Archi-anax/Ἀρχι-άναξ</b>, V Adv-N (XY&gt;YX) « (être le) premier, chef, magistrature -(être)
-        souverain » : Arch- est originellement V et le radical du 2nd élément, N. On s'attend à ce que la tête X
-        soit le verbe, d'où XY, mais Arch- est susceptible d'être employé aussi comme Adv modificateur de N,
-        d'où : XY&gt;YX, et un glissement de sens : de « (être) le premier (des) souverains » à « souverainchef,
-        archi-souverain ».
-        </p>
-    <p>
-        <b>10. Lexique corrélé. Sont fournis dans cette rubrique :</b>
-        <br/>
-        <b>10.1.</b> Tout parallèle lexical et parfois anthroponymique — y compris mycénien — recensé
-        dans les dictionnaires grecs (Liddell-Scott-Jones, <i>Diccionario Griego-Español</i>, <i>Diccionario
-        micénico</i>, Logeion* [liens en ligne]), qu'il soit littéraire (TLG Irvine) ou indexé dans les bases
-        de données épigraphiques du Packard Humanities Institute (PHI), du <i>Supplementum
-        Epigraphicum Graecum</i> (SEG) et http://papyri.info/search.
-        <br/>
-        <i>10.2.</i> De courts passages des auteurs littéraires, de gloses ou d'inscriptions sont cités
-        lorsqu'ils apportent un élément d'appréciation de sens du lexème correspondant, voire du nom
-        lui-même ; c'est notamment le cas pour les composés, dont le sens, lorsqu'ils n'ont pas de
-        correspondant lexical, ressort souvent de l'analyse phraséologique ou étude des collocations
-        de leurs éléments à l'intérieur d'un syntagme nominal ou d'une proposition.
-        <br/>
-        <i>10.3.</i> Un renvoi systématique aux lemmes* du <i>Dictionnaire étymologique de la langue
-        grecque</i> (DELG2
-        , 2009) de P. Chantraine, complété des différentes livraisons de la Chronique
-        d'étymologie grecque (éd. A. Blanc, Ch. de Lamberterie et J.-L. Perpillou, depuis 1996) [mise
-        en ligne à l'étude] et, si nécessaire, à l'Etymological Dictionary of Greek de R. S. P. Beekes
-        (2010). Des études modernes sont mentionnées lorsqu'elles font progresser la connaissance de
-        l'étymologie ou de l'histoire des mots.
-         </p>
-    <img class="figure feature-icon" src="resources/img/ostracism-them.jpg" alt="Ostracon" height="60px" width="60px" align="left"/>
-    <h3>Onomastique</h3>
-    <p>
-        Cet intitulé recouvre les références bibliographiques concernant ce seul domaine; à l'occasion,
-        des analyses inédites sont aussi suggérées, alors signalées par le &lt;?&gt;.</p>
-    <p>
-        <b>11.1.</b> Les abréviations usuelles employées sont:
-                <br/>
-        <b>11.1.1.</b> Pour les périodiques : les abréviations répertoriées par <i>L'Année philologique</i>;
-                <br/>
-        <b>11.1.2. </b>Pour les monographies :
-        <br/>
-        <b>a.</b> En linguistique grecque et indo-européenne : LIV, NIL etc., cf. les
-        abréviations bibliographiques en tête du <i>DELG</i>2, 2009;
-        <br/>
-        <b>b.</b> En onomastique : HPN (= Bechtel), OGS (O. Masson, <i>Onomastica Graeca
-        selecta</i>, éd. C. Dobias-L. Dubois, 1990 et 2000), publications d'Oxford (GPN, ONW, PNAA
-        etc.), cf. les abréviations bibliographiques de SAGA (<i>La suffixation des anthroponymes grecs
-        antiques</i> à paraître chez Droz, 2017);
-        <br/>
-        <b>c.</b> En épigraphie : cf. le Guide de l'épigraphiste 4, 2010, éd. Fr. Bérard et al.
-        <br/>
-        <b>d.</b> En papyrologie : cf. http://papyri.info/docs/checklist.
-        <br/>
-        <b>11.2.</b> De nouvelles abréviations ont été créées, les plus économiques possibles en vue de
-        la publication imprimée (Kamptz, (Dis)continuité, Langue poétique i.-e. etc.), facilement
-        identifiables au besoin par une recherche en ligne.
+
+        <div>
+            <h3>c. Traduction</h3>
+            <div class="subchapter-indent">
+                <p> Le choix de ne donner dans l'actuelle interface de travail qu'occasionnellement
+                    la traduction des noms, en restant le plus souvent au niveau des éléments
+                    étymologiques de sens, s'explique par le fait que nous nous centrons sur
+                    l'entité abstraite « nom » plutôt que sur ses occurrences individuelles. Or, vu
+                    l'extension du cadre non seulement chronologique mais aussi géographique de ses
+                    attestations, le nom est susceptible d'avoir connu des variations de sens et de
+                    connotations remarquables, et ce d'autant que les valeurs sémantiques de
+                    l'élément ou des éléments qui le constituaient pouvaient différer d'un dialecte
+                    à l'autre. Cependant, en cas de coïncidence ou de paronymie entre le nom et un
+                    lexème, son sens se déduit alors de celui du lexème : une traduction en est
+                    parfois donnée en français dans la colonne Lexis, mais le plus souvent un lien
+                    Logeion renvoie aux traductions des dictionnaires <i>LSJ</i> et <i>DGEsp</i>.
+                </p>
+            </div>
+        </div>
+
+        <div>
+            <h3>d. Le cas des composés</h3>
+            <div class="subchapter-indent">
+                <h4>α) Typologie</h4>
+                <p> Vu la représentation massive des périodes hellénistique et impériale, le système
+                    de classification adopté pour les composés est en priorité synchronique (critère
+                    sémantique et pragmatique de la « tête » syntagmatique ou propositionnelle,
+                    label X), au lieu d'être principalement fondé sur les catégories syntaxiques
+                    héritées (possessifs, hypostatiques, à rection verbale, déterminatifs)<sup>
+                        <a href="#n3">3</a>
+                    </sup>. </p>
+                <p> Le traitement systématique de ce <i>lexique de la personne que</i> constitue
+                    l'onomastique anthroponymique est rendu délicat par le fait qu'il s'y déploie
+                    encore plus d'inventivité que dans le lexique au sens générique, notamment en
+                    matière de composition nominale et de dérivation des composés abrégés et des
+                    noms simples. Cela rend en particulier <i>hypothétique</i> la labellisation
+                        <i>logico-syntaxique de structures évolutives</i> procédant de réfections
+                    analogiques à l'intérieur de séries de composés (e.g. composés à adjectif verbal
+                    en <span class="greek">-τος</span> au 2nd élément, sans doute analogiques de la
+                    structure inverse à 1er élément verbal actif en <span class="greek">-σι</span>,
+                    comme Hippolytos/<span class="greek">Ἱππό-λυτος</span>
+                    <i>vs</i> Lysippos/<span class="greek">Λύσ-ιππος</span>, d'où YX&lt;XY, cf.
+                    infra, 8 et note 5)<sup>
+                        <a href="#n4">4</a>
+                    </sup>, ou de noms souvent d'autant plus opaques à nos yeux qu'ils sont isolés,
+                    comme éol. archaïque Abanthis/<span class="greek">Ἀβ-ανθίς</span> (&lt;<span class="greek">*αυσ-ανθ-</span>, avec <span class="greek">οὖς</span> ‛oreille’ &lt;*aus<sup>
+                        <a href="#n5">5</a>
+                    </sup> et <span class="greek">ἄνθος</span> ‛fleur’), ΥΧ(?), en face cependant du
+                    composé de structure inverse crét. Anthôtas/<span class="greek">Ἀνθ-ώτας</span>,
+                    ΧΥ/ΥΧ. </p>
+            </div>
+
+            <div class="subchapter-indent">
+                <h4>β) Segmentation étymologique</h4>
+                <p> Le choix a été fait de segmenter tout anthroponyme composé pour mettre en
+                    évidence son étymologie, même quand il repose sur la conversion d'un composé du
+                    lexique, comme pour <span class="greek">Κάτ-αρχος</span>, déverbal du composé
+                        <span class="greek">κατ-άρχω</span> ‘commencer, commander’, lui-même à
+                    l'origine du nom d'agent <span class="greek">κατάρχης</span> ‘fondateur,
+                    dominateur’. Etant donné que le sens du composé peut s'être éloigné du sens
+                    étymologique de chacun de ses éléments, comme pour <span class="greek">Ὕπ-αρχος</span> ‘sous, un peu, secrètement’ + ‘qui commande, premier
+                    magistrat, initiateur’, en face de <span class="greek">ὑπάρχω</span> ‘commencer,
+                    être le fondement’ et du nom d'argent <span class="greek">ὕπαρχος</span>
+                    ‘commandant en second’, le sens du lexème correspondant est alors donné en
+                    français dans Lexis (cf. 10), où un lien <i>Logeion</i> donne aussi accès aux
+                    traductions anglaise, voire espagnole. </p>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <div class="image-headline-wrapper-1">
+            <h2 class="image-headline-1">PRESENTATION DE L'INTERFACE DE TRAVAIL</h2>
+        </div>
+
+        <div>
+            <h6>(de gauche à droite)</h6>
+            <p>
+                <i>L'astérisque (*) indique les items qui seront munis d'un lien et pourront dans la
+                    future base de données faire l'objet d'une recherche ciblée. Une interface
+                    d'interrogation avancée permettra de faire aussi des recherches complexes, en
+                    associant par exemple 2 ou 3 radicaux/bases, 2 suffixes ou plus, un radical et
+                    un suffixe, un radical et un dialecte, un sens et les différents radicaux qui
+                    l'attestent etc.</i>
             </p>
-    <hr/>
-    <div id="footnotes">
-        <h4>Notes:</h4>
-        <p>
-            <a name="n1"/>1. Remerciements à J.-C. Chuat (EPHE) pour la traduction, et à L. Dubois (EPHE), G. Genevrois (EPHE) et Cl. Le Feuvre (Paris-Sorbonne) pour nos échanges sur le texte. 
-        </p>
-        <p>
-            <a name="n2"/>2. Pour ces catégories, mieux adaptées au grec du second millénaire et à la langue homérique, voir J. L. García Ramón, «Mycenaean Onomastics», in Y. Duhoux-A. Morpurgo Davies (ed.), A Companion to Linear B.
-            Mycenaean Greek Texts and their World, vol. 2, 2011, p. 221-222. Pour les précédentes, voir note 7. 
-        </p>
-        <p>
-            <a name="n3"/>
-            3. Voir aussi ibid., p. 224, sur la flexibilité de la syntaxe interne des composés, plus importante dans les
-            anthroponymes que dans les mots du lexique en mycénien, réflexion qui peut être étendue au grec alphabétique.
-        </p>
-        <p>
-            <a name="n4"/>
-            4. Cf. Ch. de Lamberterie, « En hommage à Michel Lejeune : mycénien o-wo-we et le nom de l'« oreille » en
-            grec », in F. Biville-I. Boehm (ed.), Autour de Michel Lejeune, Lyon, 2009, p. 109-111. 
-        </p>
-        <p>
-            <a name="n5"/>
-            5. Précellence arbitraire du verbe sur le nom. L'ordre des bi-labels n'est pas réversible : V Adj vaut à la fois pour
-            les adjectifs verbaux et pour les radicaux verbaux à suffixe adjectival, cf. 8.1.2. 
-        </p>
-        <p>
-            <a name="n6"/>
-            6. Signalons que l'adjectif verbal en -τος qui figure au second élément des composés a hérité d'une valeur passive
-            qu'il conserve en général, sauf lorsque joue l'analogie du premier élément actif du composé inverse : par
-            exemple, l'analogie de Λύσ-ιππος « qui délie les chevaux » a pu faire du composé inverse Ἱππό-λυτος son quasi
-            synonyme, cf. L. Dubois, in S. Hornblower-E. Matthews (ed.), Greek Personal Names. Their value as evidence,
-            2000, p. 48-51. Dans ce cas particulier, -λυτος restera labellisé (V Adj), mais le label spécifique YX&lt;XY (cf.
-                8.2.2.1) indiquera l'origine de la formation ; l'analogie intervenue sera alors suggérée par un « Cf. Λύσιππος »
-                dans la colonne (références) onomastiques. 
-        </p>
-        <p>
-            <a name="n7"/>
-            7. Voir e.g. T. Lindner, « Komposition », in T. Lindner (éd.) Indogermanische Grammatik, IV.1, Lieferung 1,
-            Heidelberg, 2011, p. 24, n. 13a, et voir O. Tribulato, Ancient Greek Verb-Initial Compounds, Berlin- New York,
-            2015, p. 43-46. </p>
-        <p>
-            <a name="n8"/>
-            8. Pour des preuves de l'emploi de -ιππος comme pur suffixe à connotation aristocratique, notamment à Erétrie,
-            voir L. Dubois, op. cit., p. 42-43, à la suite de Bechtel, Hermes 35 (1900), p. 326-331 (= KOS 1981, p. 98-103). 
-            
-</p>
-        <p>
-            <a name="n9"/>9. Soit le nom trithématique Theu-d-agoras/Θευ-δ-αγόρας a été donné pour faire sens et s'analyser
-            syntaxiquement (ZYAbbrCX) « dont le discoursX est un donY du dieuZ », soit c'est le résultat simplement
-            formel d'un croisement entre le composé dithématique Θεό-δοτος ou Θεό-δωρος, abrégé en Θεοδ-ῆς etc., et un
-            autre à second élément -αγόρας, sans lien sémantique nécessaire entre ce dernier élément et les deux éléments
-            composés précédents.
-            
-        </p>
-        <p>
-            <a name="n10"/>10. Sur le caractère néanmoins ancien en grec de la structure inversée Κύν-αργος, procédant de l'univerbation du
-            syntagme hom. κύνες ἀργοί, voir L. Dubois, loc. cit. 
-        </p>
-        <p>
-            <a name="n11"/>11. Pace J. L. García Ramón, op. cit., p. 220, qui voit dans Kall-aischros un composé irrationnel, l'origine de ce
-            nom pourrait être un tour comme chez Aristophane, Cavaliers 1321 : τὸν Δῆµον ἀφεψήσας ὑµῖν καλὸν ἐξ
-            αἰσχροῦ πεποίηκα «je vous ai fait cuire Dèmos et de laid je l'ai rendu beau». Cf. l'emploi de l'adverbe
-            δεινῶς «terriblement» pour modifier un adjectif, comme µέλας, avec une valeur quasi superlative, que pourrait
-            avoir de même ici le 1er élément καλλ-, et comparer avec les oxymores français familiers (XXe siècle) :
-            «vachement joli», où l'adjectif vache a le sens de «méchant», ou encore avec «terriblement joli». </p>
-    </div>
-    <h4>Mise à jour Avril 2017 © LGPN-Ling Paris/Oxford</h4>
-    
-</div>
+        </div>
+
+        <div class="image-headline-wrapper-2">
+            <h3 class="image-headline-2">Le nom dans son contexte</h3>
+        </div>
+        <div>
+            <p>
+                <b>1*.</b> Forme du nom-maître, ou lemme, translittérée en alphabet latin, précédée,
+                le cas échéant, d'un label <i>GPR</i>, qui indique que le nom a existé sous sa forme
+                latine et se trouve répertorié parmi <i>Die griechischen Personennamen in Rom</i>,
+                de H. Solin (2003).<br/>
+                <b>2*.</b> Lemme, en alphabet grec, orthographié comme préconisé en
+                    <i>Avertissement</i>, : c'est ici que se fera le lien qui raccordera à terme
+                    <b>le nom aux individus</b> qui en sont porteurs dans la Database du
+                <i>LGPN</i>. Pour le rapport entre lemme et variantes, voir <i>supra</i>, b.α.<br/>
+                <b>3*.</b> Nombre d'occurrences (extraction automatique de la Database du
+                    <i>LGPN</i>).<br/>
+                <b>4*.</b> Genre : masculin, féminin, voire l'un ou l'autre (même extraction).<br/>
+                <b>5*.</b> Labels dialectaux/aréaux et labels bilingues : les seconds concernent les
+                différentes formes de noms hybrides que nous avons choisi de traiter, qui reflètent
+                les contacts entre le grec et une autre langue. Quant aux premiers, ils sont plus
+                largement <b>aréaux</b> (définition <b>dialectale</b> en extension), incluant les
+                noms visiblement dialectalisés (phonétique/morphologie) et ceux qui appartiennent à
+                une aire dialectale mais parfois sans marque spécifique, notamment au-delà de la
+                période proprement dialectale. Ont donc été associés aux labels proprement
+                dialectaux des labels géographiques larges, comme : Asie Mineure, Grèce centrale,
+                Grèce occidentale, Péloponnèse et Thrace et Pont Nord, qui peuvent permettre de
+                réduire le nombre d'autres labels : ex.: un nom dont la plus ancienne attestation
+                serait arcadienne, mais qui serait attesté ailleurs dans le Péloponnèse, pourrait
+                être simplement labellisé <i>Pélop.</i>, sauf si sa forme était marquée comme
+                typiquement arcadienne : il faudrait alors employer <i>Arcad., Pélop.</i>. <p>On
+                    trouvera au <b>maximum 3 labels</b>, susceptibles de caractériser le nom qui
+                    sert de lemme, avec par conséquent les 5 labellisations suivantes :</p>
+                <ol class="list-style-lower-alpha sublist-indent">
+                    <li>Label 1 = seule aire dialectale où le nom est attesté ;</li>
+                    <li>Label 1 + Label 2 = les attestations se partagent entre l'aire 1, celle de
+                        la plus ancienne attestation, et l'aire 2, celle des plus nombreuses ; </li>
+                    <li>Label 1 + Label 2 + Label 3 = la plus ancienne attestation du nom se
+                        rencontre dans l'aire 1, les plus nombreuses, dans l'aire 2, le reste dans
+                        l'aire 3;</li>
+                    <li>Label 1 + Label 2 + Label etc. = la plus ancienne attestation du nom se
+                        rencontre dans l'aire 1, les plus nombreuses, dans l'aire 2, et le nom est
+                        aussi attesté dans au moins 2 autres aires ;</li>
+                    <li>Label 1 + Label etc. = la plus ancienne attestation du nom se rencontre dans
+                        l'aire 1, mais il est aussi attesté dans de nombreuses autres aires ;</li>
+                </ol>
+                <b>6*.</b> Fourchette chronologique des attestations du nom qui sert de lemme
+                (extraction). </p>
+
+        </div>
+
+        <div class="image-headline-wrapper-2">
+            <h3 class="image-headline-2">Analyse linguistique</h3>
+        </div>
+
+        <div>
+            <h4>7. Segmentation</h4>
+
+            <div class="subchapter-indent">
+                <dt class="h5">7.1. Préfixes*</dt>
+                <dd>: éléments adverbiaux comme le <span class="greek">α(ν)/ν-</span> négatif, le
+                        <span class="greek">(h)α-</span> copulatif, <span class="greek">αμφ(ι)</span>, <span class="greek">αν(α)</span>, <span class="greek">αντ(ι)-</span>, <span class="greek">εὐ-</span> etc<sup>
+                        <a href="#n6">6</a>
+                    </sup>. </dd>
+            </div>
+            <div class="subchapter-indent">
+                <dt class="h5">7.2. Βases 1*<span style="font-weight:400;">et</span> 2*</dt>: <dd>
+                    ces éléments, empruntés le plus souvent au lexique de la langue ou parfois à
+                    l'onomastique non anthroponymique, sont chacun présentés sous <i>une forme
+                        prototypique</i>, la plus générique possible : ainsi <span class="greek">αρχ(ε/ι)</span>- et <span class="greek">αρχ(ο/ᾱ</span>)-, pour ce que
+                    Bechtel présentait analytiquement sous la forme des constituants « <span class="greek">Ἀρχε-</span>, <span class="greek">Ἀρχι</span>-, <span class="greek">Ἀρχο</span>-, <span class="greek">Ἀρχη-</span>, <span class="greek">-αρχος</span> zu <span class="greek">ἄρχω</span> »
+                    (<i>HPN</i> 78). Chacun de ces derniers ou équivalents ‘Thèmes’ est en même
+                    temps édité, et sera donc cherchable. Des tirets de segmentation rendent compte
+                    si possible de la formation, en distinguant le Radical stricto sensu des
+                    élargissement et suffixe(s) propres qui le constituent, le cas échéant, en Base
+                    qui coïncide parfois, comme dans <span class="greek">αγαλ-ματ-ι(ο)</span>- (cf.
+                        <span class="greek">ἀγαλμάτιον</span> ‘statuette’), avec le Thème. <p>A
+                        l'initiale et à l'intérieur de la base de même qu'à la jonction entre
+                        préfixes, bases et suffixes :</p>
+                    <ol class="sublist-indent list-style-lower-alpha">
+                        <li>
+                            <p> des parenthèses isolent les phonèmes/graphèmes optionnels (voyelles
+                                et consonnes susceptibles d'être présentes ou absentes suivant le
+                                dialecte et la chronologie). Deux parenthèses successives de part et
+                                d'autre d'une jonction signalent notamment une voyelle qui peut
+                                appartenir tant au premier élément qu'au second, suivant que la
+                                perspective est diachronique ou synchronique. </p>
+                            <p class="font-small">Ex.: pour un composé comme <span class="greek">Ἁβρῶναξ</span> (&lt;<span class="greek">*Ἁβρο-ϝάναξ</span>),
+                                insécable en synchronie (<i>HPN</i> 7) : <span class="greek">(h)αβρ(ο)-</span> + <span class="greek">-(ϝ)ανακ(τ)-</span>.
+                            </p>
+                        </li>
+                        <li>
+                            <p> une barre oblique sépare les variables susceptibles d'alterner
+                                suivant le contexte (voyelles de timbre alternant, sonantes à
+                                différentes vocalisations et consonnes susceptibles de réalisations
+                                différentes suivant le dialecte et la chronologie). Sauf exceptions
+                                signifiantes <span class="greek">(αγορ[ᾱ]-</span>
+                                <i> vs</i>
+                                <span class="greek"> ᾱγορ[ο]-</span> , <span class="greek">νῑκ[ᾱ/ο]</span> etc.), nous avons négligé de faire
+                                systématiquement apparaîtr e le <span class="greek">ᾱ </span>comme
+                                variable alternant avec la voyelle thématique dans le cadre de la
+                                flexion nominale ; la base terminée par la voyelle thématique fait
+                                par conséquent parfois fonction de base par défaut. Enfin, le parti
+                                a été pris de noter systématiquement <span class="greek">α</span>̄
+                                la voyelle qui s'est fermée, avant l'époque alphabétique, en [ä:],
+                                puis [ε:] noté <span class="greek">η</span> dans les dialectes
+                                ionien-attique et dans la koinè qui les relaie. </p>
+                            <p class="font-small"> Ex.: pour <span class="greek">Εὐφραῖος</span>, le
+                                degré zéro <span class="greek">φρᾰ-</span> (dat. pl. <span class="greek">φρᾰσί</span>, Pind.) du radical de<span class="greek"> φρήν</span> , <span class="greek">φρενός</span>,
+                                    <span class="greek">-φρων</span>, suffixé en <span class="greek">*­-yo-</span>, suppose une segmentation historique<span class="greek"> -φρα-ιος</span> , de ce qui, en synchronie,
+                                pouvait être assimilé aux nombreux noms en <span class="greek">-αῖος</span> , a été par conséquent édité : <span class="greek">ευ</span> + <span class="greek">φρ(ον/ᾰ</span>) +<span class="greek"> (V)ιος.</span>
+                            </p>
+                        </li>
+                    </ol>
+                </dd>
+            </div>
+
+            <div class="subchapter-indent">
+                <dt>7.3. Suffixes</dt>: <dd> 4 au maximum (<span class="greek">Φιλ-ων-ιχ-ίδ-ης</span>
+                    <sup>
+                        <a href="#n7">7</a>
+                    </sup>) présentés de gauche à droite, de façon iconique, mais numérotés par
+                    ordre d’importance et de fréquence, de façon à avoir en <b>Inflect 1</b> la tête
+                    suffixale, c'est-à-dire le morphème (ou concaténation) d’autant plus essentiel
+                    dans une langue ancienne qu’il est flexionnel<sup>
+                        <a href="#n8">8</a>
+                    </sup>. Les trois premiers sont les suffixes anthroponymiques <i>stricto
+                        sensu</i> : constitutifs, non de la base du lexème qui sous-tend
+                    l'anthroponyme (comme pour <span class="greek">-ο-μεν(ο)</span>- dans <span class="greek">ἀγαλ(λ)</span>-<span class="greek">ο-μεν(ο)</span>- , base de
+                        <span class="greek">Ἀγαλλομένη</span> bâtie sur le participe <span class="greek">ἀγαλλόμενος</span>, <span class="greek">-η</span>, <span class="greek">-ον</span>), mais de l'anthroponyme même.<br/> Pour le
+                    Morphème flexionnel (<b>Inflect1</b>), en revanche, nous avons choisi, par
+                    convention, de privilégier le point de vue synchronique, celui du locuteur. Pour
+                    celui-ci en effet, nonobstant le fait que la voyelle paradigmatique puisse être
+                    celle du suffixe dérivationnel constitutif de la base, comme pour <span class="greek">αγορ(ᾱ)</span> dans <span class="greek">Θευδαγόρας</span>, le
+                    suffixe anthroponymique flexionnel n’en est pas moins pour ce nom: <span class="greek">-ᾱς</span> . Un suffixe que ce locuteur pouvait choisir de
+                    faire alterner dans l'onomastique de sa propre famille avec, par exemple, <span class="greek">-ίδ-ᾱς</span>, ou avec le suffixe féminin correspondant<span class="greek"> -ᾱ</span> , comme dans les noms de femmes en <span class="greek">-αγόρα/̄</span>. Cette case est donc toujours remplie, y
+                    compris pour les composés à second élément radical de forme <span class="greek">-ά/ήνωρ</span>, pour lesquels <span class="greek">-ωρ</span>, bien
+                    qu'étymologiquement radical, a été indiqué comme suffixe servant à la flexion.
+                    Comme on peut s'y attendre, <b>Inflect1</b> simplement flexionnel, comme le
+                        <span class="greek">-ς</span> de nominatif des noms à second élément -<span class="greek">(ϝ)ανακ(τ)-</span>, ou plus largement ‘désinentiel’, comme
+                    nous l'avons vu pour le conglomérat <span class="greek">-αῖος</span>, est le
+                    plus souvent seul représenté ; la liste des génitifs correspondants fournie aux
+                    pp. 691-693 du volume <i>La suffixation des anthroponymes grecs antiques</i>
+                        (<i>SAGA</i> 2017) a été mise à jour dans le tableau suivant. </dd>
+                <div class="table-wrapper">
+                    <h6 class="table-heading tp-center tp-italic">
+                        <span class="h5">Morphèmes flexionnels (Inflect1) au nominatif avec leurs
+                            génitifs respectifs</span>
+                        <span class="sub-headline">(en alphabet réformé)</span>
+                    </h6> <table class="table table-bordered table-sm">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ᾰ, </i>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ᾱ/ης</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ᾱ/η, </i>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ᾱ/ης</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-/ή, </i>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ᾶ/ῆς</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-α(ν)ς, -αν, </i>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="greek">
+                                        <i>-αντος</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ᾱ/ης, </i>
+                                    </span>
+                                </td>
+                                <td> Beot., Thess. <span class="greek">
+                                        <i>-ᾱο,</i>
+                                    </span> Gela <span class="greek">
+                                        <i>-ᾱϝο</i>
+                                    </span> , Lesb., Dor. <span class="greek">
+                                        <i>-ᾱ</i>
+                                    </span>, Mac., Byz. <span class="greek">
+                                        <i>-η</i>
+                                    </span>, Arcad. <span class="greek">
+                                        <i>-ᾱυ</i>
+                                    </span>, Ion. <span class="greek">
+                                        <i>-εω</i>
+                                    </span> &lt; <span class="greek">
+                                        <i>-ηο</i>
+                                    </span>, hence A.M. Ion. etc. <span class="greek">
+                                        <i>-εο</i>
+                                    </span>, <span class="greek">
+                                        <i>-ευ</i>
+                                    </span>, <b>Att. <span class="greek">
+                                            <i>-ου</i>
+                                        </span>
+                                    </b> ; analogical <span class="greek">
+                                        <i>-εος</i>
+                                    </span>, <span class="greek">
+                                        <i>-ευς</i>
+                                    </span>, <span class="greek">
+                                        <i>-ους</i>
+                                    </span>, Ion. Thasos etc. </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ᾶς, </i>
+                                    </span>
+                                </td>
+                                <td> Early <b>
+                                        <span class="greek">
+                                            <i>-ᾶ</i>
+                                        </span>
+                                    </b>, late Ion. <b>
+                                        <span class="greek">
+                                            <i>-ᾶδος</i>
+                                        </span>
+                                    </b>, Cypr. <span class="greek">
+                                        <i>ᾶ(ϝ)ος</i>
+                                    </span>, Mac. <span class="greek">
+                                        <i>-ᾶνος</i>
+                                    </span>. <b>Fem./Masc.</b>: <span class="greek">
+                                        <i>-ᾶτος</i>
+                                    </span> (Egypt, Cypr., imp.), Pamph. <span class="greek">
+                                        <i>-ᾶτ(ο)υς.</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-έᾱς/-είᾱς/έης/-ῆς,</i>
+                                    </span>
+                                </td>
+                                <td> Non Ion.-Att. <span class="greek">
+                                        <i>-έᾱ</i>
+                                    </span>, <b>Att. <span class="greek">
+                                            <i>-έου</i>
+                                        </span>
+                                    </b>, Ion. <span class="greek">
+                                        <i>-έω</i>
+                                    </span>, Koin. <span class="greek">
+                                        <i>-είου</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-εΐς, </i>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="greek">
+                                        <i>-εΐδος</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-έον,</i>
+                                    </span>
+                                </td>
+                                <td>W. Arg. <span class="greek">
+                                        <i>-έου</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-/ει/η(ς),</i>
+                                    </span>
+                                </td>
+                                <td>Beot. <span class="greek">
+                                        <i>-ιος</i>
+                                    </span>, Meg., Thr. <span class="greek">
+                                        <i>-ειος</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ε(ι)ᾰ/-είη, </i>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ε(ί)ᾱ/ης</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <i>
+                                        <span class="greek">-εύς</span>, late <span class="greek">-έους</span> (Egypt)</i>
+                                </td>
+                                <td>Cypr., Beot., Lesb. <span class="greek">
+                                        <i>-ῆ(ϝ)ος</i>
+                                    </span>, Thess., Beot. <span class="greek">
+                                        <i>-εῖος</i>
+                                    </span>, <b>early Ion., Att. <span class="greek">
+                                            <i>-έως</i>
+                                        </span>
+                                    </b> (hence Ephes. <span class="greek">
+                                        <i>-έω</i>
+                                    </span>), Dor., Ion. <span class="greek">
+                                        <i>-έος</i>
+                                    </span>, late Ion., Arg., Meg., Rhod. <span class="greek">
+                                        <i>-εῦς.</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>f. -(ϝ)<span class="greek">
+                                        <i>εσσᾰ</i>
+                                    </span>, m. Ion.-Att. <span class="greek">
+                                        <i>-εις,</i>
+                                    </span>
+                                </td>
+                                <td>f. -(ϝ)<span class="greek">
+                                        <i>έσσᾱ/ης</i>
+                                    </span> , m. <span class="greek">
+                                        <i>-εντος</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ην,</i>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ενος</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ήν,</i>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ῆνος</i>
+                                    </span>, Beot. <span class="greek">Πουρ<b>ειν</b>ίδας</span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ήρ,</i>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ῆρος</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-η/(ε)ι-ς, </i>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ητος</i>
+                                    </span>, Beot. <span class="greek">
+                                        <i>-ειτος</i>
+                                    </span>, Pamph. <span class="greek">
+                                        <i>-(ε)ιτ(ο)υς</i>
+                                    </span>, Mac. <span class="greek">
+                                        <i>-ηδος</i>
+                                    </span>, <span class="greek">
+                                        <i>-ηνος</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ης,</i>
+                                    </span>
+                                </td>
+                                <td>Early <span class="greek">
+                                        <i>-εος</i>
+                                    </span>, Beot., Cret. <span class="greek">
+                                        <i>-ιος</i>
+                                    </span>, Byz. <span class="greek">
+                                        <i>-ηος</i>
+                                    </span>, <span class="greek">
+                                        <i>-ηου(ς)</i>
+                                    </span>, late Ion., Rhod. <span class="greek">
+                                        <i>-ευς</i>
+                                    </span>, A.M. <i>koin.</i>
+                                    <span class="greek">
+                                        <i>-ε(ί)ου(ς)</i>
+                                    </span>, <b>Ion.-Att. <span class="greek">
+                                            <i>-ους</i>
+                                        </span>
+                                    </b>, Lesb. <span class="greek">
+                                        <i>-οῦς</i>
+                                    </span> ; secondary <span class="greek">
+                                        <i>-ου</i>
+                                    </span>, and even Cret., Lesb. <span class="greek">
+                                        <i>-η</i>
+                                    </span>.</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-(V)ίᾱ/η, </i>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="greek">
+                                        <i>-(V)ίᾱ/ης</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ίᾱς/ης,</i>
+                                    </span>
+                                </td>
+                                <td>Beot., Thess. <span class="greek">
+                                        <i>-ίᾱο</i>
+                                    </span>, Lesb., Dor. <span class="greek">
+                                        <i>-ίᾱ</i>
+                                    </span>, Arcad. <span class="greek">
+                                        <i>-ίᾱυ</i>
+                                    </span>, Ion. <i>-ίεω</i>, <b>Att. <span class="greek">
+                                            <i>-ίου</i>
+                                        </span>
+                                    </b>.</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-(ι)άς,</i>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="greek">
+                                        <i>-(ι)άδος</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ιον, </i>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ίου, -ίω </i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-(V)ιος,</i>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="greek">
+                                        <i>-(V)ίου, -(V)ίω</i>
+                                    </span>, Thess. (Pelasgiotis) <span class="greek">
+                                        <i>-ίοι(ο)</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ις,</i>
+                                    </span>
+                                </td>
+                                <td> (m., rare f.) <span class="greek">
+                                        <i>-ιος</i>
+                                    </span>, <span class="greek">
+                                        <i>-ιτος</i>
+                                    </span>, Cypr. <span class="greek">
+                                        <i>-ιϝος</i>
+                                    </span>, even <span class="greek">
+                                        <i>-ιδος</i>
+                                    </span>, <i>rare <span class="greek">-ίου</span>
+                                    </i>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ίς,</i>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ίδος</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ιώ(ι),</i>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ιοῦς</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <i>
+                                        <span class="greek">-ίων</span>, Thess. <span class="greek">-ίουν</span>
+                                    </i>
+                                </td>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ίωνος</i>
+                                    </span> or even <span class="greek">
+                                        <i>-ίονος</i>
+                                    </span>, Thess. <span class="greek">
+                                        <i>-ίουνος</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-(μ)ᾰ,</i>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="greek">
+                                        <i>-(μ)ατος</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ον,</i>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ου, -ω</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-όν,</i>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="greek">
+                                        <i>-οῦ, -ῶ </i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ος, </i>
+                                    </span>
+                                </td>
+                                <td>
+                                    <b>Ion.-Att.</b>, N.W. Dor., W. Arg., Rhod. Thess. <b>
+                                        <span class="greek">
+                                            <i>-ου</i>
+                                        </span>
+                                    </b>, Arcad., Beot., Lesb., El., Lac., Cret., Ther.-Cyr.,
+                                        Heracl.<span class="greek">
+                                        <i>-ω</i>
+                                    </span>, Thess. (Pelasgiotis) <span class="greek">
+                                        <i>-οι(ο)</i>
+                                    </span>, early Cypr.<span class="greek">
+                                        <i>ō(ne)</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ός,</i>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="greek">
+                                        <i>-οῦ, -ῶ</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-οῦς,</i>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="greek">
+                                        <i>-οῦτος</i>
+                                    </span>, Pamph.<span class="greek">
+                                        <i>-οῦτους</i>
+                                    </span>, Mac.<span class="greek">
+                                        <i>-οῦνος</i>
+                                    </span>,<span class="greek">
+                                        <i>-οῦδος</i>
+                                    </span>, Thrac.<span class="greek">
+                                        <i>-ουντος</i>
+                                    </span>, Central A.M.<span class="greek">
+                                        <i>-οῦ</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ς,</i>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="greek">
+                                        <i>-(τ)ος</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-(V)τᾱ/η,</i>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="greek">
+                                        <i>-(V)τᾱ/ης</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-(V)τᾱ/ης,</i>
+                                    </span>
+                                </td>
+                                <td> Beot., Thess.<span class="greek">
+                                        <i>-(V)τᾱο</i>
+                                    </span>, Lesb., Dor.<span class="greek">
+                                        <i>-τᾱ</i>
+                                    </span>, Arcad. <span class="greek">
+                                        <i>-τᾱυ</i>
+                                    </span> Ion.<span class="greek">
+                                        <i>-τεω</i>
+                                    </span> &lt; <span class="greek">
+                                        <i>-τηο</i>
+                                    </span>, hence A.M. Ion. etc.<span class="greek">
+                                        <i>-τεο</i>
+                                    </span>, <span class="greek">
+                                        <i>-τευ</i>
+                                    </span>
+                                    <b> Att. <span class="greek">
+                                            <i> -του</i>
+                                        </span>
+                                    </b>. </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-τήρ,</i>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="greek">
+                                        <i>-τῆρος</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <i>later thematized<span class="greek"> -τηρος</span>,
+                                            Beot.<span class="greek"> -τειρος,</span>
+                                    </i>
+                                </td>
+                                <td>
+                                    <span class="greek">
+                                        <i>-τήρου</i>
+                                    </span>, Beot. <span class="greek">
+                                        <i>-τείρω</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-τις, τίς,</i>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="greek">
+                                        <i>-τιδος, -τίδος</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-τος,</i>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="greek">
+                                        <i>-του, -τω</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-τωρ,</i>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="greek">
+                                        <i>-τορος</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-υς,</i>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="greek">
+                                        <i>-υος</i>
+                                    </span>, Cypr. <span class="greek">
+                                        <i>-υϝος</i>
+                                    </span>, Mysia <span class="greek">
+                                        <i>-υδος</i>
+                                    </span>, Egypt <span class="greek">
+                                        <i>-υτος</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ῦς,</i>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ῦδος, -ῦος</i>
+                                    </span> or <span class="greek">
+                                        <i>-ῦ</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <i>
+                                        <span class="greek">-ων</span>, Thess.<span class="greek">-ουν</span>, Pamph.<span class="greek">-ω</span>
+                                    </i>
+                                </td>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ωνος</i>
+                                    </span>, Thess.<span class="greek">
+                                        <i>-ουνος</i>
+                                    </span>, even <span class="greek">
+                                        <i>-ονος</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ων</i>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="greek">
+                                        <i>-οντος</i>
+                                    </span>, hence <span class="greek">
+                                        <i>-ωντος</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>--(ϝ)ων</i>
+                                    </span> &gt; Dor. <span class="greek">
+                                        <i>-ν</i>
+                                    </span>, Ion.-Att. <span class="greek">
+                                        <i>-έων</i>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ονος</i>
+                                    </span>, <span class="greek">
+                                        <i>-ᾶνος</i>
+                                    </span>, <span class="greek">
+                                        <i>-έωνος</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ώ(ι),</i>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="greek">
+                                        <i>-οῦς</i>
+                                    </span>, Cret., Mac. <span class="greek">
+                                        <i>-ῶς</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ωρ,</i>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ορος</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> Cypr. <span class="greek">
+                                        <i>-ω(*ϝ)ς</i>
+                                    </span>, </td>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ωϝος</i>
+                                    </span>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ῶς,</i>
+                                    </span>
+                                </td>
+                                <td>
+                                    <span class="greek">
+                                        <i>-ῶτος</i>
+                                    </span>, Pamph. <span class="greek">
+                                        <i>-τυς</i>
+                                    </span>, <span class="greek">
+                                        <i>-ῶτυς</i>
+                                    </span>, <span class="greek">
+                                        <i>-δυς</i>
+                                    </span>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h4>8. Structure du nom : analyse fonctionnelle et logico-sémantique</h4>
+
+            <div class="subchapter-indent">
+                <h5>8.1. Labels <i>fonctionnels</i>:</h5>
+                <p>
+                    <b>V</b>(erbe)*, <b>VAdj</b> (adjectif verbal)*, <b>P</b>(articipe)*,
+                        <b>AgtN</b> (nom d'agent)*, <b>ActN</b> (nom d'action)*, <b>N</b>(om)*,
+                        <b>Adj</b>(ectif)*, <b>Pro</b>(nom)*, <b>Adv</b>(erbe)* – ordre de
+                    succession contraint. Ils indiquent la fonction de chaque base ou radical dans
+                    le nom, qui ressort elle-même des catégories grammaticales que chacun(e) était
+                    susceptible de développer dans le lexique. </p>
+                <div class="subchapter-indent">
+                    <h6>8.1.1. <i>Double labellisation</i> de la même base d'un composé : </h6>
+
+                    <dl>
+                        <dt>
+                            <b>V N*</b> =</dt>
+                        <dd> nom déverbatif: <span class="greek">-φαν-εσ- </span>dans
+                                Aristo-phanēs<span class="greek">/Ἀριστο-φάνης</span> « Qui (se)
+                            montre excellent » (cf. Aristo-phantos/<span class="greek">Ἀριστό-φαντος
+                            </span> « Apparu excellent») → « d'excellente apparence ». </dd>
+
+                        <span class="tp-list-divider"/>
+
+                        <dt>
+                            <b>Adj Adv*</b> =</dt>
+                        <dd> adjectif adverbialisé: <span class="greek">µεγ(α)-</span> dans
+                                Meg-ainetos/<span class="greek">Μεγ-αίνετος </span> « Grandement
+                            loué, digne de grands éloges ». </dd>
+                    </dl>
+                </div>
+
+                <div class="subchapter-indent">
+                    <h6>8.1.2. Labellisation des composés abrégés et des noms simples.</h6>
+                    <dl>
+                        <dt>
+                            <b>-N</b> = </dt>
+                        <dd>tout anthroponyme à base nominale,notamment l'exact homonyme d'un
+                            substantif, comme béot. Kapos/<span class="greek">Κᾶπος
+                            </span>(ion.-att. <span class="greek">κῆπος </span> « jardin »), ou le
+                            dérivé d'une autre catégorie de noms propres (théonyme, héronyme,
+                            toponyme etc.), comme Athēno<span class="greek">̄/Ἀθηνώ</span>. </dd>
+
+                        <span class="tp-list-divider"/>
+
+                        <dt>
+                            <b>-Adj</b> = </dt>
+                        <dd>l'exact homonyme d'un adjectif du lexique ou tout anthroponyme à base
+                            adjectivale munie, le cas échéant, d'un suffixe exclusivement adjectival
+                            dans le lexique (e. g. <span class="greek">-ικός</span>, <span class="greek">-(V)ιος,</span> fém. <span class="greek">-(ϝ)έσσα,</span> comparatifs en <span class="greek">-(ί)ων</span>,
+                                <span class="greek">-τερος</span>). </dd>
+
+                        <span class="tp-list-divider"/>
+
+                        <dt>
+                            <b>-Adv</b> = </dt>
+                        <dd>base adverbiale.</dd>
+
+                        <span class="tp-list-divider"/>
+
+                        <dt>
+                            <b>-AgtN</b> = </dt>
+                        <dd>nom d'agent en <span class="greek">-εύς</span>, <span class="greek">-(τ)ᾱ/ης</span>, f. <span class="greek">-τις</span> ou <span class="greek">-τίς </span>, <span class="greek">-τήρ</span>/<span class="greek">-τωρ</span> etc., qu'il soit ou non attesté dans le
+                            lexique.</dd>
+
+                        <span class="tp-list-divider"/>
+
+                        <dt>
+                            <b>-ActN</b> = </dt>
+                        <dd>nom d'action en <span class="greek">-σ/τις</span>, <span class="greek">-ίᾱ/η</span>,<span class="greek"> -(τ)ώ(ι)</span> etc., qu'il soit
+                            ou non attesté dans le lexique.</dd>
+
+                        <span class="tp-list-divider"/>
+
+                        <dt>
+                            <b>-P</b> = </dt>
+                        <dd>participes aux masc. en : <span class="greek">-ων</span>, <span class="greek">-οντος </span>; <span class="greek">-ᾱς</span>,<span class="greek"> -αντος</span> ;<span class="greek">
+                            -μενός</span>.</dd>
+                        <span class="tp-list-divider"/>
+
+                        <dt>
+                            <b>-VAdj</b> = </dt>
+                        <dd>adjectif verbal en <span class="greek">-τος</span>.</dd>
+
+                        <span class="tp-list-divider"/>
+
+                        <dt>
+                            <b>-V</b> = </dt>
+                        <dd>forme courte d'un composé à premier élément verbal muni d'un suffixe
+                            nominal comme <span class="greek">-έᾱς</span>,<span class="greek">
+                                -ήν</span>, <span class="greek">-ίᾱ/ης</span>, <span class="greek">-ᾶς</span>, <span class="greek">-ις</span>, <span class="greek">-ίς</span> ou adjectival comme <span class="greek">-ίδᾱ/ης</span>,
+                                d'où<span class="greek"> -ιδεύς</span>, <span class="greek">-(ι)άδᾱ/ης</span>, <span class="greek">-ινάδᾱ/ης</span>,<span class="greek"> -ων(ί)δᾱ/ης</span>, <span class="greek">-ῖνος</span>, <span class="greek">-ίνᾱ/ης</span>, <span class="greek">-ίων</span>, <span class="greek">-ιανός </span>etc.</dd>
+
+                        <span class="tp-list-divider"/>
+                    </dl>
+                </div>
+
+                <div class="subchapter-indent">
+                    <h6>
+                        <i>Exemples :</i>
+                    </h6>
+                    <ul class="font-small">
+                        <li>
+                            <span class="greek">Ἀγ-έας</span>, <span class="greek">Ἀγ-ήν</span>, f.
+                                <span class="greek">Ἀγίς</span>, formes courtes de composés bâtis
+                            sur R verbal <span class="greek">αγ(ε/ι)</span>- = V, vs <span class="greek">Ἀγεύς</span> = AgtN. </li>
+                        <li>
+                            <span class="greek">Ἀγαπαῖος</span>, sur V <span class="greek">αγαπ(ᾱ)</span>- = V, vs <span class="greek">Ἀγαπα-τίς</span>,
+                            conversion de <span class="greek">ἀγαπητός </span>= VAdj &gt; AgtN.</li>
+                        <li>
+                            <span class="greek">Ἀγασῖνος</span>, sur V <span class="greek">αγα-σ(ι)</span>- = V.</li>
+                        <li>
+                            <span class="greek">Ἀκεστῖνος</span>, sur (h)<span class="greek">ακ-εσ-τ(ο)-</span> = VAdj.</li>
+                        <li>
+                            <span class="greek">Ἀγχίας</span>, sur Adv <span class="greek">ανχ(ι)</span> = Adv.</li>
+                        <li>
+                            <span class="greek">Ἀγών-ιος</span>, sur Adj <span class="greek">ἀγο̄ν-ι(ο)</span> « de concours, compétitif »), dérivé de N <span class="greek">αγ-ο̄ν </span>= Adj, vs <span class="greek">Ἀγων-ίς
+                            </span>= Ν.</li>
+                        <li>
+                            <span class="greek">Ἀδραν-ίων</span>, sur théon. Adranos = Ν.</li>
+                        <li>
+                            <span class="greek">Ἀθήναιος</span>, ethnique d'Athènes = Adj. vs <span class="greek">Ἀθηνώ</span>, sur théon. Athéna = Ν.</li>
+                        <li>
+                            <span class="greek">Αἴνησις</span> (cf. ActN <span class="greek">αἴνεσις</span> « éloge »), sur V <span class="greek">αιν-ε̄̆-σ(ι)-</span> = ActN, vs <span class="greek">Αἰνησ-(ι)ώ</span>, <span class="greek">Αἰνήσ-ων</span> = V.</li>
+                        <li>
+                            <span class="greek">Αἰσχινάδης</span>, sur N <span class="greek">αἶσχος</span> = N.</li>
+                        <li>
+                            <span class="greek">Ἀλεξιάδης</span>, sur V <span class="greek">αλεκ-σ(ι)</span>- = V.</li>
+                        <li>
+                            <span class="greek">Ἀλκε-ίδης</span>, sur <span class="greek">αλκ-εσ-</span> (cf. Adj <span class="greek">-άλκης</span>,
+                                <i>HPN</i> 36) = Adj.</li>
+                        <li>
+                            <span class="greek">Βλάξ</span>, adj. <span class="greek">βλά̄ξ</span>,
+                                <span class="greek">-κός</span> (même radical que <span class="greek">μαλακός</span>) = Adj.</li>
+                        <li>
+                            <span class="greek">Καλλιστ-ώ</span>, sur Adj <span class="greek">κάλλιστος</span> = Adj.</li>
+                        <li>
+                            <span class="greek">Μυρτ-ώ</span>, sur N <span class="greek">μυρτ(ο)-</span> = N.</li>
+                        <li>
+                            <span class="greek">Πείσ-ων</span>, sur V <span class="greek">πεισ(ι)-</span> = V.</li>
+                        <li>
+                            <span class="greek">Φαντ-ώ</span>, sur VAdj <span class="greek">φαντός</span> ou AgtN <span class="greek">-φάντης</span>, <span class="greek">φάντωρ </span>= VAdj, AgtN.</li>
+                    </ul>
+                </div>
+
+                <h5>8.2. Labels <i>logico-sémantiques :</i>
+                </h5>
+                <p>
+                    <b>X*</b> (= = tête) <b>Y*</b> (queue de <b>XY*</b> ou <b>YX*</b>) <b>Z*</b>
+                    (queue de <b>ZXY*</b> ou <b>ZYX*</b>).<sup>
+                        <a href="#n9">9</a>
+                    </sup>
+                </p>
+
+                <div class="subchapter-indent">
+                    <dt class="h6">8.2.1.</dt>
+                    <dd> Ils concernent les composés di- voire tri-thématiques et leurs formes
+                        abrégées (<b>Abbr*</b>), parfois réduites à un seul de leurs radicaux. <b>Ce
+                            dernier label n'exclut pas que le nom ait pu être donné aussi comme
+                            simple :</b> il permet d'indiquer que le ou les éléments de sens portés
+                        par le radical étaient régulièrement combinés à d'autres pour former des
+                        syntagmes ou des propositions à motivation générique (dénomination
+                        valorisante, propitiatoire ou apotropaïque) ou spécifique (nom ou surnom en
+                        relation avec un événement). </dd>
+                </div>
+
+                <div class="subchapter-indent">
+                    <h6>
+                        <i>Exemples:</i>
+                    </h6>
+                    <ul>
+                        <li> Eu<b>-arch-</b>ippos/<span class="greek">Εὐ</span>
+                            <sub>Y</sub>
+                            <b>
+                                <span class="greek">-άρχ</span>
+                            </b>
+                            <sub>X</sub>-<span class="greek">ιππος</span>
+                            <sub>Z</sub>, trithématique logico-sémantique (YXZ) « qui commandeX
+                            bienZ son chevalY » (cf. <span class="greek">εὐαρχία</span> ‘bon
+                            gouvernement’), voire dithématique quasi suffixé en <span class="greek">-ιπποςi</span> suffix.<sup>
+                                <a href="#n10">10</a>
+                            </sup>
+                        </li>
+                        <li> Theu<b>-d-</b>agoras/<span class="greek">Θευ<b>-δ-</b>αγόρας</span>,
+                            trithématique formel ou logico-sémantiquei<sup>
+                                <a href="#n11">11</a>
+                            </sup> au 2e élément réduit à sa lettre initiale : <b>Abbr</b> au sens
+                            strict. </li>
+                        <li> Kalli<b>-k-</b>ôn/<span class="greek">Καλλί<b>-κ-</b>ων</span>
+                            (patronyme Eu-kratēs<span class="greek">/Εὐ-κράτης</span>) (YXAbbr),
+                            dithématique abrégé de même, vs Kalli-<b>krat</b>ē<b>s</b>/<span class="greek">Καλλι<b>-κράτης</b>
+                            </span> « d'une jolie force » ou bien Kallikydēs/Καλλι-κύδης « à la
+                                belle<i> gloire</i> » (YX) :<b> Abbr</b> au sens strict. </li>
+                        <li>
+                            <b>Agathi</b>as/<span class="greek">
+                                <b>Ἀγαθίας</b>
+                            </span>
+                            <i>« Le bon »</i>, nom simple susceptible d'avoir été donné comme Abbr
+                                <i>vs</i>
+                            <b>Agatho</b>-klēs/<span class="greek">
+                                <b>Ἀγαθο</b>-κλῆς</span> « <i>Bonne</i>-gloire » (YX) ou
+                                Pant<b>-agathos</b>/<span class="greek">Παντ<b>-άγαθος</b>
+                            </span>« <i>Bon</i> à tout » (XY) : <b>Abbr </b>au sens large. </li>
+                    </ul>
+
+                    <h6>8.2.2*. <i>Structures complexes ou témoignant d'une évolution :</i>
+                    </h6>
+
+                    <div class="subchapter-indent">
+                        <h7>
+                            <b>8.2.2.1.</b> Structure <b>inversée</b> par rapport au modèle hérité
+                            attesté éventuellement en dehors du grec : notamment
+                            <b>XY&lt;YX?*</b>.</h7>
+
+                        <p>
+                            <i>Exemples:</i>
+                            <br/> Kyn-argos/<span class="greek">Κύν-αργος</span> (XY), structure
+                            inverse du modèle plus ancien de type véd. r̥jí-śvan- (YX) « Aux
+                                chiens<sub>X</sub> rapides<sub>Y</sub> » <sup>
+                                <a href="#n12">12</a>
+                            </sup> ; de même Menes-andros/<span class="greek">Μενέσ-ανδρος</span>
+                            (XY) <i>vs</i> av. Nǝrǝmanah, gr. Andro-menēs<span class="greek">/Ἀνδρο-μένης</span> « A l’ardeur<sub>X</sub> d’un
+                            héros<sub>Y</sub> »(YX). </p>
+                    </div>
+
+                    <div class="subchapter-indent">
+                        <h7>
+                            <b>8.2.2.2. Réinterprétation sémantique</b> au cours de l'histoire du
+                                nom :<b>XY&gt;YX*</b> et <b>YX&gt;XY*</b>. </h7>
+                        <p>
+                            <i>Exemples:</i>
+                            <br/> Sy-agros/<span class="greek">ΣύY-αγρος</span>
+                            <sub>X</sub> « qui chasse<sub>X</sub> le sanglier<sub>Y</sub> »,
+                            réinterprété « sanglier<sub>X</sub> sauvage<sub>Y</sub> », syntagme
+                            synonyme de combativité (YX&gt;XY?). Et Eri-ōtos/<span class="greek">Ἐρί-ωτος </span>« qui dresse<sub>X</sub> l'oreille<sub>Y</sub> »
+                            comme Ere-damos/<span class="greek">ἘρέX-δαμος<sub>Y</sub>
+                            </span> « qui excite<sub>X</sub> le peuple<sub>Y</sub> », réinterprété
+                            « à l'oreille<sub>X</sub> dressée<sub>Y</sub> », avec <span class="greek">ἐρι</span>
+                            <sub>Y</sub>- figé comme Adv (XY&gt;YX?) </p>
+                    </div>
+
+                    <div class="subchapter-indent">
+                        <h7>
+                            <b>8.2.2.3.</b> Lecture dans les deus sens (simultanément ou
+                            successivement) : <b>XY/YX*</b>. </h7>
+                        <p>
+                            <i>Exemples:</i>
+                            <br/> Kall-aischros/<span class="greek">Κάλλ-αισχρος</span>
+                                « Laidement<sub>Y</sub>-<b>joli</b>
+                            <sub>X</sub>
+                            <sup>
+                                <a href="#n13">13</a>
+                            </sup>, joliment<sub>Y</sub>
+                            <b>laid</b>
+                            <sub>X</sub> ».Arch-agathos/<span class="greek">Ἀρχ-άγαθος </span>: le
+                            modèle ancien est le composé inverse Agath-<b>archos</b>/<span class="greek">Ἀγάθ-<b>αρχος</b>
+                            </span> « (Au) bon-<b>chef</b> » (YX). L'inversion des éléments a pu
+                            conserver le sens premier ou le faire évoluer vers « qui <b>commande</b>
+                            les hommes de bien » (XY) ; ensuite, l'adverbialisation de <span class="greek">ἀρχ(ι)</span>, au sens superlatif proche de <span class="greek">ἀρι-</span>, <span class="greek">ἀγα-</span> etc., a
+                            pu faire interpréter le nom comme « Archi-<b>bon</b> » (YX). </p>
+                    </div>
+
+                    <div class="subchapter-indent">
+                        <h7>
+                            <b>8.2.2.4. Déverbatifs*</b> de composés verbaux lexicaux: <b>Dev*</b>
+                        </h7>
+                        <p>
+                            <i>Exemples:</i>
+                            <br/> Katarchos/<span class="greek">Κάταρχος</span> « fondateur,
+                            commandant», déverbatif de <span class="greek">κατάρχω</span>
+                            « commencer, commander », cf. l'autre déverbatif, attesté quant à lui
+                            dans le lexique, <span class="greek">κατάρχης</span> « fondateur,
+                            dominateur » (Pind.). </p>
+                        <p> Apokatastanōn<span class="greek">/Ἀποκαταστάνων</span> « qui rétablit,
+                            restaure », déverbatif de <span class="greek">ἀποκαθιστάνω
+                            </span>« rétablir, restaurer » (Plb.), thématisation de <span class="greek">ἀποκαθίστημι </span>(Hp.+).</p>
+                    </div>
+                    <div class="subchapter-indent">
+                        <h7>
+                            <b>8.2.2.5.</b> Combinaisons de date grecque dites
+                                « <b>irrationnelles </b>» (O. Masson, <i>OGS</i> 1, p. 88 [1966]) de
+                            radicaux ou bases qui paraissent fonctionnellement et/ ou sémantiquement
+                            incompatibles, au point que le sens de lecture nous échappe :
+                                <b>XY/YX</b> (label par défaut) <b>Irr?*</b>. </h7>
+                        <p>
+                            <i>Exemples:</i>
+                            <br/> Lysainetē/<span class="greek">Λυσ-αινέτη </span>: la composition
+                            syntaxique attendue XY (<span class="greek">λυσ(ι)</span>- « délier,
+                            délivrer » est toujours tête (X) verbale) est incompatible avec le
+                            second élément VAdj « dont on parle, digne d'éloges », qui occupe en
+                            principe la tête aussi, cf. <i>HPN</i> 26 ; à moins de supposer une
+                            réinterprétation secondaire du type « à la <b>délivrance</b> dont on
+                            parle, qui a fait du bruit » (ΥΧ), avec le 1er élément mis en relation
+                            avec le ActN <span class="greek">λύσις </span>: ce pourrait être alors
+                            un dérivé féminin du surnom du père ou d'un ancêtre « libérateur » de la
+                            cité. Deux noms masculins, <span class="greek">Λυσῖνος </span>et <span class="greek">Λύσιππος</span>, précèdent celui-ci sur la stèle, qui
+                            indiquent que la base <span class="greek">λυσι-</span> était implantée
+                            dans la famille.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <h4>9. Sens des radicaux ou bases</h4>
+            <p> Nous avons choisi de donner de 1 à 3 sens pour chaque radical οu base, sens qui
+                correspondent en général à ceux des entrées de lemmes des dictionnaires
+                étymologiques <i>DELG</i> et <i>EDG</i>, cf. <b>10</b>. Les 3 sens sont en principe
+                donnés du plus générique au plus spécifique ; l'usage de parenthèses permet, le cas
+                échéant, de regrouper deux acceptions sous un seul sens. Lorsque le même élément
+                radical ou base est représenté dans le lexique par forme(s) verbale(s) et nom(s) ou
+                nom et adjectif et s'illustre avec ces différentes valeurs dans les anthroponymes,
+                les 3 sens tentent de les embrasser toutes, quelle que soit aussi la position du
+                radical en composition. Mais le plus souvent, plusieurs bases sont dérivées à partir
+                du même radical, par exemple : </p>
+
+            <ul class="list-style-dash">
+                <li> la base <span class="greek">αγορ(ᾱ)-</span> « (qui parle en) assemblée,
+                    discours, marché », associe à la fois les trois principales acceptions de sens
+                    de l'appellatif <span class="greek">ἀγορά </span>et le sens agentif de <span class="greek">-αγόρας </span> « qui parle en assemblée » ; les trois
+                    premiers sens sont donnés, du sens étymologique, en rapport avec le verbe <span class="greek">ἀγείρω </span>‘(r)assembler ’, aux sens spécifiques qui en
+                    dérivent : la fréquence d'emploi dans l'anthroponymie a fait placer le sens de
+                    ‘discours’ avant celui de ‘marché’, dont le seul anthroponyme qui pourrait
+                    l'illustrer est représenté par <span class="greek">Ἱππαγόρης </span>« (du)
+                    marché aux chevaux » (Thasos, milieu V<sup>e </sup> s.), nom peut-être
+                    anecdotique, en relation avec un événement significatif dans la lignée familiale
+                    (?), à moins qu'il s'agisse plutôt d'une combinaison irrationnelle. Cette base a
+                    été néanmoins dédoublée, pour en distinguer <span class="greek">-ᾱγορ(ο)</span>- qui s'est spécialisée au seul sens agentif de « qui discourt,
+                    harangueur ». </li>
+                <li> sur le radical <span class="greek">αιθ-</span> « brûler, flamboyer, feu »
+                        (<i>HPN</i> 24), ont été dérivées trois bases primaires  : <span class="greek">-αιθ(ο)-</span> ‘(couleur de) feu’, qui regroupe 2 acceptions
+                    nominales, l'une générique, le ‘feu’ et l'autre spécifique, sa couleur, et n'est
+                    employée qu'en second élément de composé ou au simple ; et les deux bases
+                    verbales <span class="greek">αιθ(ι)-</span> ‘qui brûle’ et <span class="greek">αιθ-ον(τ)-</span> ‘flamboyant’, qui correspondent aux deux diathèses, la
+                    première active transitive, la seconde, intransitive<sup>
+                        <a href="#n14">14</a>
+                    </sup>. </li>
+                <li> sur le radical <span class="greek">αρχ-</span> « (être le) premier, commencer,
+                    commander», ont été bâties deux bases : <span class="greek">αρχ(ε/ι)-</span>,
+                    employée avec la valeur verbale de ‘(qui est) le premier, (qui) commande’ au
+                    premier élément de composé ; et <span class="greek">αρχ(ο/ᾱ)</span>-
+                    ‘initiateur, magistrat(ure), commencement’, qui combine les valeurs des noms
+                    d’agent masculins et des noms féminins abstraits au premier comme au second
+                    élément, et se trouve employé au simple avec la seule valeur de nom d'agent.
+                </li>
+            </ul>
+
+            <h5>Synthèse de 8. et 9. : analyse structurelle et sémantique de 3 exemples : </h5>
+            <figure class="img-responsive">
+                <img src="resources/img/01-about-en.png" alt="Structural and semantic analysis of 3 examples" title="Structural and semantic analysis of 3 examples: Example 1"/>
+                <figcaption>
+                    <b>Abaio-krit-os</b>/<span class="greek">Ἀβαιό-κριτ-ος</span>, N-VAdj (YX) « 
+                    Abaios (Apollon) - choisi, choix » : Abai(o)- est le radical toponymique d'une
+                    épiclèse qui désigne Apollon, d'où N, et le radical du 2nd élément est l'adj.
+                    verbal à sens passif du verbe <span class="greek">κρίνω</span>. La tête X du
+                    syntagme est cet adjectif. Ce sens de lecture invite à comprendre : « choisi
+                    par/choix d'(Apollon) Abaios ».  </figcaption>
+            </figure>
+
+            <figure class="img-responsive">
+                <img src="resources/img/02-about-en.png" alt="Structural and semantic analysis of 3 examples" title="Structural and semantic analysis of 3 examples: Example 2"/>
+                <img src="resources/img/03-about-en.png" alt="Structural and semantic analysis of 3 examples" title="Structural and semantic analysis of 3 examples"/>
+                <figcaption>
+                    <b>Ab-anthis</b>/<span class="greek">Ἀβ-ανθίς</span> N-N (YX) « oreille- fleur,
+                    floraison, florissant » : comme le nom est ancien (cf. <i>Avertissement</i>, d),
+                    on tendra à privilégier l'analyse comme syntagme à nom régissant de structure
+                    ancienne YX (« fleur d'oreille » = boucle d'oreille). En revanche, pour le
+                    composé hellénistique de structure inverse Anthōtas<span class="greek">/Ἀνθ-ώτας</span>, on hésitera à l'interpréter soit comme le synonyme par
+                    inversion du précédent, soit comme un prédicat nominal YX de même ordre
+                    régressif que le précédent, avec par conséquent le sens différent de :
+                    « oreille-fleur » = « à l'oreille en forme de fleur ». </figcaption>
+            </figure>
+
+            <figure class="img-responsive">
+                <img src="resources/img/04-about-en.png" alt="Structural and semantic analysis of 3 examples" title="Structural and semantic analysis of 3 examples: Example 3"/>
+                <figcaption>
+                    <b>Archi-anax</b>/<span class="greek">Ἀρχι-άναξ</span>, V-N (XY&gt;YX) « (qui
+                    est) le premier, (qui) commande’  - souverain » : Arch(e)- est originellement V
+                    et le radical du 2<sup>nd</sup> élément, N. On s'attend à ce que la tête X soit
+                    le verbe, d'où XY, mais Arch(i)-, à la différence de Arch(e)-, est susceptible
+                    d'être employé comme modificateur de N, d'où : XY&gt;YX, et un glissement de
+                    sens : de « (qui est) le <i>premier</i> (des) souverains » à
+                        « souverain-<i>chef</i>, <i>archi</i>-souverain ». </figcaption>
+            </figure>
+        </div>
+
+        <div>
+            <h4>10. Lexique corrélé.</h4>
+            <p>Sont fournis dans cette rubrique : </p>
+            <div class="subchapter-indent">
+                <h5>10.1.</h5>
+                <p> De courts passages d'auteurs littéraires, de gloses ou d'inscriptions ou de
+                    papyrus, lorsqu'ils apportent un élément d'appréciation de sens du lexème
+                    correspondant, voire du nom lui-même ; c'est notamment le cas pour les composés,
+                    dont le sens, lorsqu'ils n'ont pas de correspondant lexical, peut ressortir de
+                    l'analyse phraséologique ou étude des collocations de leurs éléments à
+                    l'intérieur d'un syntagme nominal ou d'une proposition. </p>
+            </div>
+            <div class="subchapter-indent">
+                <h5>10.2.</h5>
+                <p> Un renvoi systématique aux lemmes* du <i>Dictionnaire étymologique de la langue
+                        grecque</i> (<i>DELG</i>
+                    <sup>
+                        <a href="#n2">2</a>
+                    </sup>, 2009) de P. Chantraine, complété des livraisons 11 et suivantes de la
+                        <i>Chronique d'étymologie grecque</i> (éd. A. Blanc, Ch. de Lamberterie et
+                    J.-L. Perpillou, depuis 1996) [mise en ligne à l'étude] et, si nécessaire, à
+                        l'<i>Etymological Dictionary of Greek de</i> R. S. P. Beekes (2010). Des
+                    études modernes en linguistique grecque et indo-européenne  sont mentionnées
+                    lorsqu'elles font progresser la connaissance de l'étymologie ou de l'histoire
+                    des mots, cf. les abréviations bibliographiques en tête du <i>DELG</i> <sup>
+                        <a href="#n2">2</a>
+                    </sup>, 2009 et <i>LIV, NIL </i> etc.</p>
+            </div>
+            <div class="subchapter-indent">
+                <h5>10.3.</h5>
+                <p> Tout parallèle lexical, avec son sens donné en français, en anglais ou en
+                    espagnol —  y compris mycénien — recensé dans les dictionnaires grecs
+                        (<i>Liddell-Scott-Jones, Diccionario Griego-Español, Diccionario micénico,
+                        Logeion*</i> [liens en ligne]), qu'il soit littéraire (<i>TLG</i> Irvine) ou
+                    indexé dans les bases de données du Packard Humanities Institute (<i>PHI</i>),
+                        <i>Supplementum Epigraphicum Graecum (SEG)</i> et <a href="http://papyri.info/docs/checklist">http://papyri.info/docs/checklist</a>. </p>
+            </div>
+        </div>
+
+        <div>
+            <h4>11. Onomastique</h4>
+            <div class="subchapter-indent">
+                <h5>11.1.</h5>
+                <p> L'analyse linguistique proprement dite est ici complétée par la référence, cette
+                    fois, à des sources prosopographiques ou onomastiques non anthroponymiques
+                    (théonymes, épiclèses, toponymes, oronymes etc.) susceptibles, le cas échéant,
+                    d’apporter un autre éclairage sémantique à l’anthroponyme analysé. Est cette
+                    fois observé, dans le cadre d'une recherche de ce qui a pu être
+                    appelé l' ‘étiologie’ du nom, le contexte extra-linguistique, c'est-à-dire ce
+                    qui ressort du milieu de vie des individus, ou du seul individu, porteur(s) de
+                    ce nom, à la lumière de son ancrage géographique, historique et socio-culturel,
+                    voire des références littéraires que peuvent constituer les personnages porteurs
+                    du nom avant lui et qui ont pu le mettre à la mode. Entrent ainsi en jeu les
+                    représentations culturelles et idéologiques qui motivent aussi le choix du nom.
+                    sopographic and onomastic sources — other than anthroponymic ones: theonyms,
+                    epicleses, toponyms, oronymes and so forth. </p>
+            </div>
+
+            <div class="subchapter-indent">
+                <h5>11.2 Bibliographie</h5>
+
+                <div class="subchapter-indent">
+                    <h6>11.2.1.</h6>
+                    <p>Renvoi aux lemmes onomastiques des <i>LSJ</i> et <i>DGEsp</i>, à l'aide d'un
+                        lien <i>Logeion</i>.</p>
+                </div>
+
+                <div class="subchapter-indent">
+                    <h6>11.2.2.</h6>
+                    <p> Renvoi systématique aux <i>HPN</i> de Bechtel, et le cas échéant aux OGS
+                        (O. Masson, <i>Onomastica Graeca selecta</i>, éd. C. Dobias-L. Dubois, 1990
+                        et 2000), publications d'Oxford (GPN, ONW, PNAA etc.), livres de Zgusta,
+                            <i>NIAG</i> de L. Robert etc., cf. les abréviations bibliographiques de
+                            <i>SAGA</i> (<i>La suffixation des anthroponymes grecs antiques</i>
+                        Genève, 2017, éd. A. Alonso Déniz, L. Dubois, Cl. Le Feuvre et S. Minon,
+                        avec la collaboration d'Ed. Chiricat, p. XIII-XVIII). </p>
+                </div>
+
+                <div class="subchapter-indent">
+                    <h6>11.2.3. </h6>
+                    <p> De <b>nouvelles abréviations</b> ont été créées, les plus économiques
+                        possibles en vue de la publication imprimée (Kamptz, (Dis)continuité, Langue
+                        poétique i.-e. etc.), facilement identifiables au besoin par une recherche
+                        en ligne.</p>
+                </div>
+            </div>
+
+            <div class="subchapter-indent">
+                <h5>11.3 Autre information</h5>
+                <div>
+                    <p> Le cas échéant, <b>toute autre information</b> jugée utile : <i>e. g.</i>
+                        renvoi à un autre nom ou proposition d'interprétation provisoire – dûment
+                        munie d'un (?), susceptible d'être ensuite promue au rang d'hypothèse et
+                        développée en tant que telle. </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section>
+        <h4>Bibliographie complémentaire</h4>
+        <p> Outre la bibliographie proprement onomastique de <i>SAGA</i> (p. 671-686) et ses
+            abréviations liminaires, on se reportera aux titres suivants, plus particulièrement
+            consacrés à la formation des noms et à la composition nominale, et non nécessairement à
+            l'onomastique anthroponymique : </p>
+
+        <ul class="list-style-disc">
+            <li> A. Blanc, D. Petit (eds.), <i>Nouveaux acquis sur la formation des noms en grec
+                    ancien</i>, Louvain, 2016. </li>
+            <li> D. Dana, <i>Onomasticon Thracicum. Répertoire des noms indigènes de Thrace,
+                    Macédoine orientale, Mésies, Dacie et Bithynie</i>, Athènes, 2014. </li>
+            <li> G. Genevrois, <i>Le vocabulaire institutionnel crétois d'après les inscriptions
+                    (VIIe-IIe s. av. J.-C.)</i>, Genève, 2017. </li>
+            <li> Cl. Le Feuvre,<i>
+                    <span class="greek"> Ὅμηρος δύσγνωστος</span>. Réinterprétation de termes
+                    homériques en grec archaïque et classique</i>, Genève, 2015. </li>
+            <li> T. Meissner- O. Tribulato, « Nominal composition in Mycenaean Greek »,
+                <i>TPhS</i> 100.3, 2002, p. 302-307. </li>
+            <li> S. Minon, « <span class="greek">Κν Ἀριοντίας ἐνίκ</span> (<i>IG</i> V 1, 213,
+                Sparte, fin V<sup>e</sup>
+                <i>a. C.</i>). Les concours de la dryade de la suberaie ? », <i>Glotta</i> 93, 2017,
+                p. 95-116. </li>
+            <li> - « Le phratronyme argien <span class="greek">Ἀμφιαρητείδας</span> : un dérivé du
+                hénonyme local <span class="greek">Ἀμφιάρηος</span> ? », <i>in</i> A. Panayotou-G.
+                Galdi (eds.), <i>
+                    <span class="greek">Ἑλληνικὲς διάλεκτοι στὸν ἀρχαῖο κόσμο</span>, Actes du VIe
+                    Colloque international sur les dialectes grecs anciens, Chypre 2011</i>,
+                Louvain-la-Neuve, 2017, p. 187-201. </li>
+            <li> E. Nieto Izquierdo, « Monsieur <span class="greek">Λαλλῆς</span> le Thasien »,
+                    <i>REG</i> 129, 2016, p. 575-579. - « Macédonien <span class="greek">Ἄγερρος</span> », <i>REG</i> 130, 2017, p. 723-727. </li>
+            <li> E. Rüedi, <i>Vom <span class="greek">Ἑλλανοδίκας</span> zum <span class="greek">ἀλλαντοπώλης</span>. Εine Studie zu den verbalen Rektionskomposita auf
+                        <span class="greek">-ας/-ης</span>
+                </i>, Zürich, 1969. </li>
+        </ul>
+    </section>
+
+    <section id="footnotes">
+        <h4/>
+        <ol class="font-small">
+            <li>
+                <a name="n1"/>Mes plus vifs remerciements, pour leurs observations éclairantes, à
+                Robert Parker (LGPN/Oxford), Laurent Dubois (EPHE/LGPN-Ling), Claire Le Feuvre
+                (Sorbonne Université/LGPN-Ling), Dan Dana (CNRS/ANHIMA/LGPN-Ling), Alcorac Alonso
+                Déniz (CNRS/HISOMA), Gérard Genevrois (EPHE/ANHIMA/LGPN-Ling), Jean-Claude Chuat
+                (EPHE/LGPN-Ling), qui s'est aussi chargé de la traduction de ce texte et de sa
+                version précédente, Enrique Nieto Izquierdo (EPHE/ANHIMA/LGPN-Ling), Matilde Garré
+                (EPHE/ANHIMA/LGPN-Ling), Madgalena Turska (<a href="https://existsolutions.com/">eXistsolutions</a>), qui développe le projet numérique, et à Alexandra von
+                Criegern (<a href="https://existsolutions.com/">eXistsolutions</a>). </li>
+            <li>
+                <a name="n2"/>Pour ces alternances <span class="greek">-o/ᾱ</span>- et<span class="greek"> -o/ᾰ</span>-, voire respectivement Cl. Brixhe <i>Le dialecte
+                    grec de Pamphylie. Documents et grammaire</i>, Paris, 1976, p. 134-135, et F.
+                Bader, « De mycénien <i>matoropuro, arepozoo</i> à grec <span class="greek">ματρόπολις</span>, <span class="greek">ἀλειφόβιος</span> : le traitement des
+                sonantes-voyelles au premier millénaire », <i>Minos</i> 10, 1969 (1970), p. 7-63. </li>
+            <li>
+                <a name="n3"/>Pour ces catégories, mieux adaptées au grec du second millénaire et à
+                la langue homérique, voir J. L. García Ramón, « Mycenaean Onomastics », in Y.
+                Duhoux-A. Morpurgo Davies (ed.), A <i>Companion to Linear</i> B. <i>Mycenaean Greek
+                    Texts and their World</i>, vol. 2, 2011, p. 221-222. Pour les précédentes, voir
+                note 9. </li>
+            <li>
+                <a name="n4"/>Voir aussi <i>ibid.</i>, p. 224, sur la flexibilité de la syntaxe
+                interne des composés, plus importante dans les anthroponymes que dans les mots du
+                lexique en mycénien, réflexion qui peut être étendue au grec alphabétique. </li>
+            <li>
+                <a name="n5"/>Cf. Ch. de Lamberterie, « En hommage à Michel Lejeune : mycénien
+                o-wo-we et le nom de l'« oreille » en grec », <i>in</i> F. Biville-I. Boehm (ed.),
+                    <i>Autour de Michel Lejeune</i>, Lyon, 2009, p. 109-111. </li>
+            <li>
+                <a name="n6"/>Pour ne pas multiplier les colonnes, il n'en a été ouvert que trois
+                pour les éléments porteurs de sens. Elles permettent de segmenter presque tous les
+                composés, qui correspondent aux deux schémas suivants : <span class="greek">α)</span> préfixe + base; <span class="greek">β)</span> deux bases, sans
+                préfixe. Les rares exceptions sont représentées par : le nom <i>hapax </i>
+                <span class="greek">Θευ-δ-αγόρας </span>(supra, 8.2), qui comprend en fait trois
+                bases ; et, à l'inverse, Ἀ-<span class="greek">μετά-βολος</span> ‘Immuable’, nom
+                hapax du III<sup>e</sup> siècle d'un Thessalien de Gyrton, qui est composé de deux
+                préfixes et d'une base. La liste des éléments préfixaux, dans <i>SAGA</i>,
+                p. 687-688, est à compléter de <span class="greek">ἀγχ(ι)</span>-, cf. notamment N.
+                Rousseau, <i>Du syntagme au lexique. Sur la composition en grec ancien</i>, Paris,
+                2016, p. 637. </li>
+            <li>
+                <a name="n7"/>S. Minon, L. Dubois, Cl. Le Feuvre, <i>SAGA</i>, Introduction, p. 17,
+                note 55 (Att. V<sup>e</sup>s.). </li>
+            <li>
+                <a name="n8"/>Liste de ces suffixes, plus largement ‘désinentiels’ que
+                ‘flexionnels’, S. Minon, avec la collaboration d'Ed. Chiricat, <i>SAGA</i>, p.
+                690-693, voire notamment N.B. 1, p. 690 : « non les suffixes flexionnels au sens
+                strict, mais les suffixes ‘désinentiels’, qui peuvent déjà consister parfois en
+                chaînes (associant en diachronie deux suffixes ou un élargissement et un suffixe),
+                en particulier pour les féminisations de suffixes masculins ou épicènes ». </li>
+            <li>
+                <a name="n9"/>Voir e.g. T. Lindner, « Komposition », in T. Lindner (éd.)
+                    <i>Indogermanische Grammatik</i>, IV.1, Lieferung 1, Heidelberg, 2011, p. 24, n.
+                13a, et voir O. Tribulato, <i>Ancient Greek Verb-Initial Compounds</i>, Berlin- New
+                York, 2015, p. 43-46.</li>
+            <li>
+                <a name="n10"/>Pour l'interprétation en synchronie de <span class="greek">-ιππος</span> comme l'équivalent d'un suffixe à connotation aristocratique,
+                notamment à Erétrie, voir L. Dubois, op. cit., p. 42-43, à la suite de Bechtel,
+                    <i>Hermes</i> 35 (1900), p. 326-331 (= <i>KOS</i> 1981, p. 98-103). </li>
+            <li>
+                <a name="n11"/>Soit le nom trithématique Theu-d-agoras/<span class="greek">Θευ-δ-αγόρας </span> a été donné pour faire sens et s'analyser syntaxiquement
+                (ZYAbbrX) « dont le <b>discours</b>
+                <sub>X</sub> est un don<sub>Y</sub> du dieuZ », soit c'est le résultat simplement
+                formel d'un croisement entre le composé dithématique <span class="greek">Θεό-δοτος
+                </span> ou <span class="greek">Θεό-δωρος</span>, abrégé en <span class="greek">Θεοδ-ᾶς </span> (cf. <span class="greek">Θεοδᾶς Θεοδώρου</span>, Ephèse,
+                    II<sup>e</sup>/I<sup>er</sup> s.), et un autre à second élément <span class="greek">-αγόρας</span>, sans lien sémantique nécessaire entre ce dernier
+                élément et les deux éléments composés précédents. </li>
+            <li>
+                <a name="n12"/>Sur le caractère néanmoins ancien en grec de la structure inversée
+                    <span class="greek">Κύν-αργος</span>, procédant de l'univerbation du syntagme
+                hom. <span class="greek">κύνες ἀργοί</span>, voir L. Dubois, <i>loc. cit.</i>
+            </li>
+            <li>
+                <a name="n13"/>
+                <i>Pace</i> J. L. García Ramón, <i>op. cit.</i>, p. 220, qui voit dans Kall-aischros
+                un composé irrationnel, l'origine de ce nom pourrait être un tour comme chez
+                Aristophane, <i>Cavaliers</i> 1321 : <b>
+                    <span class="greek">τὸν Δῆμον ἀφεψήσας ὑμῖν καλὸν ἐξ αἰσχροῦ πεποίηκα </span>
+                </b>« je vous ai fait cuire Dèmos et <b>de laid</b> je l'ai rendu <b>beau</b> ». Cf.
+                l'emploi de l'adverbe <span class="greek">δεινῶς </span>« terriblement » pour
+                modifier un adjectif, comme <span class="greek">μέλας</span>, avec une valeur quasi
+                superlative, que pourrait avoir de même ici le 1<sup>er</sup> élément <span class="greek">καλλ-</span>, et comparer avec les oxymores français familiers
+                    (XX<sup>e</sup> siècle) : « vachement joli », où l'adjectif <i>vache</i> a le
+                sens de « méchant », l'équivalent de « terriblement joli ». </li>
+            <li>
+                <a name="n14"/>Se rattachent sémantiquement au même radical, mais de façon moins
+                immédiate, les trois bases nominales et adjectivale secondaires illustrées par des
+                anthroponymes : <span class="greek">αιθ-αλ-</span> ‛suie’, <span class="greek">αιθ-(ε)ρ-</span> ‛éther, ciel serein’ et <span class="greek">αιθ-ῑκ</span>-
+                ‘Εthice (peuple thessalien)’. </li>
+        </ol>
+    </section>
+    <section>
+        <div style="float:left;">
+            <p>Mise à jour Mai 2018</p>
+        </div>
+        <div style="float:right;">
+            <p>© <i>LGPN-Ling</i> Paris/Oxford</p>
+        </div>
+    </section>
+</main>
