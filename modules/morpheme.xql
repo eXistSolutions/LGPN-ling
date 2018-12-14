@@ -36,9 +36,9 @@ function morpheme:entry-action($node as node(), $model as map(*), $action as xs:
     let $user := request:get-attribute("org.exist.lgpn-ling.user")
     return
         if ($user) then
-    let $entry := $model("entry")
+    let $entry := $model?entry?data
     let $a:=  if($action='delete') then 
-        if(count(collection($config:names-root)//TEI:m[@baseForm=$entry/@baseForm]))
+        if(count($config:names//TEI:m[@baseForm=$entry/@baseForm]))
         then ()
         else
             <a href="?delete={$entry/@baseForm/string()}">
@@ -70,8 +70,8 @@ declare
 function morpheme:entries($node as node(), $model as map(*)) {
     let $entries :=
     for $i in doc($config:taxonomies-root || "/morphemes.xml")//TEI:category
-    order by $i/@baseForm
-        return $i
+    order by $i/@baseForm collation "?lang=gr-GR"
+        return map {"data" := $i, "count" := count($config:names//TEI:m[@baseForm=$i/@baseForm])}
     return
     map { "entries" := $entries }
 };
@@ -80,13 +80,13 @@ function morpheme:entries($node as node(), $model as map(*)) {
 declare
  %templates:wrap
 function morpheme:morpheme-baseForm($node as node(), $model as map(*)) {
-    let $entry := $model("entry")
+    let $entry := $model?entry?data
     return data($entry/@baseForm)
 };
 declare
  %templates:wrap
 function morpheme:morpheme($node as node(), $model as map(*)) {
-    let $entry := $model("entry")
+    let $entry := $model?entry?data
     return data($entry)
 };
 
@@ -95,7 +95,7 @@ declare
     %templates:default("lang", 'en')
 function morpheme:meanings($node as node(), $model as map(*), $lang as xs:string?) {
 (:            morpheme:semantics($model?entry, 0, $lang):)
-    let $entry := $model("entry")
+    let $entry := $model?entry?data
     let $concepts :=
     for $m in tokenize($entry/@ana, '\s*#')
         return doc($config:taxonomies-root || "/ontology.xml")//TEI:category[@xml:id=$m]/TEI:catDesc[@xml:lang=$lang]
@@ -105,7 +105,5 @@ function morpheme:meanings($node as node(), $model as map(*), $lang as xs:string
 declare
  %templates:wrap
 function morpheme:count($node as node(), $model as map(*)) {
-    let $entry := $model("entry")
-    return count(collection($config:names-root)//TEI:m[@baseForm=$entry/@baseForm])
+    $model?entry?count
 };
-

@@ -35,12 +35,15 @@ declare variable $config:data-root := "/db/apps/lgpn-data/data";
 declare variable $config:ling-data-root := "/db/apps/lgpn-ling-data/data";
 
 declare variable $config:names-root := $config:ling-data-root || "/names";
+declare variable $config:names := collection($config:names-root);
+
+
 declare variable $config:taxonomies-root := $config:ling-data-root || "/taxonomies";
 declare variable $config:dictionaries-root := $config:app-root || "/resources/xml";
 
  (:prosopographical database data:)
 declare variable $config:persons-root := $config:data-root || "/persons";
-declare variable $config:persons := collection($config:data-root || "/persons");
+declare variable $config:persons := collection($config:persons-root);
 
 
 declare variable $config:lgpn-places := $config:data-root || "/volume0.places.xml";
