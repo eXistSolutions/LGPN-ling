@@ -34,10 +34,10 @@ function meaning:entry-action($node as node(), $model as map(*), $action as xs:s
             let $entry := $model?entry
             let $a:=  
                 if($action='delete') then 
-                    let $count := count(collection($config:taxonomies-root)//TEI:category[contains(@ana, concat('#', $entry/@xml:id))])
+                    let $morphemes := $config:taxonomies//TEI:category[ft:query(@ana, $entry/@xml:id)]
                     return
-                        if  ($count) then 
-                            <span>{string-join(collection($config:taxonomies-root)//TEI:category[contains(@ana, concat('#', $entry/@xml:id))]/@baseForm, ', ')} ({$count})</span>
+                        if (count($morphemes)) then 
+                            <span>{string-join($morphemes/@baseForm, ', ')} ({count($morphemes)})</span>
                         else
                             <a href="?delete={$entry/@xml:id/string()}">
                                 <button class="btn btn-xs btn-danger" type="button" onClick="return window.confirm('Are you sure you want to delete {data($entry/@xml:id)}?')" data-title="Delete meaning {data($entry)}">
@@ -54,11 +54,11 @@ function meaning:entry-action($node as node(), $model as map(*), $action as xs:s
 declare
 function meaning:delete-entry($id as xs:string?) {
     let $del :=
-        if (count(collection($config:taxonomies-root)//TEI:category[contains(@ana, concat('#', $id))])) 
+        if (count($config:taxonomies//TEI:category[contains(@ana, concat('#', $id))])) 
             then 'fail'
             else
                 update delete doc($config:taxonomies-root || "/ontology.xml")//TEI:category[@xml:id=$id]
-    return if($del='fail') then ('Failed to delete ', <strong>{$id}</strong>, ', references exist!') else (<strong>{$id}</strong>, ' deleted')
+    return if ($del='fail') then ('Failed to delete ', <strong>{$id}</strong>, ', references exist!') else (<strong>{$id}</strong>, ' deleted')
 };
 
 declare
