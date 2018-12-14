@@ -10,7 +10,7 @@ import module namespace config="http://www.existsolutions.com/apps/lgpn/config" 
 declare option output:method "json";
 declare option output:media-type "text/javascript";
 let $data := request:get-parameter('query', '')
-            let $constituents :=  collection($config:names-root)//tei:m[@type="radical"][starts-with(., $data)]
+            let $constituents :=  collection($config:names-root)//tei:m[@type=("radical", "prefix")][starts-with(., $data)]
             return
             <result>
                 <total>{count($constituents)}</total>
