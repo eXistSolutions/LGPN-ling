@@ -67,7 +67,7 @@
     <msg key="meanings">Sens</msg>
     <msg key="morphemes">Lexèmes</msg>
     <msg key="attestations">Att.</msg>
-    <msg key="geo-dialects">Aire(s) géo-dialect. interlinguistique(s)</msg>
+    <msg key="geo-dialects">Aire(s) géo-dialect., interlinguistique(s)</msg>
     <msg key="lex-onom">Lexique/onomastique</msg>
     <msg key="anthr-suff">Suffixes anthroponymiques</msg>  
     <msg key="update">Update</msg>  
