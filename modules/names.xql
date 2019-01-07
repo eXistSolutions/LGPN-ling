@@ -315,7 +315,7 @@ function names:entry-morpheme-functions($entry as node(), $type as xs:string) {
         ($m/@subtype, if (string($m/@ana)) then $m/@ana else ())
     let $headedness := string-join(($morphemes , $labels/id($entry/@type)), '')
     let $other :=  $labels/id($entry/@subtype)/string()
-    let $parens := if (string($headedness) or string($other)) then string-join((if (string($other)) then $other else (), $headedness), ' ') else ()
+    let $parens := if (string($headedness) or string($other)) then string-join(($headedness, if (string($other)) then $other else ()), ' ') else ()
     let $compounds := for $m in $typeMorphemes/descendant-or-self::TEI:m[@corresp ne ''] return names:prettyPrint-unattested($m/@cert/string()) || $m/@corresp
     return 
         <span>
