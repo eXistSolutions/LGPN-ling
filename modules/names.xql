@@ -210,8 +210,8 @@ function names:variantEntry($offset, $i as node()) {
         map:new( 
             (
                 if($offset=0) then map:entry(0, '') else (),
-                map:entry($offset+1, ''),
-                map:entry($offset+2, <span class='dimmed'>{$i/TEI:orth/string()}</span>),
+                map:entry($offset+1, <span class='dimmed'>{if($i/@cert = 'low') then '?' else ''}</span>),
+                map:entry($offset+2, <span class='dimmed'>{$i/TEI:orth/string()}{if($i/TEI:orth/@cert = 'low') then '?' else ''}</span>),
                 map:entry($offset+3, ''),
                 map:entry($offset+4, <span class='dimmed'>{$i/TEI:gen/string()}</span>),
                 map:entry($offset+5, <span class='dimmed'>{
