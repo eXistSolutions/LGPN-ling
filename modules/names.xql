@@ -24,14 +24,14 @@ function names:delete-name($node as node(), $model as map(*), $delete as xs:stri
 
 declare
 function names:delete-entry($id as xs:string?) {
-    let $entry := collection($config:names-root)//TEI:entry/id($id)
+    let $entry := $config:names//TEI:entry/id($id)
     let $del := if($entry) then xmldb:remove(util:collection-name($entry), util:document-name($entry)) else ('fail')
     return if($del='fail') then ('Failed to delete ', <strong>{$id}</strong>) else (<strong>{$id}</strong>, ' deleted')
 };
 
 declare function names:entries($node as node(), $model as map(*)) {
     let $entries :=
-    for $i in collection($config:names-root)//TEI:gramGrp[@type='segmentation']
+    for $i in $config:names//TEI:gramGrp[@type='segmentation']
     order by $i/parent::TEI:entry//TEI:orth[@type='greek']
         return $i
     
@@ -131,7 +131,7 @@ function names:entry-dialect($entry as node(), $lang as xs:string?, $pos) {
     let $labels := $entry/parent::TEI:entry//TEI:gramGrp[@type='classification']/TEI:usg
     let $dialects_document_order := 
     for $l in $labels 
-        return string-join((doc($config:taxonomies-root || "/dialects.xml")//TEI:category[@xml:id=$l]/TEI:catDesc[@ana="full"][@xml:lang='en'], if ($l/@cert="low") then '?' else ()), '')
+        return string-join((doc($config:taxonomies-root || "/dialects.xml")/id($l)/TEI:catDesc[@ana="full"][@xml:lang='en'], if ($l/@cert="low") then '?' else ()), '')
     
 (:    let $dialects :=:)
 (:        for $e in doc($config:taxonomies-root || "/dialects.xml")//TEI:category[@xml:id=$labels]/TEI:catDesc:)
@@ -216,7 +216,7 @@ function names:variantEntry($offset, $i as node()) {
                 map:entry($offset+4, <span class='dimmed'>{$i/TEI:gen/string()}</span>),
                 map:entry($offset+5, <span class='dimmed'>{
                 string-join(
-                    concat(doc($config:taxonomies-root || "/dialects.xml")//TEI:category[@xml:id=$i/TEI:usg]/TEI:catDesc[@ana="full"][@xml:lang='en'], if($i/TEI:usg/@cert = 'low') then '?' else '')
+                    concat(doc($config:taxonomies-root || "/dialects.xml")/id($i/TEI:usg)/TEI:catDesc[@ana="full"][@xml:lang='en'], if($i/TEI:usg/@cert = 'low') then '?' else '')
                     , ', ')}</span>),
                 map:entry($offset+6, ''),
 
@@ -242,9 +242,11 @@ function names:variantEntry($offset, $i as node()) {
 declare
 function names:entry-period($entry as node(), $pos) {
     let $name := $entry/parent::TEI:entry//TEI:orth[@type='greek']/string()
-    let $dates :=(
-        min(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:birth/@notBefore[string(.)]),
-        max(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:birth/@notAfter[string(.)]))
+    let $dates := ()
+    
+(:    ( :)
+(:        min(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:birth/@notBefore[string(.)]),:)
+(:        max(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:birth/@notAfter[string(.)])):)
     let $content := string-join($dates, '/')
     return 
         if($pos) then () else $content
@@ -253,9 +255,9 @@ function names:entry-period($entry as node(), $pos) {
 declare
 function names:entry-gender($entry as node(), $pos) {
     let $name := $entry/parent::TEI:entry//TEI:orth[@type='greek']
-    let $genders :=
-        for $g in distinct-values(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:sex/@value/string())
-        return if (number($g)=2) then "f." else "m."
+    let $genders := ()
+(:        for $g in distinct-values(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:sex/@value/string()):)
+(:        return if (number($g)=2) then "f." else "m.":)
     let $content:= string-join($genders, '|')
     return 
         if($pos) then <span class="invisible">{$content}</span> else $content
@@ -338,7 +340,7 @@ function names:entry-semantics($entry as node(), $lang as xs:string?) {
             for $bf in $entry//TEI:m[@type=('radical', 'prefix')]/@baseForm[string(.)]
                 let $concept :=
                     for $m in tokenize(doc($config:taxonomies-root || "/morphemes.xml")//TEI:category[@baseForm=$bf]/@ana, '\s*#')
-                    return doc($config:taxonomies-root || "/ontology.xml")//TEI:category[@xml:id=$m]/TEI:catDesc[@xml:lang=$lang]
+                    return doc($config:taxonomies-root || "/ontology.xml")/id($m)/TEI:catDesc[@xml:lang=$lang]
             return string-join($concept, ', ')
     return
         <span>
