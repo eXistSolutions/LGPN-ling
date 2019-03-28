@@ -242,11 +242,12 @@ function names:variantEntry($offset, $i as node()) {
 declare
 function names:entry-period($entry as node(), $pos) {
     let $name := $entry/parent::TEI:entry//TEI:orth[@type='greek']/string()
-    let $dates := ()
+    let $dates := 
+(:    ():)
     
-(:    ( :)
-(:        min(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:birth/@notBefore[string(.)]),:)
-(:        max(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:birth/@notAfter[string(.)])):)
+    ( 
+        min(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:birth/@notBefore[string(.)]),
+        max(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:birth/@notAfter[string(.)]))
     let $content := string-join($dates, '/')
     return 
         if($pos) then () else $content
@@ -255,9 +256,10 @@ function names:entry-period($entry as node(), $pos) {
 declare
 function names:entry-gender($entry as node(), $pos) {
     let $name := $entry/parent::TEI:entry//TEI:orth[@type='greek']
-    let $genders := ()
-(:        for $g in distinct-values(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:sex/@value/string()):)
-(:        return if (number($g)=2) then "f." else "m.":)
+    let $genders := 
+(:    ():)
+        for $g in distinct-values(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:sex/@value/string())
+        return if (number($g)=2) then "f." else "m."
     let $content:= string-join($genders, '|')
     return 
         if($pos) then <span class="invisible">{$content}</span> else $content
