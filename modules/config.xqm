@@ -47,12 +47,16 @@ declare variable $config:dictionaries-root := $config:app-root || "/resources/xm
 declare variable $config:data-root := "/db/apps/lgpn-data/data";
 declare variable $config:persons-root := $config:data-root || "/persons";
 declare variable $config:persons := collection($config:persons-root);
+declare variable $config:periods := doc($config:data-root || '/resources/xml/datingPeriod.xml');
+
+
 
 (: old lgpn data (pre-exist) :)
  declare variable $config:lgpn-tei := "/db/apps/lgpn-tei/data";
 declare variable $config:lgpn-places := $config:lgpn-tei || "/volume0.places.xml";
 declare variable $config:lgpn-names := $config:lgpn-tei || "/volume0.names.xml";
 declare variable $config:lgpn-volumes := $config:lgpn-tei || "/volume0.xml";
+declare variable $config:lgpn-name-summary := doc($config:lgpn-tei || "/names.xml");
 
  (:i18n catalogues stay here so far:)
 declare variable $config:i18n-root := $config:app-root || "/data/i18n";

@@ -150,11 +150,15 @@ function names:entry-dialect($entry as node(), $lang as xs:string?, $pos) {
 
 declare
 function names:entry-attestations($entry as node(), $pos) {
-(:    let $pos := if ($pos > 1) then count($entry/preceding-sibling::TEI:gramGrp[@type='segmentation']) else 0:)
+    let $name := $entry/parent::TEI:entry//TEI:orth[@type='greek']/string()
+    
+    (: $oldLGPN part retrieves old lgpn data; to be removed when migration to lgpn-data is completed    :)
+    let $oldLGPN := $config:lgpn-name-summary//nameform[.=$name]/parent::name
 
-    let $name := $entry/parent::TEI:entry//TEI:orth[@type='greek']
-    let $content := if ($name ne '' ) then count($config:persons//TEI:nym[@nymRef=$name]) else ''
-
+    let $content := if ($name ne '' ) then 
+                        count($config:persons//TEI:nym[@nymRef=$name]) + $oldLGPN/attestations
+                    else 
+                        ''
     return 
         if($pos) then () else $content
 };
@@ -239,15 +243,41 @@ function names:variantEntry($offset, $i as node()) {
 
 };
 
+(: copies from lgpn-editor/modules/lgpn-person.xql :)
+declare function names:periodRange($period) {
+    let $periodDef := $config:periods/id($period)//TEI:date
+    return map {'from': $periodDef/@from/string(), 'to': $periodDef/@to/string()}
+};
+declare function names:dateRange($birth) {
+    if ($birth/@precision='period' and $birth/@when/string()) then 
+        names:periodRange($birth/@when/string())
+    else 
+        map {'from': $birth/@notBefore/string(), 'to': $birth/@notAfter/string()}
+};
+
+declare function names:lgpnPeriod($name) {
+    let $births := $config:persons//TEI:nym[@nymRef=$name]/ancestor::TEI:person/TEI:birth
+    let $range := for $b in $births return names:dateRange($b)
+    
+    let $from := for $r in $range return if ($r?from ne '') then $r?from else ()
+    let $to := for $r in $range return if ($r?to ne '') then $r?to else ()
+
+    return map {'from': min($from), 'to': max($to)}
+};
+
 declare
 function names:entry-period($entry as node(), $pos) {
     let $name := $entry/parent::TEI:entry//TEI:orth[@type='greek']/string()
-    let $dates := 
-(:    ():)
     
+     (: $oldLGPN part retrieves old lgpn data; to be removed when migration to lgpn-data is completed    :)
+    let $oldLGPN := $config:lgpn-name-summary//nameform[.=$name]/parent::name
+
+    let $range := names:lgpnPeriod($name)
+    let $dates := 
     ( 
-        min(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:birth/@notBefore[string(.)]),
-        max(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:birth/@notAfter[string(.)]))
+        min((if ($range?from ne '') then number($range?from) else (), if ($oldLGPN/period/@from ne '') then number($oldLGPN/period/@from) else ()) ),
+        max((if ($range?from ne '') then number($range?to) else (), if ($oldLGPN/period/@to ne '') then number($oldLGPN/period/@to) else ())))
+        
     let $content := string-join($dates, '/')
     return 
         if($pos) then () else $content
@@ -256,10 +286,16 @@ function names:entry-period($entry as node(), $pos) {
 declare
 function names:entry-gender($entry as node(), $pos) {
     let $name := $entry/parent::TEI:entry//TEI:orth[@type='greek']
-    let $genders := 
-(:    ():)
-        for $g in distinct-values(doc($config:lgpn-volumes)//TEI:persName[@type="main"][.=$name]/parent::TEI:person/TEI:sex/@value/string())
-        return if (number($g)=2) then "f." else "m."
+    
+    (: $oldLGPN part retrieves old lgpn data; to be removed when migration to lgpn-data is completed    :)
+    let $oldLGPN := $config:lgpn-name-summary//nameform[.=$name]/parent::name
+
+    let $genders := distinct-values(($config:persons//TEI:nym[@nymRef=$name]//ancestor::TEI:person/@sex, 
+                                     $oldLGPN/gender))
+
+    let $genders :=
+        for $g in $genders return if (number($g)=2) then "f." else "m."
+        
     let $content:= string-join($genders, '|')
     return 
         if($pos) then <span class="invisible">{$content}</span> else $content
