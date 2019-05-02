@@ -168,7 +168,7 @@ function names:entry($offset, $i as node()) {
     let $lang:=request:get-parameter('lang', 'fr')
     let $pos := count($i/../TEI:gramGrp[@type='segmentation'][. << $i])
     return
-        map:new( 
+        map:merge( 
             (
                 if($offset=0) then map:entry(0, names:entry-action($i, '', $pos)) else (),
                 map:entry($offset+1, names:entry-transliterated($i, $pos)),
@@ -211,7 +211,7 @@ declare
 function names:variantEntry($offset, $i as node()) {
     let $lang:=request:get-parameter('lang', 'fr')
     return
-        map:new( 
+        map:merge( 
             (
                 if($offset=0) then map:entry(0, '') else (),
                 map:entry($offset+1, <span class='dimmed'>{if($i/@cert = 'low') then '?' else ''}</span>),

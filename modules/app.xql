@@ -149,7 +149,7 @@ function app:entries-each($node as node(), $model as map(*)) {
     for $entry in $model("entries")
     return 
         <tr>
-        {templates:process($node/node(), map:new(($model, map { "entry" := $entry })))}
+        {templates:process($node/node(), map:merge(($model, map { "entry" := $entry })))}
         </tr>
 };
 
@@ -160,7 +160,7 @@ declare
 function app:entries-paged($node as node(), $model as map(*), $start as xs:integer, $max as xs:integer) {
     let $toDisplay := subsequence($model("entries"), $start, $max)
     return
-        templates:process($node/node(), map:new(($model, map { "videos" := $toDisplay })))
+        templates:process($node/node(), map:merge(($model, map { "videos" := $toDisplay })))
 };
 
 declare
