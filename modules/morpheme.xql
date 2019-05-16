@@ -38,8 +38,8 @@ function morpheme:entry-action($node as node(), $model as map(*), $action as xs:
         if ($user) then
     let $entry := $model?entry?data
     let $a:=  if($action='delete') then 
-        if(count($config:names//TEI:m[@baseForm=$entry/@baseForm]))
-        then ()
+        if ($model?entry?count) then 
+            ()
         else
             <a href="?delete={$entry/@baseForm/string()}">
                 <button class="btn btn-xs btn-danger" type="button" onClick="return window.confirm('Are you sure you want to delete {data($entry/@baseForm)}?')" data-title="Delete Name {data($entry)}">
@@ -58,22 +58,29 @@ function morpheme:entry-action($node as node(), $model as map(*), $action as xs:
 declare
 function morpheme:delete-entry($id as xs:string?) {
     let $del :=
-    if (count(collection($config:names-root)//TEI:m[@baseForm=$id])) 
-        then 'fail'
+        if (count($config:names-root//TEI:m[@baseForm=$id])) then 
+            'fail'
         else
-            update delete doc($config:taxonomies-root || "/morphemes.xml")//TEI:category[@baseForm=$id]
-    return if($del='fail') then ('Failed to delete ', <strong>{$id}</strong>, ', references exist!') else (<strong>{$id}</strong>, ' deleted')
+            update delete $config:taxonomies/id('morphemes')//TEI:category[@baseForm=$id]
+            
+    return 
+        if ($del='fail') then 
+            ('Failed to delete ', <strong>{$id}</strong>, ', references exist!') 
+        else (<strong>{$id}</strong>, ' deleted')
 };
 
 declare
     %templates:wrap
 function morpheme:entries($node as node(), $model as map(*)) {
     let $entries :=
-    for $i in doc($config:taxonomies-root || "/morphemes.xml")//TEI:category
-    order by $i/@baseForm collation "?lang=gr-GR"
-        return map {"data" := $i, "count" := count($config:names//TEI:m[@baseForm=$i/@baseForm])}
+        for $i in $config:taxonomies/id('morphemes')//TEI:category
+        let $base := $i/@baseForm
+        let $names := $config:names//TEI:m[@baseForm=$base]
+        order by $base collation "?lang=gr-GR"
+            return map {"data" := $i, "count" := count($names), "names" := $names}
+    
     return
-    map { "entries" := $entries }
+        map { "entries" := $entries }
 };
 
 
@@ -98,8 +105,20 @@ function morpheme:meanings($node as node(), $model as map(*), $lang as xs:string
     let $entry := $model?entry?data
     let $concepts :=
     for $m in tokenize($entry/@ana, '\s*#')
-        return doc($config:taxonomies-root || "/ontology.xml")//TEI:category[@xml:id=$m]/TEI:catDesc[@xml:lang=$lang]
+        return $config:taxonomies/id('ontology')/id($m)/TEI:catDesc[@xml:lang=$lang]
     return string-join($concepts, ', ')
+};
+
+declare
+    %templates:wrap
+    %templates:default("lang", 'en')
+function morpheme:list-names($node as node(), $model as map(*), $lang as xs:string?) {
+    
+    for $n in $model?entry?names
+        let $entry := $n/ancestor::TEI:entry
+        order by $entry//TEI:orth[@type='greek']   collation "?lang=gr-GR"
+        
+        return <a href="editor.xhtml?id={$entry/@xml:id}">{$entry//TEI:orth[@type='greek']}</a>
 };
 
 declare

@@ -15,8 +15,7 @@ let $summary :=
                 return $i/ancestor::tei:person 
             
         let $genders := for $i in distinct-values($persons//tei:sex/@value) return <gender>{$i}</gender>
-(:        let $genderLabel := if (count($genders) = 2) then 'm./f.' else if ($genders = "1") then 'm.' else 'f.' :)
-        
+
         let $dates :=  (min($persons//tei:birth/@notBefore[string(.)]), max($persons/tei:birth/@notAfter[string(.)]))
       
         let $period :=  string-join($dates, '/')
