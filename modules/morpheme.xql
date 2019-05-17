@@ -58,7 +58,7 @@ function morpheme:entry-action($node as node(), $model as map(*), $action as xs:
 declare
 function morpheme:delete-entry($id as xs:string?) {
     let $del :=
-        if (count($config:names-root//TEI:m[@baseForm=$id])) then 
+        if (count($config:names//TEI:m[@baseForm=$id])) then 
             'fail'
         else
             update delete $config:taxonomies/id('morphemes')//TEI:category[@baseForm=$id]
