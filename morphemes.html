@@ -24,8 +24,10 @@ $(document).ready(function() {
             </div>
             <div class="row" data-template="app:login-status"/>
             <div class="row" data-template="morpheme:delete-status"/>
-            <div class="row">
-                <table id="morphemetable" class="display table table-striped" cellspacing="0" width="100%" data-template="morpheme:entries">
+            <div class="row" data-template="morpheme:entries" data-template-letter="h">
+                <div align="center" data-template="morpheme:letter-list"/>
+
+                <table id="morphemetable" class="display table table-striped" cellspacing="0" width="100%">
                     <thead>
                         <tr>
                             <th>

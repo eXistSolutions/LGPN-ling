@@ -71,9 +71,27 @@ function morpheme:delete-entry($id as xs:string?) {
 
 declare
     %templates:wrap
-function morpheme:entries($node as node(), $model as map(*)) {
+function morpheme:letter-list($node as node(), $model as map(*)) {
+    for $i in $config:taxonomies/id('morphemes')//TEI:category
+       let $sw := substring($i/@baseForm, 1, 1)
+        group by $sw
+        order by $sw  collation "?lang=gr-GR"
+    
+    return
+       
+    <span class="letter"><a href="?letter={$sw}">{if (string-length($sw) > 0) then $sw else ' _ '} </a> ({count($i)})</span>
+};
+declare
+    %templates:wrap
+function morpheme:entries($node as node(), $model as map(*), $letter as xs:string?) {
+    let $morphemes := 
+        if ($letter) then 
+            $config:taxonomies/id('morphemes')//TEI:category[starts-with(@baseForm, $letter)]
+        else
+            $config:taxonomies/id('morphemes')//TEI:category
+            
     let $entries :=
-        for $i in $config:taxonomies/id('morphemes')//TEI:category
+        for $i in $morphemes
         let $base := $i/@baseForm
         let $names := $config:names//TEI:m[@baseForm=$base]
         order by $base collation "?lang=gr-GR"
