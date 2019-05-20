@@ -321,7 +321,7 @@ function names:entry-morpheme($entry as node(), $type as xs:string, $position as
         {attribute style {$bold}}
         {attribute class {$class}}
         {
-            if($type!=("suffix") and $entry//TEI:m[@type=$type][@n=$position] ne '') then 
+            if($type!=("suffix") and $entry//TEI:m[@type=$type][@n=$position]/@baseForm ne '') then 
                 data(doc($config:taxonomies-root || "/morphemes.xml")//TEI:category[@baseForm=$entry//TEI:m[@type=$type][@n=$position]/@baseForm]/TEI:catDesc) 
             else if ($type eq "suffix" and $position eq 1) then
                 $inflect
