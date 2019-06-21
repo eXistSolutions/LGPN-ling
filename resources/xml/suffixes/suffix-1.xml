@@ -192,16 +192,6 @@
         </gen>
     </option>
     <option>
-        <former>ιώ(ι)</former>
-        <base>(ι)ώ(ι)</base>
-        <add/>
-        <gen/>
-    </option>
-    <option>
-        <former>(ι)ώ(ι)</former>
-        <base>ιώ(ι)</base>
-    </option>
-    <option>
         <former>ίων</former>
         <base>ίων</base>
         <add>Thess. ίουν</add>
@@ -357,6 +347,19 @@
     <option>
         <base>ώς</base>
         <add/>
+        <gen/>
+    </option>
+    <option>
+        <base>ω(ϝ)ς</base>
+        <add>Cypr. <i>-ωϝος</i>
+        </add>
+        <gen/>
+    </option>
+    <option>
+        <base>ῶς</base>
+        <add>
+            <i>-ῶτος</i> , Pamph. <i>-τυς</i> , <i>-ῶτυς</i> , <i>-δυς</i>
+        </add>
         <gen/>
     </option>
     <option>
