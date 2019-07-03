@@ -73,7 +73,7 @@ declare
     %templates:wrap
 function morpheme:letter-list($node as node(), $model as map(*)) {
     for $i in $config:taxonomies/id('morphemes')//TEI:category
-       let $sw := substring($i/@baseForm, 1, 1)
+    let $sw := replace(normalize-unicode(substring($i/@baseForm, 1, 1), 'NFD'),  "[\p{M}\p{Sk}]", "")
         group by $sw
         order by $sw  collation "?lang=gr-GR"
     
@@ -86,7 +86,7 @@ declare
 function morpheme:entries($node as node(), $model as map(*), $letter as xs:string?) {
     let $morphemes := 
         if ($letter) then 
-            $config:taxonomies/id('morphemes')//TEI:category[starts-with(@baseForm, $letter)]
+            $config:taxonomies/id('morphemes')//TEI:category[starts-with(replace(normalize-unicode(@baseForm, 'NFD'),  "[\p{M}\p{Sk}]", ""), $letter)]
         else
             $config:taxonomies/id('morphemes')//TEI:category
             
