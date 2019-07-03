@@ -69,7 +69,7 @@ let $qs := $search
 (:replace(normalize-unicode($search, 'NFD'), "[\p{M}\p{Sk}]", ""):)
 
 let $collection := if (string($qs)) then 
-                        'collection($config:names-root)//tei:orth[ft:query(., "' || $qs || '*", ' || $searchOptions || ')]/ancestor::tei:entry//tei:gramGrp[@type="segmentation"]'
+                        'collection($config:names-root)//tei:orth[ft:query(., "' || $qs || '", ' || $searchOptions || ')]/ancestor::tei:entry//tei:gramGrp[@type="segmentation"]'
                     else 
                         'collection($config:names-root)//tei:gramGrp[@type="segmentation"]'
 
