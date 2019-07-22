@@ -13,21 +13,16 @@ let $change := <change xmlns="http://www.tei-c.org/ns/1.0" when="{$date}" resp="
 let $data := normalization:normalize(request:get-data()//TEI:TEI)
 let $name := normalize-unicode($data//TEI:orth[@type ="latin"]/string(), 'NFD')
 let $log := util:log("INFO", "data: " || count($data))
-(:  Run stuff as dba :)
 (:  Store :)
-let $path := system:as-user($config:dba-credentials[1], $config:dba-credentials[2],
+let $path := 
         xmldb:store($config:names-root, concat($name , ".xml"), $data)
-    )
 let $doc := doc($path)
 (:  update changes :)
-let $update := system:as-user($config:dba-credentials[1], $config:dba-credentials[2],
+let $update := 
         update insert $change into $doc//TEI:listChange
-    )
 (:  Set owner and ... :)    
-let $chown :=  system:as-user($config:dba-credentials[1], $config:dba-credentials[2],
+let $chown :=  
         sm:chown($path, "lgpn:lgpn")
-    )
 (:  ... permissions to be xtra save :)    
-return system:as-user($config:dba-credentials[1], $config:dba-credentials[2],
+return 
         sm:chmod($path, "rw-rw-r--")
-    )

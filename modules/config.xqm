@@ -40,7 +40,6 @@ declare variable $config:names := collection($config:names-root);
 declare variable $config:taxonomies-root := $config:ling-data-root || "/taxonomies";
 declare variable $config:taxonomies := collection($config:taxonomies-root);
 
-
 declare variable $config:dictionaries-root := $config:app-root || "/resources/xml";
 
  (:prosopographical database data:)
