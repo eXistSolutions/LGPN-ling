@@ -4,10 +4,11 @@ import module namespace console="http://exist-db.org/xquery/console" at "java:or
 
 declare namespace tei="http://www.tei-c.org/ns/1.0";
 
+
+
 let $conv := 
 <foo>
-    <entry><from>κλεϝεσν</from><to>κλεϝεσνο</to></entry>
-    <entry><from>κλεϝετ</from><to>κλεϝετο</to></entry>
+    <entry><from>αρκhε</from><to>αρχε</to></entry>
 </foo>
     
 for $entry in $conv//entry
