@@ -73,6 +73,12 @@
     <msg key="update">Update</msg>  
     <msg key="infl-type">Inflect. Type</msg>  
     <msg key="interling-areas"/>  
-    <msg key="lexis-ref">Sources and Ref.</msg>]
+    <msg key="lexis-ref">Sources and Ref.</msg>
     <msg key="onomastics-ref">Linked Sources and Ref.</msg>
+    <msg key="nameSearch">Name search</msg>
+    <msg key="lexemeSearch">Lexeme search</msg>
+    <msg key="indices">Indices</msg>
+    <msg key="nameVariants">Name variants</msg>
+    
+    
 </catalogue>

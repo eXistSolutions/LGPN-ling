@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <!--
     Mockup for new LGPN-ling public search page - Name search
 -->
@@ -7,86 +8,128 @@
             <div class="row" data-template="app:login-status"/>
             <div class="row" data-template="app:delete-name"/>
             <div class="row">
-                <a href="name-search.html">Name search</a>
-                <a href="lexeme-search.html">Lexeme search</a>
-                <a href="indices.html">Indices</a>
+                <a href="name-search.html">
+                    <i18n:text key="nameSearch">Name search</i18n:text>
+                </a>
+                <a href="lexeme-search.html">
+                    <i18n:text key="lexemeSearch">Lexeme search</i18n:text>
+                </a>
+                <a href="indices.html">
+                    <i18n:text key="indices">Indices</i18n:text>
+                </a>
             </div>
-            <h1>Name search - mockup</h1>
+            <h1>
+                <i18n:text key="nameSearch"/>
+            </h1>
             <div class="row search-section">
-                <button data-toggle="collapse" data-target="#name">Name variants</button> 
+                <button data-toggle="collapse" data-target="#name">
+                    <i18n:text key="nameVariants">Name variants</i18n:text>
+                </button> 
                 <button data-toggle="collapse" data-target="#dialect">Area (dialect)</button> 
+                <button data-toggle="collapse" data-target="#dating">Dating</button> 
                 <button data-toggle="collapse" data-target="#lexeme">Lexemes</button> 
                 <button data-toggle="collapse" data-target="#suffix">Suffixes</button> 
+                <button data-toggle="collapse" data-target="#onomastics">Onomastics</button> 
+                
             </div>
-            <div class="row search-section">
-                <div id="name" class="collapse in">
-                    <label class="col-md-1">Name</label> <input class="col-md-3" type="text" placeholder="e.g. ῎Αβρακος or Αβρα* or *βρα*ος or Abra*" width="80%"/>
-                    <span class="col-md-1">in</span>
-                    <select class="col-md-2">
-                        <option>all</option>
-                        <option>Greek</option>
-                        <option>transliterated</option>
-                    </select>
-                </div>
-            </div>
-            <div class="row search-section">
-                <div id="dialect" class="collapse">
-                    <label class="col-md-1">Dialect</label>
-                    <span class="col-md-2"/>
-                    <span class="col-md-1">
-                        <input type="checkbox"/> <label>not</label>
-                    </span>
-                    <select class="col-md-2">
-                          <option id="C176" value="aegean" class="xfSelectorItem" data-bf-itemset="C174">Aegean</option>
-                          <option id="C179" value="asia-minor" class="xfSelectorItem">A.M.</option>
-                          <option id="C182" value="arcadian" class="xfSelectorItem">Arcadian</option>
-                          <option id="C185" value="attic" class="xfSelectorItem">Attic</option>
-                          <option id="C188" value="boeotian" class="xfSelectorItem">Boeotian</option>
-                          <option id="C194" value="cretan" class="xfSelectorItem">Cretan</option>
-                          <option id="C197" value="cypriot" class="xfSelectorItem">Cypriot</option>
-                          <option id="C200" value="doric" class="xfSelectorItem">Doric</option>
-                          <option id="C218" value="aeolic-micrasiatic" class="xfSelectorItem">Eastern Aeolic</option>
-                          <option id="C221" value="euboean" class="xfSelectorItem">Euboean</option>
-                          <option id="C224" value="ionic" class="xfSelectorItem">Ionic</option>
-                    </select>
-                    <button data-toggle="collapse" data-target="#dialect2">+ add dialect</button> 
-                    
-                    <div id="dialect2" class="collapse">
-                        <label class="col-md-1">Dialect</label>
-                        <select class="col-md-2">
-                            <option>and</option>
-                            <option>or</option>
-                        </select>
-                        <span class="col-md-1">
-                            <input type="checkbox"/> <label>not</label>
-                        </span>
-                        <select class="col-md-2">
-                              <option id="C176" value="aegean" class="xfSelectorItem" data-bf-itemset="C174">Aegean</option>
-                              <option id="C179" value="asia-minor" class="xfSelectorItem">A.M.</option>
-                              <option id="C182" value="arcadian" class="xfSelectorItem">Arcadian</option>
-                              <option id="C185" value="attic" class="xfSelectorItem">Attic</option>
-                              <option id="C188" value="boeotian" class="xfSelectorItem">Boeotian</option>
-                              <option id="C194" value="cretan" class="xfSelectorItem">Cretan</option>
-                              <option id="C197" value="cypriot" class="xfSelectorItem">Cypriot</option>
-                              <option id="C200" value="doric" class="xfSelectorItem">Doric</option>
-                              <option id="C218" value="aeolic-micrasiatic" class="xfSelectorItem">Eastern Aeolic</option>
-                              <option id="C221" value="euboean" class="xfSelectorItem">Euboean</option>
-                              <option id="C224" value="ionic" class="xfSelectorItem">Ionic</option>
+            <form method="post" action="name-search">
+                <div class="row search-section">
+                    <div id="name" class="collapse in">
+                        <label class="col-md-1">Name</label> 
+                        <input class="col-md-3" type="text" name="name" placeholder="e.g. ῎Αβρακος or Αβρα* or *βρα*ος or Abra*" width="80%"/>
+                        <span class="col-md-1">in</span>
+                        <select class="col-md-2" name="name-context">
+                            <option>all</option>
+                            <option>Greek</option>
+                            <option>transliterated</option>
                         </select>
                     </div>
                 </div>
-            </div>
-
-            <div class="row search-section">
-                <div id="lexeme" class="collapse">
-                        Lorem ipsum dolor text....
+                <div class="row search-section">
+                    <div id="dialect" class="collapse">
+                        
+                        <label class="col-md-1">Dialect (area)</label> 
+                        <select class="col-md-2" name="dialect-boolean">
+                            <option id="and" value="and" class="xfSelectorItem">AND</option>
+                            <option id="or" value="or" class="xfSelectorItem">OR</option>
+                        </select>
+                        <div id="dialects">
+                            <div class="col-md-12" name="dialect">
+                                <label class="col-md-1"/>
+                                <span class="col-md-1">
+                                    <input type="checkbox" name="dialect-checkbox"/> <label>not</label>
+                                </span>
+                                <select class="col-md-2" name="dialect-value">
+                                      <option id="C176" value="aegean" class="xfSelectorItem" data-bf-itemset="C174">Aegean</option>
+                                      <option id="C179" value="asia-minor" class="xfSelectorItem">A.M.</option>
+                                      <option id="C182" value="arcadian" class="xfSelectorItem">Arcadian</option>
+                                      <option id="C185" value="attic" class="xfSelectorItem">Attic</option>
+                                      <option id="C188" value="boeotian" class="xfSelectorItem">Boeotian</option>
+                                      <option id="C194" value="cretan" class="xfSelectorItem">Cretan</option>
+                                      <option id="C197" value="cypriot" class="xfSelectorItem">Cypriot</option>
+                                      <option id="C200" value="doric" class="xfSelectorItem">Doric</option>
+                                      <option id="C218" value="aeolic-micrasiatic" class="xfSelectorItem">Eastern Aeolic</option>
+                                      <option id="C221" value="euboean" class="xfSelectorItem">Euboean</option>
+                                      <option id="C224" value="ionic" class="xfSelectorItem">Ionic</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <button data-toggle="collapse" data-target="#dialect2">+ add dialect</button> 
+                        
+                        <template id="template-dialect">
+                            <div class="col-md-12" name="dialect">
+                                <label class="col-md-1"/>
+                                <span class="col-md-1">
+                                    <input type="checkbox" name="dialect-checkbox"/> <label>not</label>
+                                </span>
+                                <select class="col-md-2" name="dialect-value">
+                                      <option id="C176" value="aegean" class="xfSelectorItem" data-bf-itemset="C174">Aegean</option>
+                                      <option id="C179" value="asia-minor" class="xfSelectorItem">A.M.</option>
+                                      <option id="C182" value="arcadian" class="xfSelectorItem">Arcadian</option>
+                                      <option id="C185" value="attic" class="xfSelectorItem">Attic</option>
+                                      <option id="C188" value="boeotian" class="xfSelectorItem">Boeotian</option>
+                                      <option id="C194" value="cretan" class="xfSelectorItem">Cretan</option>
+                                      <option id="C197" value="cypriot" class="xfSelectorItem">Cypriot</option>
+                                      <option id="C200" value="doric" class="xfSelectorItem">Doric</option>
+                                      <option id="C218" value="aeolic-micrasiatic" class="xfSelectorItem">Eastern Aeolic</option>
+                                      <option id="C221" value="euboean" class="xfSelectorItem">Euboean</option>
+                                      <option id="C224" value="ionic" class="xfSelectorItem">Ionic</option>
+                                </select>
+                            </div>
+                        </template>
+                        
+                    </div>
                 </div>
-            </div>
-            <div class="row search-section">
-                <div id="suffix" class="collapse">
-                        Lorem ipsum dolor text....
+    
+                <div class="row search-section">
+                    <div id="dating" class="collapse">
+                        <label class="col-md-1">Dating</label> 
+                        <label class="col-md-1">From</label> 
+                        <input class="col-md-3" type="text" placeholder="-999"/>
+                        <label class="col-md-1">To</label> 
+                        <input class="col-md-3" type="text" placeholder="999"/>
+                        
+                    </div>
                 </div>
-            </div>
+    
+                <div class="row search-section">
+                    <div id="lexeme" class="collapse">
+                            <label class="col-md-1">Lexeme</label> 
+                    </div>
+                </div>
+                <div class="row search-section">
+                    <div id="suffix" class="collapse">
+                            <label class="col-md-1">Suffix</label> 
+                    </div>
+                </div>
+                <div class="row search-section">
+                    <div id="onomastics" class="collapse">
+                            <label class="col-md-1">onomastics</label> 
+                    </div>
+                </div>
+                <input type="submit" value="submit"/>
+            </form>
         </div>
     </div>
 </div>
