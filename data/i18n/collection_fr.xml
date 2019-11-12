@@ -65,6 +65,7 @@
     <msg key="edit">modifier</msg>
     <msg key="newEntry">Saisie des données</msg>
     <msg key="meanings">Sens</msg>
+    <msg key="meaning">Sen</msg>
     <msg key="morphemes">Lexèmes</msg>
     <msg key="attestations">Att.</msg>
     <msg key="geo-dialects">Aire(s) géo-dialect., interlinguistique(s)</msg>
@@ -89,6 +90,17 @@
     <msg key="from">[FR] From</msg>
     <msg key="to">[FR] To</msg>
     <msg key="submit">[FR] Submit</msg>
-        
+    <msg key="add-suffix">[FR] + add suffix</msg>
+    <msg key="AND">[FR] AND</msg>
+    <msg key="OR">[FR] OR</msg>        
+    <msg key="ANY">[FR] ANY</msg>
+    <msg key="SEQUENCE">[FR] SEQUENCE</msg>
+    <msg key="add-lexeme">[FR] + add lexeme</msg>
+    <msg key="english">[FR] English</msg>
+    <msg key="french">[FR] French</msg>
+    <msg key="abbreviated">[FR] Abbreviated</msg>
+    <msg key="grammaticalCategory">[FR] Grammatical category</msg>
+    <msg key="headedness">[FR] Headedness</msg>
+    <msg key="connection-utterance">[FR] Connection with utterance Type</msg>    
     
 </catalogue>

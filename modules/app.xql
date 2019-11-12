@@ -10,6 +10,8 @@ import module namespace i18n="http://exist-db.org/xquery/i18n/templates" at "i18
 import module namespace functx = "http://www.functx.com";
 import module namespace console="http://exist-db.org/xquery/console" at "java:org.exist.console.xquery.ConsoleModule";
 
+declare variable $app:i18n-files := "/db/apps/lgpn-ling/data/i18n";
+
 (:~
  : This is a sample templating function. It will be called by the templating module if
  : it encounters an HTML element with an attribute data-template="app:test" 
@@ -503,34 +505,14 @@ function app:search-name-context($node as node(), $model as map(*)) {
 
 declare
 %templates:wrap
-function app:search-dialect-boolean($node as node(), $model as map(*)) {
-    (
-        <option id="and" value="and" class="xfSelectorItem">AND</option>,
-        <option id="or" value="or" class="xfSelectorItem">OR</option>
-    )
-};
-
-
-declare
-%templates:wrap
-function app:search-dialect-value($node as node(), $model as map(*)) {
-    let $options := 
-        <options>
-            <option id="C176" value="aegean" class="xfSelectorItem" data-bf-itemset="C174">Aegean</option>
-            <option id="C179" value="asia-minor" class="xfSelectorItem">A.M.</option>
-            <option id="C182" value="arcadian" class="xfSelectorItem">Arcadian</option>
-            <option id="C185" value="attic" class="xfSelectorItem">Attic</option>
-            <option id="C188" value="boeotian" class="xfSelectorItem">Boeotian</option>
-            <option id="C194" value="cretan" class="xfSelectorItem">Cretan</option>
-            <option id="C197" value="cypriot" class="xfSelectorItem">Cypriot</option>
-            <option id="C200" value="doric" class="xfSelectorItem">Doric</option>
-            <option id="C218" value="aeolic-micrasiatic" class="xfSelectorItem">Eastern Aeolic</option>
-            <option id="C221" value="euboean" class="xfSelectorItem">Euboean</option>
-            <option id="C224" value="ionic" class="xfSelectorItem">Ionic</option>
-        </options>
-    return
-        $options/option
-
+%templates:default("lang", "fr")
+function app:search-dialect-value($node as node(), $model as map(*), $lang as xs:string?) {
+    for $dialect in  doc("/db/apps/lgpn-ling-data/data/taxonomies/dialects.xml")//TEI:category
+        return
+            element option {
+                attribute value { $dialect/@xml:id/string() },
+                $dialect/TEI:catDesc[@ana="full"][@xml:lang=$lang]/text()
+            }
 };
   
 

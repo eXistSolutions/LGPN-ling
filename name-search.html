@@ -57,11 +57,22 @@
                 </div>
                 <div class="row search-section">
                     <div id="dialect-tab" class="collapse">
-                        
                         <label class="col-md-1">
                             <i18n:text key="dialect">Dialect</i18n:text>
                         </label> 
-                        <select class="col-md-2" name="dialect-boolean" data-template="app:search-dialect-boolean"/>
+                        <select class="col-md-2" name="dialect-boolean">
+                            <option value="and">
+                                <i18n:text key="AND">AND</i18n:text>
+                            </option>
+                            <option value="or">
+                                <i18n:text key="OR">OR</i18n:text>
+                            </option>
+                        </select>
+
+                        <button data-toggle="collapse" data-target="#dialect2">
+                            <i18n:text key="add-dialect">+ add dialect</i18n:text>
+                        </button> 
+
                         <div id="dialects">
                             <div class="col-md-12" name="dialect">
                                 <label class="col-md-1"/>
@@ -86,9 +97,6 @@
                                 </div>
                             </template>
                         </div>
-                        <button data-toggle="collapse" data-target="#dialect2">
-                            <i18n:text key="add-dialect">+ add dialect</i18n:text>
-                        </button> 
                     </div>
                 </div>
     
@@ -111,22 +119,171 @@
     
                 <div class="row search-section">
                     <div id="lexeme" class="collapse">
-                            <label class="col-md-1">
+                        <label class="col-md-1">
                             <i18n:text key="lexeme">Lexeme</i18n:text>
-                        </label> 
+                        </label>
+                        <select class="col-md-2" name="lexeme-boolean">
+                            <option value="and">
+                                <i18n:text key="AND">AND</i18n:text>
+                            </option>
+                            <option value="or">
+                                <i18n:text key="OR">OR</i18n:text>
+                            </option>
+                        </select>
+                        <select class="col-md-2" name="lexeme-order">
+                            <option value="any">
+                                <i18n:text key="ANY">ANY</i18n:text>
+                            </option>
+                            <option value="sequence">
+                                <i18n:text key="SEQUENCE">SEQUENCE</i18n:text>
+                            </option>
+                        </select>
+
+                        <button>
+                            <i18n:text key="add-lexeme">+ add lexeme</i18n:text>
+                        </button> 
+                        <div id="lexemes">
+                            <div class="col-md-12" name="lexeme">
+                                <div class="col-md-12">
+                                    <span class="col-md-1">
+                                        <input type="checkbox" name="lexeme-checkbox"/> 
+                                        <label>
+                                            <i18n:text key="not">not</i18n:text>
+                                        </label>
+                                    </span>
+                                    <input class="col-md-3" name="lexeme-form" type="text" placeholder="Lexeme Form"/>
+                                    <select class="col-md-2" name="lexeme-type">
+                                        <option value="prefix">
+                                            <i18n:text key="prefix">Prefix</i18n:text>
+                                        </option>
+                                        <option value="root">
+                                            <i18n:text key="root">Root</i18n:text>
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12"><!-- Line 2 -->
+                                    <label class="col-md-3">
+                                        <i18n:text key="meaning">Meaning</i18n:text>
+                                    </label>
+                                    <input class="col-md-3" name="lexeme-meaning-form" type="text"/>
+                                    <select class="col-md-2" name="lexeme-meaning-lang">
+                                        <option value="en">
+                                            <i18n:text key="english">English</i18n:text>
+                                        </option>
+                                        <option value="fr">
+                                            <i18n:text key="french">French</i18n:text>
+                                        </option>
+                                    </select>
+                                </div>
+                                <div class="col-md-12"><!-- Line 3 -->
+                                    <label class="col-md-3">
+                                        <i18n:text key="abbreviated">Abbreviated</i18n:text>
+                                    </label>
+                                    <input class="col-md-1" type="checkbox" name="lexeme-abbreviated"/> 
+                                </div>
+                                <div class="col-md-12"><!-- Line 4 -->
+                                    <label class="col-md-3">
+                                        <i18n:text key="grammaticalCategory">Grammatical category</i18n:text>
+                                    </label>
+                                    <select class="col-md-3" name="lexeme-grammatical-category">
+                                        <option value="verb">Verb</option>
+                                        <option value="vadj">VAdj</option>
+                                        <option value="part">Part</option>
+                                        <option value="agt-noun">Agt Noun</option>
+                                        <option value="act-noun">Act Noun</option>
+                                        <option value="noun">Noun</option>
+                                        <option value="adj">Adj</option>
+                                        <option value="pron">Pron</option>
+                                        <option value="adv">Adv</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="col-md-12"><!-- Line 5 -->
+                                    <label class="col-md-3">
+                                        <i18n:text key="Headedness">Headedness</i18n:text>
+                                    </label>
+                                    <select class="col-md-3" name="lexeme-headedness">
+                                        <option value="x">X</option>
+                                        <option value="y">Y</option>
+                                    </select>
+                                </div>
+                                
+                                <div class="col-md-12"><!-- Line 6 -->
+                                    <label class="col-md-3">
+                                        <i18n:text key="complex-structure">Complex structure</i18n:text>
+                                    </label>
+                                    <select class="col-md-3" name="lexeme-complex-structure">
+                                        <option value="ltXY">&lt;XY</option>
+                                        <option value="ltYX">&lt;YX</option>
+                                        <option value="gtXY">&gt;XY</option>
+                                        <option value="gtYX">&gt;YX</option>
+                                        <option value="slashYX">/YX</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-12"><!-- Line 7 -->
+                                    <label class="col-md-3">
+                                        <i18n:text key="connection-utterance">Connection with utterance Type</i18n:text>
+                                    </label>
+                                    <select class="col-md-3" name="lexeme-connection-type">
+                                        <option value="clausal">Clausal</option>
+                                        <option value="conversion">Conver.</option>
+                                        <option value="deadj">Deadj.</option>
+                                        <option value="deadv">Deadv.</option>
+                                        <option value="deloc">Deloc.</option>
+                                        <option value="denom">Denom.</option>
+                                        <option value="dev">Deverb.</option>
+                                        <option value="phrasal">Phrasal</option>
+                                    </select>
+                                </div>
+                                
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="row search-section">
                     <div id="suffix" class="collapse">
-                            <label class="col-md-1">
+                        <label class="col-md-1">
                             <i18n:text key="suffix">Suffix</i18n:text>
                         </label> 
+                        <select class="col-md-2" name="suffix-boolean">
+                            <option value="and">
+                                <i18n:text key="AND">AND</i18n:text>
+                            </option>
+                            <option value="or">
+                                <i18n:text key="OR">OR</i18n:text>
+                            </option>
+                        </select>
+
+                        <div id="suffixes">
+                            <div class="col-md-12" name="suffix">
+                                <span class="col-md-1">
+                                    <input type="checkbox" name="suffix-checkbox"/> 
+                                    <label>
+                                        <i18n:text key="not">not</i18n:text>
+                                    </label>
+                                </span>
+                                <input class="col-md-3" name="suffix-form" type="text" placeholder="Lexeme Form"/>
+                                <select class="col-md-2" name="suffix-position">
+                                    <option value="any">Any</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                </select>
+                            </div>
+                            <template/>
+                        </div>
+                        <button>
+                            <i18n:text key="add-suffix">+ add suffix</i18n:text>
+                        </button> 
+                            
                     </div>
                 </div>
                 <div class="row search-section">
                     <div id="onomastics" class="collapse">
                             <label class="col-md-1">
-                            <i18n:text key="onomastics">onomastics</i18n:text>
+                            <i18n:text key="onomastics">Onomastics</i18n:text>
                         </label> 
                     </div>
                 </div>
