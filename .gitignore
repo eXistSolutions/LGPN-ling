@@ -9,5 +9,4 @@
 /resources/js/vendor/jquery.min.js
 
 # Dev Packages
-/bower_components/
 /node_modules/

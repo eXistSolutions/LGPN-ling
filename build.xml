@@ -39,7 +39,7 @@
 
     <target name="copy">
         <copy todir="${build.dir}/${app.name}-${app.version}">
-            <fileset dir="${basedir}" excludes="${build.dir}/**,build.properties.xml,bower.json,build.xml,README.md,.idea/,.editorconfig,.existdb.json,expath-pkg.xml.tmpl,repo.xml.tmpl,bower_components/**,node_modules/**,package.json,local.node-exist.json,gulpfile.js"/>
+            <fileset dir="${basedir}" excludes="${build.dir}/**,build.properties.xml,build.xml,README.md,.idea/,.editorconfig,.existdb.json,expath-pkg.xml.tmpl,repo.xml.tmpl,bower_components/**,node_modules/**,package.json,local.node-exist.json,gulpfile.js"/>
         </copy>
 
         <copy todir="${build.dir}/${app.name}-${app.version}" overwrite="true" verbose="true">
@@ -67,10 +67,12 @@
     <target name="xar" depends="clean,copy,git.revision" description="main target to create application XAR file">
         <mkdir dir="${build.dir}"/>
         <echo message="Calling npm start..."/>
+<!--
         <exec executable="${npm}" outputproperty="npm.output">
             <arg line="start"/>
         </exec>
         <echo message="${npm.output}"/>
+-->
         <echo message="Creating xar package..."/>
         <zip basedir="${build.dir}/${app.name}-${app.version}" destfile="${build.dir}/${app.name}-${app.version}-${repository.version}.xar"/>
     </target>
