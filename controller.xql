@@ -132,6 +132,12 @@ else if (ends-with($exist:resource, ".html")) then (
 
 
     )
+    
+else if (ends-with($exist:resource, "name-search")) then (    
+    <dispatch xmlns="http://exist.sourceforge.net/NS/exist">
+        <forward url="{$exist:controller}/modules/search.xql"/>
+    </dispatch>
+)
 else if (contains($exist:path, "/$shared/")) then (
         login:set-user("org.exist.lgpn-ling", (), false()),
     <dispatch xmlns="http://exist.sourceforge.net/NS/exist">

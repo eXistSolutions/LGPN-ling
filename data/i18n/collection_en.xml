@@ -79,6 +79,16 @@
     <msg key="lexemeSearch">Lexeme search</msg>
     <msg key="indices">Indices</msg>
     <msg key="nameVariants">Name variants</msg>
+    <msg key="areaDialect">Area (dialect)</msg>
+    <msg key="dating">Dating</msg>
+    <msg key="lexemes">Lexemes</msg>
+    <msg key="suffixes">Suffixes</msg>
+    <msg key="onomastics">Onomastics</msg>
+    <msg key="not">not</msg>
+    <msg key="add-dialect">+ add dialect</msg>
+    <msg key="from">From</msg>
+    <msg key="to">To</msg>
+    <msg key="submit">Submit</msg>
     
-    
+
 </catalogue>

@@ -75,4 +75,20 @@
     <msg key="interling-areas">interlinguistique(s)</msg>  
     <msg key="lexis-ref">Sources et réf.</msg>]
     <msg key="onomastics-ref">Sources connexes et réf.</msg>
+    <msg key="nameSearch">[FR] Name search</msg>
+    <msg key="lexemeSearch">[FR] Lexeme search</msg>
+    <msg key="indices">[FR] Indices</msg>
+    <msg key="nameVariants">[FR]Name variants</msg>
+    <msg key="areaDialect">[FR] Area (dialect)</msg>
+    <msg key="dating">[FR] Dating</msg>
+    <msg key="lexemes">[FR] Lexemes</msg>
+    <msg key="suffixes">[FR] Suffixes</msg>
+    <msg key="onomastics">[FR] Onomastics</msg>
+    <msg key="not">[FR] not</msg>
+    <msg key="add-dialect">[FR] + add dialect</msg>
+    <msg key="from">[FR] From</msg>
+    <msg key="to">[FR] To</msg>
+    <msg key="submit">[FR] Submit</msg>
+        
+    
 </catalogue>
