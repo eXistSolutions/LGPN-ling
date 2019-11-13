@@ -42,7 +42,7 @@
                 </button> 
                 
             </div>
-            <form method="post" action="name-search">
+            <form id="search" method="post" action="name-search" onsubmit="return false;">
                 <div class="row search-section">
                     <div id="name" class="collapse in">
                         <label class="col-md-1">
@@ -69,34 +69,31 @@
                             </option>
                         </select>
 
-                        <button data-toggle="collapse" data-target="#dialect2">
-                            <i18n:text key="add-dialect">+ add dialect</i18n:text>
-                        </button> 
-
-                        <div id="dialects">
-                            <div class="col-md-12" name="dialect">
-                                <label class="col-md-1"/>
+                        <div id="dialects" class="col-md-12">
+                            <div name="dialect" class="col-md-12">
+                                <label class="col-md-1">Dialect</label>
                                 <span class="col-md-1">
+                                <input type="checkbox" name="dialect-checkbox"/> <label>
+                                    <i18n:text key="not">not</i18n:text>
+                                </label>
+                            </span>
+                                <select class="col-md-2" name="dialect-value" data-template="app:search-dialect-value"/>
+                            </div>
+                            <template id="dialect">
+                                <div name="dialect"  class="col-md-12">
+                                    <label class="col-md-1"/>
+                                    <span class="col-md-1">
                                     <input type="checkbox" name="dialect-checkbox"/> <label>
                                         <i18n:text key="not">not</i18n:text>
                                     </label>
                                 </span>
-                                <select class="col-md-2" name="dialect-value" data-template="app:search-dialect-value"/>
-                            </div>
-                            <template>
-                                <div class="col-md-12" name="dialect">
-                                    <div class="col-md-12" name="dialect">
-                                        <label class="col-md-1"/>
-                                        <span class="col-md-1">
-                                            <input type="checkbox" name="dialect-checkbox"/> <label>
-                                                <i18n:text key="not">not</i18n:text>
-                                            </label>
-                                        </span>
-                                        <select class="col-md-2" name="dialect-value" data-template="app:search-dialect-value"/>
-                                    </div>
+                                    <select class="col-md-2" name="dialect-value" data-template="app:search-dialect-value"/>
                                 </div>
                             </template>
                         </div>
+                        <div class="col-md-3"></div>
+                        <button class="col-md-1" type="button" onclick="appendItem('dialect');">add</button>
+
                     </div>
                 </div>
     
@@ -287,10 +284,12 @@
                         </label> 
                     </div>
                 </div>
+                <button type="button" onclick="serializeForm();">serialize form</button>
                 <button type="submit">
                     <i18n:text key="submit">Submit</i18n:text>
-                </button> 
+                </button>
             </form>
         </div>
     </div>
+    <script type="application/javascript" src="resources/js/search.js"></script>
 </div>

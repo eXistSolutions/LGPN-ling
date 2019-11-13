@@ -53,13 +53,13 @@ gulp.task('clean', function() {
 // Scripts //
 
 gulp.task('scripts:deploy', function () {
-    return gulp.src('resources/scripts/*', {base: '.'})
+    return gulp.src('resources/js/*', {base: '.'})
     .pipe(exClient.newer(targetConfiguration))
     .pipe(exClient.dest(targetConfiguration))
 });
 
 gulp.task('scripts:watch', function () {
-    gulp.watch('resources/scripts/**/*.js', gulp.series('scripts:deploy'))
+    gulp.watch('resources/js/**/*.js', gulp.series('scripts:deploy'))
 });
 
 
